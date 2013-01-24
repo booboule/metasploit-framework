@@ -1,23 +1,23 @@
 module CodeRay
 module Scanners
-  
+
   # Scanner for output of the diff command.
-  # 
+  #
   # Alias: +patch+
   class Diff < Scanner
-    
+
     register_for :diff
     title 'diff output'
-    
+
     DEFAULT_OPTIONS = {
       :highlight_code => true,
       :inline_diff    => true,
     }
-    
+
   protected
-    
+
     def scan_tokens encoder, options
-      
+
       line_kind = nil
       state = :initial
       deleted_lines = 0
@@ -26,9 +26,9 @@ module Scanners
       end
       content_scanner = scanners[:plain]
       content_scanner_entry_state = nil
-      
+
       until eos?
-        
+
         if match = scan(/\n/)
           deleted_lines = 0 unless line_kind == :delete
           if line_kind
@@ -38,9 +38,9 @@ module Scanners
           encoder.text_token match, :space
           next
         end
-        
+
         case state
-        
+
         when :initial
           if match = scan(/--- |\+\+\+ |=+|_+/)
             encoder.begin_line line_kind = :head
@@ -157,7 +157,7 @@ module Scanners
           else
             raise_inspect 'else case rached'
           end
-        
+
         when :added
           if match = scan(/   \+/)
             encoder.begin_line line_kind = :insert
@@ -169,16 +169,16 @@ module Scanners
             next
           end
         end
-        
+
       end
-      
+
       encoder.end_line line_kind if line_kind
-      
+
       encoder
     end
-    
+
   private
-    
+
     def diff a, b
       # i will be the index of the leftmost difference from the left.
       i_max = [a.size, b.size].min
@@ -192,8 +192,8 @@ module Scanners
       j -= 1 while j >= j_min && a[j] == b[j]
       return a[0...i], a[i..j], b[i..j], (j < -1) ? a[j+1..-1] : ''
     end
-    
+
   end
-  
+
 end
 end

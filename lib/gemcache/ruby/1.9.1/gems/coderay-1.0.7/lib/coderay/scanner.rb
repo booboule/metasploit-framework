@@ -2,9 +2,9 @@
 require 'strscan'
 
 module CodeRay
-  
+
   autoload :WordList, coderay_path('helpers', 'word_list')
-  
+
   # = Scanners
   #
   # This module holds the Scanner class and its subclasses.
@@ -19,8 +19,8 @@ module CodeRay
   module Scanners
     extend PluginHost
     plugin_path File.dirname(__FILE__), 'scanners'
-    
-    
+
+
     # = Scanner
     #
     # The base class for all Scanners.
@@ -32,37 +32,37 @@ module CodeRay
     # Tokens:
     #
     #   require 'coderay'
-    #   
+    #
     #   c_scanner = CodeRay::Scanners[:c].new "if (*p == '{') nest++;"
-    #   
+    #
     #   for text, kind in c_scanner
     #     puts text if kind == :operator
     #   end
-    #   
+    #
     #   # prints: (*==)++;
     #
     # OK, this is a very simple example :)
     # You can also use +map+, +any?+, +find+ and even +sort_by+,
     # if you want.
     class Scanner < StringScanner
-      
+
       extend Plugin
       plugin_host Scanners
-      
+
       # Raised if a Scanner fails while scanning
       ScanError = Class.new StandardError
-      
+
       # The default options for all scanner classes.
       #
       # Define @default_options for subclasses.
       DEFAULT_OPTIONS = { }
-      
+
       KINDS_NOT_LOC = [:comment, :doctype, :docstring]
-      
+
       attr_accessor :state
-      
+
       class << self
-        
+
         # Normalizes the given code into a string with UNIX newlines, in the
         # scanner's internal encoding, with invalid and undefined charachters
         # replaced by placeholders. Always returns a new object.
@@ -70,7 +70,7 @@ module CodeRay
           # original = code
           code = code.to_s unless code.is_a? ::String
           return code if code.empty?
-          
+
           if code.respond_to? :encoding
             code = encode_with_encoding code, self.encoding
           else
@@ -79,24 +79,24 @@ module CodeRay
           # code = code.dup if code.eql? original
           code
         end
-        
+
         # The typical filename suffix for this scanner's language.
         def file_extension extension = lang
           @file_extension ||= extension.to_s
         end
-        
+
         # The encoding used internally by this scanner.
         def encoding name = 'UTF-8'
           @encoding ||= defined?(Encoding.find) && Encoding.find(name)
         end
-        
+
         # The lang of this Scanner class, which is equal to its Plugin ID.
         def lang
           @plugin_id
         end
-        
+
       protected
-        
+
         def encode_with_encoding code, target_encoding
           if code.encoding == target_encoding
             if code.valid_encoding?
@@ -110,11 +110,11 @@ module CodeRay
           # print "encode_with_encoding from #{source_encoding} to #{target_encoding}"
           code.encode target_encoding, source_encoding, :universal_newline => true, :undef => :replace, :invalid => :replace
         end
-        
+
         def to_unix code
           code.index(?\r) ? code.gsub(/\r\n?/, "\n") : code
         end
-        
+
         def guess_encoding s
           #:nocov:
           IO.popen("file -b --mime -", "w+") do |file|
@@ -128,9 +128,9 @@ module CodeRay
           end
           #:nocov:
         end
-        
+
       end
-      
+
       # Create a new Scanner.
       #
       # * +code+ is the input String and is handled by the superclass
@@ -144,41 +144,41 @@ module CodeRay
         if self.class == Scanner
           raise NotImplementedError, "I am only the basic Scanner class. I can't scan anything. :( Use my subclasses."
         end
-        
+
         @options = self.class::DEFAULT_OPTIONS.merge options
-        
+
         super self.class.normalize(code)
-        
+
         @tokens = options[:tokens] || Tokens.new
         @tokens.scanner = self if @tokens.respond_to? :scanner=
-        
+
         setup
       end
-      
+
       # Sets back the scanner. Subclasses should redefine the reset_instance
       # method instead of this one.
       def reset
         super
         reset_instance
       end
-      
+
       # Set a new string to be scanned.
       def string= code
         code = self.class.normalize(code)
         super code
         reset_instance
       end
-      
+
       # the Plugin ID for this scanner
       def lang
         self.class.lang
       end
-      
+
       # the default file extension for this scanner
       def file_extension
         self.class.file_extension
       end
-      
+
       # Scan the code and returns all tokens in a Tokens object.
       def tokenize source = nil, options = {}
         options = @options.merge(options)
@@ -192,14 +192,14 @@ module CodeRay
         else
           self.string = self.class.normalize(source)
         end
-        
+
         begin
           scan_tokens @tokens, options
         rescue => e
           message = "Error in %s#scan_tokens, initial state was: %p" % [self.class, defined?(state) && state]
           raise_inspect e.message, @tokens, message, 30, e.backtrace
         end
-        
+
         @cached_tokens = @tokens
         if source.is_a? Array
           @tokens.split_into_parts(*source.map { |part| part.size })
@@ -207,18 +207,18 @@ module CodeRay
           @tokens
         end
       end
-      
+
       # Cache the result of tokenize.
       def tokens
         @cached_tokens ||= tokenize
       end
-      
+
       # Traverse the tokens.
       def each &block
         tokens.each(&block)
       end
       include Enumerable
-      
+
       # The current line position of the scanner, starting with 1.
       # See also: #column.
       #
@@ -228,16 +228,16 @@ module CodeRay
         return 1 if pos <= 0
         binary_string[0...pos].count("\n") + 1
       end
-      
+
       # The current column position of the scanner, starting with 1.
       # See also: #line.
       def column pos = self.pos
         return 1 if pos <= 0
         pos - (binary_string.rindex(?\n, pos - 1) || -1)
       end
-      
+
       # The string in binary encoding.
-      # 
+      #
       # To be used with #pos, which is the index of the byte the scanner
       # will scan next.
       def binary_string
@@ -250,9 +250,9 @@ module CodeRay
             string
           end
       end
-      
+
     protected
-      
+
       # Can be implemented by subclasses to do some initialization
       # that has to be done once per instance.
       #
@@ -260,7 +260,7 @@ module CodeRay
       # scan.
       def setup  # :doc:
       end
-      
+
       # This is the central method, and commonly the only one a
       # subclass implements.
       #
@@ -269,14 +269,14 @@ module CodeRay
       def scan_tokens tokens, options  # :doc:
         raise NotImplementedError, "#{self.class}#scan_tokens not implemented."
       end
-      
+
       # Resets the scanner.
       def reset_instance
         @tokens.clear if @tokens.respond_to?(:clear) && !@options[:keep_tokens]
         @cached_tokens = nil
         @binary_string = nil if defined? @binary_string
       end
-      
+
       # Scanner error with additional status information
       def raise_inspect msg, tokens, state = self.state || 'No state given!', ambit = 30, backtrace = caller
         raise ScanError, <<-EOE % [
@@ -308,7 +308,7 @@ surrounding code:
           binary_string[pos, ambit],
         ], backtrace
       end
-      
+
       # Shorthand for scan_until(/\z/).
       # This method also avoids a JRuby 1.9 mode bug.
       def scan_rest
@@ -316,8 +316,8 @@ surrounding code:
         terminate
         rest
       end
-      
+
     end
-    
+
   end
 end

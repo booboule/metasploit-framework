@@ -11,7 +11,7 @@ class Layout < Erector::Widget
         link :rel => "stylesheet",
         :type => "text/css",
         :href => "./screen.css"
-        
+
         rawtext %(
           <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
           </script>
@@ -70,7 +70,7 @@ class Documentation < Layout
         li { link_to 'Advanced Techniques', PitfallsAndAdvancedTechniques }
       end
     end
-    
+
     div :id => 'documentation_content' do
       documentation_content
     end

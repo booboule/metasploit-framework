@@ -3,7 +3,7 @@ module TZInfo
     module Brazil
       module East
         include TimezoneDefinition
-        
+
         linked_timezone 'Brazil/East', 'America/Sao_Paulo'
       end
     end

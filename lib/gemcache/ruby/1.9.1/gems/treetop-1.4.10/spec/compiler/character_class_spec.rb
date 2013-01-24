@@ -69,17 +69,17 @@ module CharacterClassSpec
       parse(' 1', :index => 1).should be_nil
     end
   end
-  
+
   describe "a character class followed by a node class declaration and a block" do
 
     testing_expression "[A-Z] <CharacterClassSpec::Foo>"
-    
+
     it "actively generates nodes for the character when it is the primary node" do
       result = parse('A')
       result.should be_a(Treetop::Runtime::SyntaxNode)
       result.elements.should be_nil
     end
-    
+
   end
 
   describe "A character class containing quotes" do
@@ -192,7 +192,7 @@ module CharacterClassSpec
       parse("0").should be_nil
     end
   end
-  
+
   describe "a character class" do
     testing_expression "[A-Z]"
     it "actively generates a node for the character because it is the primary node" do
@@ -201,7 +201,7 @@ module CharacterClassSpec
       result.elements.should be_nil
     end
   end
-  
+
   describe "a character class mixed with other expressions" do
     testing_expression '[A-Z] "a"'
     it "lazily instantiates a node for the character" do
@@ -211,7 +211,7 @@ module CharacterClassSpec
       result.elements.size.should == 2
     end
   end
-  
+
   describe "a character class with a node class declaration mixed with other expressions" do
     testing_expression '([A-Z] <CharacterClassSpec::Foo>) "a"'
     it "actively generates a node for the character because it has a node class declared" do
@@ -221,7 +221,7 @@ module CharacterClassSpec
       result.elements.size.should == 2
     end
   end
-  
+
   describe "a character class with a node module declaration mixed with other expressions" do
     testing_expression '([A-Z] <CharacterClassSpec::ModFoo>) "a"'
     it "actively generates a node for the character because it has a node module declared" do
@@ -231,7 +231,7 @@ module CharacterClassSpec
       result.elements.size.should == 2
     end
   end
-  
+
   describe "a character class with an inline block mixed with other expressions" do
     testing_expression '([A-Z] { def a_method; end }) "a"'
     it "actively generates a node for the character because it has an inline block" do
@@ -241,7 +241,7 @@ module CharacterClassSpec
       result.elements.size.should == 2
     end
   end
-  
+
   describe "a character class with a label mixed with other expressions" do
     testing_expression 'upper:([A-Z]) "b"'
     it "returns the correct element for the labeled expression" do
@@ -250,7 +250,7 @@ module CharacterClassSpec
       result.elements.size.should == 2
     end
   end
-  
+
   describe "a character class repetition mixed with other expressions" do
     testing_expression '[A-Z]+ "a"'
     it "lazily instantiates a node for the character" do
@@ -262,10 +262,10 @@ module CharacterClassSpec
       result.elements.inspect.should == %Q{[SyntaxNode offset=0, "ABC":\n  SyntaxNode offset=0, "A"\n  SyntaxNode offset=1, "B"\n  SyntaxNode offset=2, "C", SyntaxNode offset=3, "a"]}
     end
   end
-  
+
   describe "a character class that gets cached because of a choice" do
     testing_expression "[A-Z] 'a' / [A-Z]"
-    
+
     it "generates a node for the lazily-instantiated character when it is the primary node" do
       result = parse('A')
       result.should be_a(Treetop::Runtime::SyntaxNode)

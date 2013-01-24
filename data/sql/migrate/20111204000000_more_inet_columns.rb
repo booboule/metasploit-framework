@@ -4,7 +4,7 @@ class MoreInetColumns < ActiveRecord::Migration
 		change_column :wmap_requests, :address, 'INET using address::INET'
 		remove_column :wmap_requests, :address6
 		change_column :wmap_targets, :address, 'INET using address::INET'
-		remove_column :wmap_targets, :address6		
+		remove_column :wmap_targets, :address6
 	end
 
 	def self.down

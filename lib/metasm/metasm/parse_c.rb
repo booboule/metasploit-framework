@@ -974,7 +974,7 @@ module C
 			raise "invalid CExpr #{[l, o, r, t].inspect}" if (o and not o.kind_of? ::Symbol) or not t.kind_of? Type
 			@lexpr, @op, @rexpr, @type = l, o, r, t
 		end
-		
+
 		# overwrites @lexpr @op @rexpr @type from the arg
 		def replace(o)
 			@lexpr, @op, @rexpr, @type = o.lexpr, o.op, o.rexpr, o.type
@@ -2296,7 +2296,7 @@ EOH
 			o.object_id == self.object_id or
 			(self.class == o.class and op == o.op and lexpr == o.lexpr and rexpr == o.rexpr)
 		end
-	
+
 		def ===(o)
 			(self.class == o.class and op == o.op and lexpr === o.lexpr and rexpr === o.rexpr) or
 			(o.class == Variable and not @op and @rexpr == o)

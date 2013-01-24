@@ -13,5 +13,5 @@ class Rex::FileUtils::UnitTest < ::Test::Unit::TestCase
 		assert_not_nil(Klass.find_full_path("ls"))
 		assert_nil(Klass.find_full_path("cookie monster cake"))
 	end
-		
+
 end

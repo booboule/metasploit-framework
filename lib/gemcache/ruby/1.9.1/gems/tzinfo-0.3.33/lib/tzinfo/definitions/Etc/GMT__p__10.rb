@@ -3,10 +3,10 @@ module TZInfo
     module Etc
       module GMT__p__10
         include TimezoneDefinition
-        
+
         timezone 'Etc/GMT+10' do |tz|
           tz.offset :o0, -36000, 0, :'GMT+10'
-          
+
         end
       end
     end

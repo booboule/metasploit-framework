@@ -43,7 +43,7 @@ class PowerPC
 					end
 				}
 				#a << :eax if di.opcode.name == 'ret'		# standard ABI
-				
+
 				deps_r[b] |= a.map { |ee| Expression[ee].externals.grep(::Symbol) }.flatten - [:unknown] - deps_w[b]
 				deps_w[b] |= w.map { |ee| Expression[ee].externals.grep(::Symbol) }.flatten - [:unknown]
 			}

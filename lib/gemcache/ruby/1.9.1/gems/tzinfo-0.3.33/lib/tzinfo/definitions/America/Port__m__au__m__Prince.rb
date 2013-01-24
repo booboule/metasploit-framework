@@ -3,13 +3,13 @@ module TZInfo
     module America
       module Port__m__au__m__Prince
         include TimezoneDefinition
-        
+
         timezone 'America/Port-au-Prince' do |tz|
           tz.offset :o0, -17360, 0, :LMT
           tz.offset :o1, -17340, 0, :PPMT
           tz.offset :o2, -18000, 0, :EST
           tz.offset :o3, -18000, 3600, :EDT
-          
+
           tz.transition 1890, 1, :o1, 2604278197, 1080
           tz.transition 1917, 1, :o2, 3486604609, 1440
           tz.transition 1983, 5, :o3, 421218000

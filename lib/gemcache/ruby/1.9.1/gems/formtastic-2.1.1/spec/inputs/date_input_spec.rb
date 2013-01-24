@@ -70,7 +70,7 @@ describe 'date input' do
     it_should_have_select_with_id("context2_post_publish_at_3i")
 
   end
-  
+
   describe "when index is provided" do
 
     before do
@@ -83,23 +83,23 @@ describe 'date input' do
         end)
       end)
     end
-    
+
     it 'should index the id of the wrapper' do
       output_buffer.should have_tag("li#post_author_attributes_3_created_at_input")
     end
-    
+
     it 'should index the id of the select tag' do
       output_buffer.should have_tag("select#post_author_attributes_3_created_at_1i")
       output_buffer.should have_tag("select#post_author_attributes_3_created_at_2i")
       output_buffer.should have_tag("select#post_author_attributes_3_created_at_3i")
     end
-    
+
     it 'should index the name of the select tag' do
       output_buffer.should have_tag("select[@name='post[author_attributes][3][created_at(1i)]']")
       output_buffer.should have_tag("select[@name='post[author_attributes][3][created_at(2i)]']")
       output_buffer.should have_tag("select[@name='post[author_attributes][3][created_at(3i)]']")
     end
-    
+
   end
 
   describe ':labels option' do
@@ -126,7 +126,7 @@ describe 'date input' do
           output_buffer.should have_tag('form li.date fieldset ol li label', /#{f}/i) unless field == f
         end
       end
-      
+
       it "should not display the label for the #{field} field when :labels[:#{field}] is false" do
         output_buffer.replace ''
         concat(semantic_form_for(@new_post) do |builder|
@@ -137,21 +137,21 @@ describe 'date input' do
           output_buffer.should have_tag('form li.date fieldset ol li label', /#{f}/i) unless field == f
         end
       end
-      
-      it "should not render unsafe HTML when :labels[:#{field}] is false" do 
+
+      it "should not render unsafe HTML when :labels[:#{field}] is false" do
         output_buffer.replace ''
         concat(semantic_form_for(@new_post) do |builder|
           concat(builder.input(:created_at, :as => :time, :include_seconds => true, :labels => { field => false }))
         end)
         output_buffer.should_not include("&gt;")
       end
-      
+
     end
   end
-  
+
   describe "when required" do
     it "should add the required attribute to the input's html options" do
-      with_config :use_required_attribute, true do 
+      with_config :use_required_attribute, true do
         concat(semantic_form_for(@new_post) do |builder|
           concat(builder.input(:title, :as => :date, :required => true))
         end)
@@ -159,7 +159,7 @@ describe 'date input' do
       end
     end
   end
-  
+
   describe "when order does not include day" do
     before do
       output_buffer.replace ''

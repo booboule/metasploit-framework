@@ -39,7 +39,7 @@ class TC_Win32_ServiceStatus_Struct < Test::Unit::TestCase
       nil
     ]
 
-    @controls = [ 
+    @controls = [
       'netbind change',
       'param change',
       'pause continue',

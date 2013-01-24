@@ -32,7 +32,7 @@ Object.class_eval(compiled_metagrammar_source)
 # Treetop::Compiler::Metagrammar.module_eval do
 #   include Trusted::Treetop::Runtime
 # end
-# 
+#
 # Treetop::Compiler.send(:remove_const, :MetagrammarParser)
 # class Treetop::Compiler::MetagrammarParser < Trusted::Treetop::Runtime::CompiledParser
 #   include Treetop::Compiler::Metagrammar

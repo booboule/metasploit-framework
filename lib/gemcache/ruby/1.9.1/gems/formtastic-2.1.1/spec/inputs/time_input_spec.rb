@@ -35,7 +35,7 @@ describe 'time input' do
       end
 
     end
-    
+
     describe "with :ignore_date => false" do
       before do
         @new_post.stub(:publish_at).and_return(Time.parse('2010-11-07'))
@@ -181,8 +181,8 @@ describe 'time input' do
           output_buffer.should have_tag('form li.time fieldset ol li label', /#{f}/i) unless field == f
         end
       end
-      
-      it "should not render the label when :labels[:#{field}] is false" do 
+
+      it "should not render the label when :labels[:#{field}] is false" do
         output_buffer.replace ''
         concat(semantic_form_for(@new_post) do |builder|
           concat(builder.input(:created_at, :as => :time, :include_seconds => true, :labels => { field => false }))
@@ -192,15 +192,15 @@ describe 'time input' do
           output_buffer.should have_tag('form li.time fieldset ol li label', /#{f}/i) unless field == f
         end
       end
-      
-      it "should not render unsafe HTML when :labels[:#{field}] is false" do 
+
+      it "should not render unsafe HTML when :labels[:#{field}] is false" do
         output_buffer.replace ''
         concat(semantic_form_for(@new_post) do |builder|
           concat(builder.input(:created_at, :as => :time, :include_seconds => true, :labels => { field => false }))
         end)
         output_buffer.should_not include("&gt;")
       end
-      
+
     end
   end
 
@@ -217,10 +217,10 @@ describe 'time input' do
       output_buffer.should have_tag('#form2_post_publish_at_5i')
     end
   end
-  
+
   describe "when required" do
     it "should add the required attribute to the input's html options" do
-      with_config :use_required_attribute, true do 
+      with_config :use_required_attribute, true do
         concat(semantic_form_for(@new_post) do |builder|
           concat(builder.input(:title, :as => :time, :required => true))
         end)
@@ -228,7 +228,7 @@ describe 'time input' do
       end
     end
   end
-  
+
   describe "when index is provided" do
 
     before do
@@ -260,7 +260,7 @@ describe 'time input' do
     end
 
   end
-  
+
 end
 
 

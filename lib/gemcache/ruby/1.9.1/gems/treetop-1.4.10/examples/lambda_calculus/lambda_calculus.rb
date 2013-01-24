@@ -1,32 +1,32 @@
 module LambdaCalculus
   include Treetop::Runtime
-  
+
   def root
     @root || :program
   end
-  
+
   include Arithmetic
-  
+
   module Program0
     def space
       elements[1]
     end
-    
+
     def expression
       elements[2]
     end
   end
-  
+
   module Program1
     def expression
       elements[0]
     end
-    
+
     def more_expressions
       elements[1]
     end
   end
-  
+
   module Program2
     def eval(env={})
       env = env.clone
@@ -36,12 +36,12 @@ module LambdaCalculus
       end
       last_eval
     end
-    
+
     def expressions
       [expression] + more_expressions.elements.map {|elt| elt.expression}
     end
   end
-  
+
   def _nt_program
     start_index = index
     cached = node_cache[:program][index]
@@ -49,7 +49,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     r1 = _nt_expression
     s0 << r1
@@ -91,12 +91,12 @@ module LambdaCalculus
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:program][start_index] = r0
-    
+
     return r0
   end
-  
+
   def _nt_expression
     start_index = index
     cached = node_cache[:expression][index]
@@ -104,7 +104,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     r1 = _nt_definition
     if r1.success?
@@ -133,36 +133,36 @@ module LambdaCalculus
         end
       end
     end
-    
+
     node_cache[:expression][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Definition0
     def space
       elements[1]
     end
-    
+
     def variable
       elements[2]
     end
-    
+
     def space
       elements[3]
     end
-    
+
     def expression
       elements[4]
     end
   end
-  
+
   module Definition1
     def eval(env)
       env[variable.name] = expression.eval(env)
     end
   end
-  
+
   def _nt_definition
     start_index = index
     cached = node_cache[:definition][index]
@@ -170,7 +170,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     r1 = parse_terminal('def', SyntaxNode)
     s0 << r1
@@ -198,50 +198,50 @@ module LambdaCalculus
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:definition][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Conditional0
     def space
       elements[1]
     end
-    
+
     def space
       elements[3]
     end
-    
+
     def condition
       elements[4]
     end
-    
+
     def space
       elements[5]
     end
-    
+
     def space
       elements[7]
     end
-    
+
     def true_case
       elements[8]
     end
-    
+
     def space
       elements[9]
     end
-    
+
     def space
       elements[11]
     end
-    
+
     def false_case
       elements[12]
     end
   end
-  
+
   module Conditional1
     def eval(env)
       if condition.eval(env)
@@ -251,7 +251,7 @@ module LambdaCalculus
       end
     end
   end
-  
+
   def _nt_conditional
     start_index = index
     cached = node_cache[:conditional][index]
@@ -259,7 +259,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     r1 = parse_terminal('if', SyntaxNode)
     s0 << r1
@@ -319,12 +319,12 @@ module LambdaCalculus
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:conditional][start_index] = r0
-    
+
     return r0
   end
-  
+
   def _nt_primary
     start_index = index
     cached = node_cache[:primary][index]
@@ -332,7 +332,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     r1 = _nt_application
     if r1.success?
@@ -346,31 +346,31 @@ module LambdaCalculus
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:primary][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Application0
     def operator
       elements[0]
     end
-    
+
     def space
       elements[1]
     end
-    
+
     def expression
       elements[2]
     end
   end
-  
+
   module Application1
     def eval(env={})
       left_associative_apply(operator.eval(env), env)
     end
-    
+
     def left_associative_apply(operator, env)
       if expression.instance_of?(Application)
         expression.left_associative_apply(operator.apply(expression.operator.eval(env)), env)
@@ -378,12 +378,12 @@ module LambdaCalculus
         operator.apply(expression.eval(env))
       end
     end
-    
+
     def to_s(env={})
       operator.to_s(env) + ' ' + expression.to_s(env)
     end
   end
-  
+
   def _nt_application
     start_index = index
     cached = node_cache[:application][index]
@@ -391,7 +391,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     r1 = _nt_operator
     s0 << r1
@@ -411,12 +411,12 @@ module LambdaCalculus
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:application][start_index] = r0
-    
+
     return r0
   end
-  
+
   def _nt_operator
     start_index = index
     cached = node_cache[:operator][index]
@@ -424,7 +424,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     r1 = _nt_function
     if r1.success?
@@ -438,12 +438,12 @@ module LambdaCalculus
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:operator][start_index] = r0
-    
+
     return r0
   end
-  
+
   def _nt_non_application
     start_index = index
     cached = node_cache[:non_application][index]
@@ -451,7 +451,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     r1 = _nt_function
     if r1.success?
@@ -465,50 +465,50 @@ module LambdaCalculus
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:non_application][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Function0
     def param
       elements[1]
     end
-    
+
     def body
       elements[3]
     end
-    
+
   end
-  
+
   module Function1
     class Closure
       attr_reader :env, :function
-      
+
       def initialize(function, env)
         @function = function
         @env = env
       end
-    
+
       def apply(arg)
         function.body.eval(function.param.bind(arg, env))
       end
-    
+
       def to_s(other_env={})
         "\\#{function.param.to_s}(#{function.body.to_s(other_env.merge(env))})"
       end
     end
-    
+
     def eval(env={})
       Closure.new(self, env)
     end
-    
+
     def to_s(env={})
       eval(env).to_s
     end
   end
-  
+
   def _nt_function
     start_index = index
     cached = node_cache[:function][index]
@@ -516,7 +516,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     r1 = parse_terminal('\\', SyntaxNode)
     s0 << r1
@@ -544,12 +544,12 @@ module LambdaCalculus
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:function][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Variable0
     def bind(value, env)
       env.merge(name => value)
@@ -559,10 +559,10 @@ module LambdaCalculus
       env.has_key?(name) ? env[name].to_s : name
   end
   end
-  
+
   module Variable1
   end
-  
+
   def _nt_variable
     start_index = index
     cached = node_cache[:variable][index]
@@ -570,7 +570,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     i1 = index
     r2 = _nt_keyword
@@ -593,15 +593,15 @@ module LambdaCalculus
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:variable][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Keyword0
   end
-  
+
   def _nt_keyword
     start_index = index
     cached = node_cache[:keyword][index]
@@ -609,7 +609,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     i1 = index
     r2 = parse_terminal('if', SyntaxNode)
@@ -643,15 +643,15 @@ module LambdaCalculus
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:keyword][start_index] = r0
-    
+
     return r0
   end
-  
+
   module NonSpaceChar0
   end
-  
+
   def _nt_non_space_char
     start_index = index
     cached = node_cache[:non_space_char][index]
@@ -659,7 +659,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     i1 = index
     r2 = parse_char_class(/[ \n]/, ' \n', SyntaxNode)
@@ -681,12 +681,12 @@ module LambdaCalculus
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:non_space_char][start_index] = r0
-    
+
     return r0
   end
-  
+
   def _nt_space
     start_index = index
     cached = node_cache[:space][index]
@@ -694,7 +694,7 @@ module LambdaCalculus
       @index = cached.interval.end
       return cached
     end
-    
+
     s0, i0 = [], index
     loop do
       r1 = parse_char_class(/[ \n]/, ' \n', SyntaxNode)
@@ -705,12 +705,12 @@ module LambdaCalculus
       end
     end
     r0 = SyntaxNode.new(input, i0...index, s0)
-    
+
     node_cache[:space][start_index] = r0
-    
+
     return r0
   end
-  
+
 end
 
 class LambdaCalculusParser < Treetop::Runtime::CompiledParser

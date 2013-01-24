@@ -18,7 +18,7 @@ module EventMachine
     else
       if object.respond_to? :call
         object
-      else 
+      else
         blk || raise(ArgumentError)
       end
     end

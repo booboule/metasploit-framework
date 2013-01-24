@@ -30,7 +30,7 @@ class WinConstManager::UnitTest < Test::Unit::TestCase
 
 		assert(const_manager.select_const_names(23, /^\w{1,3}$/).sort == names,
 			'select_const_names should filter names with provided regex')
-		
+
 	end
 
 	def test_is_parseable

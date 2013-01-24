@@ -39,7 +39,7 @@ end
 #{mcntr} = Hash.new(0)
 
 at_exit {
-	total = #{mcntr}.inject(0) { |a, (k, v)| a+v } 
+	total = #{mcntr}.inject(0) { |a, (k, v)| a+v }
 	puts "\#{total} callers of #{cls} #{meth}:"
 	#{mcntr}.sort_by { |k, v|
 		-v

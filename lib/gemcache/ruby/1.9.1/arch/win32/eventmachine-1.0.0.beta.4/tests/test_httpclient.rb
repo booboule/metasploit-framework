@@ -126,7 +126,7 @@ class TestHttpClient < Test::Unit::TestCase
         close_connection_after_writing
       end
   end
-  
+
   # TODO, this is WRONG. The handler is asserting an HTTP 1.1 request, but the client
   # is sending a 1.0 request. Gotta fix the client
   def test_post

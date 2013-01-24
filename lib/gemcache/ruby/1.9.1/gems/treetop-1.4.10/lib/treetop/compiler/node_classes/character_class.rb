@@ -1,9 +1,9 @@
 module Treetop
-  module Compiler    
+  module Compiler
     class CharacterClass < AtomicExpression
       def compile(address, builder, parent_expression = nil)
         super
-        
+
         builder.if__ "has_terminal?(#{grounded_regexp(text_value)}, true, index)" do
           if address == 0 || decorated?
             assign_result "instantiate_node(#{node_class_name},input, index...(index + 1))"

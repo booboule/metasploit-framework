@@ -1,7 +1,7 @@
 # -*- coding: binary -*-
 module PacketFu
 
-	# ARPHeader is a complete ARP struct, used in ARPPacket. 
+	# ARPHeader is a complete ARP struct, used in ARPPacket.
 	#
 	# ARP is used to discover the machine address of nearby devices.
 	#
@@ -30,11 +30,11 @@ module PacketFu
 			src_mac = args[:arp_src_mac] || (args[:config][:eth_src] if args[:config])
 			src_ip_bin = args[:arp_src_ip]   || (args[:config][:ip_src_bin] if args[:config])
 
-			super( 
-				Int16.new(args[:arp_hw] || 1), 
+			super(
+				Int16.new(args[:arp_hw] || 1),
 				Int16.new(args[:arp_proto] ||0x0800),
-				Int8.new(args[:arp_hw_len] || 6), 
-				Int8.new(args[:arp_proto_len] || 4), 
+				Int8.new(args[:arp_hw_len] || 6),
+				Int8.new(args[:arp_proto_len] || 4),
 				Int16.new(args[:arp_opcode] || 1),
 				EthMac.new.read(src_mac),
 				Octets.new.read(src_ip_bin),
@@ -82,9 +82,9 @@ module PacketFu
 		def arp_proto_len=(i); typecast i; end
 		# Getter for the ARP protocol length.
 		def arp_proto_len; self[:arp_proto_len].to_i; end
-		# Setter for the ARP opcode. 
+		# Setter for the ARP opcode.
 		def arp_opcode=(i); typecast i; end
-		# Getter for the ARP opcode. 
+		# Getter for the ARP opcode.
 		def arp_opcode; self[:arp_opcode].to_i; end
 		# Setter for the ARP source MAC address.
 		def arp_src_mac=(i); typecast i; end
@@ -127,12 +127,12 @@ module PacketFu
 			EthHeader.str2mac(self[:arp_dst_mac].to_s)
 		end
 
-		# Set a more readable source IP address. 
+		# Set a more readable source IP address.
 		def arp_saddr_ip=(addr)
 			self[:arp_src_ip].read_quad(addr)
 		end
 
-		# Get a more readable source IP address. 
+		# Get a more readable source IP address.
 		def arp_saddr_ip
 			self[:arp_src_ip].to_x
 		end
@@ -141,7 +141,7 @@ module PacketFu
 		def arp_daddr_ip=(addr)
 			self[:arp_dst_ip].read_quad(addr)
 		end
-		
+
 		# Get a more readable destination IP address.
 		def arp_daddr_ip
 			self[:arp_dst_ip].to_x
@@ -169,7 +169,7 @@ module PacketFu
 	#  arp_pkt.arp_saddr_ip="10.10.10.17"  # Your IP address
 	#  arp_pkt.arp_daddr_ip="10.10.10.1"  # Target IP address
 	#  arp_pkt.arp_opcode=1  # Request
-	# 
+	#
 	#  arp_pkt.to_w('eth0')	# Inject on the wire. (requires root)
   #  arp_pkt.to_f('/tmp/arp.pcap') # Write to a file.
 	#
@@ -177,7 +177,7 @@ module PacketFu
 	#
 	#  :flavor
 	#   Sets the "flavor" of the ARP packet. Choices are currently:
-	#     :windows, :linux, :hp_deskjet 
+	#     :windows, :linux, :hp_deskjet
 	#  :eth
 	#   A pre-generated EthHeader object. If not specified, a new one will be created.
 	#  :arp
@@ -206,23 +206,23 @@ module PacketFu
 
 		def initialize(args={})
 			@eth_header = EthHeader.new(args).read(args[:eth])
-			@arp_header = ARPHeader.new(args).read(args[:arp]) 
+			@arp_header = ARPHeader.new(args).read(args[:arp])
 			@eth_header.eth_proto = "\x08\x06"
 			@eth_header.body=@arp_header
 
 			# Please send more flavors to todb+packetfu@planb-security.net.
 			# Most of these initial fingerprints come from one (1) sample.
 			case (args[:flavor].nil?) ? :nil : args[:flavor].to_s.downcase.intern
-			when :windows; @arp_header.body = "\x00" * 64				# 64 bytes of padding 
-			when :linux; @arp_header.body = "\x00" * 4 +				# 32 bytes of padding 
+			when :windows; @arp_header.body = "\x00" * 64				# 64 bytes of padding
+			when :linux; @arp_header.body = "\x00" * 4 +				# 32 bytes of padding
 				"\x00\x07\x5c\x14" + "\x00" * 4 +
 				"\x00\x0f\x83\x34" + "\x00\x0f\x83\x74" +
-				"\x01\x11\x83\x78" + "\x00\x00\x00\x0c" + 
+				"\x01\x11\x83\x78" + "\x00\x00\x00\x0c" +
 				"\x00\x00\x00\x00"
 			when :hp_deskjet; 																	# Pads up to 60 bytes.
-				@arp_header.body = "\xe0\x90\x0d\x6c" + 
-				"\xff\xff\xee\xee" + "\x00" * 4 + 
-				"\xe0\x8f\xfa\x18\x00\x20"	
+				@arp_header.body = "\xe0\x90\x0d\x6c" +
+				"\xff\xff\xee\xee" + "\x00" * 4 +
+				"\xe0\x8f\xfa\x18\x00\x20"
 			else; @arp_header.body = "\x00" * 18								# Pads up to 60 bytes.
 			end
 

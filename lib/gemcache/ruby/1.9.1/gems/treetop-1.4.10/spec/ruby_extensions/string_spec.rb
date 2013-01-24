@@ -9,7 +9,7 @@ describe String do
       0123
     }.tabto(0).strip
   end
-  
+
   it "can translate indices to column numbers" do
     @string.column_of(0).should == 1
     @string.column_of(5).should == 6
@@ -19,7 +19,7 @@ describe String do
     @string.column_of(18).should == 1
     @string.column_of(24).should == 7
   end
-  
+
   it "can translate indices to line numbers" do
     @string.line_of(0).should == 1
     @string.line_of(5).should == 1

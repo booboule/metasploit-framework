@@ -450,7 +450,7 @@ class Rubstop
 		@filemap[name] = [baseaddr, baseaddr + vlen]
 
 		oldsyms = @symbols.length
-		e.symbols.each { |s|                           
+		e.symbols.each { |s|
 			next if not s.name or s.shndx == 'UNDEF'
 			sname = s.name
 			sname = 'weak_'+sname if s.bind == 'WEAK'

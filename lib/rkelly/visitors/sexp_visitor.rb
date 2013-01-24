@@ -355,7 +355,7 @@ module RKelly
       def visit_NullNode(o)
         [:nil]
       end
-      
+
       def visit_StringNode(o)
         [:str, o.value]
       end

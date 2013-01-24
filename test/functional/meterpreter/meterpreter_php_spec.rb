@@ -10,19 +10,19 @@ require 'meterpreter_specs'
 module MsfTest
 
 describe "PhpMeterpreter" do
-	
+
 	# This include brings in all the spec helper methods
 	include MsfTest::MeterpreterSpecHelper
-	
-	# This include brings in all the specs that are generic across the 
+
+	# This include brings in all the specs that are generic across the
 	# meterpreter platforms
 	include MsfTest::MeterpreterSpecs
 
 	before :all do
 		@verbose = true
-	
+
 		@meterpreter_type = "php"
-		
+
 		## Set up an outupt directory
 		@output_directory = File.join(File.dirname(__FILE__), "test_output_#{@meterpreter_type}")
 
@@ -43,20 +43,20 @@ describe "PhpMeterpreter" do
 	after :each do
 		@session.init_ui(@input, @output)
 	end
-	
+
 	after :all do
 		FileUtils.rm_rf(@output_directory)
 	end
 
-	
+
 	def create_session_php
 
 		## Setup for php
 		@framework    = Msf::Simple::Framework.create
-		
+
 		@exploit_name = 'unix/webapp/tikiwiki_graph_formula_exec'
 		@payload_name = 'php/meterpreter/bind_tcp'
-		@input        = Rex::Ui::Text::Input::Stdio.new 
+		@input        = Rex::Ui::Text::Input::Stdio.new
 		@output       = Rex::Ui::Text::Output::File.new(@default_file)
 
 		# Initialize the exploit instance
@@ -78,6 +78,6 @@ describe "PhpMeterpreter" do
 			raise Exception "Couldn't get a session!"
 		end
 	end
-  
+
 end
 end

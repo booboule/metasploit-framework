@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Whitehorse
         include TimezoneDefinition
-        
+
         timezone 'America/Whitehorse' do |tz|
           tz.offset :o0, -32412, 0, :LMT
           tz.offset :o1, -32400, 0, :YST
@@ -13,7 +13,7 @@ module TZInfo
           tz.offset :o5, -32400, 7200, :YDDT
           tz.offset :o6, -28800, 0, :PST
           tz.offset :o7, -28800, 3600, :PDT
-          
+
           tz.transition 1900, 8, :o1, 17389813501, 7200
           tz.transition 1918, 4, :o2, 58120751, 24
           tz.transition 1918, 10, :o1, 29062727, 12

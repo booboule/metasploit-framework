@@ -1,12 +1,12 @@
 module Formtastic
   module Inputs
-    
+
     # Outputs a simple `<label>` with a HTML5 `<input type="range">` wrapped in the standard
     # `<li>` wrapper. This is an alternative input choice to a number input.
     #
-    # Sensible default for the `min`, `max` and `step` attributes are found by reflecting on 
+    # Sensible default for the `min`, `max` and `step` attributes are found by reflecting on
     # the model's validations. When validations are not provided, the `min` and `step` default to
-    # `1` and the `max` default to `100`. An `IndeterminableMinimumAttributeError` exception 
+    # `1` and the `max` default to `100`. An `IndeterminableMinimumAttributeError` exception
     # will be raised when the following conditions are all true:
     #
     # * you haven't specified a `:min` or `:max` for the input
@@ -14,7 +14,7 @@ module Formtastic
     # * the validation uses `:less_than` or `:greater_than`
     #
     # The solution is to either:
-    # 
+    #
     # * manually specify the `:min` or `:max` for the input
     # * change the database column type to an `:integer` (if appropriate)
     # * change the validations to use `:less_than_or_equal_to` or `:greater_than_or_equal_to`
@@ -41,9 +41,9 @@ module Formtastic
     # @example Default HTML5 min/max/step attributes are detected from the numericality validations
     #
     #   class Person < ActiveRecord::Base
-    #     validates_numericality_of :age, 
-    #       :less_than_or_equal_to => 100, 
-    #       :greater_than_or_equal_to => 18, 
+    #     validates_numericality_of :age,
+    #       :less_than_or_equal_to => 100,
+    #       :greater_than_or_equal_to => 18,
     #       :only_integer => true
     #   end
     #
@@ -81,7 +81,7 @@ module Formtastic
       def min_option
         super || 1
       end
-      
+
       def max_option
         super || 100
       end
@@ -89,7 +89,7 @@ module Formtastic
       def step_option
         super || 1
       end
-      
+
     end
   end
 end

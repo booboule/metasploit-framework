@@ -64,7 +64,7 @@ class Plugin::PcapLog < Msf::Plugin
 
 		def cmd_pcap_start(*args)
 
-			unless @pcaprub_loaded 
+			unless @pcaprub_loaded
 				print_error("Pcap module not available")
 				return false
 			end

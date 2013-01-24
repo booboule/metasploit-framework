@@ -1,9 +1,9 @@
 module Formtastic
   module Inputs
     module Base
-      
+
       attr_accessor :builder, :template, :object, :object_name, :method, :options
-      
+
       def initialize(builder, template, object, object_name, method, options)
         @builder = builder
         @template = template
@@ -11,12 +11,12 @@ module Formtastic
         @object_name = object_name
         @method = method
         @options = options.dup
-        
+
         removed_option!(:label_method)
         removed_option!(:value_method)
         removed_option!(:group_label_method)
       end
-      
+
       # Usefull for deprecating options.
       def warn_and_correct_option!(old_option_name, new_option_name)
         if options.key?(old_option_name)
@@ -24,14 +24,14 @@ module Formtastic
           options[new_option_name] = options.delete(old_option_name)
         end
       end
-      
+
       # Usefull for raising an error on previously supported option.
       def removed_option!(old_option_name)
         raise ArgumentError, ":#{old_option_name} is no longer available" if options.key?(old_option_name)
       end
-      
+
       extend ActiveSupport::Autoload
-      
+
       autoload :Associations
       autoload :Collections
       autoload :Choices
@@ -50,7 +50,7 @@ module Formtastic
       autoload :Timeish
       autoload :Validations
       autoload :Wrapping
-      
+
       include Html
       include Options
       include Database
@@ -62,8 +62,7 @@ module Formtastic
       include Associations
       include Labelling
       include Wrapping
-      
+
     end
   end
 end
-  

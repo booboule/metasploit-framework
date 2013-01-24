@@ -9,7 +9,7 @@ module Windows
       API.auto_unicode   = false
 
       private
-         
+
       API.new('ObjectFromLresult', 'LPIP', 'L', 'oleacc')
     end
   end

@@ -3,13 +3,13 @@ module TZInfo
     module America
       module Merida
         include TimezoneDefinition
-        
+
         timezone 'America/Merida' do |tz|
           tz.offset :o0, -21508, 0, :LMT
           tz.offset :o1, -21600, 0, :CST
           tz.offset :o2, -18000, 0, :EST
           tz.offset :o3, -21600, 3600, :CDT
-          
+
           tz.transition 1922, 1, :o1, 9692223, 4
           tz.transition 1981, 12, :o2, 377935200
           tz.transition 1982, 12, :o1, 407653200

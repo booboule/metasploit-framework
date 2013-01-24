@@ -13,7 +13,7 @@ class RegexrTest < Test::Unit::TestCase
 	 	@r = Regexr.new
 	end
 
-	def teardown 
+	def teardown
 	 	@r = nil
 	end
 
@@ -42,7 +42,7 @@ class RegexrTest < Test::Unit::TestCase
 	end
 
 	def test_multiple_successes
-		assert @r.ensure_all_exist_in_data("this is the start\nof a line\nbut it's not the end", ["this is the start","of a line"]) 
+		assert @r.ensure_all_exist_in_data("this is the start\nof a line\nbut it's not the end", ["this is the start","of a line"])
 	end
 
 	def test_failure_not_defined

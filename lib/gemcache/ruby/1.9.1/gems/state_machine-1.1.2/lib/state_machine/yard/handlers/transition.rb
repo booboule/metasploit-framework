@@ -4,20 +4,20 @@ module StateMachine
       # Handles and processes #transition
       class Transition < Base
         handles method_call(:transition)
-        
+
         def process
           if [StateMachine::Machine, StateMachine::Event, StateMachine::State].include?(owner.class)
             options = {}
-            
+
             # Extract requirements
             ast = statement.parameters.first
             ast.children.each do |assoc|
               # Skip conditionals
               next if %w(if unless).include?(assoc[0].jump(:ident).source)
-              
+
               options[extract_requirement(assoc[0])] = extract_requirement(assoc[1])
             end
-            
+
             owner.transition(options)
           end
         end

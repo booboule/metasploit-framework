@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Sakhalin
         include TimezoneDefinition
-        
+
         timezone 'Asia/Sakhalin' do |tz|
           tz.offset :o0, 34248, 0, :LMT
           tz.offset :o1, 32400, 0, :CJT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 39600, 3600, :SAKST
           tz.offset :o5, 36000, 3600, :SAKST
           tz.offset :o6, 36000, 0, :SAKT
-          
+
           tz.transition 1905, 8, :o1, 8701488373, 3600
           tz.transition 1937, 12, :o2, 19431193, 8
           tz.transition 1945, 8, :o3, 19453537, 8

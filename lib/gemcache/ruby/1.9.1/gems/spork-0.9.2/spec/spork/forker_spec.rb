@@ -8,13 +8,13 @@ describe Spork::Forker do
       $var.should == "hello world"
     end
   end
-  
+
   describe "#result" do
     it "returns the result" do
       Spork::Forker.new { "results" }.result.should == "results"
     end
   end
-  
+
   describe "#running?" do
     it "reports when the fork is running" do
       forker = Spork::Forker.new { sleep 0.1 }
@@ -24,7 +24,7 @@ describe Spork::Forker do
       forker.running?.should == false
     end
   end
-  
+
   describe "#abort" do
     it "aborts a fork and returns nil for the result" do
       started_at = Time.now

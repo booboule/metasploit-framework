@@ -19,7 +19,7 @@ module Windows
       S_IREAD  = 0000400 # read permission, owner
       S_IWRITE = 0000200 # write permission, owner
       S_IEXEC  = 0000100 # execute/search permission, owner
-       
+
       SH_DENYNO = 0x40     # deny none mode
       SHORT_LIVED = 0x1000 # temporary file storage
 

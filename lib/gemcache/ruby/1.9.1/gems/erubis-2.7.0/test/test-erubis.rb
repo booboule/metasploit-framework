@@ -108,9 +108,9 @@ class ErubisTest < Test::Unit::TestCase
 END
     @src = <<END
 _buf = ''; _buf << '<ul>
-'; for item in @list 
+'; for item in @list
  _buf << '  <li>'; _buf << ( item ).to_s; _buf << '</li>
-'; end 
+'; end
  _buf << '</ul>
 ';
 _buf.to_s
@@ -228,9 +228,9 @@ __END__
       </ul>
   src: &basic1_src|
       _buf = ''; _buf << '<ul>
-      ';  for item in list 
+      ';  for item in list
        _buf << '  <li>'; _buf << ( item ).to_s; _buf << '</li>
-      ';  end 
+      ';  end
        _buf << '</ul>
       ';
       _buf.to_s
@@ -259,7 +259,7 @@ __END__
              i += 1
       ^^^
        _buf << '  <li>'; _buf << ( item ).to_s; _buf << '</li>
-      ';   end 
+      ';   end
        _buf << '</ul>
       ';
       _buf.to_s
@@ -299,9 +299,9 @@ __END__
       </ul>
   src: |
       _buf = ''; _buf << '<ul>
-      ';  for item in @list 
+      ';  for item in @list
        _buf << '  <li>'; _buf << ( item ).to_s; _buf << '</li>
-      ';  end 
+      ';  end
        _buf << '</ul>
       ';
       _buf.to_s
@@ -323,13 +323,13 @@ __END__
   src: |
       _buf = ''; _buf << '<ul>
       ';
-        for item in list 
-      
-      
-      
-      
+        for item in list
+
+
+
+
        _buf << '  <li>  ';; _buf << '  :  '; _buf << ( item ).to_s; _buf << '  </li>
-      ';  end 
+      ';  end
        _buf << '</ul>
       ';
       _buf.to_s
@@ -381,9 +381,9 @@ __END__
       </ul>
   src: |
       _buf = ''; _buf << '<ul>
-      ';  for item in list 
+      ';  for item in list
        _buf << '  <li>'; _buf << ( item ).to_s; _buf << '</li>
-      ';  end 
+      ';  end
        _buf << '</ul>
       ';
       _buf.to_s
@@ -406,9 +406,9 @@ __END__
       </ul>
   src: |
       _buf = ''; _buf << '<ul>
-      ';  for item in list 
+      ';  for item in list
        _buf << '  <li>'; _buf << ( item ).to_s; _buf << '</li>
-      ';  end 
+      ';  end
        _buf << '</ul>
       ';
       _buf.to_s
@@ -455,9 +455,9 @@ __END__
   input: *basic1_input
   src: |4
        _buf << '<ul>
-      ';  for item in list 
+      ';  for item in list
        _buf << '  <li>'; _buf << ( item ).to_s; _buf << '</li>
-      ';  end 
+      ';  end
        _buf << '</ul>
       ';
   chomp:  [src]
@@ -516,7 +516,7 @@ __END__
       <%= str %>
       <%== str %>
   src: |
-      _buf = ''; str = '<>&"' 
+      _buf = ''; str = '<>&"'
        _buf << Erubis::XmlHelper.escape_xml( str ); _buf << '
       '; _buf << ( str ).to_s; _buf << '
       ';
@@ -537,7 +537,7 @@ __END__
         </p>
   src: |
         _buf = ''; _buf << '<p>
-        ';   str = '<>&"' 
+        ';   str = '<>&"'
          _buf << '  '; _buf << ( str ).to_s; _buf << '
         '; _buf << '  '; _buf << ( str ).to_s; _buf << '  '; _buf << ( str ).to_s; _buf << '</p>
         ';
@@ -556,7 +556,7 @@ __END__
         <%= x1 %>
         <%%= x2 %>
   src: |
-        _buf = ''; x1 = 10 
+        _buf = ''; x1 = 10
          _buf << '<% x2 = 20 %>
         '; _buf << ( x1 ).to_s; _buf << '
         '; _buf << '<%= x2 %>
@@ -582,12 +582,12 @@ __END__
       <ul><% for item in list %><li><%= item %></li><% end %></ul>
   src: |
       _buf = '<table>
-      ';  for item in list 
+      ';  for item in list
        _buf << '  <tr>
           <td>' << ( item ).to_s << '</td>
           <td>' << Erubis::XmlHelper.escape_xml( item ) << '</td>
         </tr>
-      ';  end 
+      ';  end
        _buf << '</table>
       <ul>'; for item in list ; _buf << '<li>' << ( item ).to_s << '</li>'; end ; _buf << '</ul>
       '
@@ -624,12 +624,12 @@ __END__
 #      <ul><% for item in list %><li><%= item %></li><% end %></ul>
   src: |
       _buf = '<table>
-      ';  for item in list 
+      ';  for item in list
        _buf << '  <tr>
           <td>' << Erubis::XmlHelper.escape_xml( item ) << '</td>
           <td>' << ( item ).to_s << '</td>
         </tr>
-      ';  end 
+      ';  end
        _buf << '</table>
       <ul>'; for item in list ; _buf << '<li>' << Erubis::XmlHelper.escape_xml( item ) << '</li>'; end ; _buf << '</ul>
       '
@@ -662,9 +662,9 @@ __END__
       <% end %>
   src: |
       _buf = 'user = '; _buf << ( "Foo" ).to_s << '
-      '; for item in list 
+      '; for item in list
        _buf << '  ' << ( item ).to_s << '
-      '; end 
+      '; end
 
       _buf
   output: |
@@ -760,10 +760,10 @@ __END__
       </ul>
   src: &src_pi1|
       _buf = ''; _buf << '<ul>
-      ';  for item in @list 
+      ';  for item in @list
        _buf << '  <li>'; _buf << Erubis::XmlHelper.escape_xml(item); _buf << ' / '; _buf << (item).to_s; _buf << '</li>
         <li>'; _buf << ( item ).to_s; _buf << ' / '; _buf << Erubis::XmlHelper.escape_xml( item ); _buf << '</li>
-      ';  end 
+      ';  end
        _buf << '</ul>
       ';
       _buf.to_s
@@ -785,10 +785,10 @@ __END__
   input: *input_pi1
   src: |
       _buf = ''; _buf << '<ul>
-      ';  for item in @list 
+      ';  for item in @list
        _buf << '  <li>'; _buf << (item).to_s; _buf << ' / '; _buf << Erubis::XmlHelper.escape_xml(item); _buf << '</li>
         <li>'; _buf << Erubis::XmlHelper.escape_xml( item ); _buf << ' / '; _buf << ( item ).to_s; _buf << '</li>
-      ';  end 
+      ';  end
        _buf << '</ul>
       ';
       _buf.to_s
@@ -838,28 +838,28 @@ __END__
 	show(@list) ?>
 
   src: |4
-      
+
         def show(list)
-      
+
       _buf = ''; _buf << '<ul>
-      ';  for item in list 
-       _buf << (    item 
-      ).to_s;  end 
-      
-      
-      
+      ';  for item in list
+       _buf << (    item
+      ).to_s;  end
+
+
+
 
        _buf << '</ul>
       ';
       _buf.to_s
-      
+
         end
-	show(@list) 
+	show(@list)
 
   output: |
       <ul>
       <aaa>b&b"ccc"</ul>
-      
+
 
 - name:  pitiny1
   class:  PI::TinyEruby
@@ -872,9 +872,9 @@ __END__
 	</ul>
   src: |
 	_buf = ''; _buf << '<ul>
-	';  for item in @list 
+	';  for item in @list
 	 _buf << '  <li>'; _buf << Erubis::XmlHelper.escape_xml(item); _buf << ' / '; _buf << (item).to_s; _buf << '</li>
-	';  end 
+	';  end
 	 _buf << '</ul>
 	';
 	_buf.to_s

@@ -49,7 +49,7 @@ ARGV.each { |structname|
 		puts "// unknown #{structname}", ''
 		next
 	end
-	
+
 	puts "// #{structname}" if not st.name
 	puts "struct #{st.name} { // size = #{cp.sizeof(st).to_s(opts[:offbase])}"
 	st.members.each { |m|

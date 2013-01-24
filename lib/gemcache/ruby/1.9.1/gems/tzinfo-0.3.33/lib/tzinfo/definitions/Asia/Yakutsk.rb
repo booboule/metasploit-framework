@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Yakutsk
         include TimezoneDefinition
-        
+
         timezone 'Asia/Yakutsk' do |tz|
           tz.offset :o0, 31120, 0, :LMT
           tz.offset :o1, 28800, 0, :YAKT
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, 32400, 3600, :YAKST
           tz.offset :o4, 28800, 3600, :YAKST
           tz.offset :o5, 36000, 0, :YAKT
-          
+
           tz.transition 1919, 12, :o1, 2616091711, 1080
           tz.transition 1930, 6, :o2, 14556889, 6
           tz.transition 1981, 3, :o3, 354898800

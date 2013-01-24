@@ -504,7 +504,7 @@ class InputBox < Gtk::Dialog
 				   Gtk::Drag::DEST_DEFAULT_DROP,
    				   [['text/plain', 0, 0], ['text/uri-list', 0, 0]],
 				   Gdk::DragContext::ACTION_COPY | Gdk::DragContext::ACTION_MOVE)
-		
+
 		signal_connect('drag_data_received') { |w, dc, x, y, data, info, time|
 			dc.targets.each { |target|
 				next if target.name != 'text/plain' and target.name != 'text/uri-list'
@@ -678,14 +678,14 @@ class Window < Gtk::Window
 		initialize_window(*a, &b)
 		build_menu
 		update_menu
-		
-		
+
+
 		Gtk::Drag.dest_set(self,
 				   Gtk::Drag::DEST_DEFAULT_MOTION |
 				   Gtk::Drag::DEST_DEFAULT_DROP,
    				   [['text/plain', 0, 0], ['text/uri-list', 0, 0]],
 				   Gdk::DragContext::ACTION_COPY | Gdk::DragContext::ACTION_MOVE)
-		
+
 		signal_connect('drag_data_received') { |w, dc, x, y, data, info, time|
 			dc.targets.each { |target|
 				next if target.name != 'text/plain' and target.name != 'text/uri-list'
@@ -838,7 +838,7 @@ class ToolWindow < Gtk::Dialog
 		initialize_window(*a, &b)
 		show_all
 	end
-	
+
 	def widget=(w)
 		remove @child if @child
 		@child = w

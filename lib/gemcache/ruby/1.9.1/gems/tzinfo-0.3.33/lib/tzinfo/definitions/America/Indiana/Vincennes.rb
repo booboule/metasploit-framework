@@ -4,7 +4,7 @@ module TZInfo
       module Indiana
         module Vincennes
           include TimezoneDefinition
-          
+
           timezone 'America/Indiana/Vincennes' do |tz|
             tz.offset :o0, -21007, 0, :LMT
             tz.offset :o1, -21600, 0, :CST
@@ -13,7 +13,7 @@ module TZInfo
             tz.offset :o4, -21600, 3600, :CPT
             tz.offset :o5, -18000, 0, :EST
             tz.offset :o6, -18000, 3600, :EDT
-            
+
             tz.transition 1883, 11, :o1, 9636533, 4
             tz.transition 1918, 3, :o2, 14530103, 6
             tz.transition 1918, 10, :o1, 58125451, 24

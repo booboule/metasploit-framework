@@ -4,7 +4,7 @@ module TZInfo
       module Argentina
         module La_Rioja
           include TimezoneDefinition
-          
+
           timezone 'America/Argentina/La_Rioja' do |tz|
             tz.offset :o0, -16044, 0, :LMT
             tz.offset :o1, -15408, 0, :CMT
@@ -13,7 +13,7 @@ module TZInfo
             tz.offset :o4, -10800, 0, :ART
             tz.offset :o5, -10800, 3600, :ARST
             tz.offset :o6, -14400, 0, :WART
-            
+
             tz.transition 1894, 10, :o1, 17374555337, 7200
             tz.transition 1920, 5, :o2, 1453467407, 600
             tz.transition 1930, 12, :o3, 7278935, 3

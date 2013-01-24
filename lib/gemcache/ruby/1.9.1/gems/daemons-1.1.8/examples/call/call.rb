@@ -48,7 +48,7 @@ puts "third task started"
 puts "waiting 20 seconds..."
 sleep(20)
 
-# This call would result in an exception as it will try to kill the third process 
+# This call would result in an exception as it will try to kill the third process
 # which has already terminated by that time; but using the 'true' parameter forces the
 # stop_all procedure.
 puts "trying to stop all tasks..."

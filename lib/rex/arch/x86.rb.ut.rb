@@ -74,7 +74,7 @@ class Rex::Arch::X86::UnitTest < ::Test::Unit::TestCase
 	def test_clear
 		assert_equal("\x33\xc0", Klass.clear(Klass::EAX, "\x29\x2b\x31"))
 	end
-	
+
 	def test_searcher
 			s = "\xbe"+                  # mov esi, Tag - 1
 			"\x03\x03\x02\x01"+
@@ -86,8 +86,8 @@ class Rex::Arch::X86::UnitTest < ::Test::Unit::TestCase
 			"\x4f"+                      # dec edi (start_search:)
 			"\x39\x77\xfc"+              # cmp [edi-0x4],esi
 			"\x75\xfa"+                  # jnz 0x10 (start_search)
-			"\xff\xe7"                   # jmp edi	
-						
+			"\xff\xe7"                   # jmp edi
+
 		assert_equal(s, Klass.searcher("\x04\x03\x02\x01"))
 	end
 

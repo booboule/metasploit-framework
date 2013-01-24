@@ -9,14 +9,14 @@ namespace :state_machine do
     options[:font] = ENV['FONT'] if ENV['FONT']
     options[:orientation] = ENV['ORIENTATION'] if ENV['ORIENTATION']
     options[:human_names] = ENV['HUMAN_NAMES'] == 'true' if ENV['HUMAN_NAMES']
-    
+
     if defined?(Rails)
       puts "Files are automatically loaded in Rails; ignoring FILE option" if options.delete(:file)
       Rake::Task['environment'].invoke
     elsif defined?(Merb)
       puts "Files are automatically loaded in Merb; ignoring FILE option" if options.delete(:file)
       Rake::Task['merb_env'].invoke
-      
+
       # Fix ruby-graphviz being incompatible with Merb's process title
       $0 = 'rake'
     else
@@ -24,7 +24,7 @@ namespace :state_machine do
       $:.unshift(File.dirname(__FILE__) + '/..')
       require 'state_machine'
     end
-    
+
     StateMachine::Machine.draw(ENV['CLASS'], options)
   end
 end

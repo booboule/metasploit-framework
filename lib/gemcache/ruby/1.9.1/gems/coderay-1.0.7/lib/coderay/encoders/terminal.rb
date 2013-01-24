@@ -1,23 +1,23 @@
 module CodeRay
   module Encoders
-    
+
     # Outputs code highlighted for a color terminal.
-    # 
+    #
     # Note: This encoder is in beta. It currently doesn't use the Styles.
-    # 
+    #
     # Alias: +term+
-    # 
+    #
     # == Authors & License
-    # 
+    #
     # By Rob Aldred (http://robaldred.co.uk)
-    # 
+    #
     # Based on idea by Nathan Weizenbaum (http://nex-3.com)
-    # 
+    #
     # MIT License (http://www.opensource.org/licenses/mit-license.php)
     class Terminal < Encoder
-      
+
       register_for :terminal
-      
+
       TOKEN_COLORS = {
         :annotation => '35',
         :attribute_name => '33',
@@ -81,7 +81,7 @@ module CodeRay
         :type => '1;34',
         :value => '36',
         :variable => '1;34',
-        
+
         :insert => '42',
         :delete => '41',
         :change => '44',
@@ -92,17 +92,17 @@ module CodeRay
       TOKEN_COLORS[:imaginary] = TOKEN_COLORS[:complex]
       TOKEN_COLORS[:begin_group] = TOKEN_COLORS[:end_group] =
         TOKEN_COLORS[:escape] = TOKEN_COLORS[:delimiter]
-      
+
     protected
-      
+
       def setup(options)
         super
         @opened = []
         @subcolors = nil
       end
-      
+
     public
-      
+
       def text_token text, kind
         if color = (@subcolors || TOKEN_COLORS)[kind]
           if Hash === color
@@ -113,7 +113,7 @@ module CodeRay
               return
             end
           end
-          
+
           @out << ansi_colorize(color)
           @out << text.gsub("\n", ansi_clear + "\n" + ansi_colorize(color))
           @out << ansi_clear
@@ -122,13 +122,13 @@ module CodeRay
           @out << text
         end
       end
-      
+
       def begin_group kind
         @opened << kind
         @out << open_token(kind)
       end
       alias begin_line begin_group
-      
+
       def end_group kind
         if @opened.empty?
           # nothing to close
@@ -138,7 +138,7 @@ module CodeRay
           @out << open_token(@opened.last)
         end
       end
-      
+
       def end_line kind
         if @opened.empty?
           # nothing to close
@@ -150,9 +150,9 @@ module CodeRay
           @out << open_token(@opened.last)
         end
       end
-      
+
     private
-      
+
       def open_token kind
         if color = TOKEN_COLORS[kind]
           if Hash === color
@@ -167,7 +167,7 @@ module CodeRay
           ''
         end
       end
-      
+
       def ansi_colorize(color)
         Array(color).map { |c| "\e[#{c}m" }.join
       end

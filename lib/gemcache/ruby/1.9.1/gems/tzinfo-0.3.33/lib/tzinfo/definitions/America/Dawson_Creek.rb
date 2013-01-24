@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Dawson_Creek
         include TimezoneDefinition
-        
+
         timezone 'America/Dawson_Creek' do |tz|
           tz.offset :o0, -28856, 0, :LMT
           tz.offset :o1, -28800, 0, :PST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -28800, 3600, :PWT
           tz.offset :o4, -28800, 3600, :PPT
           tz.offset :o5, -25200, 0, :MST
-          
+
           tz.transition 1884, 1, :o1, 26019109807, 10800
           tz.transition 1918, 4, :o2, 29060375, 12
           tz.transition 1918, 10, :o1, 19375151, 8

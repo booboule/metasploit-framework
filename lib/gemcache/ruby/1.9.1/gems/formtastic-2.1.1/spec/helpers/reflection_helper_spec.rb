@@ -27,6 +27,6 @@ describe 'Formtastic::Helpers::Reflection' do
       @reflection_tester.reflection_for(:sub_posts).should_not be_nil
     end
   end
-  
-  
+
+
 end

@@ -2,45 +2,45 @@
 module Daemons
 
   class Optparse
-  
+
     attr_reader :usage
 
     def initialize(controller)
       @controller = controller
       @options = {}
-      
+
       @opts = OptionParser.new do |opts|
         opts.banner = ""
-        
+
 #         opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
 #           @options[:verbose] = v
 #         end
-        
+
         opts.on("-t", "--ontop", "Stay on top (does not daemonize)") do |t|
           @options[:ontop] = t
         end
-        
+
         opts.on("-f", "--force", "Force operation") do |t|
           @options[:force] = t
         end
-        
+
         opts.on("-n", "--no_wait", "Do not wait for processes to stop") do |t|
           @options[:no_wait] = t
         end
-        
+
         #opts.separator ""
         #opts.separator "Specific options:"
 
-        
+
         opts.separator ""
         opts.separator "Common options:"
 
         # No argument, shows at tail.  This will print an options summary
         opts.on_tail("-h", "--help", "Show this message") do
           #puts opts
-          #@usage = 
+          #@usage =
           controller.print_usage()
-          
+
           exit
         end
 
@@ -49,8 +49,8 @@ module Daemons
           puts "daemons version #{Daemons::VERSION}"
           exit
         end
-      end  
-      
+      end
+
       begin
         @usage = @opts.to_s
       rescue ::Exception # work around a bug in ruby 1.9
@@ -65,8 +65,8 @@ module Daemons
 END
       end
     end
-    
-    
+
+
     #
     # Return a hash describing the options.
     #
@@ -74,19 +74,19 @@ END
       # The options specified on the command line will be collected in *options*.
       # We set default values here.
       #options = {}
-      
-      
+
+
       ##pp args
       @opts.parse(args)
-      
+
       return @options
     end
 
   end
-  
-  
+
+
   class Controller
-  
+
     def print_usage
       puts "Usage: #{@app_name} <command> <options> -- <application options>"
       puts
@@ -100,10 +100,10 @@ END
       puts "  status        show status (PID) of application instances"
       puts
       puts "* and where <options> may contain several of the following:"
-      
+
       puts @optparse.usage
     end
-    
+
     def catch_exceptions(&block)
       begin
         block.call
@@ -115,7 +115,7 @@ END
         puts "ERROR: #{e.to_s}"
       end
     end
-    
+
   end
-  
+
 end

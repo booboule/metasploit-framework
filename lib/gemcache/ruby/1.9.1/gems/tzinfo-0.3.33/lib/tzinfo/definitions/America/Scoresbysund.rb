@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Scoresbysund
         include TimezoneDefinition
-        
+
         timezone 'America/Scoresbysund' do |tz|
           tz.offset :o0, -5272, 0, :LMT
           tz.offset :o1, -7200, 0, :CGT
           tz.offset :o2, -7200, 3600, :CGST
           tz.offset :o3, -3600, 3600, :EGST
           tz.offset :o4, -3600, 0, :EGT
-          
+
           tz.transition 1916, 7, :o1, 26147583659, 10800
           tz.transition 1980, 4, :o2, 323841600
           tz.transition 1980, 9, :o1, 338961600

@@ -3,13 +3,13 @@ module TZInfo
     module Asia
       module Hovd
         include TimezoneDefinition
-        
+
         timezone 'Asia/Hovd' do |tz|
           tz.offset :o0, 21996, 0, :LMT
           tz.offset :o1, 21600, 0, :HOVT
           tz.offset :o2, 25200, 0, :HOVT
           tz.offset :o3, 25200, 3600, :HOVST
-          
+
           tz.transition 1905, 7, :o1, 5800939789, 2400
           tz.transition 1977, 12, :o2, 252439200
           tz.transition 1983, 3, :o3, 417978000

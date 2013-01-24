@@ -3,7 +3,7 @@ module TZInfo
     module Antarctica
       module Palmer
         include TimezoneDefinition
-        
+
         timezone 'Antarctica/Palmer' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, -14400, 3600, :ARST
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, -10800, 3600, :ARST
           tz.offset :o5, -14400, 0, :CLT
           tz.offset :o6, -14400, 3600, :CLST
-          
+
           tz.transition 1965, 1, :o1, 4877523, 2
           tz.transition 1965, 3, :o2, 19510565, 8
           tz.transition 1965, 10, :o1, 7317146, 3

@@ -3,12 +3,12 @@ module TZInfo
     module Africa
       module Accra
         include TimezoneDefinition
-        
+
         timezone 'Africa/Accra' do |tz|
           tz.offset :o0, -52, 0, :LMT
           tz.offset :o1, 0, 0, :GMT
           tz.offset :o2, 0, 1200, :GHST
-          
+
           tz.transition 1918, 1, :o1, 52306441213, 21600
           tz.transition 1936, 9, :o2, 4856825, 2
           tz.transition 1936, 12, :o1, 174854411, 72

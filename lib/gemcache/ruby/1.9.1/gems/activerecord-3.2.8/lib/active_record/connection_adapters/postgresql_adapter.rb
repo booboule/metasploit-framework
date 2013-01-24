@@ -848,7 +848,7 @@ module ActiveRecord
           # add info on sort order for columns (only desc order is explicitly specified, asc is the default)
           desc_order_columns = inddef.scan(/(\w+) DESC/).flatten
           orders = desc_order_columns.any? ? Hash[desc_order_columns.map {|order_column| [order_column, :desc]}] : {}
-      
+
           column_names.empty? ? nil : IndexDefinition.new(table_name, index_name, unique, column_names, [], orders)
         end.compact
       end
@@ -1085,7 +1085,7 @@ module ActiveRecord
           end
         when 'integer'
           return 'integer' unless limit
-  
+
           case limit
             when 1, 2; 'smallint'
             when 3, 4; 'integer'

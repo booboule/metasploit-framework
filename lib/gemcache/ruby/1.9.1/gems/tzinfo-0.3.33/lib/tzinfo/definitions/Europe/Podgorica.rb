@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Podgorica
         include TimezoneDefinition
-        
+
         linked_timezone 'Europe/Podgorica', 'Europe/Belgrade'
       end
     end

@@ -18,7 +18,7 @@ class Net::SSH::UnitTest < ::Test::Unit::TestCase
 		if Net::SSH::Version::CURRENT.respond_to? :msf3
 			assert Net::SSH::Version::CURRENT.msf3
 		else
-			flunk "Not testing the MSF3 bundled version of SSH" 
+			flunk "Not testing the MSF3 bundled version of SSH"
 		end
 	end
 

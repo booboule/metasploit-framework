@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Moscow
         include TimezoneDefinition
-        
+
         timezone 'Europe/Moscow' do |tz|
           tz.offset :o0, 9020, 0, :LMT
           tz.offset :o1, 9000, 0, :MMT
@@ -16,7 +16,7 @@ module TZInfo
           tz.offset :o8, 7200, 0, :EET
           tz.offset :o9, 7200, 3600, :EEST
           tz.offset :o10, 14400, 0, :MSK
-          
+
           tz.transition 1879, 12, :o1, 10401330509, 4320
           tz.transition 1916, 7, :o2, 116210275, 48
           tz.transition 1917, 7, :o3, 8717080873, 3600

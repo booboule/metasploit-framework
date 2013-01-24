@@ -6,7 +6,7 @@ class AddMacrosTable < ActiveRecord::Migration
 			t.text :name
 			t.text :description
 			t.binary :actions
-			t.binary :prefs			
+			t.binary :prefs
 		end
 	end
 	def self.down

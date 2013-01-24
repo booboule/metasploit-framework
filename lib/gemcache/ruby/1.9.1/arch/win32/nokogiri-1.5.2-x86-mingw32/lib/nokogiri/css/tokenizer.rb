@@ -46,7 +46,7 @@ class Tokenizer # :nodoc:
 
   def next_token
     return if @ss.eos?
-    
+
     # skips empty actions
     until token = _next_token or @ss.eos?; end
     token

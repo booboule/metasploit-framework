@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Yekaterinburg
         include TimezoneDefinition
-        
+
         timezone 'Asia/Yekaterinburg' do |tz|
           tz.offset :o0, 14544, 0, :LMT
           tz.offset :o1, 14400, 0, :SVET
@@ -13,7 +13,7 @@ module TZInfo
           tz.offset :o5, 18000, 0, :YEKT
           tz.offset :o6, 18000, 3600, :YEKST
           tz.offset :o7, 21600, 0, :YEKT
-          
+
           tz.transition 1919, 7, :o1, 1453292699, 600
           tz.transition 1930, 6, :o2, 7278445, 3
           tz.transition 1981, 3, :o3, 354913200

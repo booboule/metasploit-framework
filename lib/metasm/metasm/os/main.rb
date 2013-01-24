@@ -456,7 +456,7 @@ class Debugger
 		@pid_stuff_list = [:memory, :cpu, :disassembler, :symbols, :symbols_len,
 			:modulemap, :breakpoint, :breakpoint_memory, :tid, :tid_stuff,
 			:dead_process]
-		@tid_stuff_list = [:state, :info, :breakpoint_thread, :singlestep_cb, 
+		@tid_stuff_list = [:state, :info, :breakpoint_thread, :singlestep_cb,
 			:run_method, :run_args, :breakpoint_cause, :dead_thread]
 		@callback_loadlibrary = lambda { |h| loadsyms(h[:address]) ; continue }
 		@callback_newprocess = lambda { |h| log "process #{@pid} created" }
@@ -922,7 +922,7 @@ puts di.instruction, fdbd.inspect
 		return @cpu.dbg_find_singlestep(self) if @cpu.respond_to?(:dbg_find_singlestep)
 		@run_method == :singlestep
 	end
-	
+
 	# called when the target stops due to a soft breakpoint exception
 	def evt_bpx(b=nil)
 		b ||= find_bp_bpx
@@ -996,7 +996,7 @@ puts di.instruction, fdbd.inspect
 		return if b.address >= info[:fault_addr] + info[:fault_len]
 		case b.internal[:type]
 		when :x; info[:fault_addr] == pc	# XXX
-		when :r; info[:fault_access] == :r 
+		when :r; info[:fault_access] == :r
 		when :w; info[:fault_access] == :w
 		when :rw; true
 		end
@@ -1118,7 +1118,7 @@ puts di.instruction, fdbd.inspect
 	# resume execution as if we never stopped
 	# disable offending bp + singlestep if needed
 	def resume_badbreak(b=nil)
-		# ensure we didn't delete b 
+		# ensure we didn't delete b
 		if b and b.hash_shared.find { |bb| bb.state == :active }
 			rm = @run_method
 			if rm == :singlestep

@@ -1440,14 +1440,14 @@ Racc_debug_parser = true
 
 module_eval(<<'.,.,', 'parser.y', 42)
   def _reduce_1(val, _values, result)
-     result = SourceElementsNode.new([]) 
+     result = SourceElementsNode.new([])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 43)
   def _reduce_2(val, _values, result)
-     result = SourceElementsNode.new([val].flatten) 
+     result = SourceElementsNode.new([val].flatten)
     result
   end
 .,.,
@@ -1456,7 +1456,7 @@ module_eval(<<'.,.,', 'parser.y', 43)
 
 module_eval(<<'.,.,', 'parser.y', 47)
   def _reduce_4(val, _values, result)
-     result = val.flatten 
+     result = val.flatten
     result
   end
 .,.,
@@ -1499,42 +1499,42 @@ module_eval(<<'.,.,', 'parser.y', 47)
 
 module_eval(<<'.,.,', 'parser.y', 75)
   def _reduce_23(val, _values, result)
-     result = NullNode.new(val.first) 
+     result = NullNode.new(val.first)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 76)
   def _reduce_24(val, _values, result)
-     result = TrueNode.new(val.first) 
+     result = TrueNode.new(val.first)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 77)
   def _reduce_25(val, _values, result)
-     result = FalseNode.new(val.first) 
+     result = FalseNode.new(val.first)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 78)
   def _reduce_26(val, _values, result)
-     result = NumberNode.new(val.first) 
+     result = NumberNode.new(val.first)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 79)
   def _reduce_27(val, _values, result)
-     result = StringNode.new(val.first) 
+     result = StringNode.new(val.first)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 80)
   def _reduce_28(val, _values, result)
-     result = RegexpNode.new(val.first) 
+     result = RegexpNode.new(val.first)
     result
   end
 .,.,
@@ -1542,21 +1542,21 @@ module_eval(<<'.,.,', 'parser.y', 80)
 module_eval(<<'.,.,', 'parser.y', 85)
   def _reduce_29(val, _values, result)
           result = PropertyNode.new(val[0], val[2])
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 87)
   def _reduce_30(val, _values, result)
-     result = PropertyNode.new(val.first, val.last) 
+     result = PropertyNode.new(val.first, val.last)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 88)
   def _reduce_31(val, _values, result)
-     result = PropertyNode.new(val.first, val.last) 
+     result = PropertyNode.new(val.first, val.last)
     result
   end
 .,.,
@@ -1566,7 +1566,7 @@ module_eval(<<'.,.,', 'parser.y', 90)
           klass = property_class_for(val.first)
       yyabort unless klass
       result = klass.new(val[1], FunctionExprNode.new(nil, val[5]))
-    
+
     result
   end
 .,.,
@@ -1576,21 +1576,21 @@ module_eval(<<'.,.,', 'parser.y', 95)
           klass = property_class_for(val.first)
       yyabort unless klass
       result = klass.new(val[1], FunctionExprNode.new(nil, val[6], val[3]))
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 102)
   def _reduce_34(val, _values, result)
-     result = val 
+     result = val
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 103)
   def _reduce_35(val, _values, result)
-     result = [val.first, val.last].flatten 
+     result = [val.first, val.last].flatten
     result
   end
 .,.,
@@ -1599,28 +1599,28 @@ module_eval(<<'.,.,', 'parser.y', 103)
 
 module_eval(<<'.,.,', 'parser.y', 108)
   def _reduce_37(val, _values, result)
-     result = ObjectLiteralNode.new([]) 
+     result = ObjectLiteralNode.new([])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 109)
   def _reduce_38(val, _values, result)
-     result = ObjectLiteralNode.new(val[1]) 
+     result = ObjectLiteralNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 110)
   def _reduce_39(val, _values, result)
-     result = ObjectLiteralNode.new(val[1]) 
+     result = ObjectLiteralNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 114)
   def _reduce_40(val, _values, result)
-     result = ThisNode.new(val.first) 
+     result = ThisNode.new(val.first)
     result
   end
 .,.,
@@ -1631,28 +1631,28 @@ module_eval(<<'.,.,', 'parser.y', 114)
 
 module_eval(<<'.,.,', 'parser.y', 117)
   def _reduce_43(val, _values, result)
-     result = ResolveNode.new(val.first) 
+     result = ResolveNode.new(val.first)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 118)
   def _reduce_44(val, _values, result)
-     result = ParentheticalNode.new(val[1]) 
+     result = ParentheticalNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 122)
   def _reduce_45(val, _values, result)
-     result = ArrayNode.new([] + [nil] * val[1]) 
+     result = ArrayNode.new([] + [nil] * val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 123)
   def _reduce_46(val, _values, result)
-     result = ArrayNode.new(val[1]) 
+     result = ArrayNode.new(val[1])
     result
   end
 .,.,
@@ -1660,7 +1660,7 @@ module_eval(<<'.,.,', 'parser.y', 123)
 module_eval(<<'.,.,', 'parser.y', 125)
   def _reduce_47(val, _values, result)
           result = ArrayNode.new(val[1] + [nil] * val[3])
-    
+
     result
   end
 .,.,
@@ -1668,7 +1668,7 @@ module_eval(<<'.,.,', 'parser.y', 125)
 module_eval(<<'.,.,', 'parser.y', 131)
   def _reduce_48(val, _values, result)
           result = [nil] * val[0] + [ElementNode.new(val[1])]
-    
+
     result
   end
 .,.,
@@ -1676,14 +1676,14 @@ module_eval(<<'.,.,', 'parser.y', 131)
 module_eval(<<'.,.,', 'parser.y', 134)
   def _reduce_49(val, _values, result)
           result = [val[0], [nil] * val[2], ElementNode.new(val[3])].flatten
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 139)
   def _reduce_50(val, _values, result)
-     result = 0 
+     result = 0
     result
   end
 .,.,
@@ -1692,14 +1692,14 @@ module_eval(<<'.,.,', 'parser.y', 139)
 
 module_eval(<<'.,.,', 'parser.y', 144)
   def _reduce_52(val, _values, result)
-     result = 1 
+     result = 1
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 145)
   def _reduce_53(val, _values, result)
-     result = val.first + 1 
+     result = val.first + 1
     result
   end
 .,.,
@@ -1710,21 +1710,21 @@ module_eval(<<'.,.,', 'parser.y', 145)
 
 module_eval(<<'.,.,', 'parser.y', 151)
   def _reduce_56(val, _values, result)
-     result = BracketAccessorNode.new(val[0], val[2]) 
+     result = BracketAccessorNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 152)
   def _reduce_57(val, _values, result)
-     result = DotAccessorNode.new(val[0], val[2]) 
+     result = DotAccessorNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 153)
   def _reduce_58(val, _values, result)
-     result = NewExprNode.new(val[1], val[2]) 
+     result = NewExprNode.new(val[1], val[2])
     result
   end
 .,.,
@@ -1734,21 +1734,21 @@ module_eval(<<'.,.,', 'parser.y', 153)
 module_eval(<<'.,.,', 'parser.y', 159)
   def _reduce_60(val, _values, result)
           result = BracketAccessorNode.new(val[0], val[2])
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 161)
   def _reduce_61(val, _values, result)
-     result = DotAccessorNode.new(val[0], val[2]) 
+     result = DotAccessorNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 162)
   def _reduce_62(val, _values, result)
-     result = NewExprNode.new(val[1], val[2]) 
+     result = NewExprNode.new(val[1], val[2])
     result
   end
 .,.,
@@ -1757,7 +1757,7 @@ module_eval(<<'.,.,', 'parser.y', 162)
 
 module_eval(<<'.,.,', 'parser.y', 167)
   def _reduce_64(val, _values, result)
-     result = NewExprNode.new(val[1], ArgumentsNode.new([])) 
+     result = NewExprNode.new(val[1], ArgumentsNode.new([]))
     result
   end
 .,.,
@@ -1766,91 +1766,91 @@ module_eval(<<'.,.,', 'parser.y', 167)
 
 module_eval(<<'.,.,', 'parser.y', 172)
   def _reduce_66(val, _values, result)
-     result = NewExprNode.new(val[1], ArgumentsNode.new([])) 
+     result = NewExprNode.new(val[1], ArgumentsNode.new([]))
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 176)
   def _reduce_67(val, _values, result)
-     result = FunctionCallNode.new(val[0], val[1]) 
+     result = FunctionCallNode.new(val[0], val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 177)
   def _reduce_68(val, _values, result)
-     result = FunctionCallNode.new(val[0], val[1]) 
+     result = FunctionCallNode.new(val[0], val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 178)
   def _reduce_69(val, _values, result)
-     result = BracketAccessorNode.new(val[0], val[2]) 
+     result = BracketAccessorNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 179)
   def _reduce_70(val, _values, result)
-     result = DotAccessorNode.new(val[0], val[2]) 
+     result = DotAccessorNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 183)
   def _reduce_71(val, _values, result)
-     result = FunctionCallNode.new(val[0], val[1]) 
+     result = FunctionCallNode.new(val[0], val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 184)
   def _reduce_72(val, _values, result)
-     result = FunctionCallNode.new(val[0], val[1]) 
+     result = FunctionCallNode.new(val[0], val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 185)
   def _reduce_73(val, _values, result)
-     result = BracketAccessorNode.new(val[0], val[2]) 
+     result = BracketAccessorNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 186)
   def _reduce_74(val, _values, result)
-     result = DotAccessorNode.new(val[0], val[2]) 
+     result = DotAccessorNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 190)
   def _reduce_75(val, _values, result)
-     result = ArgumentsNode.new([]) 
+     result = ArgumentsNode.new([])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 191)
   def _reduce_76(val, _values, result)
-     result = ArgumentsNode.new(val[1]); 
+     result = ArgumentsNode.new(val[1]);
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 195)
   def _reduce_77(val, _values, result)
-     result = val 
+     result = val
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 196)
   def _reduce_78(val, _values, result)
-     result = [val[0], val[2]].flatten 
+     result = [val[0], val[2]].flatten
     result
   end
 .,.,
@@ -1867,14 +1867,14 @@ module_eval(<<'.,.,', 'parser.y', 196)
 
 module_eval(<<'.,.,', 'parser.y', 211)
   def _reduce_84(val, _values, result)
-     result = PostfixNode.new(val[0], '++') 
+     result = PostfixNode.new(val[0], '++')
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 212)
   def _reduce_85(val, _values, result)
-     result = PostfixNode.new(val[0], '--') 
+     result = PostfixNode.new(val[0], '--')
     result
   end
 .,.,
@@ -1883,77 +1883,77 @@ module_eval(<<'.,.,', 'parser.y', 212)
 
 module_eval(<<'.,.,', 'parser.y', 217)
   def _reduce_87(val, _values, result)
-     result = PostfixNode.new(val[0], '++') 
+     result = PostfixNode.new(val[0], '++')
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 218)
   def _reduce_88(val, _values, result)
-     result = PostfixNode.new(val[0], '--') 
+     result = PostfixNode.new(val[0], '--')
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 222)
   def _reduce_89(val, _values, result)
-     result = DeleteNode.new(val[1]) 
+     result = DeleteNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 223)
   def _reduce_90(val, _values, result)
-     result = VoidNode.new(val[1]) 
+     result = VoidNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 224)
   def _reduce_91(val, _values, result)
-     result = TypeOfNode.new(val[1]) 
+     result = TypeOfNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 225)
   def _reduce_92(val, _values, result)
-     result = PrefixNode.new(val[1], '++') 
+     result = PrefixNode.new(val[1], '++')
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 228)
   def _reduce_93(val, _values, result)
-     result = PrefixNode.new(val[1], '--') 
+     result = PrefixNode.new(val[1], '--')
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 231)
   def _reduce_94(val, _values, result)
-     result = UnaryPlusNode.new(val[1]) 
+     result = UnaryPlusNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 232)
   def _reduce_95(val, _values, result)
-     result = UnaryMinusNode.new(val[1]) 
+     result = UnaryMinusNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 233)
   def _reduce_96(val, _values, result)
-     result = BitwiseNotNode.new(val[1]) 
+     result = BitwiseNotNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 234)
   def _reduce_97(val, _values, result)
-     result = LogicalNotNode.new(val[1]) 
+     result = LogicalNotNode.new(val[1])
     result
   end
 .,.,
@@ -1977,7 +1977,7 @@ module_eval(<<'.,.,', 'parser.y', 249)
 
 module_eval(<<'.,.,', 'parser.y', 250)
   def _reduce_104(val, _values, result)
-     result = DivideNode.new(val[0], val[2]) 
+     result = DivideNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -1993,21 +1993,21 @@ module_eval(<<'.,.,', 'parser.y', 251)
 
 module_eval(<<'.,.,', 'parser.y', 256)
   def _reduce_107(val, _values, result)
-     result = MultiplyNode.new(val[0], val[2]) 
+     result = MultiplyNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 257)
   def _reduce_108(val, _values, result)
-     result = DivideNode.new(val[0],val[2]) 
+     result = DivideNode.new(val[0],val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 258)
   def _reduce_109(val, _values, result)
-     result = ModulusNode.new(val[0], val[2]) 
+     result = ModulusNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2016,14 +2016,14 @@ module_eval(<<'.,.,', 'parser.y', 258)
 
 module_eval(<<'.,.,', 'parser.y', 263)
   def _reduce_111(val, _values, result)
-     result = AddNode.new(val[0], val[2]) 
+     result = AddNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 264)
   def _reduce_112(val, _values, result)
-     result = SubtractNode.new(val[0], val[2]) 
+     result = SubtractNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2032,14 +2032,14 @@ module_eval(<<'.,.,', 'parser.y', 264)
 
 module_eval(<<'.,.,', 'parser.y', 269)
   def _reduce_114(val, _values, result)
-     result = AddNode.new(val[0], val[2]) 
+     result = AddNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 270)
   def _reduce_115(val, _values, result)
-     result = SubtractNode.new(val[0], val[2]) 
+     result = SubtractNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2048,21 +2048,21 @@ module_eval(<<'.,.,', 'parser.y', 270)
 
 module_eval(<<'.,.,', 'parser.y', 275)
   def _reduce_117(val, _values, result)
-     result = LeftShiftNode.new(val[0], val[2]) 
+     result = LeftShiftNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 276)
   def _reduce_118(val, _values, result)
-     result = RightShiftNode.new(val[0], val[2]) 
+     result = RightShiftNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 277)
   def _reduce_119(val, _values, result)
-     result = UnsignedRightShiftNode.new(val[0], val[2]) 
+     result = UnsignedRightShiftNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2071,21 +2071,21 @@ module_eval(<<'.,.,', 'parser.y', 277)
 
 module_eval(<<'.,.,', 'parser.y', 282)
   def _reduce_121(val, _values, result)
-     result = LeftShiftNode.new(val[0], val[2]) 
+     result = LeftShiftNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 283)
   def _reduce_122(val, _values, result)
-     result = RightShiftNode.new(val[0], val[2]) 
+     result = RightShiftNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 284)
   def _reduce_123(val, _values, result)
-     result = UnsignedRightShiftNode.new(val[0], val[2]) 
+     result = UnsignedRightShiftNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2101,35 +2101,35 @@ module_eval(<<'.,.,', 'parser.y', 289)
 
 module_eval(<<'.,.,', 'parser.y', 290)
   def _reduce_126(val, _values, result)
-     result = GreaterNode.new(val[0], val[2]) 
+     result = GreaterNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 291)
   def _reduce_127(val, _values, result)
-     result = LessOrEqualNode.new(val[0], val[2]) 
+     result = LessOrEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 292)
   def _reduce_128(val, _values, result)
-     result = GreaterOrEqualNode.new(val[0], val[2]) 
+     result = GreaterOrEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 293)
   def _reduce_129(val, _values, result)
-     result = InstanceOfNode.new(val[0], val[2]) 
+     result = InstanceOfNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 294)
   def _reduce_130(val, _values, result)
-     result = InNode.new(val[0], val[2]) 
+     result = InNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2145,28 +2145,28 @@ module_eval(<<'.,.,', 'parser.y', 299)
 
 module_eval(<<'.,.,', 'parser.y', 300)
   def _reduce_133(val, _values, result)
-     result = GreaterNode.new(val[0], val[2]) 
+     result = GreaterNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 301)
   def _reduce_134(val, _values, result)
-     result = LessOrEqualNode.new(val[0], val[2]) 
+     result = LessOrEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 302)
   def _reduce_135(val, _values, result)
-     result = GreaterOrEqualNode.new(val[0], val[2]) 
+     result = GreaterOrEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 304)
   def _reduce_136(val, _values, result)
-     result = InstanceOfNode.new(val[0], val[2]) 
+     result = InstanceOfNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2175,42 +2175,42 @@ module_eval(<<'.,.,', 'parser.y', 304)
 
 module_eval(<<'.,.,', 'parser.y', 309)
   def _reduce_138(val, _values, result)
-     result = LessNode.new(val[0], val[2]) 
+     result = LessNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 310)
   def _reduce_139(val, _values, result)
-     result = GreaterNode.new(val[0], val[2]) 
+     result = GreaterNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 311)
   def _reduce_140(val, _values, result)
-     result = LessOrEqualNode.new(val[0], val[2]) 
+     result = LessOrEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 312)
   def _reduce_141(val, _values, result)
-     result = GreaterOrEqualNode.new(val[0], val[2]) 
+     result = GreaterOrEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 314)
   def _reduce_142(val, _values, result)
-     result = InstanceOfNode.new(val[0], val[2]) 
+     result = InstanceOfNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 315)
   def _reduce_143(val, _values, result)
-     result = InNode.new(val[0], val[2]) 
+     result = InNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2219,28 +2219,28 @@ module_eval(<<'.,.,', 'parser.y', 315)
 
 module_eval(<<'.,.,', 'parser.y', 320)
   def _reduce_145(val, _values, result)
-     result = EqualNode.new(val[0], val[2]) 
+     result = EqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 321)
   def _reduce_146(val, _values, result)
-     result = NotEqualNode.new(val[0], val[2]) 
+     result = NotEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 322)
   def _reduce_147(val, _values, result)
-     result = StrictEqualNode.new(val[0], val[2]) 
+     result = StrictEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 323)
   def _reduce_148(val, _values, result)
-     result = NotStrictEqualNode.new(val[0], val[2]) 
+     result = NotStrictEqualNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2249,28 +2249,28 @@ module_eval(<<'.,.,', 'parser.y', 323)
 
 module_eval(<<'.,.,', 'parser.y', 329)
   def _reduce_150(val, _values, result)
-     result = EqualNode.new(val[0], val[2]) 
+     result = EqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 331)
   def _reduce_151(val, _values, result)
-     result = NotEqualNode.new(val[0], val[2]) 
+     result = NotEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 333)
   def _reduce_152(val, _values, result)
-     result = StrictEqualNode.new(val[0], val[2]) 
+     result = StrictEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 335)
   def _reduce_153(val, _values, result)
-     result = NotStrictEqualNode.new(val[0], val[2]) 
+     result = NotStrictEqualNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2279,28 +2279,28 @@ module_eval(<<'.,.,', 'parser.y', 335)
 
 module_eval(<<'.,.,', 'parser.y', 341)
   def _reduce_155(val, _values, result)
-     result = EqualNode.new(val[0], val[2]) 
+     result = EqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 342)
   def _reduce_156(val, _values, result)
-     result = NotEqualNode.new(val[0], val[2]) 
+     result = NotEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 344)
   def _reduce_157(val, _values, result)
-     result = StrictEqualNode.new(val[0], val[2]) 
+     result = StrictEqualNode.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 346)
   def _reduce_158(val, _values, result)
-     result = NotStrictEqualNode.new(val[0], val[2]) 
+     result = NotStrictEqualNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2309,7 +2309,7 @@ module_eval(<<'.,.,', 'parser.y', 346)
 
 module_eval(<<'.,.,', 'parser.y', 351)
   def _reduce_160(val, _values, result)
-     result = BitAndNode.new(val[0], val[2]) 
+     result = BitAndNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2318,7 +2318,7 @@ module_eval(<<'.,.,', 'parser.y', 351)
 
 module_eval(<<'.,.,', 'parser.y', 357)
   def _reduce_162(val, _values, result)
-     result = BitAndNode.new(val[0], val[2]) 
+     result = BitAndNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2327,7 +2327,7 @@ module_eval(<<'.,.,', 'parser.y', 357)
 
 module_eval(<<'.,.,', 'parser.y', 362)
   def _reduce_164(val, _values, result)
-     result = BitAndNode.new(val[0], val[2]) 
+     result = BitAndNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2336,7 +2336,7 @@ module_eval(<<'.,.,', 'parser.y', 362)
 
 module_eval(<<'.,.,', 'parser.y', 367)
   def _reduce_166(val, _values, result)
-     result = BitXOrNode.new(val[0], val[2]) 
+     result = BitXOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2345,7 +2345,7 @@ module_eval(<<'.,.,', 'parser.y', 367)
 
 module_eval(<<'.,.,', 'parser.y', 373)
   def _reduce_168(val, _values, result)
-     result = BitXOrNode.new(val[0], val[2]) 
+     result = BitXOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2354,7 +2354,7 @@ module_eval(<<'.,.,', 'parser.y', 373)
 
 module_eval(<<'.,.,', 'parser.y', 379)
   def _reduce_170(val, _values, result)
-     result = BitXOrNode.new(val[0], val[2]) 
+     result = BitXOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2363,7 +2363,7 @@ module_eval(<<'.,.,', 'parser.y', 379)
 
 module_eval(<<'.,.,', 'parser.y', 384)
   def _reduce_172(val, _values, result)
-     result = BitOrNode.new(val[0], val[2]) 
+     result = BitOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2372,7 +2372,7 @@ module_eval(<<'.,.,', 'parser.y', 384)
 
 module_eval(<<'.,.,', 'parser.y', 390)
   def _reduce_174(val, _values, result)
-     result = BitOrNode.new(val[0], val[2]) 
+     result = BitOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2381,7 +2381,7 @@ module_eval(<<'.,.,', 'parser.y', 390)
 
 module_eval(<<'.,.,', 'parser.y', 396)
   def _reduce_176(val, _values, result)
-     result = BitOrNode.new(val[0], val[2]) 
+     result = BitOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2390,7 +2390,7 @@ module_eval(<<'.,.,', 'parser.y', 396)
 
 module_eval(<<'.,.,', 'parser.y', 401)
   def _reduce_178(val, _values, result)
-     result = LogicalAndNode.new(val[0], val[2]) 
+     result = LogicalAndNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2399,7 +2399,7 @@ module_eval(<<'.,.,', 'parser.y', 401)
 
 module_eval(<<'.,.,', 'parser.y', 407)
   def _reduce_180(val, _values, result)
-     result = LogicalAndNode.new(val[0], val[2]) 
+     result = LogicalAndNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2408,7 +2408,7 @@ module_eval(<<'.,.,', 'parser.y', 407)
 
 module_eval(<<'.,.,', 'parser.y', 413)
   def _reduce_182(val, _values, result)
-     result = LogicalAndNode.new(val[0], val[2]) 
+     result = LogicalAndNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2417,7 +2417,7 @@ module_eval(<<'.,.,', 'parser.y', 413)
 
 module_eval(<<'.,.,', 'parser.y', 418)
   def _reduce_184(val, _values, result)
-     result = LogicalOrNode.new(val[0], val[2]) 
+     result = LogicalOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2426,7 +2426,7 @@ module_eval(<<'.,.,', 'parser.y', 418)
 
 module_eval(<<'.,.,', 'parser.y', 424)
   def _reduce_186(val, _values, result)
-     result = LogicalOrNode.new(val[0], val[2]) 
+     result = LogicalOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2435,7 +2435,7 @@ module_eval(<<'.,.,', 'parser.y', 424)
 
 module_eval(<<'.,.,', 'parser.y', 429)
   def _reduce_188(val, _values, result)
-     result = LogicalOrNode.new(val[0], val[2]) 
+     result = LogicalOrNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2445,7 +2445,7 @@ module_eval(<<'.,.,', 'parser.y', 429)
 module_eval(<<'.,.,', 'parser.y', 435)
   def _reduce_190(val, _values, result)
           result = ConditionalNode.new(val[0], val[2], val[4])
-    
+
     result
   end
 .,.,
@@ -2455,7 +2455,7 @@ module_eval(<<'.,.,', 'parser.y', 435)
 module_eval(<<'.,.,', 'parser.y', 442)
   def _reduce_192(val, _values, result)
           result = ConditionalNode.new(val[0], val[2], val[4])
-    
+
     result
   end
 .,.,
@@ -2465,7 +2465,7 @@ module_eval(<<'.,.,', 'parser.y', 442)
 module_eval(<<'.,.,', 'parser.y', 449)
   def _reduce_194(val, _values, result)
           result = ConditionalNode.new(val[0], val[2], val[4])
-    
+
     result
   end
 .,.,
@@ -2475,7 +2475,7 @@ module_eval(<<'.,.,', 'parser.y', 449)
 module_eval(<<'.,.,', 'parser.y', 456)
   def _reduce_196(val, _values, result)
           result = val[1].new(val.first, val.last)
-    
+
     result
   end
 .,.,
@@ -2485,7 +2485,7 @@ module_eval(<<'.,.,', 'parser.y', 456)
 module_eval(<<'.,.,', 'parser.y', 463)
   def _reduce_198(val, _values, result)
           result = val[1].new(val.first, val.last)
-    
+
     result
   end
 .,.,
@@ -2495,91 +2495,91 @@ module_eval(<<'.,.,', 'parser.y', 463)
 module_eval(<<'.,.,', 'parser.y', 470)
   def _reduce_200(val, _values, result)
           result = val[1].new(val.first, val.last)
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 475)
   def _reduce_201(val, _values, result)
-     result = OpEqualNode 
+     result = OpEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 476)
   def _reduce_202(val, _values, result)
-     result = OpPlusEqualNode 
+     result = OpPlusEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 477)
   def _reduce_203(val, _values, result)
-     result = OpMinusEqualNode 
+     result = OpMinusEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 478)
   def _reduce_204(val, _values, result)
-     result = OpMultiplyEqualNode 
+     result = OpMultiplyEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 479)
   def _reduce_205(val, _values, result)
-     result = OpDivideEqualNode 
+     result = OpDivideEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 480)
   def _reduce_206(val, _values, result)
-     result = OpLShiftEqualNode 
+     result = OpLShiftEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 481)
   def _reduce_207(val, _values, result)
-     result = OpRShiftEqualNode 
+     result = OpRShiftEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 482)
   def _reduce_208(val, _values, result)
-     result = OpURShiftEqualNode 
+     result = OpURShiftEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 483)
   def _reduce_209(val, _values, result)
-     result = OpAndEqualNode 
+     result = OpAndEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 484)
   def _reduce_210(val, _values, result)
-     result = OpXOrEqualNode 
+     result = OpXOrEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 485)
   def _reduce_211(val, _values, result)
-     result = OpOrEqualNode 
+     result = OpOrEqualNode
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 486)
   def _reduce_212(val, _values, result)
-     result = OpModEqualNode 
+     result = OpModEqualNode
     result
   end
 .,.,
@@ -2588,7 +2588,7 @@ module_eval(<<'.,.,', 'parser.y', 486)
 
 module_eval(<<'.,.,', 'parser.y', 491)
   def _reduce_214(val, _values, result)
-     result = CommaNode.new(val[0], val[2]) 
+     result = CommaNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2597,7 +2597,7 @@ module_eval(<<'.,.,', 'parser.y', 491)
 
 module_eval(<<'.,.,', 'parser.y', 496)
   def _reduce_216(val, _values, result)
-     result = CommaNode.new(val[0], val[2]) 
+     result = CommaNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2606,7 +2606,7 @@ module_eval(<<'.,.,', 'parser.y', 496)
 
 module_eval(<<'.,.,', 'parser.y', 501)
   def _reduce_218(val, _values, result)
-     result = CommaNode.new(val[0], val[2]) 
+     result = CommaNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -2615,7 +2615,7 @@ module_eval(<<'.,.,', 'parser.y', 507)
   def _reduce_219(val, _values, result)
           result = BlockNode.new(val[1])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2624,7 +2624,7 @@ module_eval(<<'.,.,', 'parser.y', 514)
   def _reduce_220(val, _values, result)
           result = VarStatementNode.new(val[1])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2634,14 +2634,14 @@ module_eval(<<'.,.,', 'parser.y', 518)
           result = VarStatementNode.new(val[1])
       debug(result)
       yyabort unless allow_auto_semi?(val.last)
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 525)
   def _reduce_222(val, _values, result)
-     result = val 
+     result = val
     result
   end
 .,.,
@@ -2649,14 +2649,14 @@ module_eval(<<'.,.,', 'parser.y', 525)
 module_eval(<<'.,.,', 'parser.y', 527)
   def _reduce_223(val, _values, result)
           result = [val.first, val.last].flatten
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 532)
   def _reduce_224(val, _values, result)
-     result = val 
+     result = val
     result
   end
 .,.,
@@ -2664,35 +2664,35 @@ module_eval(<<'.,.,', 'parser.y', 532)
 module_eval(<<'.,.,', 'parser.y', 534)
   def _reduce_225(val, _values, result)
           result = [val.first, val.last].flatten
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 539)
   def _reduce_226(val, _values, result)
-     result = VarDeclNode.new(val.first, nil) 
+     result = VarDeclNode.new(val.first, nil)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 540)
   def _reduce_227(val, _values, result)
-     result = VarDeclNode.new(val.first, val[1]) 
+     result = VarDeclNode.new(val.first, val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 544)
   def _reduce_228(val, _values, result)
-     result = VarDeclNode.new(val[0],nil) 
+     result = VarDeclNode.new(val[0],nil)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 545)
   def _reduce_229(val, _values, result)
-     result = VarDeclNode.new(val[0], val[1]) 
+     result = VarDeclNode.new(val[0], val[1])
     result
   end
 .,.,
@@ -2701,7 +2701,7 @@ module_eval(<<'.,.,', 'parser.y', 550)
   def _reduce_230(val, _values, result)
           result = ConstStatementNode.new(val[1])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2711,14 +2711,14 @@ module_eval(<<'.,.,', 'parser.y', 554)
           result = ConstStatementNode.new(val[1])
       debug(result)
       yyerror unless allow_auto_semi?(val.last)
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 561)
   def _reduce_232(val, _values, result)
-     result = val 
+     result = val
     result
   end
 .,.,
@@ -2726,42 +2726,42 @@ module_eval(<<'.,.,', 'parser.y', 561)
 module_eval(<<'.,.,', 'parser.y', 563)
   def _reduce_233(val, _values, result)
           result = [val.first, val.last].flatten
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 568)
   def _reduce_234(val, _values, result)
-     result = VarDeclNode.new(val[0], nil, true) 
+     result = VarDeclNode.new(val[0], nil, true)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 569)
   def _reduce_235(val, _values, result)
-     result = VarDeclNode.new(val[0], val[1], true) 
+     result = VarDeclNode.new(val[0], val[1], true)
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 573)
   def _reduce_236(val, _values, result)
-     result = AssignExprNode.new(val[1]) 
+     result = AssignExprNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 577)
   def _reduce_237(val, _values, result)
-     result = AssignExprNode.new(val[1]) 
+     result = AssignExprNode.new(val[1])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 581)
   def _reduce_238(val, _values, result)
-     result = EmptyStatementNode.new(val[0]) 
+     result = EmptyStatementNode.new(val[0])
     result
   end
 .,.,
@@ -2770,7 +2770,7 @@ module_eval(<<'.,.,', 'parser.y', 586)
   def _reduce_239(val, _values, result)
           result = ExpressionStatementNode.new(val.first)
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2780,7 +2780,7 @@ module_eval(<<'.,.,', 'parser.y', 590)
           result = ExpressionStatementNode.new(val.first)
       debug(result)
       raise RKelly::SyntaxError unless allow_auto_semi?(val.last)
-    
+
     result
   end
 .,.,
@@ -2789,7 +2789,7 @@ module_eval(<<'.,.,', 'parser.y', 598)
   def _reduce_241(val, _values, result)
           result = IfNode.new(val[2], val[4])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2798,7 +2798,7 @@ module_eval(<<'.,.,', 'parser.y', 602)
   def _reduce_242(val, _values, result)
           result = IfNode.new(val[2], val[4], val[6])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2807,7 +2807,7 @@ module_eval(<<'.,.,', 'parser.y', 609)
   def _reduce_243(val, _values, result)
           result = DoWhileNode.new(val[1], val[4])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2816,7 +2816,7 @@ module_eval(<<'.,.,', 'parser.y', 613)
   def _reduce_244(val, _values, result)
           result = DoWhileNode.new(val[1], val[4])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2825,7 +2825,7 @@ module_eval(<<'.,.,', 'parser.y', 617)
   def _reduce_245(val, _values, result)
           result = WhileNode.new(val[2], val[4])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2834,7 +2834,7 @@ module_eval(<<'.,.,', 'parser.y', 621)
   def _reduce_246(val, _values, result)
           result = ForNode.new(val[2], val[4], val[6], val[8])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2843,7 +2843,7 @@ module_eval(<<'.,.,', 'parser.y', 626)
   def _reduce_247(val, _values, result)
           result = ForNode.new(VarStatementNode.new(val[3]), val[5], val[7], val[9])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2853,7 +2853,7 @@ module_eval(<<'.,.,', 'parser.y', 630)
           #yyabort if (!n.isLocation())
       result = ForInNode.new(val[2], val[4], val[6])
       debug(result);
-    
+
     result
   end
 .,.,
@@ -2863,7 +2863,7 @@ module_eval(<<'.,.,', 'parser.y', 635)
           result = ForInNode.new(
         VarDeclNode.new(val[3], nil), val[5], val[7])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2874,14 +2874,14 @@ module_eval(<<'.,.,', 'parser.y', 640)
         VarDeclNode.new(val[3], val[4]), val[6], val[8]
       )
       debug(result)
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 648)
   def _reduce_251(val, _values, result)
-     result = nil 
+     result = nil
     result
   end
 .,.,
@@ -2890,7 +2890,7 @@ module_eval(<<'.,.,', 'parser.y', 648)
 
 module_eval(<<'.,.,', 'parser.y', 653)
   def _reduce_253(val, _values, result)
-     result = nil 
+     result = nil
     result
   end
 .,.,
@@ -2901,7 +2901,7 @@ module_eval(<<'.,.,', 'parser.y', 659)
   def _reduce_255(val, _values, result)
           result = ContinueNode.new(nil)
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2911,7 +2911,7 @@ module_eval(<<'.,.,', 'parser.y', 663)
           result = ContinueNode.new(nil)
       debug(result)
       yyabort unless allow_auto_semi?(val[1])
-    
+
     result
   end
 .,.,
@@ -2920,7 +2920,7 @@ module_eval(<<'.,.,', 'parser.y', 668)
   def _reduce_257(val, _values, result)
           result = ContinueNode.new(val[1])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2930,7 +2930,7 @@ module_eval(<<'.,.,', 'parser.y', 672)
           result = ContinueNode.new(val[1])
       debug(result)
       yyabort unless allow_auto_semi?(val[2])
-    
+
     result
   end
 .,.,
@@ -2939,7 +2939,7 @@ module_eval(<<'.,.,', 'parser.y', 680)
   def _reduce_259(val, _values, result)
           result = BreakNode.new(nil)
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2949,7 +2949,7 @@ module_eval(<<'.,.,', 'parser.y', 684)
           result = BreakNode.new(nil)
       debug(result)
       yyabort unless allow_auto_semi?(val[1])
-    
+
     result
   end
 .,.,
@@ -2958,7 +2958,7 @@ module_eval(<<'.,.,', 'parser.y', 689)
   def _reduce_261(val, _values, result)
           result = BreakNode.new(val[1])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2968,7 +2968,7 @@ module_eval(<<'.,.,', 'parser.y', 693)
           result = BreakNode.new(val[1])
       debug(result)
       yyabort unless allow_auto_semi?(val[2])
-    
+
     result
   end
 .,.,
@@ -2977,7 +2977,7 @@ module_eval(<<'.,.,', 'parser.y', 701)
   def _reduce_263(val, _values, result)
           result = ReturnNode.new(nil)
       debug(result)
-    
+
     result
   end
 .,.,
@@ -2987,7 +2987,7 @@ module_eval(<<'.,.,', 'parser.y', 705)
           result = ReturnNode.new(nil)
       debug(result)
       yyabort unless allow_auto_semi?(val[1])
-    
+
     result
   end
 .,.,
@@ -2996,7 +2996,7 @@ module_eval(<<'.,.,', 'parser.y', 710)
   def _reduce_265(val, _values, result)
           result = ReturnNode.new(val[1])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -3006,7 +3006,7 @@ module_eval(<<'.,.,', 'parser.y', 714)
           result = ReturnNode.new(val[1])
       debug(result)
       yyabort unless allow_auto_semi?(val[2])
-    
+
     result
   end
 .,.,
@@ -3015,7 +3015,7 @@ module_eval(<<'.,.,', 'parser.y', 722)
   def _reduce_267(val, _values, result)
           result = WithNode.new(val[2], val[4])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -3024,14 +3024,14 @@ module_eval(<<'.,.,', 'parser.y', 729)
   def _reduce_268(val, _values, result)
           result = SwitchNode.new(val[2], val[4])
       debug(result)
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 735)
   def _reduce_269(val, _values, result)
-     result = CaseBlockNode.new(val[1]) 
+     result = CaseBlockNode.new(val[1])
     result
   end
 .,.,
@@ -3039,14 +3039,14 @@ module_eval(<<'.,.,', 'parser.y', 735)
 module_eval(<<'.,.,', 'parser.y', 737)
   def _reduce_270(val, _values, result)
           result = CaseBlockNode.new([val[1], val[2], val[3]].flatten)
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 742)
   def _reduce_271(val, _values, result)
-     result = [] 
+     result = []
     result
   end
 .,.,
@@ -3055,14 +3055,14 @@ module_eval(<<'.,.,', 'parser.y', 742)
 
 module_eval(<<'.,.,', 'parser.y', 747)
   def _reduce_273(val, _values, result)
-     result = val 
+     result = val
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 748)
   def _reduce_274(val, _values, result)
-     result = val.flatten 
+     result = val.flatten
     result
   end
 .,.,
@@ -3070,7 +3070,7 @@ module_eval(<<'.,.,', 'parser.y', 748)
 module_eval(<<'.,.,', 'parser.y', 753)
   def _reduce_275(val, _values, result)
           result = CaseClauseNode.new(val[1], val[3])
-    
+
     result
   end
 .,.,
@@ -3078,14 +3078,14 @@ module_eval(<<'.,.,', 'parser.y', 753)
 module_eval(<<'.,.,', 'parser.y', 759)
   def _reduce_276(val, _values, result)
           result = CaseClauseNode.new(nil, val[2])
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 764)
   def _reduce_277(val, _values, result)
-     result = LabelNode.new(val[0], val[2]) 
+     result = LabelNode.new(val[0], val[2])
     result
   end
 .,.,
@@ -3094,7 +3094,7 @@ module_eval(<<'.,.,', 'parser.y', 769)
   def _reduce_278(val, _values, result)
           result = ThrowNode.new(val[1])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -3104,7 +3104,7 @@ module_eval(<<'.,.,', 'parser.y', 773)
           result = ThrowNode.new(val[1])
       debug(result)
       yyabort unless allow_auto_semi?(val[2])
-    
+
     result
   end
 .,.,
@@ -3113,7 +3113,7 @@ module_eval(<<'.,.,', 'parser.y', 781)
   def _reduce_280(val, _values, result)
           result = TryNode.new(val[1], nil, nil, val[3])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -3122,7 +3122,7 @@ module_eval(<<'.,.,', 'parser.y', 785)
   def _reduce_281(val, _values, result)
           result = TryNode.new(val[1], val[4], val[6])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -3131,7 +3131,7 @@ module_eval(<<'.,.,', 'parser.y', 789)
   def _reduce_282(val, _values, result)
           result = TryNode.new(val[1], val[4], val[6], val[8])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -3140,7 +3140,7 @@ module_eval(<<'.,.,', 'parser.y', 796)
   def _reduce_283(val, _values, result)
           result = EmptyStatementNode.new(val[0])
       debug(result)
-    
+
     result
   end
 .,.,
@@ -3150,7 +3150,7 @@ module_eval(<<'.,.,', 'parser.y', 800)
           result = EmptyStatementNode.new(val[0])
       debug(result)
       yyabort unless allow_auto_semi?(val[1])
-    
+
     result
   end
 .,.,
@@ -3159,7 +3159,7 @@ module_eval(<<'.,.,', 'parser.y', 808)
   def _reduce_285(val, _values, result)
           result = FunctionDeclNode.new(val[1], val[5])
       debug(val[5])
-    
+
     result
   end
 .,.,
@@ -3168,7 +3168,7 @@ module_eval(<<'.,.,', 'parser.y', 812)
   def _reduce_286(val, _values, result)
           result = FunctionDeclNode.new(val[1], val[6], val[3])
       debug(val[6])
-    
+
     result
   end
 .,.,
@@ -3177,7 +3177,7 @@ module_eval(<<'.,.,', 'parser.y', 819)
   def _reduce_287(val, _values, result)
           result = FunctionExprNode.new(val[0], val[4])
       debug(val[4])
-    
+
     result
   end
 .,.,
@@ -3186,7 +3186,7 @@ module_eval(<<'.,.,', 'parser.y', 823)
   def _reduce_288(val, _values, result)
           result = FunctionExprNode.new(val[0], val[5], val[2])
       debug(val[5])
-    
+
     result
   end
 .,.,
@@ -3195,7 +3195,7 @@ module_eval(<<'.,.,', 'parser.y', 827)
   def _reduce_289(val, _values, result)
           result = FunctionExprNode.new(val[1], val[5])
       debug(val[5])
-    
+
     result
   end
 .,.,
@@ -3204,14 +3204,14 @@ module_eval(<<'.,.,', 'parser.y', 831)
   def _reduce_290(val, _values, result)
           result = FunctionExprNode.new(val[1], val[6], val[3])
       debug(val[6])
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 837)
   def _reduce_291(val, _values, result)
-     result = [ParameterNode.new(val[0])] 
+     result = [ParameterNode.new(val[0])]
     result
   end
 .,.,
@@ -3219,14 +3219,14 @@ module_eval(<<'.,.,', 'parser.y', 837)
 module_eval(<<'.,.,', 'parser.y', 839)
   def _reduce_292(val, _values, result)
           result = [val.first, ParameterNode.new(val.last)].flatten
-    
+
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser.y', 844)
   def _reduce_293(val, _values, result)
-     result = FunctionBodyNode.new(val[0]) 
+     result = FunctionBodyNode.new(val[0])
     result
   end
 .,.,

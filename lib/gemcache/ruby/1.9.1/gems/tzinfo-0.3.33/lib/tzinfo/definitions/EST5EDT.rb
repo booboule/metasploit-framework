@@ -2,13 +2,13 @@ module TZInfo
   module Definitions
     module EST5EDT
       include TimezoneDefinition
-      
+
       timezone 'EST5EDT' do |tz|
         tz.offset :o0, -18000, 0, :EST
         tz.offset :o1, -18000, 3600, :EDT
         tz.offset :o2, -18000, 3600, :EWT
         tz.offset :o3, -18000, 3600, :EPT
-        
+
         tz.transition 1918, 3, :o1, 58120411, 24
         tz.transition 1918, 10, :o0, 9687575, 4
         tz.transition 1919, 3, :o1, 58129147, 24

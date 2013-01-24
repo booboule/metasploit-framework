@@ -1,5 +1,5 @@
 module Treetop
-  module Compiler    
+  module Compiler
     class Sequence < ParsingExpression
       def compile(address, builder, parent_expression = nil)
         super
@@ -17,11 +17,11 @@ module Treetop
         end
         end_comment(self)
       end
-      
+
       def node_class_name
         node_class_declarations.node_class_name || 'SyntaxNode'
       end
-      
+
       def compile_sequence_elements(elements)
         obtain_new_subexpression_address
         elements.first.compile(subexpression_address, builder)
@@ -32,24 +32,24 @@ module Treetop
           end
         end
       end
-      
+
       def sequence_element_accessor_module
         @sequence_element_accessor_module ||= SequenceElementAccessorModule.new(sequence_elements)
       end
-      
+
       def sequence_element_accessor_module_name
         sequence_element_accessor_module.module_name
       end
     end
-    
+
     class SequenceElementAccessorModule
-      include InlineModuleMixin   
+      include InlineModuleMixin
       attr_reader :sequence_elements
-      
+
       def initialize(sequence_elements)
         @sequence_elements = sequence_elements
       end
-      
+
       def compile(index, builder, rule)
         super
         builder.module_declaration(module_name) do

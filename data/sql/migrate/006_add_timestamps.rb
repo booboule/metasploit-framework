@@ -9,7 +9,7 @@ class AddTimestamps < ActiveRecord::Migration
 
 	def self.up
 		@@TABLES_NEEDING_RENAME.each { |t| rename_column t, :created, :created_at }
-		
+
 		@@TABLES_NEEDING_CREATED_AT.each { |t| add_column t, :created_at, :datetime }
 
 		@@TABLES_NEEDING_UPDATED_AT.each { |t| add_column t, :updated_at, :datetime }
@@ -17,7 +17,7 @@ class AddTimestamps < ActiveRecord::Migration
 
 	def self.down
 		@@TABLES_NEEDING_RENAME.each { |t| rename_column t, :created_at, :created }
-		
+
 		@@TABLES_NEEDING_CREATED_AT.each { |t| remove_column t, :created_at }
 
 		@@TABLES_NEEDING_UPDATED_AT.each { |t| remove_column t, :updated_at }

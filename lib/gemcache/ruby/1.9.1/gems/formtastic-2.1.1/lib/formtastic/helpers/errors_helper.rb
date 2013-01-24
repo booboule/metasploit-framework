@@ -55,9 +55,9 @@ module Formtastic
           Formtastic::Util.html_safe(full_errors.map { |error| template.content_tag(:li, Formtastic::Util.html_safe(error)) }.join)
         end
       end
-      
+
       protected
-      
+
       def error_keys(method, options)
         @methods_for_error ||= {}
         @methods_for_error[method] ||= begin

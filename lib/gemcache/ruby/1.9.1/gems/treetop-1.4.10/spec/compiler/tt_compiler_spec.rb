@@ -169,7 +169,7 @@ describe "The 'tt' comand line compiler" do
       @test_grammars.each { |f| File.delete(f) if File.exists?(f) }
       @test_bases.each { |f| File.delete("#{f}.rb") if File.exists?("#{f}.rb") }
     end
- 
+
     it 'can compile them in one invocation' do
       # puts %q{emulate 'tt dumb1.tt dumb2.tt'}
       system("ruby -S tt #{@test_grammars.join(' ')}").should be_true

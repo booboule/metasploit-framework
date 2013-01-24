@@ -129,7 +129,7 @@ class Graph
 
 			roots.each { |g| trim[g, g.from] unless g.from.empty? }
 			roots.each { |g| walk[g] }
-			
+
 			# handle loops now (unmarked nodes)
 			while unmarked = groups - maxdepth.keys and not unmarked.empty?
 				if g = unmarked.find { |g_| g_.from.find { |gg| maxdepth[gg] } }
@@ -1217,7 +1217,7 @@ p boxes.length
 				b.h = @font_height * 2
 				b.x = rand(200) - 100
 				b.y = rand(200) - 100
-				
+
 				@fakebox += 1
 			else
 				b1, *bl = @selected_boxes

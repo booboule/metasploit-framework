@@ -97,6 +97,6 @@ describe Msf::Util::EXE do
     end
 
   end
-  
+
 end
 

@@ -3,19 +3,19 @@ require 'rack/lobster'
 class Benchmarker
   PORT    = 7000
   ADDRESS = '0.0.0.0'
-  
+
   attr_accessor :requests, :concurrencies, :servers, :keep_alive
-  
+
   def initialize
     @servers = %w(Mongrel EMongrel Thin)
     @requests = 1000
     @concurrencies = [1, 10, 100]
   end
-  
+
   def writer(&block)
     @writer = block
   end
-  
+
   def run!
     @concurrencies.each do |concurrency|
       @servers.each do |server|
@@ -24,7 +24,7 @@ class Benchmarker
       end
     end
   end
-  
+
   private
     def start_server(handler_name)
       @server = fork do
@@ -43,19 +43,19 @@ class Benchmarker
         handler = Rack::Handler.const_get(handler_name)
         handler.run app, :Host => ADDRESS, :Port => PORT
       end
-    
+
       sleep 2
     end
-  
+
     def stop_server
       Process.kill('SIGKILL', @server)
       Process.wait
     end
-  
+
     def run_ab(concurrency)
       `nice -n20 ab -c #{concurrency} -n #{@requests} #{@keep_alive ? '-k' : ''} #{ADDRESS}:#{PORT}/ 2> /dev/null`
     end
-  
+
     def run_one(handler_name, concurrency)
       start_server(handler_name)
 
@@ -68,13 +68,13 @@ class Benchmarker
       else
         0
       end
-    
+
       failed = if matches = out.match(/^Failed requests.+?(\d+)/)
         matches[1].to_i
       else
         0
       end
-    
+
       [req_sec, failed]
     end
 end

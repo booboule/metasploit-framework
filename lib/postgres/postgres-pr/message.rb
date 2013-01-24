@@ -3,7 +3,7 @@
 # Author:: Michael Neumann
 # Copyright:: (c) 2005 by Michael Neumann
 # License:: Same as Ruby's or BSD
-# 
+#
 
 require 'postgres_msf'
 require 'postgres/buffer'
@@ -38,7 +38,7 @@ class Message
 
     MsgTypeMap[type] = self
 
-    self.const_set(:MsgType, type) 
+    self.const_set(:MsgType, type)
     class_eval "def message_type; MsgType end"
   end
 
@@ -53,7 +53,7 @@ class Message
     buffer.write(type) unless startup
     buffer.write_int32_network(length)
     buffer.copy_from_stream(stream, length-4)
-    
+
     (startup ? StartupMessage : MsgTypeMap[type]).create(buffer)
   end
 
@@ -88,11 +88,11 @@ class Message
     ivar_list = names.map {|name| "@" + name }.join(", ")
     sym_list = names.map {|name| ":" + name }.join(", ")
     class_eval %[
-      attr_accessor #{ sym_list } 
+      attr_accessor #{ sym_list }
       def initialize(#{ arg_list })
         #{ ivar_list } = #{ arg_list }
       end
-    ] 
+    ]
   end
 end
 
@@ -119,7 +119,7 @@ class Authentification < Message
   def self.register_auth_type(type)
     raise "duplicate auth type registration" if AuthTypeMap.has_key?(type)
     AuthTypeMap[type] = self
-    self.const_set(:AuthType, type) 
+    self.const_set(:AuthType, type)
     class_eval "def auth_type() AuthType end"
   end
 
@@ -134,7 +134,7 @@ class Authentification < Message
 
   def parse(buffer)
     super do
-      auth_t = buffer.read_int32_network 
+      auth_t = buffer.read_int32_network
       raise ParseError unless auth_t == self.auth_type
       yield if block_given?
     end
@@ -144,19 +144,19 @@ end
 class UnknownAuthType < Authentification
 end
 
-class AuthentificationOk < Authentification 
+class AuthentificationOk < Authentification
   register_auth_type 0
 end
 
-class AuthentificationKerberosV4 < Authentification 
+class AuthentificationKerberosV4 < Authentification
   register_auth_type 1
 end
 
-class AuthentificationKerberosV5 < Authentification 
+class AuthentificationKerberosV5 < Authentification
   register_auth_type 2
 end
 
-class AuthentificationClearTextPassword < Authentification 
+class AuthentificationClearTextPassword < Authentification
   register_auth_type 3
 end
 
@@ -183,20 +183,20 @@ module SaltedAuthentificationMixin
   end
 end
 
-class AuthentificationCryptPassword < Authentification 
+class AuthentificationCryptPassword < Authentification
   register_auth_type 4
   include SaltedAuthentificationMixin
   def salt_size; 2 end
 end
 
 
-class AuthentificationMD5Password < Authentification 
+class AuthentificationMD5Password < Authentification
   register_auth_type 5
   include SaltedAuthentificationMixin
   def salt_size; 4 end
 end
 
-class AuthentificationSCMCredential < Authentification 
+class AuthentificationSCMCredential < Authentification
   register_auth_type 6
 end
 
@@ -244,7 +244,7 @@ class BackendKeyData < Message
     super(4 + 4) do |buffer|
       buffer.write_int32_network(@process_id)
       buffer.write_int32_network(@secret_key)
-    end 
+    end
   end
 
   def parse(buffer)
@@ -291,7 +291,7 @@ class DataRow < Message
     super do
       n_cols = buffer.read_int16_network
       @columns = (1..n_cols).collect {
-        len = buffer.read_int32_network 
+        len = buffer.read_int32_network
         if len == -1
           nil
         else
@@ -334,12 +334,12 @@ module NoticeErrorMixin
   def dump
     raise ArgumentError if @field_type == 0 and not @field_values.empty?
 
-    sz = 1 
-    sz += @field_values.inject(1) {|sum, fld| sum + fld.size + 1} unless @field_type == 0 
+    sz = 1
+    sz += @field_values.inject(1) {|sum, fld| sum + fld.size + 1} unless @field_type == 0
 
     super(sz) do |buffer|
       buffer.write_byte(@field_type)
-      break if @field_type == 0 
+      break if @field_type == 0
       @field_values.each {|fld| buffer.write_cstring(fld) }
       buffer.write_byte(0)
     end
@@ -389,7 +389,7 @@ class Parse < Message
 
   def dump
     sz = @stmt_name.size + 1 + @query.size + 1 + 2 + (4 * @parameter_oids.size)
-    super(sz) do |buffer| 
+    super(sz) do |buffer|
       buffer.write_cstring(@stmt_name)
       buffer.write_cstring(@query)
       buffer.write_int16_network(@parameter_oids.size)
@@ -398,7 +398,7 @@ class Parse < Message
   end
 
   def parse(buffer)
-    super do 
+    super do
       @stmt_name = buffer.read_cstring
       @query = buffer.read_cstring
       n_oids = buffer.read_int16_network
@@ -480,7 +480,7 @@ class StartupMessage < Message
     buffer = Buffer.of_size(sz)
     buffer.write_int32_network(sz)
     buffer.write_int32_network(@proto_version)
-    @params.each_pair {|key, value| 
+    @params.each_pair {|key, value|
       buffer.write_cstring(key)
       buffer.write_cstring(value)
     }

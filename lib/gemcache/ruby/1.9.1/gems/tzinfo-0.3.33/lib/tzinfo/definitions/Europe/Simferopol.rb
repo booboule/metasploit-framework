@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Simferopol
         include TimezoneDefinition
-        
+
         timezone 'Europe/Simferopol' do |tz|
           tz.offset :o0, 8184, 0, :LMT
           tz.offset :o1, 8160, 0, :SMT
@@ -13,7 +13,7 @@ module TZInfo
           tz.offset :o5, 3600, 0, :CET
           tz.offset :o6, 10800, 3600, :MSD
           tz.offset :o7, 7200, 3600, :EEST
-          
+
           tz.transition 1879, 12, :o1, 8667775459, 3600
           tz.transition 1924, 5, :o2, 436303333, 180
           tz.transition 1930, 6, :o3, 29113781, 12

@@ -2,11 +2,11 @@ module TZInfo
   module Definitions
     module WET
       include TimezoneDefinition
-      
+
       timezone 'WET' do |tz|
         tz.offset :o0, 0, 0, :WET
         tz.offset :o1, 0, 3600, :WEST
-        
+
         tz.transition 1977, 4, :o1, 228877200
         tz.transition 1977, 9, :o0, 243997200
         tz.transition 1978, 4, :o1, 260326800

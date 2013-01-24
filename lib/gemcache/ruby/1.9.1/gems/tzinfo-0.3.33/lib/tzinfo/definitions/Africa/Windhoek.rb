@@ -3,7 +3,7 @@ module TZInfo
     module Africa
       module Windhoek
         include TimezoneDefinition
-        
+
         timezone 'Africa/Windhoek' do |tz|
           tz.offset :o0, 4104, 0, :LMT
           tz.offset :o1, 5400, 0, :SWAT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 7200, 0, :CAT
           tz.offset :o5, 3600, 0, :WAT
           tz.offset :o6, 3600, 3600, :WAST
-          
+
           tz.transition 1892, 2, :o1, 964854581, 400
           tz.transition 1903, 2, :o2, 38658791, 16
           tz.transition 1942, 9, :o3, 4861245, 2

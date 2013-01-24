@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Sitka
         include TimezoneDefinition
-        
+
         timezone 'America/Sitka' do |tz|
           tz.offset :o0, 53927, 0, :LMT
           tz.offset :o1, -32473, 0, :LMT
@@ -14,7 +14,7 @@ module TZInfo
           tz.offset :o6, -32400, 0, :YST
           tz.offset :o7, -32400, 0, :AKST
           tz.offset :o8, -32400, 3600, :AKDT
-          
+
           tz.transition 1867, 10, :o1, 207641394073, 86400
           tz.transition 1900, 8, :o2, 208677805273, 86400
           tz.transition 1942, 2, :o3, 29164799, 12

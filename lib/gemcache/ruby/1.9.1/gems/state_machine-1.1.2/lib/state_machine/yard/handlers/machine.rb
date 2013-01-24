@@ -7,26 +7,26 @@ module StateMachine
       class Machine < Base
         handles method_call(:state_machine)
         namespace_only
-        
+
         # The generated state machine
         attr_reader :machine
-        
+
         def process
           # Cross-file storage for state machines
           globals.state_machines ||= Hash.new {|h, k| h[k] = {}}
           namespace['state_machines'] ||= {}
-          
+
           # Create new machine
           klass = inherited_machine ? Class.new(inherited_machine.owner_class) : Class.new { extend StateMachine::MacroMethods }
           @machine = klass.state_machine(name, options) {}
-          
+
           # Track the state machine
           globals.state_machines[namespace.name][name] = machine
           namespace['state_machines'][name] = {:name => name, :description => statement.docstring}
-          
+
           # Parse the block
           parse_block(statement.last.last, :owner => machine)
-          
+
           # Draw the machine for reference in the template
           file = Tempfile.new(['state_machine', '.png'])
           begin
@@ -38,13 +38,13 @@ module StateMachine
             file.close
             file.unlink
           end
-          
+
           # Define auto-generated methods
           define_macro_methods
           define_state_methods
           define_event_methods
         end
-        
+
         protected
           # Extracts the machine name's
           def name
@@ -57,29 +57,29 @@ module StateMachine
               end
             end
           end
-          
+
           # Extracts the machine options.  Note that this will only extract a
           # subset of the options supported.
           def options
             @options ||= begin
               options = {}
               ast = statement.parameters(false).last
-              
+
               if !inherited_machine && ast && ![:symbol_literal, :string_literal].include?(ast.type)
                 ast.children.each do |assoc|
                   # Only extract important options
                   key = extract_node_name(assoc[0])
                   next unless [:initial, :attribute, :namespace, :action].include?(key)
-                  
+
                   value = extract_node_name(assoc[1])
                   options[key] = value
                 end
               end
-              
+
               options
             end
           end
-          
+
           # Gets the machine that was inherited from a superclass.  This also
           # ensures each ancestor has been loaded prior to looking up their definitions.
           def inherited_machine
@@ -91,7 +91,7 @@ module StateMachine
                   # Ignore: just means that we can't access an ancestor
                 end
               end
-              
+
               # Find the first ancestor that has the machine
               loaded_superclasses.detect do |superclass|
                 if superclass != namespace
@@ -101,13 +101,13 @@ module StateMachine
               end
             end
           end
-          
+
           # Gets members of this class's superclasses have already been loaded
           # by YARD
           def loaded_superclasses
             namespace.inheritance_tree.select {|ancestor| ancestor.is_a?(::YARD::CodeObjects::ClassObject)}
           end
-          
+
           # Gets a list of all attributes for the current class, including those
           # that are inherited
           def instance_attributes
@@ -115,27 +115,27 @@ module StateMachine
             loaded_superclasses.each {|superclass| attributes.merge!(superclass.instance_attributes)}
             attributes
           end
-          
+
           # Gets the type of ORM integration being used based on the list of
           # ancestors (including mixins)
           def integration
             @integration ||= Integrations.match_ancestors(namespace.inheritance_tree(true).map {|ancestor| ancestor.path})
           end
-          
+
           # Gets the class type being used to define states.  Default is "Symbol".
           def state_type
             @state_type ||= machine.states.any? ? machine.states.map {|state| state.name}.compact.first.class.to_s : 'Symbol'
           end
-          
+
           # Gets the class type being used to define events.  Default is "Symbol".
           def event_type
             @event_type ||= machine.events.any? ? machine.events.first.name.class.to_s : 'Symbol'
           end
-          
+
           # Defines auto-generated macro methods for the given machine
           def define_macro_methods
             return if inherited_machine
-            
+
             # Human state name lookup
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "human_#{machine.attribute(:name)}", :class))
             m.docstring = [
@@ -144,7 +144,7 @@ module StateMachine
               "@return [String] The human state name"
             ]
             m.parameters = ["state"]
-            
+
             # Human event name lookup
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "human_#{machine.attribute(:event_name)}", :class))
             m.docstring = [
@@ -153,14 +153,14 @@ module StateMachine
               "@return [String] The human event name"
             ]
             m.parameters = ["event"]
-            
+
             # Only register attributes when the accessor isn't explicitly defined
             # by the class / superclass *and* isn't defined by inference from the
             # ORM being used
             unless integration || instance_attributes.include?(machine.attribute.to_sym)
               attribute = machine.attribute
               namespace.attributes[:instance][attribute] = {}
-              
+
               # Machine attribute getter
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, attribute))
               namespace.attributes[:instance][attribute][:read] = m
@@ -168,7 +168,7 @@ module StateMachine
                 "Gets the current attribute value for the machine",
                 "@return The attribute value"
               ]
-              
+
               # Machine attribute setter
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "#{attribute}="))
               namespace.attributes[:instance][attribute][:write] = m
@@ -178,11 +178,11 @@ module StateMachine
               ]
               m.parameters = ["new_#{attribute}"]
             end
-            
+
             if integration && integration.defaults[:action] && !options.include?(:action) || options[:action]
               attribute = "#{machine.name}_event"
               namespace.attributes[:instance][attribute] = {}
-              
+
               # Machine event attribute getter
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, attribute))
               namespace.attributes[:instance][attribute][:read] = m
@@ -190,7 +190,7 @@ module StateMachine
                 "Gets the current event attribute value for the machine",
                 "@return The event attribute value"
               ]
-              
+
               # Machine event attribute setter
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "#{attribute}="))
               namespace.attributes[:instance][attribute][:write] = m
@@ -200,7 +200,7 @@ module StateMachine
               ]
               m.parameters = ["new_#{attribute}"]
             end
-            
+
             # Presence query
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "#{machine.name}?"))
             m.docstring = [
@@ -210,21 +210,21 @@ module StateMachine
               "@raise [IndexError] If the state name is invalid"
             ]
             m.parameters = ["state_name"]
-            
+
             # Internal state name
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, machine.attribute(:name)))
             m.docstring = [
               "Gets the internal name of the state for the current value.",
               "@return [#{state_type}] The internal name of the state"
             ]
-            
+
             # Human state name
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "human_#{machine.attribute(:name)}"))
             m.docstring = [
               "Gets the human-readable name of the state for the current value.",
               "@return [String] The human-readable state name"
             ]
-            
+
             # Available events
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, machine.attribute(:events)))
             m.docstring = [
@@ -237,7 +237,7 @@ module StateMachine
               "@return [Array<#{event_type}>] The list of event names"
             ]
             m.parameters = [["requirements", "{}"]]
-            
+
             # Available transitions
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, machine.attribute(:transitions)))
             m.docstring = [
@@ -250,7 +250,7 @@ module StateMachine
               "@return [Array<StateMachine::Transition>] The available transitions"
             ]
             m.parameters = [["requirements", "{}"]]
-            
+
             # Available transition paths
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, machine.attribute(:paths)))
             m.docstring = [
@@ -263,7 +263,7 @@ module StateMachine
               "@return [StateMachine::PathCollection] The collection of paths"
             ]
             m.parameters = [["requirements", "{}"]]
-            
+
             # Generic event fire
             register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "fire_#{machine.attribute(:event)}"))
             m.docstring = [
@@ -274,12 +274,12 @@ module StateMachine
             ]
             m.parameters = ["event", "*args"]
           end
-          
+
           # Defines auto-generated event methods for the given machine
           def define_event_methods
             machine.events.each do |event|
               next if inherited_machine && inherited_machine.events[event.name]
-              
+
               # Event query
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "can_#{event.qualified_name}?"))
               m.docstring = [
@@ -291,7 +291,7 @@ module StateMachine
                 "@return [Boolean] +true+ if #{event.name.inspect} can be fired, otherwise +false+"
               ]
               m.parameters = [["requirements", "{}"]]
-              
+
               # Event transition
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "#{event.qualified_name}_transition"))
               m.docstring = [
@@ -303,7 +303,7 @@ module StateMachine
                 "@return [StateMachine::Transition] The transition that would be performed or +nil+"
               ]
               m.parameters = [["requirements", "{}"]]
-              
+
               # Fire event
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, event.qualified_name))
               m.docstring = [
@@ -312,7 +312,7 @@ module StateMachine
                 "@return [Boolean] +true+ if the transition succeeds, otherwise +false+"
               ]
               m.parameters = ["*args"]
-              
+
               # Fire event (raises exception)
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "#{event.qualified_name}!"))
               m.docstring = [
@@ -324,12 +324,12 @@ module StateMachine
               m.parameters = ["*args"]
             end
           end
-          
+
           # Defines auto-generated state methods for the given machine
           def define_state_methods
             machine.states.each do |state|
               next if inherited_machine && inherited_machine.states[state.name] || !state.name
-              
+
               # State query
               register(m = ::YARD::CodeObjects::MethodObject.new(namespace, "#{state.qualified_name}?"))
               m.docstring = [

@@ -3,13 +3,13 @@ module TZInfo
     module Europe
       module Zurich
         include TimezoneDefinition
-        
+
         timezone 'Europe/Zurich' do |tz|
           tz.offset :o0, 2048, 0, :LMT
           tz.offset :o1, 1784, 0, :BMT
           tz.offset :o2, 3600, 0, :CET
           tz.offset :o3, 3600, 3600, :CEST
-          
+
           tz.transition 1848, 9, :o1, 3234981343, 1350
           tz.transition 1894, 5, :o2, 26060189177, 10800
           tz.transition 1941, 5, :o3, 4860239, 2

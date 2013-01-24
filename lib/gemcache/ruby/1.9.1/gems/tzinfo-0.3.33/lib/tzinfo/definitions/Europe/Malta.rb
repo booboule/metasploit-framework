@@ -3,12 +3,12 @@ module TZInfo
     module Europe
       module Malta
         include TimezoneDefinition
-        
+
         timezone 'Europe/Malta' do |tz|
           tz.offset :o0, 3484, 0, :LMT
           tz.offset :o1, 3600, 0, :CET
           tz.offset :o2, 3600, 3600, :CEST
-          
+
           tz.transition 1893, 11, :o1, 52115820329, 21600
           tz.transition 1916, 6, :o2, 58104419, 24
           tz.transition 1916, 9, :o1, 58107299, 24

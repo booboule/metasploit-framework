@@ -3,12 +3,12 @@ module TZInfo
     module America
       module Araguaina
         include TimezoneDefinition
-        
+
         timezone 'America/Araguaina' do |tz|
           tz.offset :o0, -11568, 0, :LMT
           tz.offset :o1, -10800, 0, :BRT
           tz.offset :o2, -10800, 3600, :BRST
-          
+
           tz.transition 1914, 1, :o1, 4356240541, 1800
           tz.transition 1931, 10, :o2, 29119417, 12
           tz.transition 1932, 4, :o1, 29121583, 12

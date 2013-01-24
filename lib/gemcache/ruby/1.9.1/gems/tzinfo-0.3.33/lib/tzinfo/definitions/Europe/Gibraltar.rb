@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Gibraltar
         include TimezoneDefinition
-        
+
         timezone 'Europe/Gibraltar' do |tz|
           tz.offset :o0, -1284, 0, :LMT
           tz.offset :o1, 0, 0, :GMT
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, 0, 7200, :BDST
           tz.offset :o4, 3600, 0, :CET
           tz.offset :o5, 3600, 3600, :CEST
-          
+
           tz.transition 1880, 8, :o1, 17337092507, 7200
           tz.transition 1916, 5, :o2, 29052055, 12
           tz.transition 1916, 10, :o1, 29053651, 12

@@ -3,12 +3,12 @@ module TZInfo
     module Antarctica
       module McMurdo
         include TimezoneDefinition
-        
+
         timezone 'Antarctica/McMurdo' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, 43200, 0, :NZST
           tz.offset :o2, 43200, 3600, :NZDT
-          
+
           tz.transition 1956, 1, :o1, 4870947, 2
           tz.transition 1974, 11, :o2, 152632800
           tz.transition 1975, 2, :o1, 162309600

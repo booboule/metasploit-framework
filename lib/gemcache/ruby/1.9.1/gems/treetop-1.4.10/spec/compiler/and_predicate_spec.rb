@@ -21,7 +21,7 @@ module AndPredicateSpec
         result.text_value.should == 'foo'
       end
     end
-  
+
     it "fails to parse input matching only the first terminal, with a terminal failure recorded at index 3" do
       parse('foo') do |result|
         result.should be_nil

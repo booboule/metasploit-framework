@@ -58,7 +58,7 @@ class X86_64
 		init_sse3
 		init_vmx_only
 	end
-	
+
 	def init_all
 		init_vmx
 		init_sse42_only

@@ -9,18 +9,18 @@ describe Server, 'with threads' do
       [200, { 'Content-Type' => 'text/html' }, 'hi']
     end
   end
-  
+
   it "should process request" do
     get('/').should_not be_empty
   end
-  
+
   it "should process requests when blocked" do
     slow_request = Thread.new { get('/3') }
     get('/').should_not be_empty
     @requests.should == 1
     slow_request.kill
   end
-  
+
   after do
     stop_server
   end

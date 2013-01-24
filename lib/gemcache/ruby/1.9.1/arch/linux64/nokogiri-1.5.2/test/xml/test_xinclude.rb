@@ -46,7 +46,7 @@ module Nokogiri
       end
 
       def test_xinclude_on_element_subtree
-        skip("Pure Java version turns XInlcude on against a parser.") if Nokogiri.jruby? 
+        skip("Pure Java version turns XInlcude on against a parser.") if Nokogiri.jruby?
         assert_nil @xml.at_xpath('//included')
         @xml.root.do_xinclude
         assert_not_nil included = @xml.at_xpath('//included')

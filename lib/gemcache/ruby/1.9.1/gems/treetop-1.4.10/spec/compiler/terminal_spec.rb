@@ -21,7 +21,7 @@ module TerminalSymbolSpec
         result.interval.should == (1...4)
         result.text_value.should == 'foo'
       end
-    
+
       parse "---foo", :index => 3 do |result|
         result.should be_an_instance_of(Foo)
         result.should respond_to(:a_method)
@@ -57,7 +57,7 @@ module TerminalSymbolSpec
         result.interval.should == (1...4)
         result.text_value.should == 'foo'
       end
-    
+
       parse "---foo", :index => 3 do |result|
         result.should be_an_instance_of(Treetop::Runtime::SyntaxNode)
         result.should be_a_kind_of(ModFoo)

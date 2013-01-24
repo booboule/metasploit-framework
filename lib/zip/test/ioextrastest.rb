@@ -16,7 +16,7 @@ class FakeIOTest < Test::Unit::TestCase
 
   def test_kind_of?
     obj = FakeIOUsingClass.new
-    
+
     assert(obj.kind_of?(Object))
     assert(obj.kind_of?(FakeIOUsingClass))
     assert(obj.kind_of?(IO))
@@ -27,12 +27,12 @@ end
 
 class AbstractInputStreamTest < Test::Unit::TestCase
   # AbstractInputStream subclass that provides a read method
-  
-  TEST_LINES = [ "Hello world#{$/}", 
-    "this is the second line#{$/}", 
+
+  TEST_LINES = [ "Hello world#{$/}",
+    "this is the second line#{$/}",
     "this is the last line"]
   TEST_STRING = TEST_LINES.join
-  class TestAbstractInputStream 
+  class TestAbstractInputStream
     include AbstractInputStream
     def initialize(aString)
       super()
@@ -58,7 +58,7 @@ class AbstractInputStreamTest < Test::Unit::TestCase
   def setup
     @io = TestAbstractInputStream.new(TEST_STRING)
   end
-  
+
   def test_gets
     assert_equal(TEST_LINES[0], @io.gets)
     assert_equal(1, @io.lineno)
@@ -135,7 +135,7 @@ class AbstractOutputStreamTest < Test::Unit::TestCase
     assert_equal("a little string. a little more", @outputStream.buffer)
     assert_equal(". a little more".length, count)
   end
-  
+
   def test_print
     $\ = nil # record separator set to nil
     @outputStream.print("hello")
@@ -143,7 +143,7 @@ class AbstractOutputStreamTest < Test::Unit::TestCase
 
     @outputStream.print(" world.")
     assert_equal("hello world.", @outputStream.buffer)
-    
+
     @outputStream.print(" You ok ",  "out ", "there?")
     assert_equal("hello world. You ok out there?", @outputStream.buffer)
 
@@ -164,12 +164,12 @@ class AbstractOutputStreamTest < Test::Unit::TestCase
     @outputStream.print(20)
     assert_equal("20", @outputStream.buffer)
   end
-  
+
   def test_printf
-    @outputStream.printf("%d %04x", 123, 123) 
+    @outputStream.printf("%d %04x", 123, 123)
     assert_equal("123 007b", @outputStream.buffer)
   end
-  
+
   def test_putc
     @outputStream.putc("A")
     assert_equal("A", @outputStream.buffer)
@@ -187,7 +187,7 @@ class AbstractOutputStreamTest < Test::Unit::TestCase
     @outputStream.buffer = ""
     @outputStream.puts("hello\n", "world\n")
     assert_equal("hello\nworld\n", @outputStream.buffer)
-    
+
     @outputStream.buffer = ""
     @outputStream.puts(["hello\n", "world\n"])
     assert_equal("hello\nworld\n", @outputStream.buffer)

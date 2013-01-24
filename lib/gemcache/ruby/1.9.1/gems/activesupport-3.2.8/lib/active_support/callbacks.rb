@@ -378,7 +378,7 @@ module ActiveSupport
     module ClassMethods
       # Generate the internal runner method called by +run_callbacks+.
       def __define_runner(symbol) #:nodoc:
-        runner_method = "_run_#{symbol}_callbacks" 
+        runner_method = "_run_#{symbol}_callbacks"
         unless private_method_defined?(runner_method)
           class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
             def #{runner_method}(key = nil, &blk)
@@ -390,7 +390,7 @@ module ActiveSupport
       end
 
       # This method calls the callback method for the given key.
-      # If this called first time it creates a new callback method for the key, 
+      # If this called first time it creates a new callback method for the key,
       # calculating which callbacks can be omitted because of per_key conditions.
       #
       def __run_callback(key, kind, object, &blk) #:nodoc:
@@ -452,7 +452,7 @@ module ActiveSupport
       #
       # Before and around callbacks are called in the order that they are set; after
       # callbacks are called in the reverse order.
-      # 
+      #
       # Around callbacks can access the return value from the event, if it
       # wasn't halted, from the +yield+ call.
       #

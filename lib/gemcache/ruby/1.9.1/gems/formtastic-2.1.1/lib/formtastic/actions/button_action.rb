@@ -1,5 +1,5 @@
-# Outputs a `<button type="submit">` or `<button type="reset">` wrapped in the standard `<li>` 
-# wrapper. This is an alternative choice for `:submit` and `:reset` actions, which render with 
+# Outputs a `<button type="submit">` or `<button type="reset">` wrapped in the standard `<li>`
+# wrapper. This is an alternative choice for `:submit` and `:reset` actions, which render with
 # `<input type="submit">` and `<input type="reset">` by default.
 #
 # @example Full form context and output
@@ -53,7 +53,7 @@ module Formtastic
     class ButtonAction
       include Base
       include Buttonish
-      
+
       # TODO absolutely horrible hack to work-around Rails < 3.1 missing button_tag, need
       # to figure out something more appropriate.
       #

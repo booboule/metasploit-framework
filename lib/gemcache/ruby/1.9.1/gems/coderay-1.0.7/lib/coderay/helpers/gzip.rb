@@ -1,13 +1,13 @@
 module CodeRay
-  
+
   # A simplified interface to the gzip library +zlib+ (from the Ruby Standard Library.)
   module GZip
-    
+
     require 'zlib'
-    
+
     # The default zipping level. 7 zips good and fast.
     DEFAULT_GZIP_LEVEL = 7
-    
+
     # Unzips the given string +s+.
     #
     # Example:
@@ -16,7 +16,7 @@ module CodeRay
     def GZip.gunzip s
       Zlib::Inflate.inflate s
     end
-    
+
     # Zips the given string +s+.
     #
     # Example:
@@ -35,7 +35,7 @@ module CodeRay
     def GZip.gzip s, level = DEFAULT_GZIP_LEVEL
       Zlib::Deflate.new(level).deflate s, Zlib::FINISH
     end
-    
+
   end
-  
+
 end

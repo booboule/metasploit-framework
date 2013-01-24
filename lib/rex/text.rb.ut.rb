@@ -115,7 +115,7 @@ class Rex::Text::UnitTest < Test::Unit::TestCase
 			end
 		}
 		assert_equal([], a, 'all possible values uhwtfms')
-		
+
 		assert_raises(TypeError) {
 			Rex::Text.to_unicode('a', 'uhwtfms-half', 1)
 		}
@@ -133,10 +133,10 @@ class Rex::Text::UnitTest < Test::Unit::TestCase
 	def test_gzip
 		string = Rex::Text.gzip('hi mom')
 		assert_equal("\x1f\x8b\x08\x00", string.slice!(0,4), 'gzip headers')
-		
+
 		# skip the next 6 bytes as it is host & time specific (zlib's example gun does, so why not us too?)
 		string.slice!(0,6)
-		
+
 		assert_equal("\xcb\xc8\x54\xc8\xcd\xcf\x05\x00\x68\xa4\x1c\xf0\x06\x00\x00\x00", string, 'gzip data')
 
 		assert_equal('hi mom', Rex::Text.ungzip("\037\213\010\000|\261\275C\002\003\313\310T\310\315\317\005\000h\244\034\360\006\000\000\000"), 'ungzip')
@@ -146,14 +146,14 @@ class Rex::Text::UnitTest < Test::Unit::TestCase
 		assert_equal(nil, Rex::Text.badchar_index('abcdef', 'gzk'))
 		assert_equal(2, Rex::Text.badchar_index('123avd', 'ly3'))
 	end
-	
+
 	def test_hexify
 		str = "\x01\x02\xff\x00"
-	
+
 		assert_equal("\\x01\\x02\\xff\\x00", Rex::Text.to_hex(str), 'to_hex')
 		assert_equal("ABC01ABC02ABCffABC00", Rex::Text.to_hex(str, 'ABC'), 'to_hex with prefix')
 		assert_equal('%u0102%uff00', Rex::Text.to_hex(str, '%u', 2), 'to_hex with chunk size of 2')
-		
+
 		# to_hex, without providing enouigh data to chunk on a given size
 		assert_raises(RuntimeError){ Rex::Text.to_hex('a', '', 2) }
 
@@ -161,7 +161,7 @@ class Rex::Text::UnitTest < Test::Unit::TestCase
 		assert_equal("my $buf = \n\"\\x01\\x02\\xff\\x00\";\n", Rex::Text.to_perl(str), 'to_perl')
 		assert_equal("export buf=\\\n$'\\x01\\x02\\xff\\x00\'\n", Rex::Text.to_bash(str), 'to_bash')
 		assert_equal("unsigned char buf[] = \n\"\\x01\\x02\\xff\\x00\";\n", Rex::Text.to_c(str), 'to_c')
-	
+
 		# 0 -> 20
 		str = "\000\001\002\003\004\005\006\a\010\t\n\v\f\r\016\017\020\021\022\023"
 

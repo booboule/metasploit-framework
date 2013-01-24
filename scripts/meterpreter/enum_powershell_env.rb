@@ -116,7 +116,7 @@ def enum_powershell
 			end
 		end
 
-		
+
 	end
 end
 if client.platform =~ /win32|win64/

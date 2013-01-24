@@ -3,13 +3,13 @@ module TZInfo
     module Antarctica
       module Macquarie
         include TimezoneDefinition
-        
+
         timezone 'Antarctica/Macquarie' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, 36000, 0, :EST
           tz.offset :o2, 36000, 3600, :EST
           tz.offset :o3, 39600, 0, :MIST
-          
+
           tz.transition 1911, 1, :o1, 4838075, 2
           tz.transition 1916, 9, :o2, 14526823, 6
           tz.transition 1917, 3, :o1, 19370497, 8

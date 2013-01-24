@@ -4,8 +4,8 @@ module RKelly
   class Tokenizer
     KEYWORDS = %w{
       break case catch continue default delete do else finally for function
-      if in instanceof new return switch this throw try typeof var void while 
-      with 
+      if in instanceof new return switch this throw try typeof var void while
+      with
 
       const true false null debugger
     }
@@ -89,7 +89,7 @@ module RKelly
         [value, value]
       end
     end
-  
+
     def tokenize(string)
       raw_tokens(string).map { |x| x.to_racc_token }
     end
@@ -120,7 +120,7 @@ module RKelly
       end
       tokens
     end
-  
+
     private
     def token(name, pattern = nil, &block)
       @lexemes << Lexeme.new(name, pattern, &block)

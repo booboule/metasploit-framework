@@ -3,12 +3,12 @@ module TZInfo
     module Europe
       module Vaduz
         include TimezoneDefinition
-        
+
         timezone 'Europe/Vaduz' do |tz|
           tz.offset :o0, 2284, 0, :LMT
           tz.offset :o1, 3600, 0, :CET
           tz.offset :o2, 3600, 3600, :CEST
-          
+
           tz.transition 1894, 5, :o1, 52120378229, 21600
           tz.transition 1981, 3, :o2, 354675600
           tz.transition 1981, 9, :o1, 370400400

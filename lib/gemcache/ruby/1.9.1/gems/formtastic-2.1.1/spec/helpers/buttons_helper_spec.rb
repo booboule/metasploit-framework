@@ -51,7 +51,7 @@ describe 'Formtastic::FormBuilder#buttons' do
           end)
         end
       end
-      
+
       it 'should render a fieldset inside the form' do
         output_buffer.should have_tag("form fieldset legend", /#{@legend_text}/)
       end
@@ -70,7 +70,7 @@ describe 'Formtastic::FormBuilder#buttons' do
           end)
         end
       end
-      
+
       it 'should pass the options into the fieldset tag as attributes' do
         output_buffer.should have_tag("form fieldset##{@id_option}")
         output_buffer.should have_tag("form fieldset.#{@class_option}")

@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Santa_Isabel
         include TimezoneDefinition
-        
+
         timezone 'America/Santa_Isabel' do |tz|
           tz.offset :o0, -27568, 0, :LMT
           tz.offset :o1, -25200, 0, :MST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -28800, 3600, :PDT
           tz.offset :o4, -28800, 3600, :PWT
           tz.offset :o5, -28800, 3600, :PPT
-          
+
           tz.transition 1922, 1, :o1, 14538335, 6
           tz.transition 1924, 1, :o2, 58170859, 24
           tz.transition 1927, 6, :o1, 58201027, 24

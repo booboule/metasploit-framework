@@ -40,7 +40,7 @@ describe PG::Connection do
 	#
 
 	it "can create a connection option string from a Hash of options" do
-		optstring = described_class.parse_connect_args( 
+		optstring = described_class.parse_connect_args(
 			:host => 'pgsql.example.com',
 			:dbname => 'db01',
 			'sslmode' => 'require'
@@ -53,14 +53,14 @@ describe PG::Connection do
 	end
 
 	it "can create a connection option string from positional parameters" do
-		optstring = described_class.parse_connect_args( 'pgsql.example.com', nil, '-c geqo=off', nil, 
+		optstring = described_class.parse_connect_args( 'pgsql.example.com', nil, '-c geqo=off', nil,
 		                                       'sales' )
 
 		optstring.should be_a( String )
 		optstring.should =~ /(^|\s)host='pgsql.example.com'/
 		optstring.should =~ /(^|\s)dbname='sales'/
 		optstring.should =~ /(^|\s)options='-c geqo=off'/
-		
+
 		optstring.should_not =~ /port=/
 		optstring.should_not =~ /tty=/
 	end

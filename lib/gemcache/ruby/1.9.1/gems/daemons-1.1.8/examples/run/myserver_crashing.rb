@@ -6,9 +6,9 @@
 loop do
   puts 'ping from myserver.rb!'
   puts 'this example server will crash in 3 seconds...'
-  
+
   sleep(3)
-  
+
   puts 'CRASH!'
   raise 'CRASH!'
 end

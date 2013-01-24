@@ -8,12 +8,12 @@ module Authlogic
         klass.class_eval do
           class_attribute :acts_as_authentic_config
           self.acts_as_authentic_config  ||= {}
-          
+
           extend ClassMethods
           include InstanceMethods
         end
       end
-      
+
       module ClassMethods
         private
           def rw_config(key, value, default_value = nil, read_value = nil)
@@ -28,12 +28,12 @@ module Authlogic
             end
           end
       end
-      
+
       module InstanceMethods
         def initialize(*args)
           self.credentials = args
         end
-        
+
         # The credentials you passed to create your session. See credentials= for more info.
         def credentials
           []
@@ -54,19 +54,19 @@ module Authlogic
         #   session.credentials = [my_user_object, true, :my_id]
         def credentials=(values)
         end
-        
+
         def inspect
           "#<#{self.class.name}: #{credentials.blank? ? "no credentials provided" : credentials.inspect}>"
         end
-        
+
         def persisted?
           !(new_record? || destroyed?)
         end
-        
+
         def to_key
           new_record? ? nil : [ self.send(self.class.primary_key) ]
         end
-        
+
         private
           def build_key(last_part)
             last_part

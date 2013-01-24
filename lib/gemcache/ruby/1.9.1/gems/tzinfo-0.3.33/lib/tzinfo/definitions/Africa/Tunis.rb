@@ -3,13 +3,13 @@ module TZInfo
     module Africa
       module Tunis
         include TimezoneDefinition
-        
+
         timezone 'Africa/Tunis' do |tz|
           tz.offset :o0, 2444, 0, :LMT
           tz.offset :o1, 561, 0, :PMT
           tz.offset :o2, 3600, 0, :CET
           tz.offset :o3, 3600, 3600, :CEST
-          
+
           tz.transition 1881, 5, :o1, 52017389389, 21600
           tz.transition 1911, 3, :o2, 69670267013, 28800
           tz.transition 1939, 4, :o3, 29152433, 12

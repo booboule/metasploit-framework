@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Kuching
         include TimezoneDefinition
-        
+
         timezone 'Asia/Kuching' do |tz|
           tz.offset :o0, 26480, 0, :LMT
           tz.offset :o1, 27000, 0, :BORT
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, 28800, 1200, :BORTST
           tz.offset :o4, 32400, 0, :JST
           tz.offset :o5, 28800, 0, :MYT
-          
+
           tz.transition 1926, 2, :o1, 2618541209, 1080
           tz.transition 1932, 12, :o2, 38833171, 16
           tz.transition 1935, 9, :o3, 14568355, 6

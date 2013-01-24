@@ -1,8 +1,8 @@
 module CodeRay
-  
+
   # GZip library for writing and reading token dumps.
   autoload :GZip, coderay_path('helpers', 'gzip')
-  
+
   # = Tokens  TODO: Rewrite!
   #
   # The Tokens class represents a list of tokens returnd from
@@ -47,14 +47,14 @@ module CodeRay
   # Tokens gives you the power to handle pre-scanned code very easily:
   # You can convert it to a webpage, a YAML file, or dump it into a gzip'ed string
   # that you put in your DB.
-  # 
+  #
   # It also allows you to generate tokens directly (without using a scanner),
   # to load them from a file, and still use any Encoder that CodeRay provides.
   class Tokens < Array
-    
+
     # The Scanner instance that created the tokens.
     attr_accessor :scanner
-    
+
     # Encode the tokens using encoder.
     #
     # encoder can be
@@ -67,12 +67,12 @@ module CodeRay
       encoder = Encoders[encoder].new options if encoder.respond_to? :to_sym
       encoder.encode_tokens self, options
     end
-    
+
     # Turn tokens into a string by concatenating them.
     def to_s
       encode CodeRay::Encoders::Encoder.new
     end
-    
+
     # Redirects unknown methods to encoder calls.
     #
     # For example, if you call +tokens.html+, the HTML encoder
@@ -82,14 +82,14 @@ module CodeRay
     rescue PluginHost::PluginNotFound
       super
     end
-    
+
     # Split the tokens into parts of the given +sizes+.
-    # 
+    #
     # The result will be an Array of Tokens objects. The parts have
     # the text size specified by the parameter. In addition, each
     # part closes all opened tokens. This is useful to insert tokens
     # betweem them.
-    # 
+    #
     # This method is used by @Scanner#tokenize@ when called with an Array
     # of source strings. The Diff encoder uses it for inline highlighting.
     def split_into_parts *sizes
@@ -155,7 +155,7 @@ module CodeRay
       parts << Tokens.new while parts.size < sizes.size
       parts
     end
-    
+
     # Dumps the object into a String that can be saved
     # in files or databases.
     #
@@ -176,12 +176,12 @@ module CodeRay
       dump = GZip.gzip dump, gzip_level
       dump.extend Undumping
     end
-    
+
     # Return the actual number of tokens.
     def count
       size / 2
     end
-    
+
     # Include this module to give an object an #undump
     # method.
     #
@@ -192,7 +192,7 @@ module CodeRay
         Tokens.load self
       end
     end
-    
+
     # Undump the object using Marshal.load, then
     # unzip it using GZip.gunzip.
     #
@@ -202,14 +202,14 @@ module CodeRay
       dump = GZip.gunzip dump
       @dump = Marshal.load dump
     end
-    
+
     alias text_token push
     def begin_group kind; push :begin_group, kind end
     def end_group kind; push :end_group, kind end
     def begin_line kind; push :begin_line, kind end
     def end_line kind; push :end_line, kind end
     alias tokens concat
-    
+
   end
-  
+
 end

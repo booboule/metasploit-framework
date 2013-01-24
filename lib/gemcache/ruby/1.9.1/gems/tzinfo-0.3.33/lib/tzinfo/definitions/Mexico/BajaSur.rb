@@ -3,7 +3,7 @@ module TZInfo
     module Mexico
       module BajaSur
         include TimezoneDefinition
-        
+
         linked_timezone 'Mexico/BajaSur', 'America/Mazatlan'
       end
     end

@@ -25,7 +25,7 @@ class MyApp < Logger::Application
     end
     @args = opts.parse!(args)
   end
-  
+
   def run
     Daemons.run_proc('myapp',{:ARGV => @args, :ontop => !@options.daemonize}) do
       puts "@options.daemonize: #{@options.daemonize}"

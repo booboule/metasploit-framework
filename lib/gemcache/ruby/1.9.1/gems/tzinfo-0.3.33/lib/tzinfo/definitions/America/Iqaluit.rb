@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Iqaluit
         include TimezoneDefinition
-        
+
         timezone 'America/Iqaluit' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, -18000, 3600, :EWT
@@ -13,7 +13,7 @@ module TZInfo
           tz.offset :o5, -18000, 3600, :EDT
           tz.offset :o6, -21600, 0, :CST
           tz.offset :o7, -21600, 3600, :CDT
-          
+
           tz.transition 1942, 8, :o1, 4861145, 2
           tz.transition 1945, 8, :o2, 58360379, 24
           tz.transition 1945, 9, :o3, 9726915, 4

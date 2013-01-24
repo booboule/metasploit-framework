@@ -48,7 +48,7 @@ end
 ################## Main ##################
 @@exec_opts.parse(args) { |opt, idx, val|
 	case opt
-		
+
 	when "-cl"
 		commands = val.split(",")
 	when "-rc"
@@ -60,7 +60,7 @@ end
 				commands << line.chomp
 			end
 		end
-		
+
 	when "-h"
 		help = 1
 	end

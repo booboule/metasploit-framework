@@ -136,12 +136,12 @@ module Nokogiri
       class EncodingReader # :nodoc:
         class SAXHandler < Nokogiri::XML::SAX::Document # :nodoc:
           attr_reader :encoding
-          
+
           def initialize
             @encoding = nil
             super()
           end
-    
+
           def start_element(name, attrs = [])
             return unless name == 'meta'
             attr = Hash[attrs]
@@ -154,7 +154,7 @@ module Nokogiri
               @encoding = m[1]
           end
         end
-        
+
         class JumpSAXHandler < SAXHandler
           def initialize(jumptag)
             @jumptag = jumptag

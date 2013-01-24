@@ -18,16 +18,16 @@ class Plugin::Lab < Msf::Plugin
 		def initialize(driver)
 			super(driver)
 			@controller = nil
-			
+
 			#
-			# Require the lab gem, but fail nicely if it's not there. 
+			# Require the lab gem, but fail nicely if it's not there.
 			#
 			begin
 				require 'lab'
 			rescue LoadError
 				raise "WARNING: Lab gem not found, Please 'gem install lab'"
 			end
-			
+
 		end
 
 		#
@@ -82,7 +82,7 @@ class Plugin::Lab < Msf::Plugin
 					# there isn't a user_data_directory, but could use:
 					#::Msf::Config.user_plugins_directory + File::SEPARATOR + "lab"
 				].each do |dir|
-					res_path = dir + File::SEPARATOR + res 
+					res_path = dir + File::SEPARATOR + res
 					if (File.file?(res_path) and File.readable?(res_path))
 						good_res = res_path
 						break
@@ -95,7 +95,7 @@ class Plugin::Lab < Msf::Plugin
 				print_error("#{res} is not a valid lab definition file (.yml)")
 			end
 		end
-	
+
 		#
 		# Tab completion for the lab_load command
 		#
@@ -228,7 +228,7 @@ class Plugin::Lab < Msf::Plugin
 						print_line "checking to see #{vm.hostname} is tagged #{arg}"
 						print_line "#{vm.hostname} tagged #{arg}" if vm.tagged?(arg)
 					end
-				end	
+				end
 			end
 		end
 
@@ -379,13 +379,13 @@ class Plugin::Lab < Msf::Plugin
 			end
 		end
 
-		# 
+		#
 		# Command: lab_upload [vmids] [from] [to]
-		# 
+		#
 		# Description: Uploads a file to the guest(s)
 		#
 		# Quirks: Pass "all" as a vmid to have it operate on all vms.
-		# 
+		#
 		def cmd_lab_upload(*args)
 			return lab_usage if args.empty?
 			return lab_usage if args.count < 3
@@ -495,7 +495,7 @@ class Plugin::Lab < Msf::Plugin
 
 				@controller.each do |vm|
 					tbl << [ 	vm.hostname,
-							vm.driver.class, 
+							vm.driver.class,
 							vm.type]
 				end
 
@@ -533,7 +533,7 @@ class Plugin::Lab < Msf::Plugin
 	# their instance gets set.
 	#
 	attr_accessor :controller
-	
+
 	def initialize(framework, opts)
 		super
 
@@ -574,4 +574,4 @@ class Plugin::Lab < Msf::Plugin
 	end
 
 end ## End Class
-end ## End Module	
+end ## End Module

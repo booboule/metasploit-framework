@@ -3,12 +3,12 @@ module TZInfo
     module Atlantic
       module Bermuda
         include TimezoneDefinition
-        
+
         timezone 'Atlantic/Bermuda' do |tz|
           tz.offset :o0, -15544, 0, :LMT
           tz.offset :o1, -14400, 0, :AST
           tz.offset :o2, -14400, 3600, :ADT
-          
+
           tz.transition 1930, 1, :o1, 26200559843, 10800
           tz.transition 1974, 4, :o2, 136360800
           tz.transition 1974, 10, :o1, 152082000

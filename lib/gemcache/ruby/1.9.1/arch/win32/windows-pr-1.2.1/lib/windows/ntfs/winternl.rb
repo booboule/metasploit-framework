@@ -69,7 +69,7 @@ module Windows
       rescue Win32::API::LoadLibraryError
         # XP or later
       end
-       
+
       # Should work for Windows XP/2000
       unless defined? GetFinalPathNameByHandle
         require 'windows/handle'
@@ -79,7 +79,7 @@ module Windows
         include Windows::Handle
         include Windows::Unicode
         include Windows::Volume
-          
+
         # Simulates the GetFinalPathNameByHandle method. Note that the +size+
         # and +flags+ arguments are ignored, but are required for interface
         # compatibility. The buffer is an in/out parameter.

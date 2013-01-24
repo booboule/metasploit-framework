@@ -3,12 +3,12 @@ module TZInfo
     module Atlantic
       module Faroe
         include TimezoneDefinition
-        
+
         timezone 'Atlantic/Faroe' do |tz|
           tz.offset :o0, -1624, 0, :LMT
           tz.offset :o1, 0, 0, :WET
           tz.offset :o2, 0, 3600, :WEST
-          
+
           tz.transition 1908, 1, :o1, 26113876403, 10800
           tz.transition 1981, 3, :o2, 354675600
           tz.transition 1981, 9, :o1, 370400400

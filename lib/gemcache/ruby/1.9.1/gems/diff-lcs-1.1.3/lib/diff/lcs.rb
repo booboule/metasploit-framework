@@ -45,12 +45,12 @@ module Diff
   #   seq2 == seq1.patch!(sdiff)
   #   seq1 == seq2.unpatch(sdiff)
   #   seq1 == seq2.unpatch!(sdiff)
-  # 
+  #
   # Default extensions are provided for Array and String objects through the
   # use of 'diff/lcs/array' and 'diff/lcs/string'.
   #
   # == Introduction (by Mark-Jason Dominus)
-  # 
+  #
   # <em>The following text is from the Perl documentation. The only changes
   # have been to make the text appear better in Rdoc</em>.
   #
@@ -71,7 +71,7 @@ module Diff
   # new sequence *S* which can be obtained from the first sequence by
   # deleting some items, and from the second sequence by deleting other
   # items. You also want *S* to be as long as possible. In this case *S* is:
-  # 
+  #
   #    a b c d f g j z
   #
   # From there it's only a small step to get diff-like output:
@@ -91,7 +91,7 @@ module Diff
   #
   # A naive approach might start by matching up the +a+ and +b+ that appear
   # at the beginning of each sequence, like this:
-  # 
+  #
   #    a x b y c         z p d q
   #    a   b   c a b y c z
   #
@@ -230,7 +230,7 @@ module Diff::LCS
     # Diff::LCS.diff computes the smallest set of additions and deletions
     # necessary to turn the first sequence into the second, and returns a
     # description of these changes.
-    # 
+    #
     # See Diff::LCS::DiffCallbacks for the default behaviour. An alternate
     # behaviour may be implemented with Diff::LCS::ContextDiffCallbacks. If
     # a Class argument is provided for +callbacks+, #diff will attempt to

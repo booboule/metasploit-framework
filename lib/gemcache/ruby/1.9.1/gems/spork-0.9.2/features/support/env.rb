@@ -15,7 +15,7 @@ class SporkWorld
   SANDBOX_DIR   = SPORK_ROOT + "tmp/sandbox"
   GEMFILES_ROOT = SPORK_ROOT + "features/gemfiles"
   SPORK_LIBDIR  = SPORK_ROOT + "lib"
-  
+
   extend Forwardable
   def_delegators SporkWorld, :sandbox_dir, :spork_lib_dir
 

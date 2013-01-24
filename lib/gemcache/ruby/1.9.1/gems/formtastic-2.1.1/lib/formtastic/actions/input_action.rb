@@ -1,5 +1,5 @@
-# Outputs an `<input type="submit">` or `<input type="reset">` wrapped in the standard `<li>` 
-# wrapper. This the default for `:submit` and `:reset` actions, but `:as => :button` is also 
+# Outputs an `<input type="submit">` or `<input type="reset">` wrapped in the standard `<li>`
+# wrapper. This the default for `:submit` and `:reset` actions, but `:as => :button` is also
 # available as an alternative.
 #
 # @example The `:as` can be ommitted, these are functionally equivalent
@@ -57,7 +57,7 @@ module Formtastic
     class InputAction
       include Base
       include Buttonish
-      
+
       def to_html
         wrapper do
           builder.submit(text, button_html)

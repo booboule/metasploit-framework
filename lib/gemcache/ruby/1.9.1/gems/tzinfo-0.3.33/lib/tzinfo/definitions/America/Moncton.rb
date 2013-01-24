@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Moncton
         include TimezoneDefinition
-        
+
         timezone 'America/Moncton' do |tz|
           tz.offset :o0, -15548, 0, :LMT
           tz.offset :o1, -18000, 0, :EST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -14400, 3600, :ADT
           tz.offset :o4, -14400, 3600, :AWT
           tz.offset :o5, -14400, 3600, :APT
-          
+
           tz.transition 1883, 12, :o1, 52037719487, 21600
           tz.transition 1902, 6, :o2, 57981977, 24
           tz.transition 1918, 4, :o3, 9686791, 4

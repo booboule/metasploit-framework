@@ -16,7 +16,7 @@ options = {
              :log_output => true,
              :monitor    => true
            }
-           
+
 Daemons.run_proc('ctrl_proc.rb', options) do
   loop do
     puts 'ping from proc!'

@@ -3,12 +3,12 @@ module TZInfo
     module Europe
       module Oslo
         include TimezoneDefinition
-        
+
         timezone 'Europe/Oslo' do |tz|
           tz.offset :o0, 2580, 0, :LMT
           tz.offset :o1, 3600, 0, :CET
           tz.offset :o2, 3600, 3600, :CEST
-          
+
           tz.transition 1894, 12, :o1, 3475000037, 1440
           tz.transition 1916, 5, :o2, 4842011, 2
           tz.transition 1916, 9, :o1, 29053637, 12

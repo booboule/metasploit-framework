@@ -17,7 +17,7 @@ module RKelly
         }
         scope ? scope[name] : nil
       end
-      
+
       def [](name)
         property = has_property?(name)
         return property if property

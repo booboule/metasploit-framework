@@ -11,27 +11,27 @@ module EventMachine
   #      spawn = lambda { pool.add EM::HttpRequest.new('http://example.org') }
   #      10.times { spawn[] }
   #      done, scheduled = 0, 0
-  #    
+  #
   #      check = lambda do
   #        done += 1
   #        if done >= scheduled
   #          EM.stop
   #        end
   #      end
-  #    
+  #
   #      pool.on_error { |conn| spawn[] }
-  #    
+  #
   #      100.times do
   #        pool.perform do |conn|
   #          req = conn.get :path => '/', :keepalive => true
-  #    
+  #
   #          req.callback do
   #            p [:success, conn.object_id, i, req.response.size]
   #            check[]
   #          end
-  #    
+  #
   #          req.errback { check[] }
-  #    
+  #
   #          req
   #        end
   #      end
@@ -64,7 +64,7 @@ module EventMachine
     # example use case is periodic statistics collection against a set of
     # connection resources.
     #
-    # For example: 
+    # For example:
     #     pool.contents.inject(0) { |sum, connection| connection.num_bytes }
     def contents
       @contents.dup
@@ -83,7 +83,7 @@ module EventMachine
     # Perform a given #call-able object or block. The callable object will be
     # called with a resource from the pool as soon as one is available, and is
     # expected to return a deferrable.
-    # 
+    #
     # The deferrable will have callback and errback added such that when the
     # deferrable enters a finished state, the object is returned to the pool.
     #

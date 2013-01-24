@@ -10,7 +10,7 @@ module IceCube
     attr_accessor :start_time
     deprecated_alias :start_date, :start_time
     deprecated_alias :start_date=, :start_time=
-    
+
     # Get the duration
     attr_accessor :duration
 
@@ -294,7 +294,7 @@ module IceCube
       schedule = IceCube::Schedule.new TimeUtil.deserialize_time(data[:start_date])
       schedule.duration = data[:duration] if data[:duration]
       schedule.end_time = TimeUtil.deserialize_time(data[:end_time]) if data[:end_time]
-      data[:rrules] && data[:rrules].each { |h| schedule.rrule(IceCube::Rule.from_hash(h)) }  
+      data[:rrules] && data[:rrules].each { |h| schedule.rrule(IceCube::Rule.from_hash(h)) }
       data[:exrules] && data[:exrules].each { |h| schedule.exrule(IceCube::Rule.from_hash(h)) }
       data[:rtimes] && data[:rtimes].each do |t|
         schedule.add_recurrence_time TimeUtil.deserialize_time(t)

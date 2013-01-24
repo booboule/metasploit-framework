@@ -82,14 +82,14 @@ class I18nBackendInterpolationCompilerTest < Test::Unit::TestCase
   class Backend < I18n::Backend::Simple
     include I18n::Backend::InterpolationCompiler
   end
-  
+
   include I18n::Tests::Interpolation
 
   def setup
     I18n.backend = Backend.new
     super
   end
-  
+
   # pre-compile default strings to make sure we are testing I18n::Backend::InterpolationCompiler
   def interpolate(*args)
     options = args.last.kind_of?(Hash) ? args.last : {}

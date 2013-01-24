@@ -3,7 +3,7 @@ module TZInfo
     module US
       module Alaska
         include TimezoneDefinition
-        
+
         linked_timezone 'US/Alaska', 'America/Anchorage'
       end
     end

@@ -3,13 +3,13 @@ module TZInfo
     module America
       module Havana
         include TimezoneDefinition
-        
+
         timezone 'America/Havana' do |tz|
           tz.offset :o0, -19768, 0, :LMT
           tz.offset :o1, -19776, 0, :HMT
           tz.offset :o2, -18000, 0, :CST
           tz.offset :o3, -18000, 3600, :CDT
-          
+
           tz.transition 1890, 1, :o1, 26042782271, 10800
           tz.transition 1925, 7, :o2, 1090958053, 450
           tz.transition 1928, 6, :o3, 58209785, 24

@@ -9,7 +9,7 @@
 # This program is free software. It may be redistributed and/or modified under
 # the terms of the GPL version 2 (or later), the Perl Artistic licence, or the
 # Ruby licence.
-# 
+#
 # $Id$
 #++
 # Provides Diff::LCS::Change and Diff::LCS::ContextChange.
@@ -145,7 +145,7 @@ class Diff::LCS::ContextChange
   end
 
     # Simplifies a context change for use in some diff callbacks. '<' actions
-    # are converted to '-' and '>' actions are converted to '+'. 
+    # are converted to '-' and '>' actions are converted to '+'.
   def self.simplify(event)
     ea = event.to_a
 

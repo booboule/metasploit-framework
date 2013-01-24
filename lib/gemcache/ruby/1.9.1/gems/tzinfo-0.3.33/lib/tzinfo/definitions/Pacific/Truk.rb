@@ -3,7 +3,7 @@ module TZInfo
     module Pacific
       module Truk
         include TimezoneDefinition
-        
+
         linked_timezone 'Pacific/Truk', 'Pacific/Chuuk'
       end
     end

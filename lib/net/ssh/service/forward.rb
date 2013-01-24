@@ -74,7 +74,7 @@ module Net; module SSH; module Service
         end
 
         prepare_client(client, channel, :local)
-  
+
         channel.on_open_failed do |ch, code, description|
           channel.error { "could not establish direct channel: #{description} (#{code})" }
           channel[:socket].close

@@ -8,7 +8,7 @@
 
 trap('TERM') {
   puts "received TERM"
-  
+
   loop do
     puts 'hanging!'
     sleep(3)

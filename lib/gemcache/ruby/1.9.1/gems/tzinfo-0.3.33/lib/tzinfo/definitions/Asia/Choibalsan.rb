@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Choibalsan
         include TimezoneDefinition
-        
+
         timezone 'Asia/Choibalsan' do |tz|
           tz.offset :o0, 27480, 0, :LMT
           tz.offset :o1, 25200, 0, :ULAT
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, 32400, 3600, :CHOST
           tz.offset :o4, 32400, 0, :CHOT
           tz.offset :o5, 28800, 0, :CHOT
-          
+
           tz.transition 1905, 7, :o1, 1740281891, 720
           tz.transition 1977, 12, :o2, 252435600
           tz.transition 1983, 3, :o3, 417974400

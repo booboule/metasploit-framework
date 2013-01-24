@@ -13,19 +13,19 @@ module Formtastic
   autoload :LocalizedString
   autoload :Localizer
   autoload :Util
-  
+
   # @private
   class UnknownInputError < NameError
   end
-  
+
   # @private
   class UnknownActionError < NameError
   end
-  
+
   # @private
   class PolymorphicInputWithoutCollectionError < ArgumentError
   end
-  
+
   # @private
   class UnsupportedMethodForAction < ArgumentError
   end

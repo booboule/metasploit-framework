@@ -54,7 +54,7 @@ opts.parse(args) { |opt, idx, val|
 		print_line "Meterpreter Script for extracting a list installed applications and their version."
 		print_line(opts.usage)
 		raise Rex::Script::Completed
-		
+
 	end
 }
 if client.platform =~ /win32|win64/

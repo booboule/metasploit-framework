@@ -120,7 +120,7 @@ EOS
 		ee = Metasm::Expression[:+, 'bla'].encode(:u16, :big)
 		ee.fixup('bla' => 1024)
 		assert_equal("\4\0", ee.data)
-		
+
 		eee = compile <<EOS
 db abc - def
 def:

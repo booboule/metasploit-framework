@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Metlakatla
         include TimezoneDefinition
-        
+
         timezone 'America/Metlakatla' do |tz|
           tz.offset :o0, 54822, 0, :LMT
           tz.offset :o1, -31578, 0, :LMT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, -28800, 3600, :PPT
           tz.offset :o5, -28800, 3600, :PDT
           tz.offset :o6, -28800, 0, :MeST
-          
+
           tz.transition 1867, 10, :o1, 34606898863, 14400
           tz.transition 1900, 8, :o2, 34779634063, 14400
           tz.transition 1942, 2, :o3, 29164799, 12

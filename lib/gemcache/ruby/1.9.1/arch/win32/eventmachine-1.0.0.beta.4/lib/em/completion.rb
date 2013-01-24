@@ -50,7 +50,7 @@
 #          @completion.fail :unknown, line
 #        end
 #      end
-#  
+#
 #      def unbind
 #        @completion.fail :disconnected unless @completion.completed?
 #      end

@@ -2,11 +2,11 @@ module TZInfo
   module Definitions
     module EET
       include TimezoneDefinition
-      
+
       timezone 'EET' do |tz|
         tz.offset :o0, 7200, 0, :EET
         tz.offset :o1, 7200, 3600, :EEST
-        
+
         tz.transition 1977, 4, :o1, 228877200
         tz.transition 1977, 9, :o0, 243997200
         tz.transition 1978, 4, :o1, 260326800

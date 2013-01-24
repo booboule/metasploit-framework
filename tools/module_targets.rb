@@ -49,7 +49,7 @@ opts.parse(ARGV) { |opt, idx, val|
 	when "-x"
 		puts "Filter: #{val}"
 		filter = val
-		fil=1		
+		fil=1
 	end
 }
 

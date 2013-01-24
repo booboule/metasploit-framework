@@ -14,7 +14,7 @@ class Regexr
 	# Check for the beginning and end lines. Handy when you need to ensure a log has started & completed
 	def verify_start_and_end(data,the_start,the_end)
 		return false unless data
-		
+
 		data_lines = data.split("\n")
 		regex_start   = Regexp.new(the_start, @case_insensitive)
 		regex_end = Regexp.new(the_end, @case_insensitive)
@@ -22,7 +22,7 @@ class Regexr
 		if regex_start =~ data_lines.first
 			return regex_end =~ data_lines.last
 		end
-		
+
 		return false
 	end
 
@@ -31,9 +31,9 @@ class Regexr
 		return false unless data
 
 		data_lines = data.split("\n")
-		
+
 		return nil unless regexes ## count as a pass
-		
+
 		if regexes
 			target_successes = regexes.size
 			success_count = 0
@@ -41,25 +41,25 @@ class Regexr
 
 				## assume we haven't got it
 				found = false
-				 
+
 				re = Regexp.new(condition, @case_insensitive)
-				
+
 				## for each of our data lines
 				data_lines.each {|line|
-				
+
 					## if it's a match
 					if line =~ re
 						found = true
 						break ## success!
 					end
 				}
-				
+
 				if !found
 					return condition ## return this string, it wasn't found.
 				end
 			}
 		end
-		
+
 		nil ## got all successes, woot!
 	end
 
@@ -69,21 +69,21 @@ class Regexr
 		return false unless data
 
 		data_lines = data.split("\n")
-		
+
 		return nil unless regexes ## count as a pass
 
 		regexes.each { |condition|
 
-			## for each failure condition that we've been passed 
+			## for each failure condition that we've been passed
 			re = Regexp.new(condition, @case_insensitive)
 
 			## assume we're okay
-			found = false				
+			found = false
 
 			data_lines.each { |line|
 				if re =~ line
 					found = true # oh, we found a match
-					
+
 					# but let's check the exceptions
 					exceptions.map { |exception|
 						reg_exception = Regexp.new(exception, @case_insensitive)
@@ -95,12 +95,12 @@ class Regexr
 						end
 					}
 
-					# If we didn't find an exception, we have to fail it. do not pass go. 
+					# If we didn't find an exception, we have to fail it. do not pass go.
 					return condition if found
 				end
 			}
 		}
-		
+
 		nil ## no failures found!
 	end
 end

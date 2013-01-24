@@ -43,9 +43,9 @@ module ActionController
   #       wrap_parameters :person, :include => [:username, :password]
   #     end
   #
-  # On ActiveRecord models with no +:include+ or +:exclude+ option set, 
+  # On ActiveRecord models with no +:include+ or +:exclude+ option set,
   # if attr_accessible is set on that model, it will only wrap the accessible
-  # parameters, else it will only wrap the parameters returned by the class 
+  # parameters, else it will only wrap the parameters returned by the class
   # method attribute_names.
   #
   # If you're going to pass the parameters to an +ActiveModel+ object (such as

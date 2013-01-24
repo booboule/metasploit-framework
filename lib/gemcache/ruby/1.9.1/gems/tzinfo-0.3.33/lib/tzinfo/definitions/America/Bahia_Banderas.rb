@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Bahia_Banderas
         include TimezoneDefinition
-        
+
         timezone 'America/Bahia_Banderas' do |tz|
           tz.offset :o0, -25260, 0, :LMT
           tz.offset :o1, -25200, 0, :MST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -28800, 0, :PST
           tz.offset :o4, -25200, 3600, :MDT
           tz.offset :o5, -21600, 3600, :CDT
-          
+
           tz.transition 1922, 1, :o1, 58153339, 24
           tz.transition 1927, 6, :o2, 9700171, 4
           tz.transition 1930, 11, :o1, 9705183, 4

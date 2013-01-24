@@ -3,13 +3,13 @@ module TZInfo
     module America
       module Rio_Branco
         include TimezoneDefinition
-        
+
         timezone 'America/Rio_Branco' do |tz|
           tz.offset :o0, -16272, 0, :LMT
           tz.offset :o1, -18000, 0, :ACT
           tz.offset :o2, -18000, 3600, :ACST
           tz.offset :o3, -14400, 0, :AMT
-          
+
           tz.transition 1914, 1, :o1, 1452080213, 600
           tz.transition 1931, 10, :o2, 14559709, 6
           tz.transition 1932, 4, :o1, 7280396, 3

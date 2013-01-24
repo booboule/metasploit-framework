@@ -173,7 +173,7 @@ module Formtastic
       def include_blank
         options.key?(:include_blank) ? options[:include_blank] : (single? && builder.include_blank_for_select_by_default)
       end
-      
+
       def hidden_input
         if multiple?
           template.hidden_field_tag(input_html_options_name_multiple, '', :id => nil)
@@ -197,14 +197,14 @@ module Formtastic
       def input_html_options
         extra_input_html_options.merge(super)
       end
-      
+
       def extra_input_html_options
         {
           :multiple => multiple?,
           :name => multiple? ? input_html_options_name_multiple : input_html_options_name
         }
       end
-      
+
       def input_html_options_name
         if builder.options.key?(:index)
           "#{object_name}[#{builder.options[:index]}][#{association_primary_key}]"

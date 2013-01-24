@@ -54,7 +54,7 @@ module Formtastic
       def label_html_options
         prev = super
         prev[:class] = prev[:class] - ['label']
-        
+
         input_html_options.merge(
           prev.merge(
             :id   => nil,
@@ -87,7 +87,7 @@ module Formtastic
       def input_html_options
         {:name => input_html_options_name}.merge(super)
       end
-      
+
       def input_html_options_name
         if builder.options.key?(:index)
           "#{object_name}[#{builder.options[:index]}][#{method}]"

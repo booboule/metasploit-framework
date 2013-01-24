@@ -2,11 +2,11 @@ module TZInfo
   module Definitions
     module CET
       include TimezoneDefinition
-      
+
       timezone 'CET' do |tz|
         tz.offset :o0, 3600, 0, :CET
         tz.offset :o1, 3600, 3600, :CEST
-        
+
         tz.transition 1916, 4, :o1, 29051813, 12
         tz.transition 1916, 9, :o0, 58107299, 24
         tz.transition 1917, 4, :o1, 58112029, 24

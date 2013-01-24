@@ -30,11 +30,11 @@ class Rex::Proto::DCERPC::NDR::UnitTest < Test::Unit::TestCase
 		assert_equal("\x05\x00\x00\x00aaaaa", Klass.UniConformantArray('aaaaa').slice(0,9), 'UniConformantArray')
 		assert_equal(12, Klass.UniConformantArray('aaaaa').length, 'UniConformantArray length')
 	end
-	
+
 	def test_conformant_string
 		assert_equal("\x06\x00\x00\x00" + "\x00\x00\x00\x00" + "\x06\x00\x00\x00" "a\x00a\x00a\x00a\x00a\x00\x00\x00", Klass.UnicodeConformantVaryingString('aaaaa').slice(0,4+4+4+12), 'UniConformantVaryingString')
 		assert_equal(24, Klass.UnicodeConformantVaryingString('aaaaa').length, 'UniConformantVaryingString length')
-	
+
 		assert_equal("\x02\x00\x00\x00" + "\x00\x00\x00\x00" + "\x02\x00\x00\x00" "aa\x00\x00", Klass.UnicodeConformantVaryingStringPreBuilt('aa' + "\x00\x00"), 'UniConformantVaryingStringPreBuilt')
 		assert_equal(16, Klass.UnicodeConformantVaryingStringPreBuilt('aa' + "\x00\x00").length, 'UniConformantVaryingStringPreBuilt length')
 	end

@@ -44,7 +44,7 @@ shell.init_ui(Rex::Ui::Text::Input::Stdio.new, Rex::Ui::Text::Output::Stdio.new)
 
 shell.run { |line|
 	line.gsub!(/(\r|\n)/, '')
-	line.gsub!(/\\n/, "\n")	
+	line.gsub!(/\\n/, "\n")
 
 	break if (line =~ /^(exit|quit)/i)
 

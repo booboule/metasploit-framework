@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Dacca
         include TimezoneDefinition
-        
+
         linked_timezone 'Asia/Dacca', 'Asia/Dhaka'
       end
     end

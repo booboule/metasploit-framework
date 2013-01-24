@@ -3,13 +3,13 @@ module TZInfo
     module Asia
       module Macau
         include TimezoneDefinition
-        
+
         timezone 'Asia/Macau' do |tz|
           tz.offset :o0, 27260, 0, :LMT
           tz.offset :o1, 28800, 0, :MOT
           tz.offset :o2, 28800, 3600, :MOST
           tz.offset :o3, 28800, 0, :CST
-          
+
           tz.transition 1911, 12, :o1, 10451817437, 4320
           tz.transition 1961, 3, :o2, 38998037, 16
           tz.transition 1961, 11, :o1, 117005197, 48

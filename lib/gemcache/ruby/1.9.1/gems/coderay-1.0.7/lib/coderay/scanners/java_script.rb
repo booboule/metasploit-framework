@@ -1,14 +1,14 @@
 module CodeRay
 module Scanners
-  
+
   # Scanner for JavaScript.
-  # 
+  #
   # Aliases: +ecmascript+, +ecma_script+, +javascript+
   class JavaScript < Scanner
-    
+
     register_for :java_script
     file_extension 'js'
-    
+
     # The actual JavaScript keywords.
     KEYWORDS = %w[
       break case catch continue default delete do else
@@ -18,13 +18,13 @@ module Scanners
     PREDEFINED_CONSTANTS = %w[
       false null true undefined NaN Infinity
     ]  # :nodoc:
-    
+
     MAGIC_VARIABLES = %w[ this arguments ]  # :nodoc: arguments was introduced in JavaScript 1.4
-    
+
     KEYWORDS_EXPECTING_VALUE = WordList.new.add %w[
       case delete in instanceof new return throw typeof with
     ]  # :nodoc:
-    
+
     # Reserved for future use.
     RESERVED_WORDS = %w[
       abstract boolean byte char class debugger double enum export extends
@@ -32,13 +32,13 @@ module Scanners
       private protected public short static super synchronized throws transient
       volatile
     ]  # :nodoc:
-    
+
     IDENT_KIND = WordList.new(:ident).
       add(RESERVED_WORDS, :reserved).
       add(PREDEFINED_CONSTANTS, :predefined_constant).
       add(MAGIC_VARIABLES, :local_variable).
       add(KEYWORDS, :keyword)  # :nodoc:
-    
+
     ESCAPE = / [bfnrtv\n\\'"] | x[a-fA-F0-9]{1,2} | [0-7]{1,3} /x  # :nodoc:
     UNICODE_ESCAPE =  / u[a-fA-F0-9]{4} | U[a-fA-F0-9]{8} /x  # :nodoc:
     REGEXP_ESCAPE =  / [bBdDsSwW] /x  # :nodoc:
@@ -51,31 +51,31 @@ module Scanners
       "'" => / (?> [^\\']* (?: \\. [^\\']* )* ) ' \s* : /mx,
       '"' => / (?> [^\\"]* (?: \\. [^\\"]* )* ) " \s* : /mx,
     }  # :nodoc:
-    
+
   protected
-    
+
     def scan_tokens encoder, options
-      
+
       state = :initial
       string_delimiter = nil
       value_expected = true
       key_expected = false
       function_expected = false
-      
+
       until eos?
-        
+
         case state
-          
+
         when :initial
-          
+
           if match = scan(/ \s+ | \\\n /x)
             value_expected = true if !value_expected && match.index(?\n)
             encoder.text_token match, :space
-            
+
           elsif match = scan(%r! // [^\n\\]* (?: \\. [^\n\\]* )* | /\* (?: .*? \*/ | .* ) !mx)
             value_expected = true
             encoder.text_token match, :comment
-            
+
           elsif check(/\.?\d/)
             key_expected = value_expected = false
             if match = scan(/0[xX][0-9A-Fa-f]+/)
@@ -87,24 +87,24 @@ module Scanners
             elsif match = scan(/\d+/)
               encoder.text_token match, :integer
             end
-            
+
           elsif value_expected && match = scan(/<([[:alpha:]]\w*) (?: [^\/>]*\/> | .*?<\/\1>)/xim)
             # TODO: scan over nested tags
             xml_scanner.tokenize match, :tokens => encoder
             value_expected = false
             next
-            
+
           elsif match = scan(/ [-+*=<>?:;,!&^|(\[{~%]+ | \.(?!\d) /x)
             value_expected = true
             last_operator = match[-1]
             key_expected = (last_operator == ?{) || (last_operator == ?,)
             function_expected = false
             encoder.text_token match, :operator
-            
+
           elsif match = scan(/ [)\]}]+ /x)
             function_expected = key_expected = value_expected = false
             encoder.text_token match, :operator
-            
+
           elsif match = scan(/ [$a-zA-Z_][A-Za-z_0-9$]* /x)
             kind = IDENT_KIND[match]
             value_expected = (kind == :keyword) && KEYWORDS_EXPECTING_VALUE[match]
@@ -123,7 +123,7 @@ module Scanners
             function_expected = (kind == :keyword) && (match == 'function')
             key_expected = false
             encoder.text_token match, kind
-            
+
           elsif match = scan(/["']/)
             if key_expected && check(KEY_CHECK_PATTERN[match])
               state = :key
@@ -133,23 +133,23 @@ module Scanners
             encoder.begin_group state
             string_delimiter = match
             encoder.text_token match, :delimiter
-            
+
           elsif value_expected && (match = scan(/\//))
             encoder.begin_group :regexp
             state = :regexp
             string_delimiter = '/'
             encoder.text_token match, :delimiter
-            
+
           elsif match = scan(/ \/ /x)
             value_expected = true
             key_expected = false
             encoder.text_token match, :operator
-            
+
           else
             encoder.text_token getch, :error
-            
+
           end
-          
+
         when :string, :regexp, :key
           if match = scan(STRING_CONTENT_PATTERN[string_delimiter])
             encoder.text_token match, :content
@@ -181,33 +181,33 @@ module Scanners
           else
             raise_inspect "else case \" reached; %p not handled." % peek(1), encoder
           end
-          
+
         else
           raise_inspect 'Unknown state', encoder
-          
+
         end
-        
+
       end
-      
+
       if [:string, :regexp].include? state
         encoder.end_group state
       end
-      
+
       encoder
     end
-    
+
   protected
-    
+
     def reset_instance
       super
       @xml_scanner.reset if defined? @xml_scanner
     end
-    
+
     def xml_scanner
       @xml_scanner ||= CodeRay.scanner :xml, :tokens => @tokens, :keep_tokens => true, :keep_state => false
     end
-    
+
   end
-  
+
 end
 end

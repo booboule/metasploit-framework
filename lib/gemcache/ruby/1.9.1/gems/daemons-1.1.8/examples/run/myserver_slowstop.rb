@@ -8,10 +8,10 @@
 
 trap('TERM') {
   puts "received TERM"
-  
+
   # simulate the slow stopping
   sleep(10)
-  
+
   exit
 }
 

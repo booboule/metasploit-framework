@@ -3,14 +3,14 @@ module TZInfo
     module Atlantic
       module Reykjavik
         include TimezoneDefinition
-        
+
         timezone 'Atlantic/Reykjavik' do |tz|
           tz.offset :o0, -5244, 0, :LMT
           tz.offset :o1, -5268, 0, :RMT
           tz.offset :o2, -3600, 0, :IST
           tz.offset :o3, -3600, 3600, :ISST
           tz.offset :o4, 0, 0, :GMT
-          
+
           tz.transition 1837, 1, :o1, 17222476037, 7200
           tz.transition 1908, 1, :o2, 17409179239, 7200
           tz.transition 1917, 2, :o3, 4842559, 2

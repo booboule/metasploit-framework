@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Anchorage
         include TimezoneDefinition
-        
+
         timezone 'America/Anchorage' do |tz|
           tz.offset :o0, 50424, 0, :LMT
           tz.offset :o1, -35976, 0, :LMT
@@ -15,7 +15,7 @@ module TZInfo
           tz.offset :o7, -32400, 0, :YST
           tz.offset :o8, -32400, 0, :AKST
           tz.offset :o9, -32400, 3600, :AKDT
-          
+
           tz.transition 1867, 10, :o1, 8651724899, 3600
           tz.transition 1900, 8, :o2, 8694908699, 3600
           tz.transition 1942, 2, :o3, 2430400, 1

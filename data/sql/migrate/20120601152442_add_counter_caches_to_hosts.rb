@@ -4,7 +4,7 @@ class AddCounterCachesToHosts < ActiveRecord::Migration
     add_column :hosts, :note_count, :integer, :default => 0
     add_column :hosts, :vuln_count, :integer, :default => 0
     add_column :hosts, :service_count, :integer, :default => 0
-  
+
     Mdm::Host.reset_column_information
     Mdm::Host.all.each do |h|
       Mdm::Host.reset_counters h.id, :notes

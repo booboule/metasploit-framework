@@ -34,7 +34,7 @@ def frfxplacesget(path,usrnm)
 		fullpath = path + '\\' + x
 		if @client.fs.file.stat(fullpath).directory?
 			frfxplacesget(fullpath,usrnm)
-		elsif fullpath =~ /(formhistory.sqlite|cookies.sqlite|places.sqlite|search.sqlite)/i	
+		elsif fullpath =~ /(formhistory.sqlite|cookies.sqlite|places.sqlite|search.sqlite)/i
 			dst = x
 			dst = @logs + ::File::Separator + usrnm + dst
 			print_status("\tDownloading Firefox Database file #{x} to '#{dst}'")

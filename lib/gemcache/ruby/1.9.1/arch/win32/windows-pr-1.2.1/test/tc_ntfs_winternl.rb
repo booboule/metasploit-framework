@@ -13,11 +13,11 @@ class TC_Windows_NTFS_Winternl < Test::Unit::TestCase
     @name = "winternl_test.txt"
     @handle = File.open(@name, 'w')
   end
-   
+
   def test_numeric_constants
     assert_equal(8, FileAccessInformation)
   end
-  
+
   def test_methods_defined
     assert(self.respond_to?(:NtQueryInformationFile, true))
   end

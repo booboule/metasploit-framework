@@ -1,7 +1,7 @@
 module Formtastic
   module Actions
     module Buttonish
-      
+
       def supported_methods
         [:submit, :reset]
       end
@@ -11,7 +11,7 @@ module Formtastic
           :type => method
         }
       end
-      
+
     end
   end
 end

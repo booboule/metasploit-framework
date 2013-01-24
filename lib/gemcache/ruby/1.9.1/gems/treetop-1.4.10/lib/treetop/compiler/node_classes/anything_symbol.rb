@@ -1,5 +1,5 @@
 module Treetop
-  module Compiler    
+  module Compiler
     class AnythingSymbol < AtomicExpression
       def compile(address, builder, parent_expression = nil)
         super

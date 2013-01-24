@@ -1,7 +1,7 @@
 module MsfTest
 module WindowsMeterpreterSpecs
 
-	## This file is intended to be used in conjunction with a harness, 
+	## This file is intended to be used in conjunction with a harness,
 	## such as meterpreter_win32_spec.rb
 
 	def self.included(base)
@@ -9,7 +9,7 @@ module WindowsMeterpreterSpecs
 
 			it "should not error when uploading a file to a windows box" do
 				upload_success_strings = [ 	'uploading',
-								'uploaded' ]	
+								'uploaded' ]
 
 				## create a file to upload
 				filename = "/tmp/whatever"
@@ -25,23 +25,23 @@ module WindowsMeterpreterSpecs
 				## clean up
 				FileUtils.rm(filename)
 			end
-				
-				
+
+
 			it "should show the priv commands when running help" do
-			
+
 			success_strings =	['Priv: Elevate Commands',
 						 'Priv: Password database Commands',
 						 'Priv: Timestomp Commands' ]
-					
+
 				hlp_run_command_check_output("help_shortcut","help", success_strings)
 
 			end
-			
+
 			it "should not error when taking a screenshot" do
 				success_strings = [ 'Screenshot saved to' ]
 				hlp_run_command_check_output("screenshot","screenshot", success_strings)
 			end
-						
+
 		end
 	end
 

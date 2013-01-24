@@ -3,14 +3,14 @@ module TZInfo
     module Africa
       module Ceuta
         include TimezoneDefinition
-        
+
         timezone 'Africa/Ceuta' do |tz|
           tz.offset :o0, -1276, 0, :LMT
           tz.offset :o1, 0, 0, :WET
           tz.offset :o2, 0, 3600, :WEST
           tz.offset :o3, 3600, 0, :CET
           tz.offset :o4, 3600, 3600, :CEST
-          
+
           tz.transition 1901, 1, :o1, 52172327119, 21600
           tz.transition 1918, 5, :o2, 58121291, 24
           tz.transition 1918, 10, :o1, 29062493, 12

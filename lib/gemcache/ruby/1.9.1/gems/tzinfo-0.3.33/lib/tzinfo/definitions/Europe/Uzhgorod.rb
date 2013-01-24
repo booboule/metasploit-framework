@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Uzhgorod
         include TimezoneDefinition
-        
+
         timezone 'Europe/Uzhgorod' do |tz|
           tz.offset :o0, 5352, 0, :LMT
           tz.offset :o1, 3600, 0, :CET
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 10800, 3600, :MSD
           tz.offset :o5, 7200, 0, :EET
           tz.offset :o6, 7200, 3600, :EEST
-          
+
           tz.transition 1890, 9, :o1, 8681909177, 3600
           tz.transition 1940, 4, :o2, 58313293, 24
           tz.transition 1942, 11, :o1, 58335973, 24

@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Shiprock
         include TimezoneDefinition
-        
+
         linked_timezone 'America/Shiprock', 'America/Denver'
       end
     end

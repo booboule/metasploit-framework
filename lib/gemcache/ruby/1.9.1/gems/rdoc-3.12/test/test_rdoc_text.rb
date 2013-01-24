@@ -144,7 +144,7 @@ The comments associated with
     text = <<-TEXT
 /*
  * we don't worry too much.
- * 
+ *
  * The comments associated with
  */
     TEXT
@@ -162,7 +162,7 @@ The comments associated with
     text = <<-TEXT
 /*
  *  we don't worry too much.
- *  
+ *
  *  The comments associated with
  */
     TEXT

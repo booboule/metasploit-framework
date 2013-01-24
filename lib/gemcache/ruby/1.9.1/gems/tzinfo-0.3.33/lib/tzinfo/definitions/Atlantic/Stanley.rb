@@ -3,7 +3,7 @@ module TZInfo
     module Atlantic
       module Stanley
         include TimezoneDefinition
-        
+
         timezone 'Atlantic/Stanley' do |tz|
           tz.offset :o0, -13884, 0, :LMT
           tz.offset :o1, -13884, 0, :SMT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, -10800, 0, :FKT
           tz.offset :o5, -10800, 3600, :FKST
           tz.offset :o6, -10800, 0, :FKST
-          
+
           tz.transition 1890, 1, :o1, 17361854357, 7200
           tz.transition 1912, 3, :o2, 17420210357, 7200
           tz.transition 1937, 9, :o3, 7286408, 3

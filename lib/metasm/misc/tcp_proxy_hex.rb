@@ -71,7 +71,7 @@ loop do
 	a = s.accept
 	puts "incoming connection"
 	c = TCPSocket.new(rhost, rport)
-	
+
 	begin
 		bouncepkt(a, c, timeout)
 	rescue SystemCallError

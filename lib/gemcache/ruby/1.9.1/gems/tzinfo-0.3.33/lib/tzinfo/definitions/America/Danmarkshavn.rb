@@ -3,13 +3,13 @@ module TZInfo
     module America
       module Danmarkshavn
         include TimezoneDefinition
-        
+
         timezone 'America/Danmarkshavn' do |tz|
           tz.offset :o0, -4480, 0, :LMT
           tz.offset :o1, -10800, 0, :WGT
           tz.offset :o2, -10800, 3600, :WGST
           tz.offset :o3, 0, 0, :GMT
-          
+
           tz.transition 1916, 7, :o1, 653689589, 270
           tz.transition 1980, 4, :o2, 323845200
           tz.transition 1980, 9, :o1, 338950800

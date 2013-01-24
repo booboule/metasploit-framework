@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Goose_Bay
         include TimezoneDefinition
-        
+
         timezone 'America/Goose_Bay' do |tz|
           tz.offset :o0, -14500, 0, :LMT
           tz.offset :o1, -12652, 0, :NST
@@ -15,7 +15,7 @@ module TZInfo
           tz.offset :o7, -14400, 0, :AST
           tz.offset :o8, -14400, 3600, :ADT
           tz.offset :o9, -14400, 7200, :ADDT
-          
+
           tz.transition 1884, 1, :o1, 2081528641, 864
           tz.transition 1918, 4, :o2, 52308670963, 21600
           tz.transition 1918, 10, :o1, 52312903663, 21600

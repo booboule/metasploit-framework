@@ -24,13 +24,13 @@ class PeLdr
 		end
 		@load_address = DL.memory_alloc(@pe.optheader.image_size)
 		raise 'malloc' if @load_address == 0xffff_ffff
-		
+
 		puts "map sections" if $DEBUG
 		DL.memory_write(@load_address, @pe.encoded.data[0, @pe.optheader.headers_size].to_str)
 		@pe.sections.each { |s|
 			DL.memory_write(@load_address+s.virtaddr, s.encoded.data.to_str)
 		}
-		
+
 		puts "fixup sections" if $DEBUG
 		off = @load_address - @pe.optheader.image_base
 		@pe.relocations.to_a.each { |rt|
@@ -351,7 +351,7 @@ if $0 == __FILE__
 
 	wapi = FakeWinAPI.new %w[CloseHandle DuplicateHandle EnterCriticalSection GetCurrentProcess GetCurrentProcessId GetCurrentThreadId GetEnvironmentVariableW GetLastError GetProcAddress GetSystemInfo GetSystemTimeAsFileTime GetTickCount GetVersion GetVersionExA HeapAlloc HeapCreate HeapFree InterlockedCompareExchange InterlockedExchange InitializeCriticalSectionAndSpinCount InitializeCriticalSection LeaveCriticalSection QueryPerformanceCounter SetLastError TlsAlloc RtlEqualUnicodeString MultiByteToWideChar free malloc memset ??2@YAPAXI@Z __dllonexit _initterm _lock _unlock _wcslwr _wcsdup GetModuleHandleA LoadLibraryA NtQueryObject NtQueryInformationProcess LdrUnloadDll]
 	puts 'wapi@%x' % wapi.load_address if $VERBOSE
-	
+
 	wapi.hook_export('GetModuleHandleA', '__stdcall int f(char*)') { |ptr|
 		s = dl.memory_read_strz(ptr) if ptr
 		case s

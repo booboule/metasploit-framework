@@ -9,13 +9,13 @@ module Treetop
           end
           builder.newline
         end
-        
+
         declarations.each do |declaration|
           declaration.compile(builder)
           builder.newline
         end
       end
-      
+
       def rules
         declarations.select { |declaration| declaration.instance_of?(ParsingRule) }
       end

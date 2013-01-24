@@ -3,15 +3,15 @@ module Formtastic
     # Outputs a series of select boxes for the fragments that make up a date (year, month, day).
     #
     # @see Formtastic::Inputs::Base::Timeish Timeish module for documentation of date, time and datetime input options.
-    class DateInput 
+    class DateInput
       include Base
       include Base::Timeish
-      
+
       # We don't want hour and minute fragments on a date input
       def time_fragments
         []
       end
-      
+
       def hidden_date_fragments
         default_date_fragments - date_fragments
       end
@@ -28,7 +28,7 @@ module Formtastic
         else
           '1'
         end
-      end      
+      end
     end
   end
 end

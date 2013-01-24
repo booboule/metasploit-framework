@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Vancouver
         include TimezoneDefinition
-        
+
         timezone 'America/Vancouver' do |tz|
           tz.offset :o0, -29548, 0, :LMT
           tz.offset :o1, -28800, 0, :PST
           tz.offset :o2, -28800, 3600, :PDT
           tz.offset :o3, -28800, 3600, :PWT
           tz.offset :o4, -28800, 3600, :PPT
-          
+
           tz.transition 1884, 1, :o1, 52038219787, 21600
           tz.transition 1918, 4, :o2, 29060375, 12
           tz.transition 1918, 10, :o1, 19375151, 8

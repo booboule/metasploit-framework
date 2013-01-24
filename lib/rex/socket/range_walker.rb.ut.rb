@@ -11,7 +11,7 @@ class Rex::Socket::RangeWalker::UnitTest < Test::Unit::TestCase
 	Klass = Rex::Socket::RangeWalker
 
 	def test_walker
-	
+
 		#
 		# Single argument
 		#
@@ -30,7 +30,7 @@ class Rex::Socket::RangeWalker::UnitTest < Test::Unit::TestCase
 		assert_nil(s.next_ip)
 
 		#
-		
+
 
 		#
 		# Backwards
@@ -48,9 +48,9 @@ class Rex::Socket::RangeWalker::UnitTest < Test::Unit::TestCase
 		s = Klass.new('10.0.0.255-10.0.0.255')
 		assert_equal('10.0.0.255', s.next_ip)
 		assert_nil(s.next_ip)
-		
 
-		
+
+
 	end
 
 end

@@ -3,7 +3,7 @@ module TZInfo
     module US
       module Arizona
         include TimezoneDefinition
-        
+
         linked_timezone 'US/Arizona', 'America/Phoenix'
       end
     end

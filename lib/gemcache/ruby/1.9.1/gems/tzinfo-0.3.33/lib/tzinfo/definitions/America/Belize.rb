@@ -3,13 +3,13 @@ module TZInfo
     module America
       module Belize
         include TimezoneDefinition
-        
+
         timezone 'America/Belize' do |tz|
           tz.offset :o0, -21168, 0, :LMT
           tz.offset :o1, -21600, 0, :CST
           tz.offset :o2, -21600, 1800, :CHDT
           tz.offset :o3, -21600, 3600, :CDT
-          
+
           tz.transition 1912, 4, :o1, 483898749, 200
           tz.transition 1918, 10, :o2, 9687491, 4
           tz.transition 1919, 2, :o1, 116255939, 48

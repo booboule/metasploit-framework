@@ -17,23 +17,23 @@ describe "Win32Meterpreter" do
 	# Include Custom Matchers
 	include MsfTest::MsfMatchers
 
-	
+
 	# This include brings in all the spec helper methods
 	include MsfTest::MeterpreterSpecHelper
-	
-	# This include brings in all the specs that are generic across the 
+
+	# This include brings in all the specs that are generic across the
 	# meterpreter platforms
 	include MsfTest::MeterpreterSpecs
 
-	# This include brings in all the specs that are specific to the 
+	# This include brings in all the specs that are specific to the
 	# windows meterpreter platforms
 	include MsfTest::WindowsMeterpreterSpecs
 
 	before :all do
 		@verbose = true
-	
+
 		@meterpreter_type = "win32"
-		
+
 		## Set up an outupt directory
 		@output_directory = File.join(File.dirname(__FILE__), "test_output_#{@meterpreter_type}")
 
@@ -53,10 +53,10 @@ describe "Win32Meterpreter" do
 
 	after :each do
 		@session.init_ui(@input, @output)
-	end		
+	end
 
 	after :all do
-		
+
 		## Clean up test output
 		FileUtils.rm_rf(@output_directory)
 
@@ -68,16 +68,16 @@ describe "Win32Meterpreter" do
 				File.delete(file)
 			end
 		end
-	
+
 	end
-	
+
 	def create_session_windows_x32
 
 		## Setup for win32
 		@framework    = Msf::Simple::Framework.create
 		@exploit_name = 'windows/smb/psexec'
 		@payload_name = 'windows/meterpreter/bind_tcp'
-		@input        = Rex::Ui::Text::Input::Stdio.new 
+		@input        = Rex::Ui::Text::Input::Stdio.new
 		@output       = Rex::Ui::Text::Output::File.new(@default_file)
 
 		# Initialize the exploit instance
@@ -95,10 +95,10 @@ describe "Win32Meterpreter" do
 			puts "got a session"
 			@session.load_stdapi
 		else
-			puts "unable to get session"		
+			puts "unable to get session"
 			#flunk "Couldn't get a session!"
 		end
 	end
-  
+
 end
 end

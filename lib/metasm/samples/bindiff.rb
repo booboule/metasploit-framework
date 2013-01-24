@@ -238,7 +238,7 @@ class BinDiffWidget < Gui::DrawableWidget
 		done = false
 
 		curindex = 0
-		
+
 		trajan = lambda { |e|
 			index[e] = curindex
 			reach_index[e] = curindex

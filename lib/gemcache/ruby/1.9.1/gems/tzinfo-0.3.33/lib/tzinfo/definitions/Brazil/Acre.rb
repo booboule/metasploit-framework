@@ -3,7 +3,7 @@ module TZInfo
     module Brazil
       module Acre
         include TimezoneDefinition
-        
+
         linked_timezone 'Brazil/Acre', 'America/Rio_Branco'
       end
     end

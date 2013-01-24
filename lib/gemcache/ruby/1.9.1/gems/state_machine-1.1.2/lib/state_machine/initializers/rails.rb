@@ -4,7 +4,7 @@ if defined?(Rails)
   StateMachine::Integrations.all.each do |integration|
     locale_paths << integration.locale_path if integration.available? && integration.locale_path
   end
-  
+
   if defined?(Rails::Engine)
     # Rails 3.x
     class StateMachine::RailsEngine < Rails::Engine
@@ -12,7 +12,7 @@ if defined?(Rails)
         load 'tasks/state_machine.rb'
       end
     end
-    
+
     if Rails::VERSION::MAJOR == 3 && Rails::VERSION::MINOR == 0
       StateMachine::RailsEngine.paths.config.locales = locale_paths
     else

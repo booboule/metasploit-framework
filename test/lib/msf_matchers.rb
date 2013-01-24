@@ -25,7 +25,7 @@ module MsfMatchers
 		end
 
 	end
-	
+
 	def contain_a_complete_test
 		ContainACompleteTest.new
 	end
@@ -54,11 +54,11 @@ module MsfMatchers
 
 		#alias :have_all_successes :contain_all_successes
 	end
-	
+
 	def contain_all_successes(successes=[])
 		ContainAllSuccesses.new(successes)
 	end
-	
+
 	class ContainNoFailuresExcept
 
 		def initialize(failures=[],exceptions=[])
@@ -89,6 +89,6 @@ module MsfMatchers
 		ContainNoFailuresExcept.new(failures,exceptions)
 	end
 
-	
+
 end
 end

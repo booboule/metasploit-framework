@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Anadyr
         include TimezoneDefinition
-        
+
         timezone 'Asia/Anadyr' do |tz|
           tz.offset :o0, 42596, 0, :LMT
           tz.offset :o1, 43200, 0, :ANAT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 43200, 3600, :ANAST
           tz.offset :o5, 39600, 3600, :ANAST
           tz.offset :o6, 39600, 0, :ANAT
-          
+
           tz.transition 1924, 5, :o1, 52356391351, 21600
           tz.transition 1930, 6, :o2, 2426148, 1
           tz.transition 1981, 3, :o3, 354884400

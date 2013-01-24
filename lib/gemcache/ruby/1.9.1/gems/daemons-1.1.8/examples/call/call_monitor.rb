@@ -35,7 +35,7 @@ Daemons.call do
   File.open(testfile, 'a') {|f|
     f.puts "started..."
     puts "2"
-  
+
     sleep 5
 
     f.puts "...exit"
@@ -46,7 +46,7 @@ puts "second task started"
 puts "waiting 100 seconds..."
 sleep(100)
 
-# This call would result in an exception as it will try to kill the third process 
+# This call would result in an exception as it will try to kill the third process
 # which has already terminated by that time; but using the 'true' parameter forces the
 # stop_all procedure.
 puts "trying to stop all tasks..."

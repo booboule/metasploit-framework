@@ -9,7 +9,7 @@
 # This program is free software. It may be redistributed and/or modified under
 # the terms of the GPL version 2 (or later), the Perl Artistic licence, or the
 # Ruby licence.
-# 
+#
 # $Id$
 #++
 # Contains definitions for all default callback objects.
@@ -243,7 +243,7 @@ end
   # will compute and display the necessary components to show two sequences
   # and their minimized differences side by side, just like the Unix utility
   # +sdiff+.
-  # 
+  #
   #     same             same
   #     before     |     after
   #     old        <     -

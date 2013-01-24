@@ -221,7 +221,7 @@ class DbgRegWidget < DrawableWidget
 		swapin_tid
 
 		@reg_pos = []	# list of x y w h vx of the reg drawing on widget, vx is x of value
-	
+
 		@default_color_association = { :label => :black, :data => :blue, :write_pending => :darkred,
 				       	:changed => :darkgreen, :caret => :black, :background => :white,
 					:inactive => :palegrey }
@@ -402,7 +402,7 @@ class DbgRegWidget < DrawableWidget
 				@write_pending[reg] = v
 				rsz = 1
 			end
-			
+
 			if rsz == 1
 				@caret_reg += 1
 				@caret_reg = @registers.length if @caret_reg >= @registers.length + @flags.length
@@ -1038,7 +1038,7 @@ class DbgConsoleWidget < DrawableWidget
 				add_log "#{t} #{stf[:state]} #{stf[:info]}"
 			}
 		}
-		
+
 		new_command('pid', 'select a pid') { |arg|
 			if pid = solve_expr(arg)
 				@dbg.pid = pid
@@ -1127,7 +1127,7 @@ class DbgConsoleWidget < DrawableWidget
 			a = @commands.keys.find_all { |k| k[0, cn.length] == cn }
 			cn = a.first if a.length == 1
 		end
-		if pc = @commands[cn] 
+		if pc = @commands[cn]
 			pc[cmd.split(/\s+/, 2)[1].to_s]
 		else
 			add_log 'unknown command'

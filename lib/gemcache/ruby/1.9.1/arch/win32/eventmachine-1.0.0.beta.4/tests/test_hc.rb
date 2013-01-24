@@ -18,7 +18,7 @@ class TestHeaderAndContentProtocol < Test::Unit::TestCase
       @request << [hdrs, content]
     end
   end
-  
+
   class StopOnUnbind < EM::Connection
     def unbind
       EM.add_timer(0.01) { EM.stop }

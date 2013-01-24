@@ -177,7 +177,7 @@ avs = %W{
 	oasclnt.exe
 	ofcdog.exe
 	opscan.exe
-	ossec-agent.exe	
+	ossec-agent.exe
 	outpost.exe
 	paamsrv.exe
 	pavfnsvr.exe

@@ -52,7 +52,7 @@ module IceCube
       # do - we should check that above this line, and return nil if end_time is past
       @uses += 1 if time
       time
-    end 
+    end
 
     def to_s
       builder = StringBuilder.new

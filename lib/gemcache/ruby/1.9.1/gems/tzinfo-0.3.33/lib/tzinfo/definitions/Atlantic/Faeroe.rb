@@ -3,7 +3,7 @@ module TZInfo
     module Atlantic
       module Faeroe
         include TimezoneDefinition
-        
+
         linked_timezone 'Atlantic/Faeroe', 'Atlantic/Faroe'
       end
     end

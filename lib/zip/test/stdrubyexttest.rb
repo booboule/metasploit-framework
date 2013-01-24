@@ -12,7 +12,7 @@ class ModuleTest < Test::Unit::TestCase
   def test_select_map
     assert_equal([2, 4, 8, 10], [1, 2, 3, 4, 5].select_map { |e| e == 3 ? nil : 2*e })
   end
-  
+
 end
 
 class StringExtensionsTest < Test::Unit::TestCase
@@ -24,8 +24,8 @@ class StringExtensionsTest < Test::Unit::TestCase
     assert(! "hello".starts_with("hello there"))
     assert(! "hello".starts_with(" he"))
 
-    assert_raise(TypeError, "type mismatch: NilClass given") { 
-      "hello".starts_with(nil) 
+    assert_raise(TypeError, "type mismatch: NilClass given") {
+      "hello".starts_with(nil)
     }
   end
 

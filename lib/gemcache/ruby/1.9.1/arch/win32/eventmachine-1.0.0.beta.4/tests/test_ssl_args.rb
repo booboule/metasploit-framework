@@ -31,26 +31,26 @@ module EM
   end
 end
 
-  
+
 
 class TestSslArgs < Test::Unit::TestCase
   def setup
     EM._set_mocks
   end
-  
+
   def teardown
     EM._clear_mocks
   end
-  
+
   def test_tls_params_file_doesnt_exist
     priv_file, cert_file = 'foo_priv_key', 'bar_cert_file'
     [priv_file, cert_file].all? do |f|
       assert(!File.exists?(f), "Cert file #{f} seems to exist, and should not for the tests")
     end
-    
+
     # associate_callback_target is a pain! (build!)
     conn = EM::Connection.new('foo')
-    
+
     assert_raises(EM::FileNotFoundException) do
       conn.start_tls(:private_key_file => priv_file)
     end
@@ -61,7 +61,7 @@ class TestSslArgs < Test::Unit::TestCase
       conn.start_tls(:private_key_file => priv_file, :cert_chain_file => cert_file)
     end
   end
-  
+
   def test_tls_params_file_does_exist
     priv_file = Tempfile.new('em_test')
     cert_file = Tempfile.new('em_test')

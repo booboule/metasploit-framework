@@ -8,7 +8,7 @@ describe Spork::AppFramework do
         Spork::AppFramework.detect_framework.short_name.should == "Rails"
       end
     end
-  
+
     it "returns Unknown when no framework known detected" do
       Spork::AppFramework.detect_framework.short_name.should == "Unknown"
     end

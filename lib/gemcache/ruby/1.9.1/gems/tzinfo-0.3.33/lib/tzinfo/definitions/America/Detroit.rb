@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Detroit
         include TimezoneDefinition
-        
+
         timezone 'America/Detroit' do |tz|
           tz.offset :o0, -19931, 0, :LMT
           tz.offset :o1, -21600, 0, :CST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -18000, 3600, :EWT
           tz.offset :o4, -18000, 3600, :EPT
           tz.offset :o5, -18000, 3600, :EDT
-          
+
           tz.transition 1905, 1, :o1, 208815557531, 86400
           tz.transition 1915, 5, :o2, 14523797, 6
           tz.transition 1942, 2, :o3, 58329595, 24

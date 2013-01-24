@@ -685,7 +685,7 @@ TrackMouseEvent(
 #define QS_ALLEVENTS       (QS_INPUT | QS_POSTMESSAGE | QS_TIMER | QS_PAINT | QS_HOTKEY)
 #define QS_ALLINPUT        (QS_ALLEVENTS | QS_SENDMESSAGE)
 
-#define WAIT_TIMEOUT        258L 
+#define WAIT_TIMEOUT        258L
 
 #define CF_TEXT             1
 #define CF_BITMAP           2
@@ -1390,7 +1390,7 @@ class WinWidget
 		return if not @parent
 		@parent.set_focus(self) if @parent.respond_to? :set_focus
 	end
-	
+
 	def focus?
 		return true if not @parent
 		(@parent.respond_to?(:focus?) ? @parent.focus? : true) and
@@ -1955,7 +1955,7 @@ class Window
   				:lpfnwndproc => Win32Gui.callback_alloc_c('__stdcall int wndproc(int, int, int, int)') { |hwnd, msg, wp, lp| windowproc(hwnd, msg, wp, lp) }
 
 		Win32Gui.registerclassexa(cls)
-		
+
 		@hwnd = Win32Gui.createwindowexa(win32styleex, cname, 'win32gui window', win32style, Win32Gui::CW_USEDEFAULT, Win32Gui::SW_HIDE, Win32Gui::CW_USEDEFAULT, 0, 0, 0, 0, 0)
 
 		initialize_window(*a, &b)
@@ -2588,7 +2588,7 @@ class IBoxWidget < DrawableWidget
 		elsif mouserelease_buttons(x, y)
 		end
 	end
-	
+
 	def update_caret
 		return if @oldcaret_x == @caret_x and @oldsel_x == @caret_x_select
 		redraw
@@ -2705,7 +2705,7 @@ class LBoxWidget < DrawableWidget
 			@btnx << x
 			x += w
 		}
-		
+
 		x -= @sbh
 		y = @btnheight
 		@linehead = @sbv / @font_height
@@ -2907,7 +2907,7 @@ class LBoxWidget < DrawableWidget
 			redraw
 		end
 	end
-	
+
 	def destroy
 		@parent.destroy
 	end

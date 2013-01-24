@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Ashgabat
         include TimezoneDefinition
-        
+
         timezone 'Asia/Ashgabat' do |tz|
           tz.offset :o0, 14012, 0, :LMT
           tz.offset :o1, 14400, 0, :ASHT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 14400, 3600, :ASHST
           tz.offset :o5, 14400, 0, :TMT
           tz.offset :o6, 18000, 0, :TMT
-          
+
           tz.transition 1924, 5, :o1, 52356398497, 21600
           tz.transition 1930, 6, :o2, 7278445, 3
           tz.transition 1981, 3, :o3, 354913200

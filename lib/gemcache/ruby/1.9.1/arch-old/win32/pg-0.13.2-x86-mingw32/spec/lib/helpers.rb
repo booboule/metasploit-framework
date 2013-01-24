@@ -48,7 +48,7 @@ module PG::TestingHelpers
 		attributes = ANSI_ATTRIBUTES.values_at( *attributes ).compact.join(';')
 
 		# $stderr.puts "  attr is: %p" % [attributes]
-		if attributes.empty? 
+		if attributes.empty?
 			return ''
 		else
 			return "\e[%sm" % attributes
@@ -56,7 +56,7 @@ module PG::TestingHelpers
 	end
 
 
-	### Colorize the given +string+ with the specified +attributes+ and return it, handling 
+	### Colorize the given +string+ with the specified +attributes+ and return it, handling
 	### line-endings, color reset, etc.
 	def colorize( *args )
 		string = ''
@@ -112,7 +112,7 @@ module PG::TestingHelpers
 
 	NOFORK_PLATFORMS = %w{java}
 
-	### Run the specified command +cmd+ after redirecting stdout and stderr to the specified 
+	### Run the specified command +cmd+ after redirecting stdout and stderr to the specified
 	### +logpath+, failing if the execution fails.
 	def log_and_run( logpath, *cmd )
 		cmd.flatten!

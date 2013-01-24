@@ -3,7 +3,7 @@ module TZInfo
     module Pacific
       module Samoa
         include TimezoneDefinition
-        
+
         linked_timezone 'Pacific/Samoa', 'Pacific/Pago_Pago'
       end
     end

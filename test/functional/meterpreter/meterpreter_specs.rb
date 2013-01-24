@@ -74,7 +74,7 @@ module MeterpreterSpecs
 				commands.each do |command|
 					hlp_run_command_check_output("basic_#{command}",command)
 				end
-			end	
+			end
 
 			it "should not error when running help" do
 				success_strings = [ 	'Core Commands',
@@ -82,25 +82,25 @@ module MeterpreterSpecs
 							'Stdapi: Networking Commands',
 							'Stdapi: System Commands',
 							'Stdapi: User interface Commands']
-					
+
 				hlp_run_command_check_output("help","help", success_strings)
 			end
-	
+
 			it "should not error when running the help shortcut" do
 				success_strings = [ 	'Core Commands',
 							'Stdapi: File system Commands',
 							'Stdapi: Networking Commands',
 							'Stdapi: System Commands',
 							'Stdapi: User interface Commands' ]
-					
+
 				hlp_run_command_check_output("help_shortcut","?", success_strings)
-			end	
-		
+			end
+
 			it "should not error when checking for background channels" do
 				success_strings = [ 'No active channels.' ]
 				hlp_run_command_check_output("channel_list_empty","channel -l", success_strings)
 			end
-	
+
 		end
 	end
 

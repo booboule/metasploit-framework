@@ -101,7 +101,7 @@ class MachO < ExeFormat
 	}
 
 	THREAD_FLAVOR = {
-		'POWERPC' => { 
+		'POWERPC' => {
 			1 => 'THREAD_STATE',
 			2 => 'FLOAT_STATE',
 			3 => 'EXCEPTION_STATE',
@@ -193,7 +193,7 @@ class MachO < ExeFormat
 		end
 
 		def encode(m)
-			ed = super(m) 
+			ed = super(m)
 			ed << @data.encode(m) if @data
 			ed.align(m.size >> 3)
 			ed.fixup! @cmdsize => ed.length	if @cmdsize.kind_of? String
@@ -279,7 +279,7 @@ class MachO < ExeFormat
 			words :flavor, :count
 			fld_enum(:flavor) { |m, t| THREAD_FLAVOR[m.header.cputype] || {} }
 			attr_accessor :ctx
-			
+
 			def entrypoint(m)
 				@ctx ||= {}
 				case m.header.cputype

@@ -22,7 +22,7 @@ module Windows
     RNRSERVICE_REGISTER   = 0
     RNRSERVICE_DEREGISTER = 1
     RNRSERVICE_DELETE     = 2
-    
+
     # Functions
 
     API.new('WSAAccept', 'LPPKP', 'L', 'ws2_32')

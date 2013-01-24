@@ -47,7 +47,7 @@ if ARGV[0]
 			mod_hash[m] ||= 0
 			mod_hash[m] += 1
 			longest_name = m.to_s.size unless m.to_s.size < longest_name
-		end	
+		end
 	end
 	mod_hash.sort_by {|a| a[1]}.reverse.each do |arr|
 		puts "%-#{longest_name}s | %d" % arr

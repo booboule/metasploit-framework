@@ -3,7 +3,7 @@
 #
 #    Licence is LGPL, see LICENCE in the top-level directory
 
-# 
+#
 # this script scans a directory for PE files which export a given symbol name (regexp case-insensitive)
 # usage : ruby scanpeexports.rb <dir> <pattern>
 #

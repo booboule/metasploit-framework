@@ -22,12 +22,12 @@ module Nokogiri
           @list.push @list.first
           @list.delete @list.first
         end
-        
+
         def test_reference_after_delete
           first = @list.first
           @list.delete(first)
           assert_equal 'http://www.w3.org/XML/1998/namespace', first.href
-        end        
+        end
       end
 
       def setup
@@ -168,7 +168,7 @@ module Nokogiri
         set = html.xpath("/html/body/div")
         assert_equal set.first, set.search(".a").first
       end
-      
+
       def test_css_search_with_namespace
         fragment = Nokogiri::XML.fragment(<<-eoxml)
           <html xmlns="http://www.w3.org/1999/xhtml">

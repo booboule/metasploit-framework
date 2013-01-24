@@ -9,7 +9,7 @@ describe Logging do
     Logging.silent = false
     @object = TestLogging.new
   end
-  
+
   it "should output debug when set to true" do
     Logging.debug = true
     @object.should_receive(:puts)
@@ -27,14 +27,14 @@ describe Logging do
     @object.should_not_receive(:puts)
     @object.log 'hi'
   end
-  
+
   it "should not output when silenced as instance method" do
     @object.silent = true
-    
+
     @object.should_not_receive(:puts)
     @object.log 'hi'
   end
-  
+
   it "should be usable as module functions" do
     Logging.silent = true
     Logging.log "hi"
@@ -45,7 +45,7 @@ describe Logging do
     STDERR.should_receive(:print).with(/PC LOAD LETTER/)
     @object.log_error(error)
   end
-  
+
   after do
     Logging.silent = true
   end

@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Resolute
         include TimezoneDefinition
-        
+
         timezone 'America/Resolute' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, -21600, 0, :CST
           tz.offset :o2, -21600, 7200, :CDDT
           tz.offset :o3, -21600, 3600, :CDT
           tz.offset :o4, -18000, 0, :EST
-          
+
           tz.transition 1947, 8, :o1, 4864857, 2
           tz.transition 1965, 4, :o2, 9755503, 4
           tz.transition 1965, 10, :o1, 9756259, 4

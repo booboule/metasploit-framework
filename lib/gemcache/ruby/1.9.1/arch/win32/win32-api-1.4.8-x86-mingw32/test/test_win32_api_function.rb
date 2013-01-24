@@ -21,7 +21,7 @@ class TC_Win32_API_Function < Test::Unit::TestCase
       assert_nothing_raised{ Win32::API::Function.new(1, 'LL') }
       assert_nothing_raised{ Win32::API::Function.new(1, 'LL', 'I') }
    end
-   
+
    def test_subclass
       assert_kind_of(Win32::API, @func)
       assert_respond_to(@func, :call)

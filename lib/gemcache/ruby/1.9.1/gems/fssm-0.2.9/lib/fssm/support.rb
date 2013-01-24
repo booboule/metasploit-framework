@@ -12,7 +12,7 @@ module FSSM::Support
           'Polling'
       end
     end
-    
+
     def optimal_backend_dependency
       return case
         when mac?     then  ['rb-fsevent', '>= 0.4.3.1']

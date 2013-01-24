@@ -37,7 +37,7 @@ def usage
 	$stderr.puts("\nUsage: #{$0} <options>\n" + $args.usage)
 	exit
 end
-		
+
 $args = Rex::Parser::Arguments.new(
 	"-a" => [ true, "The architecture to encode as (#{@Arch.sort.collect{|a| a + ', ' }.join.gsub(/\, $/,'')})"],
 	"-h" => [ false, "Display this help information"	])
@@ -111,7 +111,7 @@ puts 'type "exit" or "quit" to quit', 'use ";" or "\\n" for newline', ''
 
 shell.run { |l|
 	l.gsub!(/(\r|\n)/, '')
-	l.gsub!(/\\n/, "\n")	
+	l.gsub!(/\\n/, "\n")
 	l.gsub!(';', "\n")
 
 	break if %w[quit exit].include? l.chomp

@@ -20,9 +20,9 @@ module Daemons
   # run at any time)
   #
   # Each file just contains one line with the pid as string (for example <tt>6432</tt>).
-  #  
+  #
   # === Where are the Pid-Files stored?
-  # 
+  #
   # Daemons is configurable to store the Pid-Files relative to three different locations:
   # 1.  in a directory relative to the directory where the script (the one that is supposed to run
   #     as a daemon) resides (<tt>:script</tt> option for <tt>:dir_mode</tt>)
@@ -35,9 +35,9 @@ module Daemons
 
     def PidFile.find_files(dir, progname, delete = false)
       files = Dir[File.join(dir, "#{progname}*.pid")]
-      
+
       files.delete_if {|f| not (File.file?(f) and File.readable?(f))}
-      if delete 
+      if delete
         files.delete_if do |f|
           pid = File.open(f) {|h| h.read}.to_i
           rsl =  ! Pid.running?(pid)
@@ -48,48 +48,48 @@ module Daemons
           rsl
         end
       end
-    
+
       return files
     end
-    
+
     def PidFile.existing(path)
       new_instance = PidFile.allocate
-      
+
       new_instance.instance_variable_set(:@path, path)
-      
+
       def new_instance.filename
         return @path
       end
-      
+
       return new_instance
     end
-    
+
     def initialize(dir, progname, multiple = false)
       @dir = File.expand_path(dir)
       @progname = progname
       @multiple = multiple
       @number = nil
       @number = 0 if multiple
-      
+
       if multiple
         while File.exist?(filename) and @number < 1024
           @number += 1
         end
-        
+
         if @number == 1024
           raise RuntimeException('cannot run more than 1024 instances of the application')
         end
       end
     end
-    
+
     def filename
       File.join(@dir, "#{@progname}#{ @number or '' }.pid")
     end
-    
+
     def exist?
       File.exist? filename
     end
-    
+
     def pid=(p)
       File.open(filename, 'w') {|f|
         f.chmod(0644)
@@ -112,5 +112,5 @@ module Daemons
     end
 
   end
-  
+
 end

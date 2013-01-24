@@ -3,7 +3,7 @@ module TZInfo
     module Africa
       module Freetown
         include TimezoneDefinition
-        
+
         timezone 'Africa/Freetown' do |tz|
           tz.offset :o0, -3180, 0, :LMT
           tz.offset :o1, -3180, 0, :FMT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 0, 0, :WAT
           tz.offset :o5, 0, 3600, :SLST
           tz.offset :o6, 0, 0, :GMT
-          
+
           tz.transition 1882, 1, :o1, 3468163013, 1440
           tz.transition 1913, 6, :o2, 3484684133, 1440
           tz.transition 1935, 6, :o3, 58270909, 24

@@ -10,7 +10,7 @@ module GrammarCompositionSpec
       # Check that polyglot finds d.treetop and loads it:
       $: << dir
       require 'd'
-  
+
       @c = ::Test::CParser.new
       @d = ::Test::DParser.new
     end
@@ -23,18 +23,18 @@ module GrammarCompositionSpec
       @d.parse('superkeywordworks').should_not be_nil
     end
   end
-  
+
   describe "composed grammar chaining with require" do
     before do
       # Load f with polyglot without using the load path:
       require File.dirname(__FILE__) + '/f'
-  
+
       @f = ::Test::FParser.new
     end
-    
+
     specify "rules in F have access to rule defined in E" do
       @f.parse('abcef').should_not be_nil
     end
-    
+
   end
 end

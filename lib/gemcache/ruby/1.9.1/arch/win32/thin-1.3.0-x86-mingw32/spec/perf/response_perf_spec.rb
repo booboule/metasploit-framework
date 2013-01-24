@@ -5,7 +5,7 @@ describe Response, 'performance' do
     @response = Response.new
     @response.body = ''
   end
-  
+
   it "should be fast" do
     @response.body << <<-EOS
 <html><head><title>Dir listing</title></head>

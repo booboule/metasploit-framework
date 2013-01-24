@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Boise
         include TimezoneDefinition
-        
+
         timezone 'America/Boise' do |tz|
           tz.offset :o0, -27889, 0, :LMT
           tz.offset :o1, -28800, 0, :PST
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, -25200, 3600, :MWT
           tz.offset :o5, -25200, 3600, :MPT
           tz.offset :o6, -25200, 3600, :MDT
-          
+
           tz.transition 1883, 11, :o1, 7227400, 3
           tz.transition 1918, 3, :o2, 29060207, 12
           tz.transition 1918, 10, :o1, 19375151, 8

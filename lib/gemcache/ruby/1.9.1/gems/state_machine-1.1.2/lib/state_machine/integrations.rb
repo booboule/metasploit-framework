@@ -13,7 +13,7 @@ module StateMachine
       super(nil, "#{name.inspect} is an invalid integration")
     end
   end
-  
+
   # Integrations allow state machines to take advantage of features within the
   # context of a particular library.  This is currently most useful with
   # database libraries.  For example, the various database integrations allow
@@ -24,10 +24,10 @@ module StateMachine
   # * Scopes
   # * Callbacks
   # * Validation errors
-  # 
+  #
   # This type of integration allows the user to work with state machines in a
   # fashion similar to other object models in their application.
-  # 
+  #
   # The integration interface is loosely defined by various unimplemented
   # methods in the StateMachine::Machine class.  See that class or the various
   # built-in integrations for more information about how to define additional
@@ -36,35 +36,35 @@ module StateMachine
     # Attempts to find an integration that matches the given class.  This will
     # look through all of the built-in integrations under the StateMachine::Integrations
     # namespace and find one that successfully matches the class.
-    # 
+    #
     # == Examples
-    # 
+    #
     #   class Vehicle
     #   end
-    #   
+    #
     #   class ActiveModelVehicle
     #     include ActiveModel::Observing
     #     include ActiveModel::Validations
     #   end
-    #   
+    #
     #   class ActiveRecordVehicle < ActiveRecord::Base
     #   end
-    #   
+    #
     #   class DataMapperVehicle
     #     include DataMapper::Resource
     #   end
-    #   
+    #
     #   class MongoidVehicle
     #     include Mongoid::Document
     #   end
-    #   
+    #
     #   class MongoMapperVehicle
     #     include MongoMapper::Document
     #   end
-    #   
+    #
     #   class SequelVehicle < Sequel::Model
     #   end
-    #   
+    #
     #   StateMachine::Integrations.match(Vehicle)             # => nil
     #   StateMachine::Integrations.match(ActiveModelVehicle)  # => StateMachine::Integrations::ActiveModel
     #   StateMachine::Integrations.match(ActiveRecordVehicle) # => StateMachine::Integrations::ActiveRecord
@@ -75,24 +75,24 @@ module StateMachine
     def self.match(klass)
       all.detect {|integration| integration.matches?(klass)}
     end
-    
+
     # Attempts to find an integration that matches the given list of ancestors.
     # This will look through all of the built-in integrations under the StateMachine::Integrations
     # namespace and find one that successfully matches one of the ancestors.
-    # 
+    #
     # == Examples
-    # 
+    #
     #   StateMachine::Integrations.match([])                    # => nil
     #   StateMachine::Integrations.match(['ActiveRecord::Base') # => StateMachine::Integrations::ActiveModel
     def self.match_ancestors(ancestors)
       all.detect {|integration| integration.matches_ancestors?(ancestors)}
     end
-    
+
     # Finds an integration with the given name.  If the integration cannot be
     # found, then a NameError exception will be raised.
-    # 
+    #
     # == Examples
-    # 
+    #
     #   StateMachine::Integrations.find_by_name(:active_record) # => StateMachine::Integrations::ActiveRecord
     #   StateMachine::Integrations.find_by_name(:active_model)  # => StateMachine::Integrations::ActiveModel
     #   StateMachine::Integrations.find_by_name(:data_mapper)   # => StateMachine::Integrations::DataMapper
@@ -103,12 +103,12 @@ module StateMachine
     def self.find_by_name(name)
       all.detect {|integration| integration.integration_name == name} || raise(IntegrationNotFound.new(name))
     end
-    
+
     # Gets a list of all of the available integrations for use.  This will
     # always list the ActiveModel integration last.
-    # 
+    #
     # == Example
-    # 
+    #
     #   StateMachine::Integrations.all
     #   # => [StateMachine::Integrations::ActiveRecord, StateMachine::Integrations::DataMapper
     #   #     StateMachine::Integrations::Mongoid, StateMachine::Integrations::MongoMapper,

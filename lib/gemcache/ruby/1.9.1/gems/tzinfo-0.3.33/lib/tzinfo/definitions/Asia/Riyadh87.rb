@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Riyadh87
         include TimezoneDefinition
-        
+
         timezone 'Asia/Riyadh87' do |tz|
           tz.offset :o0, 11224, 0, :zzz
           tz.offset :o1, 11224, -200, :zzz
@@ -246,7 +246,7 @@ module TZInfo
           tz.offset :o238, 11224, 160, :zzz
           tz.offset :o239, 11224, 40, :zzz
           tz.offset :o240, 11224, -20, :zzz
-          
+
           tz.transition 1987, 1, :o1, 536489776
           tz.transition 1987, 1, :o2, 536576206
           tz.transition 1987, 1, :o3, 536662631

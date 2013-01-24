@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Edmonton
         include TimezoneDefinition
-        
+
         timezone 'America/Edmonton' do |tz|
           tz.offset :o0, -27232, 0, :LMT
           tz.offset :o1, -25200, 0, :MST
           tz.offset :o2, -25200, 3600, :MDT
           tz.offset :o3, -25200, 3600, :MWT
           tz.offset :o4, -25200, 3600, :MPT
-          
+
           tz.transition 1906, 9, :o1, 6527128001, 2700
           tz.transition 1918, 4, :o2, 19373583, 8
           tz.transition 1918, 10, :o1, 14531363, 6

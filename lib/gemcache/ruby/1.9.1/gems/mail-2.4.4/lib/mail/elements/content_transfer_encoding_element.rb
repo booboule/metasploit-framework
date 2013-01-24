@@ -1,9 +1,9 @@
 # encoding: utf-8
 module Mail
   class ContentTransferEncodingElement
-    
+
     include Mail::Utilities
-    
+
     def initialize( string )
       parser = Mail::ContentTransferEncodingParser.new
       case
@@ -15,10 +15,10 @@ module Mail
         raise Mail::Field::ParseError.new(ContentTransferEncodingElement, string, parser.failure_reason)
       end
     end
-    
+
     def encoding
       @encoding
     end
-    
+
   end
 end

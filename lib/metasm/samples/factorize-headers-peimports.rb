@@ -42,13 +42,13 @@ end
 
 funcnames = opts[:exe].map { |e|
 	pe = PE.decode_file_header(e) rescue nil
-	
-	pe.decode_imports if pe 
+
+	pe.decode_imports if pe
 	if pe and not pe.imports
 		puts "#{e} has no imports"
 		next
 	end
-	if pe 
+	if pe
 		pe.imports.map { |id| id.imports.map { |i| i.name } }
 	else
 		[]

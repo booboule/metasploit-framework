@@ -62,7 +62,7 @@ case ARGV[0].downcase
          :description      => 'Sample Ruby service',
          :binary_path_name => cmd
       )
-      puts 'Service ' + SERVICE_NAME + ' installed'      
+      puts 'Service ' + SERVICE_NAME + ' installed'
    when 'start'
       if Service.status(SERVICE_NAME).current_state != 'running'
          Service.start(SERVICE_NAME, nil, 'hello', 'world')

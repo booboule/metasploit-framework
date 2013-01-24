@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Yakutat
         include TimezoneDefinition
-        
+
         timezone 'America/Yakutat' do |tz|
           tz.offset :o0, 52865, 0, :LMT
           tz.offset :o1, -33535, 0, :LMT
@@ -13,7 +13,7 @@ module TZInfo
           tz.offset :o5, -32400, 3600, :YDT
           tz.offset :o6, -32400, 0, :AKST
           tz.offset :o7, -32400, 3600, :AKDT
-          
+
           tz.transition 1867, 10, :o1, 41528279027, 17280
           tz.transition 1900, 8, :o2, 41735561267, 17280
           tz.transition 1942, 2, :o3, 58329599, 24

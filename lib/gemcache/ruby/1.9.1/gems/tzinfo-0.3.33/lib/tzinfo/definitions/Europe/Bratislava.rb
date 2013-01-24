@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Bratislava
         include TimezoneDefinition
-        
+
         linked_timezone 'Europe/Bratislava', 'Europe/Prague'
       end
     end

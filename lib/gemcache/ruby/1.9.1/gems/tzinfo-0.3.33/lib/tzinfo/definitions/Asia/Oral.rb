@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Oral
         include TimezoneDefinition
-        
+
         timezone 'Asia/Oral' do |tz|
           tz.offset :o0, 12324, 0, :LMT
           tz.offset :o1, 14400, 0, :URAT
@@ -14,7 +14,7 @@ module TZInfo
           tz.offset :o6, 14400, 0, :ORAT
           tz.offset :o7, 14400, 3600, :ORAST
           tz.offset :o8, 18000, 0, :ORAT
-          
+
           tz.transition 1924, 5, :o1, 17452132973, 7200
           tz.transition 1930, 6, :o2, 7278445, 3
           tz.transition 1981, 3, :o3, 354913200

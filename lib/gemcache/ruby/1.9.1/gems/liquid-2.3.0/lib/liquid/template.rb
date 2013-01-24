@@ -88,7 +88,7 @@ module Liquid
     #
     def render(*args)
       return '' if @root.nil?
-      
+
       context = case args.first
       when Liquid::Context
         args.shift

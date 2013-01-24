@@ -4,7 +4,7 @@ module Treetop
       def inline_modules
         []
       end
-      
+
       def single_quote(string)
 	# Double any backslashes, then backslash any single-quotes:
 	"'#{string.gsub(/\\/) { '\\\\' }.gsub(/'/) { "\\'"}}'"

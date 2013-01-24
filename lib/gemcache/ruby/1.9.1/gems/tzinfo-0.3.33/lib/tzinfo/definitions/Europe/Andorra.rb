@@ -3,13 +3,13 @@ module TZInfo
     module Europe
       module Andorra
         include TimezoneDefinition
-        
+
         timezone 'Europe/Andorra' do |tz|
           tz.offset :o0, 364, 0, :LMT
           tz.offset :o1, 0, 0, :WET
           tz.offset :o2, 3600, 0, :CET
           tz.offset :o3, 3600, 3600, :CEST
-          
+
           tz.transition 1900, 12, :o1, 52172326709, 21600
           tz.transition 1946, 9, :o2, 4864187, 2
           tz.transition 1985, 3, :o3, 481078800

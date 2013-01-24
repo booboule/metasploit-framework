@@ -8,7 +8,7 @@ module Treetop
         compile_alternatives(alternatives)
         end_comment(self)
       end
-      
+
       def compile_alternatives(alternatives)
         obtain_new_subexpression_address
         alternatives.first.compile(subexpression_address, builder)

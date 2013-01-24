@@ -150,7 +150,7 @@ class Client
 		if c_ag and c_head.keys.map{|x| x.downcase }.include?('user-agent')
 			c_ag = nil
 		end
-		
+
 		uri    = set_uri(c_uri)
 
 		req = ''
@@ -243,7 +243,7 @@ class Client
 
 		c_varg.each_pair do |var,val|
 			qstr << '&' if qstr.length > 0
-			qstr << (c_enc_p ? set_encode_uri(var) : var) 
+			qstr << (c_enc_p ? set_encode_uri(var) : var)
 			qstr << '='
 			qstr << (c_enc_p ? set_encode_uri(val) : val)
 		end

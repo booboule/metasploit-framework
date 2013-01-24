@@ -15,15 +15,15 @@ else
         [200, { 'Content-Type' => 'text/html' }, body]
       end
     end
-    
+
     it 'should GET from Net::HTTP' do
       Net::HTTP.get(URI.parse("http://0.0.0.0:3333/?cthis")).should include('cthis')
     end
-  
+
     it 'should POST from Net::HTTP' do
       Net::HTTP.post_form(URI.parse("http://0.0.0.0:3333/"), :arg => 'pirate').body.should include('arg=pirate')
     end
-  
+
     after do
       stop_server
       Process.kill(9, @swiftiply)

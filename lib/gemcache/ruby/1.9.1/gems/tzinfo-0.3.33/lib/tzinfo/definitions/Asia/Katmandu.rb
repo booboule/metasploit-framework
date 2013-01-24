@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Katmandu
         include TimezoneDefinition
-        
+
         linked_timezone 'Asia/Katmandu', 'Asia/Kathmandu'
       end
     end

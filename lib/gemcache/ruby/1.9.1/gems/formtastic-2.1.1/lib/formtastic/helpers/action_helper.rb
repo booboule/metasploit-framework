@@ -2,7 +2,7 @@
 module Formtastic
   module Helpers
     module ActionHelper
-      
+
       # Renders an action for the form (such as a subit/reset button, or a cancel link).
       #
       # Each action is wrapped in an `<li class="action">` tag with other classes added based on the

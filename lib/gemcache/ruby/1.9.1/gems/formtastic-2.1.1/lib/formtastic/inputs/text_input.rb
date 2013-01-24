@@ -25,24 +25,24 @@ module Formtastic
     #   </form>
     #
     # @see Formtastic::Helpers::InputsHelper#input InputsHelper#input for full documentation of all possible options.
-    class TextInput 
+    class TextInput
       include Base
       include Base::Placeholder
-      
+
       def input_html_options
-        { 
+        {
           :cols => builder.default_text_area_width,
           :rows => builder.default_text_area_height
         }.merge(super)
       end
-      
+
       def to_html
         input_wrapping do
           label_html <<
           builder.text_area(method, input_html_options)
         end
       end
-    
+
     end
   end
 end

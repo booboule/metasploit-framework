@@ -72,7 +72,7 @@ def asm
 				"e.g. 'nop nop' will display \"\\x90\\x90\""
 			next
 		end
-	
+
 		begin
 			data = l.gsub(';', "\n")
 			next if data.strip.empty?

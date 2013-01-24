@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Dushanbe
         include TimezoneDefinition
-        
+
         timezone 'Asia/Dushanbe' do |tz|
           tz.offset :o0, 16512, 0, :LMT
           tz.offset :o1, 18000, 0, :DUST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, 21600, 3600, :DUSST
           tz.offset :o4, 18000, 3600, :DUSST
           tz.offset :o5, 18000, 0, :TJT
-          
+
           tz.transition 1924, 5, :o1, 1090758289, 450
           tz.transition 1930, 6, :o2, 58227559, 24
           tz.transition 1981, 3, :o3, 354909600

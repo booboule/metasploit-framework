@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Thunder_Bay
         include TimezoneDefinition
-        
+
         timezone 'America/Thunder_Bay' do |tz|
           tz.offset :o0, -21420, 0, :LMT
           tz.offset :o1, -21600, 0, :CST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -18000, 3600, :EWT
           tz.offset :o4, -18000, 3600, :EPT
           tz.offset :o5, -18000, 3600, :EDT
-          
+
           tz.transition 1895, 1, :o1, 1158333479, 480
           tz.transition 1910, 1, :o2, 9674691, 4
           tz.transition 1942, 2, :o3, 58329595, 24

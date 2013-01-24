@@ -3,13 +3,13 @@ module TZInfo
     module Pacific
       module Rarotonga
         include TimezoneDefinition
-        
+
         timezone 'Pacific/Rarotonga' do |tz|
           tz.offset :o0, -38344, 0, :LMT
           tz.offset :o1, -37800, 0, :CKT
           tz.offset :o2, -36000, 1800, :CKHST
           tz.offset :o3, -36000, 0, :CKT
-          
+
           tz.transition 1901, 1, :o1, 26086168193, 10800
           tz.transition 1978, 11, :o2, 279714600
           tz.transition 1979, 3, :o3, 289387800

@@ -263,7 +263,7 @@ eohtml
         File.open(HTML_FILE, 'rb') { |f| temp_html_file.write f.read }
         temp_html_file.close
         temp_html_file.open
-        assert_equal Nokogiri::HTML.parse(File.read(HTML_FILE)).xpath('//div/a').length, 
+        assert_equal Nokogiri::HTML.parse(File.read(HTML_FILE)).xpath('//div/a').length,
           Nokogiri::HTML.parse(temp_html_file).xpath('//div/a').length
       end
 

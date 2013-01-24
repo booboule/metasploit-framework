@@ -6,7 +6,7 @@ module SessionTest
       def test_allow_http_basic_auth
         UserSession.allow_http_basic_auth = false
         assert_equal false, UserSession.allow_http_basic_auth
-    
+
         UserSession.allow_http_basic_auth true
         assert_equal true, UserSession.allow_http_basic_auth
       end
@@ -26,7 +26,7 @@ module SessionTest
         assert_equal 'TestRealm', UserSession.http_basic_auth_realm
       end
     end
-    
+
     class InstanceMethodsTest < ActiveSupport::TestCase
       def test_persist_persist_by_http_auth
         ben = users(:ben)

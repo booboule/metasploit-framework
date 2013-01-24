@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Volgograd
         include TimezoneDefinition
-        
+
         timezone 'Europe/Volgograd' do |tz|
           tz.offset :o0, 10660, 0, :LMT
           tz.offset :o1, 10800, 0, :TSAT
@@ -13,7 +13,7 @@ module TZInfo
           tz.offset :o5, 14400, 3600, :VOLST
           tz.offset :o6, 10800, 3600, :VOLST
           tz.offset :o7, 10800, 0, :VOLT
-          
+
           tz.transition 1920, 1, :o1, 10464449947, 4320
           tz.transition 1925, 4, :o2, 19393971, 8
           tz.transition 1930, 6, :o3, 19409187, 8

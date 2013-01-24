@@ -65,7 +65,7 @@ module Arel
       end
 
       def visit_Arel_Nodes_UpdateStatement o
-        # Oracle does not allow ORDER BY/LIMIT in UPDATEs. 
+        # Oracle does not allow ORDER BY/LIMIT in UPDATEs.
         if o.orders.any? && o.limit.nil?
           # However, there is no harm in silently eating the ORDER BY clause if no LIMIT has been provided,
           # otherwise let the user deal with the error

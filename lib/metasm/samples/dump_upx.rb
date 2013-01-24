@@ -5,7 +5,7 @@
 #    Licence is LGPL, see LICENCE in the top-level directory
 
 
-# 
+#
 # this script will load an upx-packed windows executable, find its
 # original entrypoint by disassembling the UPX stub, set breakpoint on it,
 # run the program, and dump the loaded image to an executable PE.
@@ -39,9 +39,9 @@ class UPXUnpacker
 	end
 
 	# disassemble the upx stub to find a cross-section jump (to the real entrypoint)
-	def find_oep(pe)		
+	def find_oep(pe)
 		dasm = pe.disassemble_fast 'entrypoint'
-		
+
 		return if not jmp = dasm.decoded.find { |addr, di|
 			# check only once per basic block
 			next if not di.block_head?
@@ -60,7 +60,7 @@ class UPXUnpacker
 
 		# now jmp is a couple [addr, di], we extract and normalize the oep from there
 		dasm.normalize(jmp[1].block.to_normal.first)
-	end	
+	end
 
 	def debugloop
 		# set up a oneshot breakpoint on oep

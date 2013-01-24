@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Pontianak
         include TimezoneDefinition
-        
+
         timezone 'Asia/Pontianak' do |tz|
           tz.offset :o0, 26240, 0, :LMT
           tz.offset :o1, 26240, 0, :PMT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 28800, 0, :WIT
           tz.offset :o5, 28800, 0, :CIT
           tz.offset :o6, 25200, 0, :WIT
-          
+
           tz.transition 1908, 4, :o1, 652876793, 270
           tz.transition 1932, 10, :o2, 655293293, 270
           tz.transition 1942, 1, :o3, 38886211, 16

@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Glace_Bay
         include TimezoneDefinition
-        
+
         timezone 'America/Glace_Bay' do |tz|
           tz.offset :o0, -14388, 0, :LMT
           tz.offset :o1, -14400, 0, :AST
           tz.offset :o2, -14400, 3600, :ADT
           tz.offset :o3, -14400, 3600, :AWT
           tz.offset :o4, -14400, 3600, :APT
-          
+
           tz.transition 1902, 6, :o1, 17394592799, 7200
           tz.transition 1918, 4, :o2, 9686791, 4
           tz.transition 1918, 10, :o1, 58125449, 24

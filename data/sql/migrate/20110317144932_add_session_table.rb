@@ -19,7 +19,7 @@ class AddSessionTable < ActiveRecord::Migration
  			t.integer :host_id
 
  			t.string  :stype       # session type: meterpreter, shell, etc
- 			t.string  :via_exploit # module name 
+ 			t.string  :via_exploit # module name
  			t.string  :via_payload # payload name
  			t.string  :desc        # session description
  			t.integer :port

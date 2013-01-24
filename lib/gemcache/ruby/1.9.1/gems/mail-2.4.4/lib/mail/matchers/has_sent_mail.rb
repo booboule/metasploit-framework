@@ -69,7 +69,7 @@ module Mail
       end
 
       protected
-      
+
       def filter_matched_deliveries(deliveries)
         candidate_deliveries = deliveries
 

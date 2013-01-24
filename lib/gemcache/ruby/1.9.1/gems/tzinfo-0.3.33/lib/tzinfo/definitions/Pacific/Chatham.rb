@@ -3,12 +3,12 @@ module TZInfo
     module Pacific
       module Chatham
         include TimezoneDefinition
-        
+
         timezone 'Pacific/Chatham' do |tz|
           tz.offset :o0, 44028, 0, :LMT
           tz.offset :o1, 45900, 0, :CHAST
           tz.offset :o2, 45900, 3600, :CHADT
-          
+
           tz.transition 1956, 12, :o1, 5846013577, 2400
           tz.transition 1974, 11, :o2, 152632800
           tz.transition 1975, 2, :o1, 162309600

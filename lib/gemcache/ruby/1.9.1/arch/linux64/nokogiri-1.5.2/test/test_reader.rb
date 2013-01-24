@@ -81,7 +81,7 @@ class TestReader < Nokogiri::TestCase
     assert_equal [false, false, false, false, false, false, false],
       reader.map { |x| x.default? }
   end
-  
+
   class ReallyBadIO
     def read(size)
       'a' * size ** 10

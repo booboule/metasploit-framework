@@ -26,7 +26,7 @@ module I18n
         }
         assert_equal('linked', I18n.backend.translate('en', :'foo.link'))
       end
-      
+
       test "linked lookup: if a dot-separated key resolves to a dot-separated symbol it looks up the symbol" do
         I18n.backend.store_translations 'en', {
           :foo => { :link   => :"bar.linked" },

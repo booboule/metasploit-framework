@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Krasnoyarsk
         include TimezoneDefinition
-        
+
         timezone 'Asia/Krasnoyarsk' do |tz|
           tz.offset :o0, 22280, 0, :LMT
           tz.offset :o1, 21600, 0, :KRAT
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, 25200, 3600, :KRAST
           tz.offset :o4, 21600, 3600, :KRAST
           tz.offset :o5, 28800, 0, :KRAT
-          
+
           tz.transition 1920, 1, :o1, 5232231163, 2160
           tz.transition 1930, 6, :o2, 9704593, 4
           tz.transition 1981, 3, :o3, 354906000

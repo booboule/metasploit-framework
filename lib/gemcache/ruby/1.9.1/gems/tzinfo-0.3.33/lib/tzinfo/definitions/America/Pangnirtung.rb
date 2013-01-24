@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Pangnirtung
         include TimezoneDefinition
-        
+
         timezone 'America/Pangnirtung' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, -14400, 0, :AST
@@ -15,7 +15,7 @@ module TZInfo
           tz.offset :o7, -18000, 0, :EST
           tz.offset :o8, -21600, 0, :CST
           tz.offset :o9, -21600, 3600, :CDT
-          
+
           tz.transition 1921, 1, :o1, 4845381, 2
           tz.transition 1942, 2, :o2, 9721599, 4
           tz.transition 1945, 8, :o3, 58360379, 24

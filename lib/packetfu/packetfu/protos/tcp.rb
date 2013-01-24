@@ -48,7 +48,7 @@ module PacketFu
 	#
 	#   Fixnum (4 bits)  :hlen
 	class TcpHlen < Struct.new(:hlen)
-		
+
 		include StructFu
 
 		def initialize(args={})
@@ -145,11 +145,11 @@ module PacketFu
 				super( 0, 0, 0, 0, 0, 0)
 			else
 				super(
-					(args[:urg] ? 1 : 0), 
-					(args[:ack] ? 1 : 0), 
-					(args[:psh] ? 1 : 0), 
-					(args[:rst] ? 1 : 0), 
-					(args[:syn] ? 1 : 0), 
+					(args[:urg] ? 1 : 0),
+					(args[:ack] ? 1 : 0),
+					(args[:psh] ? 1 : 0),
+					(args[:rst] ? 1 : 0),
+					(args[:syn] ? 1 : 0),
 					(args[:fin] ? 1 : 0)
 				)
 			end
@@ -158,7 +158,7 @@ module PacketFu
 		# Returns the TcpFlags as an integer.
 		# Also not a great candidate for to_s due to the short bitspace.
 		def to_i
-			(urg.to_i << 5) + (ack.to_i << 4) + (psh.to_i << 3) + 
+			(urg.to_i << 5) + (ack.to_i << 4) + (psh.to_i << 3) +
 			(rst.to_i << 2) + (syn.to_i << 1) + fin.to_i
 		end
 
@@ -208,17 +208,17 @@ end
 
 module PacketFu
 
-	# TcpOption is the base class for all TCP options. Note that TcpOption#len 
-	# returns the size of the entire option, while TcpOption#optlen is the struct 
+	# TcpOption is the base class for all TCP options. Note that TcpOption#len
+	# returns the size of the entire option, while TcpOption#optlen is the struct
 	# for the TCP Option Length field.
 	#
-	# Subclassed options should set the correct TcpOption#kind by redefining 
+	# Subclassed options should set the correct TcpOption#kind by redefining
 	# initialize. They should also deal with various value types there by setting
-	# them explicitly with an accompanying StructFu#typecast for the setter. 
+	# them explicitly with an accompanying StructFu#typecast for the setter.
 	#
 	# By default, values are presumed to be strings, unless they are Numeric, in
 	# which case a guess is made to the width of the Numeric based on the given
-	# optlen. 
+	# optlen.
 	#
 	# Note that normally, optlen is /not/ enforced for directly setting values,
 	# so the user is perfectly capable of setting incorrect lengths.
@@ -245,7 +245,7 @@ module PacketFu
 
 		# Returns the object in string form.
 		def to_s
-			self[:kind].to_s + 
+			self[:kind].to_s +
 			(self[:optlen].value.nil? ? nil : self[:optlen]).to_s +
 			(self[:value].nil? ? nil : self[:value]).to_s
 		end
@@ -275,7 +275,7 @@ module PacketFu
 		# Setter for the "option length" byte for this option.
 		def optlen=(i); typecast i; end
 
-		# Setter for the value of this option. 
+		# Setter for the value of this option.
 		def value=(i)
 			if i.kind_of? Numeric
 				typecast i
@@ -297,7 +297,7 @@ module PacketFu
 		def has_optlen?
 			(kind.value && kind.value < 2) ? false : true
 		end
-		
+
 		# Returns true if this option has a value. Some don't.
 		def has_value?
 			(value.respond_to? :to_s && value.to_s.size > 0) ? false : true
@@ -499,7 +499,7 @@ module PacketFu
 										 :optlen => 10
 										)
 				)
-				self[:value] = StructFu::String.new.read(args[:value] || "\x00" * 8) 
+				self[:value] = StructFu::String.new.read(args[:value] || "\x00" * 8)
 			end
 
 			# TS options with lengths other than 10 are malformed.
@@ -536,7 +536,7 @@ module PacketFu
 		include StructFu
 
 		# If args[:pad] is set, the options line is automatically padded out
-		# with NOPs. 
+		# with NOPs.
 		def to_s(args={})
 			opts = self.map {|x| x.to_s}.join
 			if args[:pad]
@@ -549,7 +549,7 @@ module PacketFu
 
 		# Reads a string to populate the object.
 		def read(str)
-			self.clear 
+			self.clear
 			PacketFu.force_binary(str)
 			return self if(!str.respond_to? :to_s || str.nil?)
 			i = 0
@@ -580,11 +580,11 @@ module PacketFu
 		# Decode parses the TcpOptions object's member options, and produces a
 		# human-readable string by iterating over each element's decode() function.
 		# If TcpOptions elements were not initially created as TcpOptions, an
-		# attempt will be made to convert them. 
+		# attempt will be made to convert them.
 		#
 		# The output of decode is suitable as input for TcpOptions#encode.
 		def decode
-			decoded = self.map do |x| 
+			decoded = self.map do |x|
 				if x.kind_of? TcpOption
 					x.decode
 				else
@@ -597,12 +597,12 @@ module PacketFu
 		# Encode takes a human-readable string and appends the corresponding
 		# binary options to the TcpOptions object. To completely replace the contents
 		# of the object, use TcpOptions#encode! instead.
-		# 
+		#
 		# Options are comma-delimited, and are identical to the output of the
 		# TcpOptions#decode function. Note that the syntax can be unforgiving, so
 		# it may be easier to create the subclassed TcpOptions themselves directly,
 		# but this method can be less typing if you know what you're doing.
-		# 
+		#
 		# Note that by using TcpOptions#encode, strings supplied as values which
 		# can be converted to numbers will be converted first.
 		#
@@ -644,12 +644,12 @@ module PacketFu
 	# For more on TCP packets, see http://www.networksorcery.com/enp/protocol/tcp.htm
 	#
 	# ==== Header Definition
-	# 
-	#   Int16        :tcp_src       Default: random 
+	#
+	#   Int16        :tcp_src       Default: random
 	#   Int16        :tcp_dst
 	#   Int32        :tcp_seq       Default: random
 	#   Int32        :tcp_ack
-	#   TcpHlen      :tcp_hlen      Default: 5           # Must recalc as options are set. 
+	#   TcpHlen      :tcp_hlen      Default: 5           # Must recalc as options are set.
 	#   TcpReserved  :tcp_reserved  Default: 0
 	#   TcpEcn       :tcp_ecn
 	#   TcpFlags     :tcp_flags
@@ -663,8 +663,8 @@ module PacketFu
 	class TCPHeader < Struct.new(:tcp_src, :tcp_dst,
 															 :tcp_seq,
 															 :tcp_ack,
-															 :tcp_hlen, :tcp_reserved, :tcp_ecn, :tcp_flags, :tcp_win, 
-															 :tcp_sum, :tcp_urg, 
+															 :tcp_hlen, :tcp_reserved, :tcp_ecn, :tcp_flags, :tcp_win,
+															 :tcp_sum, :tcp_urg,
 															 :tcp_opts, :body)
 		include StructFu
 
@@ -803,9 +803,9 @@ module PacketFu
 			end
 		end
 
-		# Getter for the ECN bits. 
+		# Getter for the ECN bits.
 		def tcp_ecn; self[:tcp_ecn].to_i; end
-		# Setter for the ECN bits. 
+		# Setter for the ECN bits.
 		def tcp_ecn=(i)
 			case i
 			when PacketFu::TcpEcn
@@ -844,7 +844,7 @@ module PacketFu
 		end
 
 		# Sets and returns the true length of the TCP Header.
-		# TODO: Think about making all the option stuff safer. 
+		# TODO: Think about making all the option stuff safer.
 		def tcp_calc_hlen
 			self[:tcp_hlen] = TcpHlen.new(:hlen => ((20 + tcp_opts_len) / 4))
 		end
@@ -887,7 +887,7 @@ module PacketFu
 		def tcp_dport
 			self.tcp_dst.to_i
 		end
-		
+
 		# Equivalent to tcp_dst=.
 		def tcp_dport=(arg)
 			self.tcp_dst=(arg)
@@ -903,11 +903,11 @@ module PacketFu
 			when :tcp_sport
 				@random_tcp_src = rand_port
 			when :tcp_seq
-				@random_tcp_seq = rand(0xffffffff) 
+				@random_tcp_seq = rand(0xffffffff)
 			when :all
 				tcp_calc_hlen
 				@random_tcp_src = rand_port
-				@random_tcp_seq = rand(0xffffffff) 
+				@random_tcp_seq = rand(0xffffffff)
 			else
 				raise ArgumentError, "No such field `#{arg}'"
 			end
@@ -1056,15 +1056,15 @@ module PacketFu
 			checksum += (tcp_seq.to_i & 0xffff)
 			checksum += (tcp_ack.to_i >> 16)
 			checksum += (tcp_ack.to_i & 0xffff)
-			checksum += ((tcp_hlen << 12) + 
-									 (tcp_reserved << 9) + 
-									 (tcp_ecn.to_i << 6) + 
+			checksum += ((tcp_hlen << 12) +
+									 (tcp_reserved << 9) +
+									 (tcp_ecn.to_i << 6) +
 									 tcp_flags.to_i
 									)
 			checksum += tcp_win
 			checksum += tcp_urg
 
-			chk_tcp_opts = (tcp_opts.to_s.size % 2 == 0 ? tcp_opts.to_s : tcp_opts.to_s + "\x00") 
+			chk_tcp_opts = (tcp_opts.to_s.size % 2 == 0 ? tcp_opts.to_s : tcp_opts.to_s + "\x00")
 			chk_tcp_opts.unpack("n*").each {|x| checksum = checksum + x }
 			if (ip_len - ((ip_hl + tcp_hlen) * 4)) >= 0
 				real_tcp_payload = payload[0,( ip_len - ((ip_hl + tcp_hlen) * 4) )] # Can't forget those pesky FCSes!

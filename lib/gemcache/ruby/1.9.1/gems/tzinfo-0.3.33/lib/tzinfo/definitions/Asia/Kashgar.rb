@@ -3,14 +3,14 @@ module TZInfo
     module Asia
       module Kashgar
         include TimezoneDefinition
-        
+
         timezone 'Asia/Kashgar' do |tz|
           tz.offset :o0, 18236, 0, :LMT
           tz.offset :o1, 19800, 0, :KAST
           tz.offset :o2, 18000, 0, :KAST
           tz.offset :o3, 28800, 0, :CST
           tz.offset :o4, 28800, 3600, :CDT
-          
+
           tz.transition 1927, 12, :o1, 52385319841, 21600
           tz.transition 1939, 12, :o2, 116622205, 48
           tz.transition 1980, 4, :o3, 325969200

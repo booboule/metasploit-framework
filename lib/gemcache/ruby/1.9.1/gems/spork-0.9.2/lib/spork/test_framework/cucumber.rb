@@ -26,7 +26,7 @@ class Spork::TestFramework::Cucumber < Spork::TestFramework
   end
 
   private
-  
+
   def preload_legacy_cucumbers
     begin
       @step_mother = ::Cucumber::Runtime.new

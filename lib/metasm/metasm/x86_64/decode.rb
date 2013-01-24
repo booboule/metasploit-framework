@@ -205,7 +205,7 @@ class X86_64
 	def register_symbols
 		[:rax, :rcx, :rdx, :rbx, :rsp, :rbp, :rsi, :rdi, :r8, :r9, :r10, :r11, :r12, :r13, :r14, :r15]
 	end
-	
+
 	# returns a DecodedFunction from a parsed C function prototype
 	def decode_c_function_prototype(cp, sym, orig=nil)
 		sym = cp.toplevel.symbol[sym] if sym.kind_of?(::String)

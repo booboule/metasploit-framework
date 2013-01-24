@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Nicosia
         include TimezoneDefinition
-        
+
         linked_timezone 'Europe/Nicosia', 'Asia/Nicosia'
       end
     end

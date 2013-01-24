@@ -136,12 +136,12 @@ Racc_debug_parser = false
 # reduce 0 omitted
 
 def _reduce_1(val, _values, result)
- result = Cat.new(val.first, val.last) 
+ result = Cat.new(val.first, val.last)
     result
 end
 
 def _reduce_2(val, _values, result)
- result = val.first 
+ result = val.first
     result
 end
 
@@ -154,17 +154,17 @@ end
 # reduce 6 omitted
 
 def _reduce_7(val, _values, result)
- result = Group.new(val[1]) 
+ result = Group.new(val[1])
     result
 end
 
 def _reduce_8(val, _values, result)
- result = Or.new([val.first, val.last]) 
+ result = Or.new([val.first, val.last])
     result
 end
 
 def _reduce_9(val, _values, result)
- result = Star.new(Symbol.new(val.last.left)) 
+ result = Star.new(Symbol.new(val.last.left))
     result
 end
 
@@ -177,22 +177,22 @@ end
 # reduce 13 omitted
 
 def _reduce_14(val, _values, result)
- result = Slash.new('/') 
+ result = Slash.new('/')
     result
 end
 
 def _reduce_15(val, _values, result)
- result = Symbol.new(val.first) 
+ result = Symbol.new(val.first)
     result
 end
 
 def _reduce_16(val, _values, result)
- result = Literal.new(val.first) 
+ result = Literal.new(val.first)
     result
 end
 
 def _reduce_17(val, _values, result)
- result = Dot.new(val.first) 
+ result = Dot.new(val.first)
     result
 end
 

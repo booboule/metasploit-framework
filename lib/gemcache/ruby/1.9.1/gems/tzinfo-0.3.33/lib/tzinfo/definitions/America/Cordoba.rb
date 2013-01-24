@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Cordoba
         include TimezoneDefinition
-        
+
         linked_timezone 'America/Cordoba', 'America/Argentina/Cordoba'
       end
     end

@@ -3,12 +3,12 @@ module TZInfo
     module America
       module Noronha
         include TimezoneDefinition
-        
+
         timezone 'America/Noronha' do |tz|
           tz.offset :o0, -7780, 0, :LMT
           tz.offset :o1, -7200, 0, :FNT
           tz.offset :o2, -7200, 3600, :FNST
-          
+
           tz.transition 1914, 1, :o1, 10454977109, 4320
           tz.transition 1931, 10, :o2, 58238833, 24
           tz.transition 1932, 4, :o1, 58243165, 24

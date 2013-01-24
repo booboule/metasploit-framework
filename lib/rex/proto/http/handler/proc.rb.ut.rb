@@ -16,7 +16,7 @@ class Rex::Proto::Http::Handler::Proc::UnitTest < Test::Unit::TestCase
 		k = Klass.new(nil, Proc.new { |cli, req|
 			cool = 1
 		})
-			
+
 		r = k.on_request(nil, Request::Get.new("/erb.rb.ut.rb.rhtml"))
 
 		assert_equal(1, cool)

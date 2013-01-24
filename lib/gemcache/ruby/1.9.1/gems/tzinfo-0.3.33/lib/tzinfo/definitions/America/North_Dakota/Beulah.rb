@@ -4,7 +4,7 @@ module TZInfo
       module North_Dakota
         module Beulah
           include TimezoneDefinition
-          
+
           timezone 'America/North_Dakota/Beulah' do |tz|
             tz.offset :o0, -24427, 0, :LMT
             tz.offset :o1, -25200, 0, :MST
@@ -13,7 +13,7 @@ module TZInfo
             tz.offset :o4, -25200, 3600, :MPT
             tz.offset :o5, -21600, 0, :CST
             tz.offset :o6, -21600, 3600, :CDT
-            
+
             tz.transition 1883, 11, :o1, 57819199, 24
             tz.transition 1918, 3, :o2, 19373471, 8
             tz.transition 1918, 10, :o1, 14531363, 6

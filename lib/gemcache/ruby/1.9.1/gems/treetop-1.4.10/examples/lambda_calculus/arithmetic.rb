@@ -1,10 +1,10 @@
 module Arithmetic
   include Treetop::Runtime
-  
+
   def root
     @root || :expression
   end
-  
+
   def _nt_expression
     start_index = index
     cached = node_cache[:expression][index]
@@ -12,7 +12,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     r1 = _nt_comparative
     if r1.success?
@@ -26,34 +26,34 @@ module Arithmetic
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:expression][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Comparative0
     def operand_1
       elements[0]
     end
-    
+
     def space
       elements[1]
     end
-    
+
     def operator
       elements[2]
     end
-    
+
     def space
       elements[3]
     end
-    
+
     def operand_2
       elements[4]
     end
   end
-  
+
   def _nt_comparative
     start_index = index
     cached = node_cache[:comparative][index]
@@ -61,7 +61,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     i0, s0 = index, []
     r1 = _nt_additive
     s0 << r1
@@ -88,18 +88,18 @@ module Arithmetic
       self.index = i0
       r0 = ParseFailure.new(input, i0)
     end
-    
+
     node_cache[:comparative][start_index] = r0
-    
+
     return r0
   end
-  
+
   module EqualityOp0
     def apply(a, b)
       a == b
     end
   end
-  
+
   def _nt_equality_op
     start_index = index
     cached = node_cache[:equality_op][index]
@@ -107,36 +107,36 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     r0 = parse_terminal('==', SyntaxNode, EqualityOp0)
-    
+
     node_cache[:equality_op][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Additive0
     def operand_1
       elements[0]
     end
-    
+
     def space
       elements[1]
     end
-    
+
     def operator
       elements[2]
     end
-    
+
     def space
       elements[3]
     end
-    
+
     def operand_2
       elements[4]
     end
   end
-  
+
   def _nt_additive
     start_index = index
     cached = node_cache[:additive][index]
@@ -144,7 +144,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     i1, s1 = index, []
     r2 = _nt_multitive
@@ -183,24 +183,24 @@ module Arithmetic
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:additive][start_index] = r0
-    
+
     return r0
   end
-  
+
   module AdditiveOp0
     def apply(a, b)
       a + b
     end
   end
-  
+
   module AdditiveOp1
     def apply(a, b)
       a - b
     end
   end
-  
+
   def _nt_additive_op
     start_index = index
     cached = node_cache[:additive_op][index]
@@ -208,7 +208,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     r1 = parse_terminal('+', SyntaxNode, AdditiveOp0)
     if r1.success?
@@ -222,34 +222,34 @@ module Arithmetic
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:additive_op][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Multitive0
     def operand_1
       elements[0]
     end
-    
+
     def space
       elements[1]
     end
-    
+
     def operator
       elements[2]
     end
-    
+
     def space
       elements[3]
     end
-    
+
     def operand_2
       elements[4]
     end
   end
-  
+
   def _nt_multitive
     start_index = index
     cached = node_cache[:multitive][index]
@@ -257,7 +257,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     i1, s1 = index, []
     r2 = _nt_primary
@@ -296,24 +296,24 @@ module Arithmetic
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:multitive][start_index] = r0
-    
+
     return r0
   end
-  
+
   module MultitiveOp0
     def apply(a, b)
       a * b
     end
   end
-  
+
   module MultitiveOp1
     def apply(a, b)
       a / b
     end
   end
-  
+
   def _nt_multitive_op
     start_index = index
     cached = node_cache[:multitive_op][index]
@@ -321,7 +321,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     r1 = parse_terminal('*', SyntaxNode, MultitiveOp0)
     if r1.success?
@@ -335,33 +335,33 @@ module Arithmetic
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:multitive_op][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Primary0
     def space
       elements[1]
     end
-    
+
     def expression
       elements[2]
     end
-    
+
     def space
       elements[3]
     end
-    
+
   end
-  
+
   module Primary1
     def eval(env={})
       expression.eval(env)
     end
   end
-  
+
   def _nt_primary
     start_index = index
     cached = node_cache[:primary][index]
@@ -369,7 +369,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     r1 = _nt_variable
     if r1.success?
@@ -414,22 +414,22 @@ module Arithmetic
         end
       end
     end
-    
+
     node_cache[:primary][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Variable0
     def eval(env={})
       env[name]
     end
-    
+
     def name
       text_value
     end
   end
-  
+
   def _nt_variable
     start_index = index
     cached = node_cache[:variable][index]
@@ -437,7 +437,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     s0, i0 = [], index
     loop do
       r1 = parse_char_class(/[a-z]/, 'a-z', SyntaxNode)
@@ -454,21 +454,21 @@ module Arithmetic
       r0 = SyntaxNode.new(input, i0...index, s0)
       r0.extend(Variable0)
     end
-    
+
     node_cache[:variable][start_index] = r0
-    
+
     return r0
   end
-  
+
   module Number0
   end
-  
+
   module Number1
     def eval(env={})
       text_value.to_i
     end
   end
-  
+
   def _nt_number
     start_index = index
     cached = node_cache[:number][index]
@@ -476,7 +476,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     i0 = index
     i1, s1 = index, []
     r2 = parse_char_class(/[1-9]/, '1-9', SyntaxNode)
@@ -514,12 +514,12 @@ module Arithmetic
         r0 = ParseFailure.new(input, i0)
       end
     end
-    
+
     node_cache[:number][start_index] = r0
-    
+
     return r0
   end
-  
+
   def _nt_space
     start_index = index
     cached = node_cache[:space][index]
@@ -527,7 +527,7 @@ module Arithmetic
       @index = cached.interval.end
       return cached
     end
-    
+
     s0, i0 = [], index
     loop do
       r1 = parse_terminal(' ', SyntaxNode)
@@ -538,12 +538,12 @@ module Arithmetic
       end
     end
     r0 = SyntaxNode.new(input, i0...index, s0)
-    
+
     node_cache[:space][start_index] = r0
-    
+
     return r0
   end
-  
+
 end
 
 class ArithmeticParser < Treetop::Runtime::CompiledParser

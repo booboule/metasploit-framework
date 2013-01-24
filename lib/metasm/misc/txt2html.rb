@@ -14,7 +14,7 @@ class Elem
 
 	IndentAdd = '  '
 	LineLenMax = 80
-	
+
 	def initialize(name, attrs=nil, content=nil)
 		@name = name
 		@attrs = Hash.new
@@ -29,7 +29,7 @@ class Elem
 		end
 		self
 	end
-	
+
 	@@quotechars = {
 		'è' => '&egrave;',
 		'ë' => '&euml;',
@@ -38,7 +38,7 @@ class Elem
 		'"' => '&quot;',
 		'&' => '&amp;',
 	}
-	
+
 	def add(*content)
 		content.each { |e|
 			if (e.class == Array)
@@ -75,7 +75,7 @@ class Elem
 		@style['background'] = c
 		self
 	end
-	
+
 	def hclass(c)
 		@attrs['class'] = c
 		self
@@ -107,7 +107,7 @@ class Elem
 		l += 3+@name.length unless @uniq
 		return l
 	end
-	
+
 	def to_s(indent = '')
 		attrs = @attrs.map { |k, v| " #{k}=\"#{v}\"" }.join
 		attrs += ' style="' + @style.map{ |k, v| "#{k}: #{v}" }.join('; ') + '"' unless @style.empty?
@@ -180,7 +180,7 @@ class Elem
 	def inspect
 		"<#{@name}"+@content.map{|c|"\n"+c.inspect}.join+"\n/#{@name}>"
 	end
-end	
+end
 
 class Page < Elem
 	attr_reader :body, :head

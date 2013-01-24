@@ -1,7 +1,7 @@
 class AddModuleDetails < ActiveRecord::Migration
 
 	def self.up
-	
+
 		create_table :module_details do |t|
 			t.timestamp :mtime             # disk modified time
 			t.text      :file              # location on disk
@@ -63,7 +63,7 @@ class AddModuleDetails < ActiveRecord::Migration
 			t.text :name
 		end
 		add_index :module_archs, :module_detail_id
-	
+
 		create_table :module_platforms do |t|
 			t.integer :module_detail_id
 			t.text :name

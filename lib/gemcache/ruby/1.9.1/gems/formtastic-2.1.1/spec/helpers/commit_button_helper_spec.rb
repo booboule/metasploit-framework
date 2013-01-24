@@ -9,7 +9,7 @@ describe 'Formtastic::FormBuilder#commit_button' do
     @output_buffer = ''
     mock_everything
   end
-  
+
   describe 'when the object responds to :persisted? (ActiveModel)' do
 
     before do
@@ -484,7 +484,7 @@ describe 'Formtastic::FormBuilder#commit_button' do
       end
 
       it 'should append given classes to li default classes' do
-        with_deprecation_silenced do 
+        with_deprecation_silenced do
           concat(semantic_form_for(@new_post) do |builder|
             concat(builder.commit_button('text', :wrapper_html => {:class => :another_class}))
           end)
@@ -494,7 +494,7 @@ describe 'Formtastic::FormBuilder#commit_button' do
       end
 
       it 'should allow classes to be an array' do
-        with_deprecation_silenced do 
+        with_deprecation_silenced do
           concat(semantic_form_for(@new_post) do |builder|
             concat(builder.commit_button('text', :wrapper_html => {:class => [ :my_class, :another_class ]}))
           end)
@@ -507,7 +507,7 @@ describe 'Formtastic::FormBuilder#commit_button' do
 
     describe 'when not provided' do
       it 'should use default class' do
-        with_deprecation_silenced do 
+        with_deprecation_silenced do
           concat(semantic_form_for(@new_post) do |builder|
             concat(builder.commit_button('text'))
           end)
@@ -516,7 +516,7 @@ describe 'Formtastic::FormBuilder#commit_button' do
       end
 
       it 'should use default id' do
-        with_deprecation_silenced do 
+        with_deprecation_silenced do
           concat(semantic_form_for(@new_post) do |builder|
             concat(builder.commit_button('text'))
           end)

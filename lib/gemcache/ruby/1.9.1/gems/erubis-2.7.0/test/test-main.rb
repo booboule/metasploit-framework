@@ -70,9 +70,9 @@ END
   SRC = <<'END'
 _buf = ''; _buf << 'list:
 '; list = ['<aaa>', 'b&b', '"ccc"']
-   for item in list 
+   for item in list
  _buf << '  - '; _buf << ( item ).to_s; _buf << '
-'; end 
+'; end
  _buf << 'user: '; _buf << ( defined?(user) ? user : "(none)" ).to_s; _buf << '
 ';
 _buf.to_s
@@ -109,10 +109,10 @@ END
   PI_SRC = <<'END'
 _buf = ''; _buf << '<ul>
 ';   @list = ['<aaa>', 'b&b', '"ccc"']
-   for item in @list 
+   for item in @list
  _buf << '  <li>'; _buf << Erubis::XmlHelper.escape_xml(item); _buf << ' / '; _buf << (item).to_s; _buf << '
       '; _buf << ( item ).to_s; _buf << ' / '; _buf << Erubis::XmlHelper.escape_xml( item ); _buf << '</li>
-';   end 
+';   end
  _buf << '<ul>
 ';
 _buf.to_s
@@ -121,10 +121,10 @@ END
   PI_ESCAPED_SRC = <<'END'
 _buf = ''; _buf << '<ul>
 ';   @list = ['<aaa>', 'b&b', '"ccc"']
-   for item in @list 
+   for item in @list
  _buf << '  <li>'; _buf << (item).to_s; _buf << ' / '; _buf << Erubis::XmlHelper.escape_xml(item); _buf << '
       '; _buf << Erubis::XmlHelper.escape_xml( item ); _buf << ' / '; _buf << ( item ).to_s; _buf << '</li>
-';   end 
+';   end
  _buf << '<ul>
 ';
 _buf.to_s
@@ -266,7 +266,7 @@ END
  _buf << '  <li>'; _buf << ( item[:name]] ).to_s; _buf << '</li>
                                          ^
 -:4: syntax error, unexpected keyword_end, expecting ')'
-'; end 
+'; end
       ^
 -:7: syntax error, unexpected $end, expecting ')'
 END
@@ -290,7 +290,7 @@ END
  _buf << '  <li>'; _buf << ( item[:name]] ).to_s; _buf << '</li>
                                          ^
 -:4: syntax error, unexpected kEND, expecting ')'
-'; end 
+'; end
       ^
 -:7: syntax error, unexpected $end, expecting ')'
 END
@@ -737,9 +737,9 @@ END
 <?java } ?>
 END
     @expected = <<'END'
-StringBuffer _buf = new StringBuffer(); for (int i = 0; i < arr.length; i++) { 
+StringBuffer _buf = new StringBuffer(); for (int i = 0; i < arr.length; i++) {
 _buf.append("  - "); _buf.append(escape(arr[i])); _buf.append(" / "); _buf.append(arr[i]); _buf.append("\n");
- } 
+ }
 return _buf.toString();
 END
     @options = '--pi -xl java'

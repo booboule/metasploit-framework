@@ -3,14 +3,14 @@ module TZInfo
     module Asia
       module Harbin
         include TimezoneDefinition
-        
+
         timezone 'Asia/Harbin' do |tz|
           tz.offset :o0, 30404, 0, :LMT
           tz.offset :o1, 30600, 0, :CHAT
           tz.offset :o2, 28800, 0, :CST
           tz.offset :o3, 32400, 0, :CHAT
           tz.offset :o4, 28800, 3600, :CDT
-          
+
           tz.transition 1927, 12, :o1, 52385316799, 21600
           tz.transition 1932, 2, :o2, 116484823, 48
           tz.transition 1939, 12, :o3, 14577775, 6

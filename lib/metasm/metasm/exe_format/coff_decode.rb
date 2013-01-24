@@ -273,7 +273,7 @@ class COFF
 				when :str
 					val = ed.read(vlen*2).unpack('v*')
 					val.pop if val[-1] == 0
-					val = val.pack('C*') if val.all? { |c_| c_ > 0 and  c_ < 256 } 
+					val = val.pack('C*') if val.all? { |c_| c_ > 0 and  c_ < 256 }
 					vers[tagname] = val
 				when :var
 					val = ed.read(vlen).unpack('V*')

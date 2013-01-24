@@ -51,7 +51,7 @@ class MoveOldImportedCredsToNewFiles < ActiveRecord::Migration
 					when "password"
 						filedata[cred.ptype] << cred.pass.to_s
 					end
-					files[wid] = filedata 
+					files[wid] = filedata
 				end
 			end
 			return files
@@ -71,7 +71,7 @@ class MoveOldImportedCredsToNewFiles < ActiveRecord::Migration
 						fh.write fdata
 						fh.flush
 					ensure
-						fh.close 
+						fh.close
 					end
 					files_written << fname
 				end

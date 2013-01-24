@@ -90,7 +90,7 @@ def extract_saved_creds(path,xml_file)
 			print_status "\tUser: #{e.elements["User"].text}"
 			creds << "User: #{e.elements["User"].text}"
 		end
-		
+
 		proto = e.elements["Protocol"].text
 		if  proto == "0"
 			print_status "\tProtocol: FTP"
@@ -109,14 +109,14 @@ def extract_saved_creds(path,xml_file)
 		creds << ""
 
 	end
-#	
+#
 	return creds
 end
 #-------------------------------------------------------------------------------
 #Function to enumerate the users if running as SYSTEM
 def enum_users(os)
 	users = []
-	
+
 	path4users = ""
 	sysdrv = @client.fs.file.expand_path("%SystemDrive%")
 

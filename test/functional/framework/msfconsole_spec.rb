@@ -17,13 +17,13 @@ include MsfTest::MsfMatchers
 ## This spec exists to help us describe the behavior of msfconsole - TODO
 
 describe "Msfconsole" do
-	
+
 	###
 	# Setup!
 	###
-	
+
 	before :all do
-		
+
 		@working_directory = File.dirname(__FILE__)
 
 		## Static specs will make use of RC files here
@@ -44,7 +44,7 @@ describe "Msfconsole" do
 	end
 
 	after :each do
-	
+
 	end
 
 	after :all do
@@ -58,7 +58,7 @@ describe "Msfconsole" do
 
 	it "should start and let us run help" do
 			data = start_console_and_run_rc("help","#{@static_resource_directory}/help.rc")
-			
+
 			success_strings = [	'help',
 						'Database Backend Commands',
 						'Core Commands' ]
@@ -75,8 +75,8 @@ describe "Msfconsole" do
 		output       = Rex::Ui::Text::Output::File.new("temp.output")
 		session = generate_x86_meterpreter_session(input, output)
 
-		session.should_not be_nil	
-	
+		session.should_not be_nil
+
 		if session
 			session.load_stdapi
 			session.run_cmd("help")
@@ -84,7 +84,7 @@ describe "Msfconsole" do
 			flunk "Error interacting with session"
 		end
 	end
-	
+
 	###
 	# Dynamic Test Cases!!
 	###
@@ -105,33 +105,33 @@ describe "Msfconsole" do
 	Dir.mkdir(@temp_directory)
 	Dir.mkdir(@temp_input_directory)
 	Dir.mkdir(@temp_output_directory)
-	
+
 	Dir.glob("#{@working_directory}/msftest/*.msftest").each do |filename|
-		
+
 		## Parse this test case
 		test_case = MsfTestCase.new(filename)
-		puts "Found #{test_case.name} in: #{filename}" 	
+		puts "Found #{test_case.name} in: #{filename}"
 
 		## Write the commands back to a temporary RC file
 		puts "Writing #{@temp_input_directory}/#{test_case.name}.rc"
-		File.open("#{@temp_input_directory}/#{test_case.name}.rc", 'w') { |f|  f.puts test_case.commands } 
-		
+		File.open("#{@temp_input_directory}/#{test_case.name}.rc", 'w') { |f|  f.puts test_case.commands }
+
 		## Create the rspec Test Case
 		it "should #{test_case.name}" do
-			
+
 			## Gather the success / failure strings, and combine with the generics
 			success_strings = test_case.expected_successes
 			failure_strings = test_case.expected_failures | generic_failure_strings
 			failure_exception_strings = test_case.expected_failure_exceptions | generic_failure_exception_strings
-			
+
 			## run the commands
-			data = start_console_and_run_rc( test_case.name, "#{@temp_input_directory}/#{test_case.name}.rc")	
-					
-			## check the output		
+			data = start_console_and_run_rc( test_case.name, "#{@temp_input_directory}/#{test_case.name}.rc")
+
+			## check the output
 			data.should contain_all_successes(success_strings)
 			data.should contain_no_failures_except(failure_strings, failure_exception_strings)
-			
-			## Clean up 
+
+			## Clean up
 			#File.delete("#{@temp_input_directory}/#{test_case.name}.rc")
 			#File.delete("#{@temp_output_directory}/#{test_case.name}")
 		end
@@ -141,13 +141,13 @@ describe "Msfconsole" do
 	# Test case helpers:
 	###
 	def generic_success_strings
-		[]	
+		[]
 	end
-	
+
 	def generic_failure_strings
 		['fatal', 'fail', 'error', 'exception']
 	end
-	
+
 	def generic_failure_exception_strings
 		[]
 	end
@@ -160,17 +160,17 @@ describe "Msfconsole" do
 		else
 			msfconsole_string = "ruby #{@working_directory}/../../../msfconsole -o #{output_file} -r #{rc_file}"
 		end
-		
+
 		system("#{msfconsole_string}")
 
-		data = hlp_file_to_string("#{output_file}")			
+		data = hlp_file_to_string("#{output_file}")
 	end
-  
+
   	def generate_x86_meterpreter_session(input, output)
 		## Setup for win32
 		exploit_name = 'windows/smb/psexec'
 		payload_name = 'windows/meterpreter/bind_tcp'
-			
+
 		## Fire it off against a known-vulnerable host
 		session = @framework.exploits.create(exploit_name).exploit_simple(
 			'Options'     => {'RHOST' => "vulnerable", "SMBUser" => "administrator", "SMBPass" => ""},
@@ -194,14 +194,14 @@ describe "Msfconsole" do
   	def generate_java_meterpreter_session(input, output)
 		raise "Not Implemented"
 	end
- 
+
    	def generate_php_meterpreter_session(input, output)
 		raise "Not Implemented"
 	end
 
 	def hlp_file_to_string(filename)
 		data = ""
-		f = File.open(filename, "r") 
+		f = File.open(filename, "r")
 		f.each_line do |line|
 			data += line
 		end

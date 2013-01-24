@@ -40,11 +40,11 @@ class Plugin::TokenAdduser < Msf::Plugin
 				print_line(opts.usage)
 				return
 			end
-		
+
 			opt_user_pass  = []
 			username = nil
 			password = nil
-			host = nil 
+			host = nil
 			opts.parse(args) do |opt, idx, val|
 				case opt
 				when "-h"

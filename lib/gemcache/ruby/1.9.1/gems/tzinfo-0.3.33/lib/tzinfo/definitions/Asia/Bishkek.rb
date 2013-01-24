@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Bishkek
         include TimezoneDefinition
-        
+
         timezone 'Asia/Bishkek' do |tz|
           tz.offset :o0, 17904, 0, :LMT
           tz.offset :o1, 18000, 0, :FRUT
@@ -13,7 +13,7 @@ module TZInfo
           tz.offset :o5, 18000, 0, :KGT
           tz.offset :o6, 18000, 3600, :KGST
           tz.offset :o7, 21600, 0, :KGT
-          
+
           tz.transition 1924, 5, :o1, 4363033127, 1800
           tz.transition 1930, 6, :o2, 58227559, 24
           tz.transition 1981, 3, :o3, 354909600

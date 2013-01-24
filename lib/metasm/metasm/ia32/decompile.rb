@@ -70,7 +70,7 @@ class Ia32
 					end
 				}
 				a << :eax if di.opcode.name == 'ret' and (not func.type.kind_of? C::BaseType or func.type.type.name != :void)	# standard ABI
-				
+
 				deps_r[b] |= a.map { |ee| Expression[ee].externals.grep(::Symbol) }.flatten - [:unknown] - deps_w[b]
 				deps_w[b] |= w.map { |ee| Expression[ee].externals.grep(::Symbol) }.flatten - [:unknown]
 			}
@@ -121,7 +121,7 @@ class Ia32
 						end
 					}
 					a << :eax if di.opcode.name == 'ret' and (not func.type.kind_of? C::BaseType or func.type.type.name != :void)	# standard ABI
-					
+
 					next true if (a.map { |ee| Expression[ee].externals.grep(::Symbol) }.flatten - [:unknown] - bw).include? r
 					bw |= w.map { |ee| Expression[ee].externals.grep(::Symbol) }.flatten - [:unknown]
 					false
@@ -514,7 +514,7 @@ class Ia32
 			}
 	       	}
 	end
-	
+
 	def decompile_check_abi(dcmp, entry, func)
 		a = func.type.args || []
 		a.delete_if { |arg| arg.has_attribute_var('register') and arg.has_attribute('unused') }

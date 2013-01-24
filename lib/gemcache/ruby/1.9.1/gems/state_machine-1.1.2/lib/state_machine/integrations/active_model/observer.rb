@@ -5,14 +5,14 @@ module StateMachine
       # than one argument (e.g. the record *and* the state transition).  By
       # default, ActiveModel only supports passing the record into the
       # callbacks.
-      # 
+      #
       # For example:
-      # 
+      #
       #   class VehicleObserver < ActiveModel::Observer
       #     # The default behavior: only pass in the record
       #     def after_save(vehicle)
       #     end
-      #     
+      #
       #     # Custom behavior: allow the transition to be passed in as well
       #     def after_transition(vehicle, transition)
       #       Audit.log(vehicle, transition)

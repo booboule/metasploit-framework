@@ -13,7 +13,7 @@ module RepeatedSubruleSpec
         end
       end
     }
-  
+
     it "should produce a parser having sequence-numbered node accessor methods" do
       parse("a b c") do |result|
         result.should_not be_nil

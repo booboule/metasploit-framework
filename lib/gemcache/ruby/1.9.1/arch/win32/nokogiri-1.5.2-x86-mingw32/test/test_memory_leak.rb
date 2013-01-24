@@ -126,7 +126,7 @@ EOF
     end
 
     def test_in_context_parser_leak
-      loop do 
+      loop do
         doc = Nokogiri::XML::Document.new
         fragment1 = Nokogiri::XML::DocumentFragment.new(doc, '<foo/>')
         node = fragment1.children[0]

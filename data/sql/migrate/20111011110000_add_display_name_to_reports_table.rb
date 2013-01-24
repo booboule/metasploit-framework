@@ -8,7 +8,7 @@ class AddDisplayNameToReportsTable < ActiveRecord::Migration
 		add_column :reports, :name, :string, :limit => 63
 
 		# Migrate to have a default name.
-		
+
 		Report.find(:all).each do |report|
 			rtype = report.rtype.to_s =~ /^([A-Z0-9]+)\x2d/i ? $1 : "AUDIT"
 			default_name = rtype[0,57].downcase.capitalize + "-" + report.id.to_s[0,5]

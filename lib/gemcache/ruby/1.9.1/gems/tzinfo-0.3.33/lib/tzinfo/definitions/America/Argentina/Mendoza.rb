@@ -4,7 +4,7 @@ module TZInfo
       module Argentina
         module Mendoza
           include TimezoneDefinition
-          
+
           timezone 'America/Argentina/Mendoza' do |tz|
             tz.offset :o0, -16516, 0, :LMT
             tz.offset :o1, -15408, 0, :CMT
@@ -14,7 +14,7 @@ module TZInfo
             tz.offset :o5, -10800, 3600, :ARST
             tz.offset :o6, -14400, 0, :WART
             tz.offset :o7, -14400, 3600, :WARST
-            
+
             tz.transition 1894, 10, :o1, 52123666129, 21600
             tz.transition 1920, 5, :o2, 1453467407, 600
             tz.transition 1930, 12, :o3, 7278935, 3

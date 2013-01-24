@@ -165,7 +165,7 @@ end
 if __FILE__ == $0
 
 # this is the class you have to define to hook
-# 
+#
 # setup() defines the list of hooks as an array of hashes
 # for exported functions, simply use :function => function name
 # for arbitrary hook, :module => 'module.dll', :rva => 0x1234, :hookname => 'myhook' (call pre_myhook/post_myhook)

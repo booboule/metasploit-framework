@@ -3,12 +3,12 @@ module TZInfo
     module Asia
       module Nicosia
         include TimezoneDefinition
-        
+
         timezone 'Asia/Nicosia' do |tz|
           tz.offset :o0, 8008, 0, :LMT
           tz.offset :o1, 7200, 0, :EET
           tz.offset :o2, 7200, 3600, :EEST
-          
+
           tz.transition 1921, 11, :o1, 26168479999, 10800
           tz.transition 1975, 4, :o2, 166572000
           tz.transition 1975, 10, :o1, 182293200

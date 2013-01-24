@@ -102,13 +102,13 @@ module Nokogiri
       def test_c14n_modes
         skip("C14N Exclusive implementation will complete by next version after 1.5.1") if Nokogiri.jruby?
         # http://www.w3.org/TR/xml-exc-c14n/#sec-Enveloping
-        
+
         doc1 = Nokogiri.XML <<-eoxml
 <n0:local xmlns:n0="http://foobar.org" xmlns:n3="ftp://example.org">
   <n1:elem2 xmlns:n1="http://example.net" xml:lang="en">
     <n3:stuff xmlns:n3="ftp://example.org"/>
   </n1:elem2>
-</n0:local>        
+</n0:local>
         eoxml
         doc2 = Nokogiri.XML <<-eoxml
 <n2:pdu xmlns:n1="http://example.com"
@@ -118,7 +118,7 @@ module Nokogiri
   <n1:elem2 xmlns:n1="http://example.net" xml:lang="en">
     <n3:stuff xmlns:n3="ftp://example.org"/>
   </n1:elem2>
-</n2:pdu>        
+</n2:pdu>
         eoxml
 
         c14n = doc1.at_xpath('//n1:elem2', {'n1' => 'http://example.net'}).canonicalize
@@ -142,7 +142,7 @@ module Nokogiri
         assert_equal '<n1:elem2 xmlns:n1="http://example.net" xmlns:n2="http://foo.example" xml:lang="en">
     <n3:stuff xmlns:n3="ftp://example.org"></n3:stuff>
   </n1:elem2>', c14n
-        
+
       end
 
 

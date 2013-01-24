@@ -8,7 +8,7 @@ class TestEmTickLoop < Test::Unit::TestCase
     EM.run { EM.add_timer(1) { EM.stop } }
     assert_equal i, 10
   end
-  
+
   def test_tick_loop_on_stop
     t = nil
     tick_loop = EM.tick_loop { :stop }
@@ -16,7 +16,7 @@ class TestEmTickLoop < Test::Unit::TestCase
     EM.run { EM.next_tick { EM.stop } }
     assert t
   end
-  
+
   def test_start_twice
     i = 0
     s = 0
@@ -30,7 +30,7 @@ class TestEmTickLoop < Test::Unit::TestCase
     assert_equal 2, i
     assert_equal 1, s # stop callbacks are only called once
   end
-  
+
   def test_stop
     i, s = 0, 0
     tick_loop = EM.tick_loop { i += 1 }
@@ -40,7 +40,7 @@ class TestEmTickLoop < Test::Unit::TestCase
     assert_equal 1, i
     assert_equal 1, s
   end
-  
+
   def test_immediate_stops
     s = 0
     tick_loop = EM::TickLoop.new { }
@@ -48,12 +48,12 @@ class TestEmTickLoop < Test::Unit::TestCase
     tick_loop.on_stop { s += 1 }
     assert_equal 2, s
   end
-  
+
   def test_stopped
     tick_loop = EM::TickLoop.new { }
     assert tick_loop.stopped?
     tick_loop.start
     assert !tick_loop.stopped?
   end
-    
+
 end

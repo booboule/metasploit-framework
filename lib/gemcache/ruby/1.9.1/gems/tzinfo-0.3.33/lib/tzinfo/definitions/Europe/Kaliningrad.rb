@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Kaliningrad
         include TimezoneDefinition
-        
+
         timezone 'Europe/Kaliningrad' do |tz|
           tz.offset :o0, 4920, 0, :LMT
           tz.offset :o1, 3600, 0, :CET
@@ -15,7 +15,7 @@ module TZInfo
           tz.offset :o7, 7200, 3600, :EEST
           tz.offset :o8, 7200, 0, :EET
           tz.offset :o9, 10800, 0, :FET
-          
+
           tz.transition 1893, 3, :o1, 1737039199, 720
           tz.transition 1916, 4, :o2, 29051813, 12
           tz.transition 1916, 9, :o1, 58107299, 24

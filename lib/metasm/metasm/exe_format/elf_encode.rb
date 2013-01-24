@@ -385,7 +385,7 @@ class ELF
 					else
 						@relocations.delete r
 					end
-		
+
 					# prevoffset is label_section_start + int_section_offset
 					target_s = @sections.find { |s| s.encoded and s.encoded.export[prevoffset.lexpr] == 0 }
 					rel = target_s.encoded.reloc[prevoffset.rexpr]
@@ -531,7 +531,7 @@ class ELF
 
 				# fill these later, but create the base relocs now
 				arch_create_reloc_func = "arch_#{@header.machine.downcase}_create_reloc"
-				next if not respond_to?(arch_create_reloc_func) 
+				next if not respond_to?(arch_create_reloc_func)
 				curaddr = label_at(@encoded, 0, 'elf_start')
 				fkbind = {}
 				@sections.each { |s|

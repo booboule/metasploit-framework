@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Zaporozhye
         include TimezoneDefinition
-        
+
         timezone 'Europe/Zaporozhye' do |tz|
           tz.offset :o0, 8440, 0, :LMT
           tz.offset :o1, 8400, 0, :CUT
@@ -13,7 +13,7 @@ module TZInfo
           tz.offset :o5, 3600, 0, :CET
           tz.offset :o6, 10800, 3600, :MSD
           tz.offset :o7, 7200, 3600, :EEST
-          
+
           tz.transition 1879, 12, :o1, 5200665269, 2160
           tz.transition 1924, 5, :o2, 174521333, 72
           tz.transition 1930, 6, :o3, 29113781, 12

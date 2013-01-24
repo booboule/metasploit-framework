@@ -3,13 +3,13 @@ module TZInfo
     module Africa
       module Tripoli
         include TimezoneDefinition
-        
+
         timezone 'Africa/Tripoli' do |tz|
           tz.offset :o0, 3164, 0, :LMT
           tz.offset :o1, 3600, 0, :CET
           tz.offset :o2, 3600, 3600, :CEST
           tz.offset :o3, 7200, 0, :EET
-          
+
           tz.transition 1919, 12, :o1, 52322208409, 21600
           tz.transition 1951, 10, :o2, 58414405, 24
           tz.transition 1951, 12, :o1, 29208149, 12

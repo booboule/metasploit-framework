@@ -16,7 +16,7 @@ module MetasploitDataModels
         Marshal.load(value.unpack('m').first)
       rescue
         begin
-          # Support legacy YAML encoding for existing data        
+          # Support legacy YAML encoding for existing data
           YAML.load(value)
         rescue
           # Fall back to string decoding

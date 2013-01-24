@@ -26,5 +26,5 @@ END
 		assert_equal('cake', ini['group2']['salad'])
 		assert_equal(TestIni + "\n", ini.to_s)
 	end
-	
+
 end

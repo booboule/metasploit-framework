@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Montevideo
         include TimezoneDefinition
-        
+
         timezone 'America/Montevideo' do |tz|
           tz.offset :o0, -13484, 0, :LMT
           tz.offset :o1, -13484, 0, :MMT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, -10800, 3600, :UYST
           tz.offset :o5, -10800, 0, :UYT
           tz.offset :o6, -10800, 1800, :UYHST
-          
+
           tz.transition 1898, 6, :o1, 52152522971, 21600
           tz.transition 1920, 5, :o2, 52324826171, 21600
           tz.transition 1923, 10, :o3, 116337343, 48

@@ -3,12 +3,12 @@ module TZInfo
     module Europe
       module Tirane
         include TimezoneDefinition
-        
+
         timezone 'Europe/Tirane' do |tz|
           tz.offset :o0, 4760, 0, :LMT
           tz.offset :o1, 3600, 0, :CET
           tz.offset :o2, 3600, 3600, :CEST
-          
+
           tz.transition 1913, 12, :o1, 5227488241, 2160
           tz.transition 1940, 6, :o2, 58315115, 24
           tz.transition 1942, 11, :o1, 58335973, 24

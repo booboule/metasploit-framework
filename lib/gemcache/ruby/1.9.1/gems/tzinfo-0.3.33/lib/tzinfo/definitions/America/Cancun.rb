@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Cancun
         include TimezoneDefinition
-        
+
         timezone 'America/Cancun' do |tz|
           tz.offset :o0, -20824, 0, :LMT
           tz.offset :o1, -21600, 0, :CST
           tz.offset :o2, -18000, 0, :EST
           tz.offset :o3, -18000, 3600, :EDT
           tz.offset :o4, -21600, 3600, :CDT
-          
+
           tz.transition 1922, 1, :o1, 9692223, 4
           tz.transition 1981, 12, :o2, 377935200
           tz.transition 1996, 4, :o3, 828860400

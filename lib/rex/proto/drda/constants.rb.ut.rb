@@ -7,7 +7,7 @@ require 'rex/test'
 require 'rex/proto/drda/constants'
 
 class Rex::Proto::DRDA::Constants::UnitTest < Test::Unit::TestCase
-	
+
 	Konst = Rex::Proto::DRDA::Constants
 
 	def test_defines
@@ -20,5 +20,5 @@ class Rex::Proto::DRDA::Constants::UnitTest < Test::Unit::TestCase
 		assert_kind_of(Array, Konst.const_values)
 		assert Konst.const_values.include? Konst::EXCSAT
 	end
-	
+
 end

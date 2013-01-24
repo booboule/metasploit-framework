@@ -3,12 +3,12 @@ module TZInfo
     module America
       module Thule
         include TimezoneDefinition
-        
+
         timezone 'America/Thule' do |tz|
           tz.offset :o0, -16508, 0, :LMT
           tz.offset :o1, -14400, 0, :AST
           tz.offset :o2, -14400, 3600, :ADT
-          
+
           tz.transition 1916, 7, :o1, 52295170127, 21600
           tz.transition 1991, 3, :o2, 670399200
           tz.transition 1991, 9, :o1, 686120400

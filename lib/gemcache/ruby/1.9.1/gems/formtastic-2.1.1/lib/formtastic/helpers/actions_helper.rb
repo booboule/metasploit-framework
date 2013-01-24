@@ -1,10 +1,10 @@
 module Formtastic
   module Helpers
-    # ActionsHelper encapsulates the responsibilties of the {#actions} DSL for acting on 
+    # ActionsHelper encapsulates the responsibilties of the {#actions} DSL for acting on
     # (submitting, cancelling, resetting) forms.
     #
-    # {#actions} is a block helper used to wrap the form's actions (buttons, links) in a 
-    # `<fieldset>` and `<ol>`, with each item in the list containing the markup representing a 
+    # {#actions} is a block helper used to wrap the form's actions (buttons, links) in a
+    # `<fieldset>` and `<ol>`, with each item in the list containing the markup representing a
     # single action.
     #
     #     <%= semantic_form_for @post do |f| %>
@@ -53,7 +53,7 @@ module Formtastic
     module ActionsHelper
 
       include Formtastic::Helpers::FieldsetWrapper
-      
+
       # Creates a fieldset and ol tag wrapping for use around a set of buttons. It can be
       # called either with a block (in which you can do the usual Rails form stuff, HTML, ERB, etc),
       # or with a list of named actions. These two examples are functionally equivalent:
@@ -158,7 +158,7 @@ module Formtastic
       end
 
       protected
-      
+
       def default_actions
         [:submit]
       end

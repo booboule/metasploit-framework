@@ -11,7 +11,7 @@ describe Request, 'legacy Mongrel tests' do
     proc { R("GET /#{rand_data(10,120)} HTTP/1.1\r\nX-Test: #{rand_data(1024, 1024*1024, false)}\r\n\r\n") }.
       should raise_error(InvalidRequest)
   end
-  
+
   it 'should raise error on big fat ugly headers' do
     get = "GET /#{rand_data(10,120)} HTTP/1.1\r\n"
     get << "X-Test: test\r\n" * (80 * 1024)
@@ -22,7 +22,7 @@ describe Request, 'legacy Mongrel tests' do
     proc { R("GET #{rand_data(1024, 1024+(1024), false)} #{rand_data(1024, 1024+(1024), false)}\r\n\r\n") }.
       should raise_error(InvalidRequest)
   end
-  
+
   private
     def rand_data(min, max, readable=true)
       count = min + ((rand(max)+1) *10).to_i

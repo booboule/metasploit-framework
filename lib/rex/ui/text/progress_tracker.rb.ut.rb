@@ -13,7 +13,7 @@ class Rex::Ui::Text::ProgressTracker::UnitTest < Test::Unit::TestCase
 		pt       = Rex::Ui::Text::ProgressTracker.new(output)
 
 		pt.range = 1..10
-	
+
 		assert_equal(1, pt.start)
 		assert_equal(10, pt.stop)
 

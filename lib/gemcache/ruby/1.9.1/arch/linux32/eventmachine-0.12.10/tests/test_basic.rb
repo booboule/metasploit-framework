@@ -3,7 +3,7 @@
 # Author:: Francis Cianfrocca (gmail: blackhedd)
 # Homepage::  http://rubyeventmachine.com
 # Date:: 8 April 2006
-# 
+#
 # See EventMachine and EventMachine::Connection for documentation and
 # usage examples.
 #
@@ -11,18 +11,18 @@
 #
 # Copyright (C) 2006-07 by Francis Cianfrocca. All Rights Reserved.
 # Gmail: blackhedd
-# 
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of either: 1) the GNU General Public License
 # as published by the Free Software Foundation; either version 2 of the
 # License, or (at your option) any later version; or 2) Ruby's License.
-# 
+#
 # See the file COPYING for complete licensing information.
 #
 #---------------------------------------------------------------------------
 #
 #
-# 
+#
 
 $:.unshift File.expand_path(File.dirname(__FILE__) + "/../lib")
 require 'eventmachine'
@@ -182,7 +182,7 @@ class TestBasic < Test::Unit::TestCase
       aaa bbb # should produce a Ruby exception
     end
   end
-  # This test causes issues, the machine becomes unreleasable after 
+  # This test causes issues, the machine becomes unreleasable after
   # release_machine suffers an exception in event_callback.
   def xxx_test_post_init_error
     assert_raises( EventMachine::ConnectionNotBound ) {
@@ -261,7 +261,7 @@ class TestBasic < Test::Unit::TestCase
     end
     assert x
   end
-  
+
   def test_schedule_from_thread
     x = false
     assert !x

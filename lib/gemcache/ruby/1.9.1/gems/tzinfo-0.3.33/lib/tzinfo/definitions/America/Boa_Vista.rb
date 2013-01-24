@@ -3,12 +3,12 @@ module TZInfo
     module America
       module Boa_Vista
         include TimezoneDefinition
-        
+
         timezone 'America/Boa_Vista' do |tz|
           tz.offset :o0, -14560, 0, :LMT
           tz.offset :o1, -14400, 0, :AMT
           tz.offset :o2, -14400, 3600, :AMST
-          
+
           tz.transition 1914, 1, :o1, 1306872181, 540
           tz.transition 1931, 10, :o2, 19412945, 8
           tz.transition 1932, 4, :o1, 19414389, 8

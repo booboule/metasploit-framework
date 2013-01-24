@@ -40,7 +40,7 @@ describe Rack::Static do
     res.should.be.ok
     res.body.should =~ /index!/
   end
-  
+
   it "doesn't call index file if :index option was omitted" do
     res = @request.get("/")
     res.body.should == "Hello World"

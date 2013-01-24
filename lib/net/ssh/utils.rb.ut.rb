@@ -46,13 +46,13 @@ sRMIIcy/R5W1mlRFFaYMbtJogjtWwDUjzTEPvIU6tdJhj8GOg1pxPLqD+r/Mwc88
 		assert_equal("af:76:e4:f8:37:7b:52:8c:77:61:5b:d3:b0:d3:05:e4",fp)
 
 		fp = Net::SSH::Utils::Key.fingerprint(
-			:data => rsa_private, 
+			:data => rsa_private,
 			:format => :compact
 		)
 		assert_equal("af76e4f8377b528c77615bd3b0d305e4",fp)
 
 		fp = Net::SSH::Utils::Key.fingerprint(
-			:data => rsa_private, 
+			:data => rsa_private,
 			:format => :bin
 		)
 		assert_equal("\xaf\x76\xe4\xf8\x37\x7b\x52\x8c\x77\x61\x5b\xd3\xb0\xd3\x05\xe4", fp)
@@ -77,7 +77,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA/kDqlZOy4FE7+0m5rO/x1YDMxMnsj2SFIAtxF6TAAyxq
 		assert_equal("af:76:e4:f8:37:7b:52:8c:77:61:5b:d3:b0:d3:05:e4",fp)
 
 		fp = Net::SSH::Utils::Key.fingerprint(
-			:data => rsa_public, 
+			:data => rsa_public,
 			:format => :compact,
 			:public => true
 		)
@@ -85,7 +85,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA/kDqlZOy4FE7+0m5rO/x1YDMxMnsj2SFIAtxF6TAAyxq
 		assert_equal("af76e4f8377b528c77615bd3b0d305e4",fp)
 
 		fp = Net::SSH::Utils::Key.fingerprint(
-			:data => rsa_public, 
+			:data => rsa_public,
 			:format => :bin,
 			:public => true
 		)
@@ -119,13 +119,13 @@ rtPv0QRjA/92/OQ5T6Gj7m8gqKEshzW5gj17KH3pdOnNaLBkfJVYvQIUHzk1VI9A
 		assert_equal("ad:64:88:d8:f6:78:65:d4:da:a9:ba:56:61:74:a5:1c",fp)
 
 		fp = Net::SSH::Utils::Key.fingerprint(
-			:data => dsa_private, 
+			:data => dsa_private,
 			:format => :compact
 		)
 		assert_equal("ad6488d8f67865d4daa9ba566174a51c",fp)
 
 		fp = Net::SSH::Utils::Key.fingerprint(
-			:data => dsa_private, 
+			:data => dsa_private,
 			:format => :bin
 		)
 		assert_equal("\xad\x64\x88\xd8\xf6\x78\x65\xd4\xda\xa9\xba\x56\x61\x74\xa5\x1c",fp)
@@ -150,7 +150,7 @@ ssh-dss AAAAB3NzaC1kc3MAAACBAN57tHwXfqmFBDl+cF/Udw5y0xxZZdfr/YRd05kzKRFeA+kaWgoV
 		assert_equal("ad:64:88:d8:f6:78:65:d4:da:a9:ba:56:61:74:a5:1c",fp)
 
 		fp = Net::SSH::Utils::Key.fingerprint(
-			:data => dsa_public, 
+			:data => dsa_public,
 			:format => :compact,
 			:public => true
 		)
@@ -158,7 +158,7 @@ ssh-dss AAAAB3NzaC1kc3MAAACBAN57tHwXfqmFBDl+cF/Udw5y0xxZZdfr/YRd05kzKRFeA+kaWgoV
 		assert_equal("ad6488d8f67865d4daa9ba566174a51c",fp)
 
 		fp = Net::SSH::Utils::Key.fingerprint(
-			:data => dsa_public, 
+			:data => dsa_public,
 			:format => :bin,
 			:public => true
 		)
@@ -177,7 +177,7 @@ ssh-dss AAAAB3NzaC1kc3MAAACBAN57tHwXfqmFBDl+cF/Udw5y0xxZZdfr/YRd05kzKRFeA+kaWgoV
 	# badly formatted key. Too bad.
 	def test_bogus_raise
 		bogus_key = "Oh hey I'm a key. Ok, not really."
-		assert_raise OpenSSL::PKey::PKeyError do 
+		assert_raise OpenSSL::PKey::PKeyError do
 			Net::SSH::Utils::Key.fingerprint(:data => bogus_key)
 		end
 	end

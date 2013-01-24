@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Vatican
         include TimezoneDefinition
-        
+
         linked_timezone 'Europe/Vatican', 'Europe/Rome'
       end
     end

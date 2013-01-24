@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Santo_Domingo
         include TimezoneDefinition
-        
+
         timezone 'America/Santo_Domingo' do |tz|
           tz.offset :o0, -16776, 0, :LMT
           tz.offset :o1, -16800, 0, :SDMT
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -18000, 3600, :EDT
           tz.offset :o4, -18000, 1800, :EHDT
           tz.offset :o5, -14400, 0, :AST
-          
+
           tz.transition 1890, 1, :o1, 2893642433, 1200
           tz.transition 1933, 4, :o2, 87377911, 36
           tz.transition 1966, 10, :o3, 58546289, 24

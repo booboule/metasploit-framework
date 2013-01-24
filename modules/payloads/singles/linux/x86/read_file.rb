@@ -39,7 +39,7 @@ module Metasploit3
 			open:
 				mov eax,0x5       ; open() syscall
 				pop ebx           ; Holds the filename
-				xor ecx,ecx       ; Open for reading (0) 
+				xor ecx,ecx       ; Open for reading (0)
 				int 0x80
 
 			read:

@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Toronto
         include TimezoneDefinition
-        
+
         timezone 'America/Toronto' do |tz|
           tz.offset :o0, -19052, 0, :LMT
           tz.offset :o1, -18000, 0, :EST
           tz.offset :o2, -18000, 3600, :EDT
           tz.offset :o3, -18000, 3600, :EWT
           tz.offset :o4, -18000, 3600, :EPT
-          
+
           tz.transition 1895, 1, :o1, 52125005963, 21600
           tz.transition 1918, 4, :o2, 58120747, 24
           tz.transition 1918, 10, :o1, 9687575, 4

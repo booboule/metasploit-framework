@@ -15,10 +15,10 @@ class KissFFT::UnitTest < Test::Unit::TestCase
 	def test_version
 		assert_equal(String, KissFFT.version.class)
 		puts "KissFFT version: #{KissFFT.version}"
-	end		
+	end
 	def test_fftr
 		data = File.read('sample.data').unpack('s*')
-		
+
 		min = 1
 		res = KissFFT.fftr(8192, 8000, 1, data)
 
@@ -43,5 +43,5 @@ class KissFFT::UnitTest < Test::Unit::TestCase
 			end
 		end
 
-	end					
+	end
 end

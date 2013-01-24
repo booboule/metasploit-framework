@@ -22,7 +22,7 @@ def enum_int
 			print_status("\t#{i.netmask}")
 			print_status()
 		end
-		
+
 	end
 end
 

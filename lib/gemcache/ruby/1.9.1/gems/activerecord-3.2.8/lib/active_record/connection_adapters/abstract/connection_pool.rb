@@ -255,7 +255,7 @@ connection.  For example: ActiveRecord::Base.connection.close
             # Sometimes our wait can end because a connection is available,
             # but another thread can snatch it up first. If timeout hasn't
             # passed but no connection is avail, looks like that happened --
-            # loop and wait again, for the time remaining on our timeout. 
+            # loop and wait again, for the time remaining on our timeout.
             before_wait = Time.now
             @queue.wait( [@timeout - waited_time, 0].max )
             waited_time += (Time.now - before_wait)
@@ -263,7 +263,7 @@ connection.  For example: ActiveRecord::Base.connection.close
             # Will go away in Rails 4, when we don't clean up
             # after leaked connections automatically anymore. Right now, clean
             # up after we've returned from a 'wait' if it looks like it's
-            # needed, then loop and try again. 
+            # needed, then loop and try again.
             if(active_connections.size >= @connections.size)
               clear_stale_cached_connections!
             end

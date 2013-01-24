@@ -15,7 +15,7 @@ module StateMachine
               nil
             end
           end
-          
+
           # Extracts the values from the node as either strings or symbols.
           # If the node isn't an array, it'll be converted to an array.
           def extract_node_names(ast, convert_to_array = true)

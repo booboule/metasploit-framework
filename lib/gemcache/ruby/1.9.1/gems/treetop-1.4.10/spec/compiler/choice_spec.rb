@@ -8,16 +8,16 @@ module ChoiceSpec
       result = parse('foo')
       result.should_not be_nil
       result.should respond_to(:foo_method)
-    
+
       result = parse('bar')
       result.should_not be_nil
       result.should respond_to(:bar_method)
-    
+
       result = parse('baz')
       result.should_not be_nil
       result.should respond_to(:baz_method)
     end
-  
+
     it "upon parsing a string matching the second alternative, records the failure of the first terminal" do
       result = parse('bar')
       terminal_failures = parser.terminal_failures
@@ -26,18 +26,18 @@ module ChoiceSpec
       failure.expected_string.should == 'foo'
       failure.index.should == 0
     end
-  
+
     it "upon parsing a string matching the third alternative, records the failure of the first two terminals" do
       result = parse('baz')
-      
+
       terminal_failures = parser.terminal_failures
-      
+
       terminal_failures.size.should == 2
 
       failure_1 = terminal_failures[0]
       failure_1.expected_string == 'foo'
       failure_1.index.should == 0
-    
+
       failure_2 = terminal_failures[1]
       failure_2.expected_string == 'bar'
       failure_2.index.should == 0
@@ -53,7 +53,7 @@ module ChoiceSpec
     end
   end
 
-  describe "A choice between terminals followed by a block" do  
+  describe "A choice between terminals followed by a block" do
     testing_expression "('a'/ 'b' / 'c') { def a_method; end }"
 
     it "extends a match of any of its subexpressions with a module created from the block" do
@@ -68,7 +68,7 @@ module ChoiceSpec
     end
   end
 
-  describe "a choice followed by a declared module" do  
+  describe "a choice followed by a declared module" do
     testing_expression "('a'/ 'b' / 'c') <ChoiceSpec::TestModule>"
 
     it "extends a match of any of its subexpressions with a module created from the block" do

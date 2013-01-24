@@ -19,23 +19,23 @@ describe Request, 'parser' do
     request.env["rack.url_scheme"].should == 'http'
     request.env['FRAGMENT'].to_s.should be_empty
     request.env['QUERY_STRING'].to_s.should be_empty
-    
+
     request.should validate_with_lint
   end
-  
+
   it 'should not prepend HTTP_ to Content-Type and Content-Length' do
     request = R("POST / HTTP/1.1\r\nHost: localhost\r\nContent-Type: text/html\r\nContent-Length: 2\r\n\r\naa")
     request.env.keys.should_not include('HTTP_CONTENT_TYPE', 'HTTP_CONTENT_LENGTH')
     request.env.keys.should include('CONTENT_TYPE', 'CONTENT_LENGTH')
-    
+
     request.should validate_with_lint
   end
-  
+
   it 'should raise error on invalid request line' do
     proc { R("GET / SsUTF/1.1") }.should raise_error(InvalidRequest)
     proc { R("GET / HTTP/1.1yousmelllikecheeze") }.should raise_error(InvalidRequest)
   end
-  
+
   it 'should support fragment in uri' do
     request = R("GET /forums/1/topics/2375?page=1#posts-17408 HTTP/1.1\r\nHost: localhost\r\n\r\n")
 
@@ -43,19 +43,19 @@ describe Request, 'parser' do
     request.env['PATH_INFO'].should == '/forums/1/topics/2375'
     request.env['QUERY_STRING'].should == 'page=1'
     request.env['FRAGMENT'].should == 'posts-17408'
-    
+
     request.should validate_with_lint
   end
-  
+
   it 'should parse path with query string' do
     request = R("GET /index.html?234235 HTTP/1.1\r\nHost: localhost\r\n\r\n")
     request.env['REQUEST_PATH'].should == '/index.html'
     request.env['QUERY_STRING'].should == '234235'
     request.env['FRAGMENT'].should be_nil
-    
+
     request.should validate_with_lint
   end
-  
+
   it 'should parse headers from GET request' do
     request = R(<<-EOS, true)
 GET / HTTP/1.1
@@ -146,7 +146,7 @@ EOS
 
     request.should validate_with_lint
   end
-  
+
   it 'should parse even with stupid Content-Length' do
     body = <<-EOS.chomp
 POST / HTTP/1.1
@@ -160,7 +160,7 @@ EOS
     request.body.rewind
     request.body.read.should == 'aye'
   end
-  
+
   it "should parse ie6 urls" do
     %w(/some/random/path"
        /some/random/path>
@@ -179,7 +179,7 @@ EOS
       parser.should_not be_error
     end
   end
-  
+
   xit "should parse absolute request URI" do
     request = R(<<-EOS, true)
 GET http://localhost:3000/hi HTTP/1.1
@@ -190,17 +190,17 @@ EOS
 
     request.should validate_with_lint
   end
-  
-  
+
+
   it "should fails on heders larger then MAX_HEADER" do
     proc { R("GET / HTTP/1.1\r\nFoo: #{'X' * Request::MAX_HEADER}\r\n\r\n") }.should raise_error(InvalidRequest)
   end
-  
+
   it "should default SERVER_NAME to localhost" do
     request = R("GET / HTTP/1.1\r\n\r\n")
     request.env['SERVER_NAME'].should == "localhost"
   end
-  
+
   it 'should normalize http_fields' do
     [ "GET /index.html HTTP/1.1\r\nhos-t: localhost\r\n\r\n",
       "GET /index.html HTTP/1.1\r\nhOs_t: localhost\r\n\r\n",
@@ -212,7 +212,7 @@ EOS
       req.should have_key('HTTP_HOS_T')
     }
   end
-  
+
   it "should parse PATH_INFO with semicolon" do
     qs = "QUERY_STRING"
     pi = "PATH_INFO"
@@ -233,14 +233,14 @@ EOS
       env["REQUEST_URI"].should == uri
 
       next if uri == "*"
-      
+
       # Validate w/ Ruby's URI.parse
       uri = URI.parse("http://example.com#{uri}")
       env[qs].should == uri.query.to_s
       env[pi].should == uri.path
     end
   end
-  
+
   it "should parse IE7 badly encoded URL" do
     body = <<-EOS.chomp
 GET /H%uFFFDhnchenbrustfilet HTTP/1.1

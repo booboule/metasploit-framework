@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Cambridge_Bay
         include TimezoneDefinition
-        
+
         timezone 'America/Cambridge_Bay' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, -25200, 0, :MST
@@ -14,7 +14,7 @@ module TZInfo
           tz.offset :o6, -21600, 0, :CST
           tz.offset :o7, -21600, 3600, :CDT
           tz.offset :o8, -18000, 0, :EST
-          
+
           tz.transition 1920, 1, :o1, 4844649, 2
           tz.transition 1942, 2, :o2, 19443199, 8
           tz.transition 1945, 8, :o3, 58360379, 24

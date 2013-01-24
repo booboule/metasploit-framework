@@ -1,6 +1,6 @@
 ############################################################################
 # test_win32_api_callback.rb
-# 
+#
 # Test case for the Win32::API::Callback class. You should run this as Rake
 # task, i.e. 'rake test', instead of running it directly.
 ############################################################################
@@ -18,19 +18,19 @@ class TC_Win32_API_Callback < Test::Unit::TestCase
     @api_gwt  = API.new('GetWindowText', 'LPI', 'I', 'user32')
     @callback = nil
   end
-   
+
   def test_constructor
     assert_respond_to(API::Callback, :new)
     assert_nothing_raised{ API::Callback.new('LP', 'I') }
     assert_nothing_raised{ API::Callback.new('LP', 'I'){} }
   end
-   
+
   def test_prototype
     assert_nothing_raised{ @callback = API::Callback.new('LP', 'I') }
     assert_respond_to(@callback, :prototype)
     assert_equal('LP', @callback.prototype)
   end
-   
+
   def test_return_value
     assert_nothing_raised{ @callback = API::Callback.new('LP', 'I') }
     assert_respond_to(@callback, :return_type)
@@ -43,18 +43,18 @@ class TC_Win32_API_Callback < Test::Unit::TestCase
     assert_kind_of(Integer, @callback.address)
     assert_true(@callback.address > 0)
   end
-   
+
   def test_callback
     assert_nothing_raised{
       @callback = API::Callback.new('LP', 'I'){ |handle, param|
        	buf = "\0" * 200
         @api_gwt.call(handle, buf, 200);
-        buf.index(param).nil? ? true : false           
+        buf.index(param).nil? ? true : false
       }
     }
     assert_nothing_raised{ @api_ew.call(@callback, 'UEDIT32') }
   end
-   
+
   def test_constructor_expected_errors
     assert_raise(API::PrototypeError){ API::Callback.new('X') }
     assert_raise(API::PrototypeError){ API::Callback.new('L', 'Y') }

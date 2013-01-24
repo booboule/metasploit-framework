@@ -1,19 +1,19 @@
 # encoding: utf-8
 module CodeRay
 module Scanners
-  
+
   class Ruby
-    
+
     class StringState < Struct.new :type, :interpreted, :delim, :heredoc,
       :opening_paren, :paren_depth, :pattern, :next_state  # :nodoc: all
-      
+
       CLOSING_PAREN = Hash[ *%w[
         ( )
         [ ]
         < >
         { }
       ] ].each { |k,v| k.freeze; v.freeze }  # debug, if I try to change it with <<
-      
+
       STRING_PATTERN = Hash.new do |h, k|
         delim, interpreted = *k
         # delim = delim.dup  # workaround for old Ruby
@@ -22,13 +22,13 @@ module Scanners
           delim_pattern << Regexp.escape(closing_paren)
         end
         delim_pattern << '\\\\' unless delim == '\\'
-        
+
         # special_escapes =
         #   case interpreted
         #   when :regexp_symbols
         #     '| [|?*+(){}\[\].^$]'
         #   end
-        
+
         h[k] =
           if interpreted && delim != '#'
             / (?= [#{delim_pattern}] | \# [{$@] ) /mx
@@ -36,7 +36,7 @@ module Scanners
             / (?= [#{delim_pattern}] ) /mx
           end
       end
-      
+
       def initialize kind, interpreted, delim, heredoc = false
         if heredoc
           pattern = heredoc_pattern delim, interpreted, heredoc == :indented
@@ -51,7 +51,7 @@ module Scanners
         end
         super kind, interpreted, delim, heredoc, opening_paren, paren_depth, pattern, :initial
       end
-      
+
       def heredoc_pattern delim, interpreted, indented
         # delim = delim.dup  # workaround for old Ruby
         delim_pattern = Regexp.escape(delim)
@@ -62,10 +62,10 @@ module Scanners
           / (?= #{delim_pattern}() | \\ ) /mx
         end
       end
-      
+
     end
-    
+
   end
-  
+
 end
 end

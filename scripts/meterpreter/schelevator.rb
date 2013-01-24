@@ -255,7 +255,7 @@ def fix_crc32(data, old_crc)
 
 	crc = crc32(data[0, data.length - 12])
 	data[-12, 4] = [crc].pack('V')
-	
+
 	data[-12, 12].unpack('C*').reverse.each { |b|
 		old_crc = ((old_crc << 8) ^ bwd_table[old_crc >> 24] ^ b) & 0xffffffff
 	}

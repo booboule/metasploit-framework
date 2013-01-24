@@ -8,7 +8,7 @@
 # this sample script fixes a bug in some GTK libs (eg debian) where at some point
 # when you close a window an invalid memory dereference is done, which crashes the
 # whole metasm GUI
-# 
+#
 # bug backtrace:
 # 0f79e6173h libgobject-2.0.so.0!g_type_check_instance+23
 # 0f79e3e38h libgobject-2.0.so.0!g_signal_handlers_disconnect_matched+28

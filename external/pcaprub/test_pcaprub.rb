@@ -16,24 +16,24 @@ class Pcap::UnitTest < Test::Unit::TestCase
 		assert_equal(String, Pcap.version.class)
 		puts "Pcaprub version: #{Pcap.version}"
 	end
-	
+
 	def test_lookupdev
 		assert_equal(String, Pcap.lookupdev.class)
-		puts "Pcaprub default device: #{Pcap.lookupdev}"		
+		puts "Pcaprub default device: #{Pcap.lookupdev}"
 	end
 
 	def test_lookupnet
 		dev = Pcap.lookupdev
 		assert_equal(Array, Pcap.lookupnet(dev).class)
 		net = Pcap.lookupnet(dev)
-		puts "Pcaprub net (#{dev}): #{net[0]} #{[net[1]].pack("N").unpack("H*")[0]}"		
+		puts "Pcaprub net (#{dev}): #{net[0]} #{[net[1]].pack("N").unpack("H*")[0]}"
 	end
-	
+
 	def test_pcap_new
 		o = Pcap.new
 		assert_equal(Pcap, o.class)
 	end
-	
+
 	def test_pcap_setfilter_bad
 		e = nil
 		o = Pcap.new
@@ -41,7 +41,7 @@ class Pcap::UnitTest < Test::Unit::TestCase
 			o.setfilter("not ip")
 		rescue ::Exception => e
 		end
-		
+
 		assert_equal(e.class, ArgumentError)
 	end
 
@@ -95,24 +95,24 @@ class Pcap::UnitTest < Test::Unit::TestCase
 		end
 		rescue ::Timeout::Error
 		end
-		
+
 		t.kill
 		puts "Background thread ticked #{@c} times while capture was running"
 		true
 	end
 
 	def test_netifaces_constants
-		puts "AF_LINK Value is #{Pcap::AF_LINK}" 
-		puts "AF_INET Value is #{Pcap::AF_INET}" 
+		puts "AF_LINK Value is #{Pcap::AF_LINK}"
+		puts "AF_INET Value is #{Pcap::AF_INET}"
 		puts "AF_INET6 Value is #{Pcap::AF_INET6}" if Pcap.const_defined?(:AF_INET6)
 	end
 
 	def test_netifaces_functions
-		Pcap.interfaces.sort.each do |iface| 
+		Pcap.interfaces.sort.each do |iface|
 			puts "#{iface} :"
 			Pcap.addresses(iface).sort.each do |family,values|
 				puts "\t#{family} :"
-				values.each do |val| 
+				values.each do |val|
 					puts "\t\taddr : #{val['addr']}" if val.has_key?("addr")
 					puts "\t\tnetmask : #{val['netmask']}" if val.has_key?("netmask")
 					puts "\t\tbroadcast : #{val['broadcast']}" if val.has_key?("broadcast")
@@ -121,5 +121,5 @@ class Pcap::UnitTest < Test::Unit::TestCase
 			end
 		end
 	end
-							
+
 end

@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Saigon
         include TimezoneDefinition
-        
+
         linked_timezone 'Asia/Saigon', 'Asia/Ho_Chi_Minh'
       end
     end

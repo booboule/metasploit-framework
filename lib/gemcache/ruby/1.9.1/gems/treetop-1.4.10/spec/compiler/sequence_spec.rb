@@ -106,7 +106,7 @@ module SequenceSpec
     it "rejects missing space before node class declaration" do
       compiling_expression('foo:"foo" "bar"<SequenceSpec::Foo>').should raise_error(RuntimeError)
     end
-    
+
     it "rejects missing space before inline module" do
       compiling_expression('foo:"foo" "bar" <SequenceSpec::Foo>{def a_method; end}').should raise_error(RuntimeError)
     end

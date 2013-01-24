@@ -223,12 +223,12 @@ module Nokogiri
         right_space.add_next_sibling(left_space)
         assert_equal left_space, right_space
       end
-      
+
       def test_add_next_sibling_to_root_raises_exception
         xml = Nokogiri::XML(<<-eoxml)
         <root />
         eoxml
-        
+
         node = Nokogiri::XML::Node.new 'child', xml
 
         assert_raise(ArgumentError) do
@@ -240,7 +240,7 @@ module Nokogiri
         xml = Nokogiri::XML(<<-eoxml)
         <root />
         eoxml
-        
+
         node = Nokogiri::XML::Node.new 'child', xml
 
         assert_raise(ArgumentError) do

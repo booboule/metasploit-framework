@@ -264,7 +264,7 @@ class PTrace
 	       	timerfd_gettime  signalfd4   eventfd2  epoll_create1   dup3   pipe2  inotify_init1   preadv  pwritev
 		rt_tg_sigqueueinfo perf_counter_open].inject({}) { |h, sc| h.update sc => h.length }
 	SYSCALLNR_I386.update SYSCALLNR_I386.invert
-	
+
 	SYSCALLNR_X86_64 = %w[read write open close stat fstat lstat poll lseek mmap mprotect munmap brk rt_sigaction
 		rt_sigprocmask  rt_sigreturn ioctl  pread64 pwrite64  readv  writev access  pipe select  sched_yield
 		mremap  msync  mincore  madvise  shmget  shmat  shmctl dup  dup2  pause  nanosleep  getitimer  alarm
@@ -457,7 +457,7 @@ EOS
 	def prctl(addr, data)
 		sys_ptrace(COMMAND['ARCH_PRCTL'], @pid, addr, data)
 	end
-	
+
 	def cont(sig = nil)
 		sig ||= 0
 		sys_ptrace(COMMAND['CONT'], @pid, 0, sig)
@@ -851,7 +851,7 @@ class LinDebugger < Debugger
 			end
 		elsif status.stopped?
 			sig = status.stopsig & 0x7f
-			signame = PTrace::SIGNAL[sig] 
+			signame = PTrace::SIGNAL[sig]
 			if signame == 'TRAP'
 				if status.stopsig & 0x80 > 0
 					# XXX int80 in x64 => syscallnr32 ?
@@ -937,7 +937,7 @@ class LinDebugger < Debugger
 			evt_exception info.update(:type => "unknown wait #{status.inspect}")
 		end
 	end
-	
+
 	def set_tid_findpid(tid)
 		return if tid == @tid
 		if tid != @pid and pr = list_processes.find { |p| p.threads.include? tid }

@@ -3,7 +3,7 @@ module TZInfo
     module Pacific
       module Easter
         include TimezoneDefinition
-        
+
         timezone 'Pacific/Easter' do |tz|
           tz.offset :o0, -26264, 0, :LMT
           tz.offset :o1, -26248, 0, :EMT
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -25200, 0, :EAST
           tz.offset :o4, -21600, 0, :EAST
           tz.offset :o5, -21600, 3600, :EASST
-          
+
           tz.transition 1890, 1, :o1, 26042783083, 10800
           tz.transition 1932, 9, :o2, 26211079481, 10800
           tz.transition 1942, 6, :o3, 7291535, 3

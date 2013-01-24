@@ -10,7 +10,7 @@
 # https://github.com/uwabami/rdtool/
 #
 # You can use, re-distribute or change these files under Ruby's License or GPL.
-# 
+#
 # 1. You may make and give away verbatim copies of the source form of the
 #    software without restriction, provided that you duplicate all of the
 #    original copyright notices and associated disclaimers.
@@ -53,9 +53,9 @@
 #    For the list of those files and their copying conditions, see the
 #    file LEGAL.
 #
-# 5. The scripts and library files supplied as input to or produced as 
+# 5. The scripts and library files supplied as input to or produced as
 #    output from the software do not automatically fall under the
-#    copyright of the software, but belong to whomever generated them, 
+#    copyright of the software, but belong to whomever generated them,
 #    and may be sold commercially, and may be aggregated with this
 #    software.
 #

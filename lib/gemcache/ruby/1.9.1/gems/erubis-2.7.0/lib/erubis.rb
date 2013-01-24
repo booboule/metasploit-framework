@@ -27,10 +27,10 @@
 ## result:
 ##   --- source ---
 ##   _buf = ''; _buf << '<ul>
-##   ';  for item in @list 
+##   ';  for item in @list
 ##    _buf << '  <li>'; _buf << ( item ).to_s; _buf << '
 ##   '; _buf << '      '; _buf << Erubis::XmlHelper.escape_xml( item ); _buf << '</li>
-##   ';  end 
+##   ';  end
 ##    _buf << '</ul>
 ##   ';
 ##   _buf.to_s

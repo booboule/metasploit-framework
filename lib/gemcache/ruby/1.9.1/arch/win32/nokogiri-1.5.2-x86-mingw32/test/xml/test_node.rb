@@ -125,7 +125,7 @@ module Nokogiri
         @xml.root.parse('<hello>')
         assert(error_count < @xml.errors.length, "errors should have increased")
       end
-      
+
       def test_parse_error_on_fragment_with_empty_document
         doc = Document.new
         fragment = DocumentFragment.new(doc, '<foo><bar/></foo>')

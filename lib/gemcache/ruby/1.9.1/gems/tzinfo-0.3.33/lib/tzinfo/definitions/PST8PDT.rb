@@ -2,13 +2,13 @@ module TZInfo
   module Definitions
     module PST8PDT
       include TimezoneDefinition
-      
+
       timezone 'PST8PDT' do |tz|
         tz.offset :o0, -28800, 0, :PST
         tz.offset :o1, -28800, 3600, :PDT
         tz.offset :o2, -28800, 3600, :PWT
         tz.offset :o3, -28800, 3600, :PPT
-        
+
         tz.transition 1918, 3, :o1, 29060207, 12
         tz.transition 1918, 10, :o0, 19375151, 8
         tz.transition 1919, 3, :o1, 29064575, 12

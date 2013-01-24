@@ -9,7 +9,7 @@ require 'rex/socket/parameters'
 class Rex::Socket::Parameters::UnitTest < Test::Unit::TestCase
 
 	def test_parameters
-		h = { 
+		h = {
 				'PeerHost'  => 'phost',
 				'PeerPort'  => 12,
 				'LocalHost' => 'lhost',

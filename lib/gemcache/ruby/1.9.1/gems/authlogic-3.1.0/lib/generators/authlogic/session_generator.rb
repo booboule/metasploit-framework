@@ -6,7 +6,7 @@ module Authlogic
     def self.banner
       "rails generate authlogic:#{generator_name} #{self.arguments.map{ |a| a.usage }.join(' ')} [options]"
     end
-  
+
     def generate_session
       template "session.rb", "app/models/#{session_class_name.underscore}.rb"
     end

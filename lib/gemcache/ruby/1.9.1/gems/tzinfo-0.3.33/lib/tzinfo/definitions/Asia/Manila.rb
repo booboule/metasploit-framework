@@ -3,14 +3,14 @@ module TZInfo
     module Asia
       module Manila
         include TimezoneDefinition
-        
+
         timezone 'Asia/Manila' do |tz|
           tz.offset :o0, -57360, 0, :LMT
           tz.offset :o1, 29040, 0, :LMT
           tz.offset :o2, 28800, 0, :PHT
           tz.offset :o3, 28800, 3600, :PHST
           tz.offset :o4, 32400, 0, :JST
-          
+
           tz.transition 1844, 12, :o1, 862175579, 360
           tz.transition 1899, 5, :o2, 869322659, 360
           tz.transition 1936, 10, :o3, 14570839, 6

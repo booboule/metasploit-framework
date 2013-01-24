@@ -15,7 +15,7 @@ module NotPredicateSpec
     it "fails to match input matching both terminals" do
       parse('foobar').should be_nil
     end
-  
+
     it "successfully parses input matching the first terminal and not the second, reporting the parse failure of the second terminal" do
       parse('foo') do |result|
         result.should_not be_nil

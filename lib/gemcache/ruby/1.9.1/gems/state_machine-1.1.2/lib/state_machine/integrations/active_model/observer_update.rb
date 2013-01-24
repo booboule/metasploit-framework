@@ -9,27 +9,27 @@ module StateMachine
       class ObserverUpdate
         # The method to invoke on the observer
         attr_reader :method
-        
+
         # The object being transitioned
         attr_reader :object
-        
+
         # The transition being run
         attr_reader :transition
-        
+
         def initialize(method, object, transition) #:nodoc:
           @method, @object, @transition = method, object, transition
         end
-        
+
         # The arguments to pass into the method
         def args
           [object, transition]
         end
-        
+
         # The class of the object being transitioned.  Normally the object
         # getting passed into observer methods is the actual instance of the
         # ActiveModel class.  ActiveModel uses that instance's class to check
         # for enabled / disabled observers.
-        # 
+        #
         # Since state_machine is passing an ObserverUpdate instance into observer
         # methods, +class+ needs to be overridden so that ActiveModel can still
         # get access to the enabled / disabled observers.

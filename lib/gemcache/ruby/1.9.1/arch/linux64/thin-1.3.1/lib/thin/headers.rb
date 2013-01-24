@@ -4,12 +4,12 @@ module Thin
   class Headers
     HEADER_FORMAT      = "%s: %s\r\n".freeze
     ALLOWED_DUPLICATES = %w(Set-Cookie Set-Cookie2 Warning WWW-Authenticate).freeze
-    
+
     def initialize
       @sent = {}
       @out = []
     end
-    
+
     # Add <tt>key: value</tt> pair to the headers.
     # Ignore if already sent and no duplicates are allowed
     # for this +key+.
@@ -27,11 +27,11 @@ module Thin
         @out << HEADER_FORMAT % [key, value]
       end
     end
-    
+
     def has_key?(key)
       @sent[key]
     end
-    
+
     def to_s
       @out.join
     end

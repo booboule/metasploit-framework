@@ -3,12 +3,12 @@ module TZInfo
     module Pacific
       module Efate
         include TimezoneDefinition
-        
+
         timezone 'Pacific/Efate' do |tz|
           tz.offset :o0, 40396, 0, :LMT
           tz.offset :o1, 39600, 0, :VUT
           tz.offset :o2, 39600, 3600, :VUST
-          
+
           tz.transition 1912, 1, :o1, 52259343101, 21600
           tz.transition 1983, 9, :o2, 433256400
           tz.transition 1984, 3, :o1, 448977600

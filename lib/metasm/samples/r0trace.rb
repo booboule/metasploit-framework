@@ -276,7 +276,7 @@ def trace(tid, delay=1)
 	DynLdr.resumethread(th)
 	DynLdr.closehandle(th)
 
-	
+
 	buf = 0.chr * 4 * TRACE_BUF_SZ
 	loop do
 		sleep delay.to_f

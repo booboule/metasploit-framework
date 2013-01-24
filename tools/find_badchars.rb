@@ -113,7 +113,7 @@ case fmt
 			translated << ln.chomp[10,47].gsub!(/(-| )/, '')
 		end
 		from_dbg = Rex::Text.hex_to_raw(translated)
-		
+
 	when "gdb"
 		translated = ''
 		from_dbg.each_line do |ln|

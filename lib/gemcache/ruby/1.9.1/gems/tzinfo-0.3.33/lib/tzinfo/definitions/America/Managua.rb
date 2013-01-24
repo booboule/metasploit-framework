@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Managua
         include TimezoneDefinition
-        
+
         timezone 'America/Managua' do |tz|
           tz.offset :o0, -20708, 0, :LMT
           tz.offset :o1, -20712, 0, :MMT
           tz.offset :o2, -21600, 0, :CST
           tz.offset :o3, -18000, 0, :EST
           tz.offset :o4, -21600, 3600, :CDT
-          
+
           tz.transition 1890, 1, :o1, 52085564777, 21600
           tz.transition 1934, 6, :o2, 8739402263, 3600
           tz.transition 1973, 5, :o3, 105084000

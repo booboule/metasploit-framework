@@ -3,14 +3,14 @@ module TZInfo
     module Australia
       module Lord_Howe
         include TimezoneDefinition
-        
+
         timezone 'Australia/Lord_Howe' do |tz|
           tz.offset :o0, 38180, 0, :LMT
           tz.offset :o1, 36000, 0, :EST
           tz.offset :o2, 37800, 0, :LHST
           tz.offset :o3, 37800, 3600, :LHST
           tz.offset :o4, 37800, 1800, :LHST
-          
+
           tz.transition 1895, 1, :o1, 10425132251, 4320
           tz.transition 1981, 2, :o2, 352216800
           tz.transition 1981, 10, :o3, 372785400

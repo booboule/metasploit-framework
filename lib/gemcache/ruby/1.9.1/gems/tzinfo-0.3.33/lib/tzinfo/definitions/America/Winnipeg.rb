@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Winnipeg
         include TimezoneDefinition
-        
+
         timezone 'America/Winnipeg' do |tz|
           tz.offset :o0, -23316, 0, :LMT
           tz.offset :o1, -21600, 0, :CST
           tz.offset :o2, -21600, 3600, :CDT
           tz.offset :o3, -21600, 3600, :CWT
           tz.offset :o4, -21600, 3600, :CPT
-          
+
           tz.transition 1887, 7, :o1, 17355375143, 7200
           tz.transition 1916, 4, :o2, 9683907, 4
           tz.transition 1916, 9, :o1, 58106969, 24

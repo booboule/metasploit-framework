@@ -1498,7 +1498,7 @@ oldexpr = expr
 				when :func
 					expr = backtrace_emu_subfunc(h[:func], h[:funcaddr], h[:addr], expr, origin, maxdepth-h[:loopdetect].length)
 					if snapshot_addr and snapshot_addr == h[:funcaddr]
-						# XXX recursiveness detection needs to be fixed						
+						# XXX recursiveness detection needs to be fixed
 puts "  backtrace: recursive function #{Expression[h[:funcaddr]]}" if debug_backtrace
 						next false
 					end

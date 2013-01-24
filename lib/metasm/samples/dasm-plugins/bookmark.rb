@@ -4,7 +4,7 @@
 #    Licence is LGPL, see LICENCE in the top-level directory
 
 
-# metasm dasm GUI plugin: 
+# metasm dasm GUI plugin:
 # pops a list of bookmarked functions
 # also allows the custom coloration of blocks/functions
 

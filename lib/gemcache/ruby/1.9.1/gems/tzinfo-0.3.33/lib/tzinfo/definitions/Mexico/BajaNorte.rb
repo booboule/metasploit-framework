@@ -3,7 +3,7 @@ module TZInfo
     module Mexico
       module BajaNorte
         include TimezoneDefinition
-        
+
         linked_timezone 'Mexico/BajaNorte', 'America/Tijuana'
       end
     end

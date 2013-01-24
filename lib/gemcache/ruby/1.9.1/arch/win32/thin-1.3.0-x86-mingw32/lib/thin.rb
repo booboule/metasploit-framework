@@ -9,7 +9,7 @@ require 'rack'
 
 module Thin
   ROOT = File.expand_path(File.dirname(__FILE__))
-  
+
   autoload :Command,            "#{ROOT}/thin/command"
   autoload :Connection,         "#{ROOT}/thin/connection"
   autoload :Daemonizable,       "#{ROOT}/thin/daemonizing"
@@ -20,14 +20,14 @@ module Thin
   autoload :Runner,             "#{ROOT}/thin/runner"
   autoload :Server,             "#{ROOT}/thin/server"
   autoload :Stats,              "#{ROOT}/thin/stats"
-  
+
   module Backends
     autoload :Base,             "#{ROOT}/thin/backends/base"
     autoload :SwiftiplyClient,  "#{ROOT}/thin/backends/swiftiply_client"
     autoload :TcpServer,        "#{ROOT}/thin/backends/tcp_server"
     autoload :UnixServer,       "#{ROOT}/thin/backends/unix_server"
   end
-  
+
   module Controllers
     autoload :Cluster,          "#{ROOT}/thin/controllers/cluster"
     autoload :Controller,       "#{ROOT}/thin/controllers/controller"

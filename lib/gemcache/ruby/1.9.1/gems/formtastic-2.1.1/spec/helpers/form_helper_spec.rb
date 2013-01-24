@@ -23,7 +23,7 @@ describe 'FormHelper' do
       end)
       output_buffer.should have_tag("form.formtastic")
     end
-    
+
     it 'adds a "novalidate" attribute to the generated form when configured to do so' do
       with_config :perform_browser_validations, true do
         concat(semantic_form_for(@new_post, :url => '/hello') do |builder|
@@ -31,7 +31,7 @@ describe 'FormHelper' do
         output_buffer.should_not have_tag("form[@novalidate]")
       end
     end
-    
+
     it 'omits a "novalidate" attribute to the generated form when configured to do so' do
       with_config :perform_browser_validations, false do
         concat(semantic_form_for(@new_post, :url => '/hello') do |builder|

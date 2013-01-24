@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # = nessus-cli.rb:  Nessus command line interface for XML-RPC
 # Author:: Vlatko Kosturjak
-# 
+#
 # (C) Vlatko Kosturjak, Kost. Distributed under GPL and BSD (dual licensed).
 
 require 'nessus-xmlrpc'
@@ -21,7 +21,7 @@ wait = ''
 policy = ''
 url = ''
 
-def intro 
+def intro
 	$stderr.print $0 + ": Nessus command line interface for XML-RPC\n"
 	$stderr.print "(C) Vlatko Kosturjak, Kost. Distributed under GPL.\n"
 	$stderr.print "\n"
@@ -55,7 +55,7 @@ def give_help
 --debug		be even more verbose
 --help		this help
 
-Examples: 
+Examples:
 #{$0} --user john --password doe --scan scan-localhost --wait --output report.xml --target localhost
 EOF
 	exit 0
@@ -176,7 +176,7 @@ opt.each do |opt,arg|
 				# if there's multiple target options, add comma
 				if targets == ''
 					targets = arg
-					
+
 				else
 					targets = targets + "," + arg
 				end
@@ -243,15 +243,15 @@ if (user == '') or (password == '')
 	$stderr.print "User and password is required to login to Nessus server"
 	$stderr.print "Try --help!"
 	exit 1
-end 
+end
 
-$stderr.print "[i] Targets: " + targets +"\n" if verbose > 0 
-$stderr.print "[i] Connecting to nessus server: " if verbose > 0 
-n=NessusXMLRPC::NessusXMLRPC.new(url,user,password) 
-if n.logged_in 
+$stderr.print "[i] Targets: " + targets +"\n" if verbose > 0
+$stderr.print "[i] Connecting to nessus server: " if verbose > 0
+n=NessusXMLRPC::NessusXMLRPC.new(url,user,password)
+if n.logged_in
 	$stderr.print "OK!\n" if verbose > 0
 else
-	$stderr.print "[e] Error connecting/logging to the server!\n" 
+	$stderr.print "[e] Error connecting/logging to the server!\n"
 	exit 2
 end
 
@@ -267,7 +267,7 @@ case operation
 				$stderr.print "[e] policy doesn't exit: " + policy + "\n"
 				exit 3
 			end
-		end	
+		end
 		if targets == ''
 			$stderr.print "[w] Targets not defined, using localhost as target\n"
 			targets = '127.0.0.1'
@@ -277,26 +277,26 @@ case operation
 		$stderr.print "done\n" if verbose > 0
 		unless wait == ''
 			while not n.scan_finished(uid)
-				$stderr.print "[v] Sleeping for " + wait.to_s() + ": " if verbose > 1			
+				$stderr.print "[v] Sleeping for " + wait.to_s() + ": " if verbose > 1
 				sleep wait
 				$stderr.print "done\n" if verbose > 1
 				stat = n.scan_status(uid)
 				print "\r" + stat if verbose > 0
-			end	
+			end
 		else
 			puts uid
 			exit 0
-		end	
+		end
 		unless output == ''
 			$stderr.print "[i] Output XML report to file: "+output if verbose > 0
-			content=n.report_file_download(uid)	
-			File.open(output, 'w') {|f| f.write(content) }	
+			content=n.report_file_download(uid)
+			File.open(output, 'w') {|f| f.write(content) }
 			$stderr.print ": done\n" if verbose > 0
 		end
 		unless output1 == ''
 			$stderr.print "[i] Output XML1 report to file: "+output1 if verbose > 0
-			content=n.report_file1_download(uid)	
-			File.open(output, 'w') {|f| f.write(content) }	
+			content=n.report_file1_download(uid)
+			File.open(output, 'w') {|f| f.write(content) }
 			$stderr.print ": done\n" if verbose > 0
 		end
 		if deletereport
@@ -306,19 +306,19 @@ case operation
 		end
 	when "report"
 		uid=scanname
-		if (output == '') and (output1 == '') 
+		if (output == '') and (output1 == '')
 			$stderr.print "[e] You want report, but specify filename with --output or output1\n"
 		end
 		unless output == ''
 			$stderr.print "[i] Output XML report to file: "+output if verbose > 0
-			content=n.report_file_download(uid)	
-			File.open(output, 'w') {|f| f.write(content) }	
+			content=n.report_file_download(uid)
+			File.open(output, 'w') {|f| f.write(content) }
 			$stderr.print ": done\n" if verbose > 0
 		end
 		unless output1 == ''
 			$stderr.print "[i] Output XML1 report to file: "+output1 if verbose > 0
-			content=n.report1_file_download(uid)	
-			File.open(output, 'w') {|f| f.write(content) }	
+			content=n.report1_file_download(uid)
+			File.open(output, 'w') {|f| f.write(content) }
 			$stderr.print ": done\n" if verbose > 0
 		end
 		if deletereport
@@ -331,7 +331,7 @@ case operation
 		n.scan_stop(scanname)
 		$stderr.print "done\n" if verbose > 0
 	when "stop-all"
-		$stderr.print "[i] Stopping all scans: " if verbose > 0	
+		$stderr.print "[i] Stopping all scans: " if verbose > 0
 		list=n.scan_stop_all
 		$stderr.print "done\n" if verbose > 0
 		if verbose > 1
@@ -342,7 +342,7 @@ case operation
 		n.scan_pause(scanname)
 		$stderr.print "done\n" if verbose > 0
 	when "pause-all"
-		$stderr.print "[i] Pausing all scans: " if verbose > 0	
+		$stderr.print "[i] Pausing all scans: " if verbose > 0
 		list=n.scan_pause_all
 		$stderr.print "done\n" if verbose > 0
 		if verbose > 1
@@ -353,7 +353,7 @@ case operation
 		n.scan_resume(scanname)
 		$stderr.print "done\n" if verbose > 0
 	when "resume-all"
-		$stderr.print "[i] Resuming all scans: " if verbose > 0	
+		$stderr.print "[i] Resuming all scans: " if verbose > 0
 		list=n.scan_resume_all
 		$stderr.print "done\n" if verbose > 0
 		if verbose > 1
@@ -364,19 +364,19 @@ case operation
 		n.report_delete(scanname)
 		$stderr.print "done\n" if verbose > 0
 	when "status"
-		puts "status: " + n.scan_status(scanname)	
+		puts "status: " + n.scan_status(scanname)
 	when "list-scans"
 		list=n.scan_list_hash
-		list.each {|scan| 
+		list.each {|scan|
 			puts scan['id']+":"+scan['name']+":"+ \
 				scan['current']+"/"+scan['total']
 		}
 	when "list-policy"
 		list=n.policy_list_names
-		list.each {|policy| 
-			puts policy 
+		list.each {|policy|
+			puts policy
 		}
-		
+
 end
 
 $stderr.print "[v] End reached.\n" if verbose > 1

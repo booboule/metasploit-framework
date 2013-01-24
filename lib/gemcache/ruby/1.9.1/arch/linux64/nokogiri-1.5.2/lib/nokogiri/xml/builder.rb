@@ -213,7 +213,7 @@ module Nokogiri
     #       xml.foo
     #     end
     #   end
-    #   
+    #
     #   puts builder.to_xml
     #
     # Will output this xml:

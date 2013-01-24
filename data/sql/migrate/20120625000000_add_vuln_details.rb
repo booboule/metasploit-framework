@@ -24,7 +24,7 @@ class AddVulnDetails < ActiveRecord::Migration
 			t.timestamp	:nx_added        # Normalized from "20081205T000000000"
 			t.timestamp	:nx_modified     # Normalized from "20081205T000000000"
 			t.text		:nx_tags         # Comma separated
-	
+
 		end
 	end
 

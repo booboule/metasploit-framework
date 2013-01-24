@@ -3,7 +3,7 @@ module TZInfo
     module US
       module Hawaii
         include TimezoneDefinition
-        
+
         linked_timezone 'US/Hawaii', 'Pacific/Honolulu'
       end
     end

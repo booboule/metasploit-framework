@@ -12,7 +12,7 @@ $stdout.puts "Checking LORCON version"
 
 pp Lorcon.version
 
-$stdout.puts "\nFetching LORCON driver list" 
+$stdout.puts "\nFetching LORCON driver list"
 
 pp Lorcon.drivers
 
@@ -36,7 +36,7 @@ end
 
 def safe_loop(wifi)
 	@q = Queue.new
-	reader = Thread.new do 
+	reader = Thread.new do
 		wifi.each_packet {|pkt| @q << pkt }
 	end
 
@@ -45,7 +45,7 @@ def safe_loop(wifi)
 			yield(pkt)
 		end
 	end
-	
+
 	begin
 		eater.join
 	rescue ::Interrupt => e
@@ -53,7 +53,7 @@ def safe_loop(wifi)
 		puts "ALL DONE!"
 	end
 end
-		
+
 safe_loop(tx) do |pkt|
 	pp pkt
 end

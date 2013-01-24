@@ -62,7 +62,7 @@ def wmicexec(session,wmic,user,pass,trgt)
 		tmp = session.fs.file.expand_path("%TEMP%")
 		# Temporary file on windows host to store results
 		wmicfl = tmp + "\\wmictmp#{rand(100000)}.txt"
-		
+
 		wmic.each do |wmi|
 			if user == nil
 				print_status("The commands will be ran under the credentials of #{runningas}")

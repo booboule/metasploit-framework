@@ -3,7 +3,7 @@ module TZInfo
     module Atlantic
       module Madeira
         include TimezoneDefinition
-        
+
         timezone 'Atlantic/Madeira' do |tz|
           tz.offset :o0, -4056, 0, :LMT
           tz.offset :o1, -4056, 0, :FMT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, -3600, 7200, :MADMT
           tz.offset :o5, 0, 0, :WET
           tz.offset :o6, 0, 3600, :WEST
-          
+
           tz.transition 1884, 1, :o1, 8673035569, 3600
           tz.transition 1911, 5, :o2, 8709049969, 3600
           tz.transition 1916, 6, :o3, 4842065, 2

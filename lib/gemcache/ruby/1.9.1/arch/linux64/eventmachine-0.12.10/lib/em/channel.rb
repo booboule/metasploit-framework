@@ -3,7 +3,7 @@ module EventMachine
   # channel will schedule all operations on the main reactor thread for thread
   # safe reactor operations.
   #
-  # This provides a convenient way for connections to consume messages from 
+  # This provides a convenient way for connections to consume messages from
   # long running code in defer, without threading issues.
   #
   #  channel = EM::Channel.new

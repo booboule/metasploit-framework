@@ -3,13 +3,13 @@ module TZInfo
     module Africa
       module Juba
         include TimezoneDefinition
-        
+
         timezone 'Africa/Juba' do |tz|
           tz.offset :o0, 7584, 0, :LMT
           tz.offset :o1, 7200, 0, :CAT
           tz.offset :o2, 7200, 3600, :CAST
           tz.offset :o3, 10800, 0, :EAT
-          
+
           tz.transition 1930, 12, :o1, 2183708171, 900
           tz.transition 1970, 4, :o2, 10360800
           tz.transition 1970, 10, :o1, 24786000

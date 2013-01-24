@@ -293,7 +293,7 @@ class Decompiler
 					@dasm.function[ta] = DecodedFunction.new
 					puts "autofunc #{Expression[ta]}" if $VERBOSE
 				end
-				
+
 				if @dasm.function[ta] and type != :subfuncret
 					f = dasm.auto_label_at(ta, 'func')
 					ta = dasm.normalize($1) if f =~ /^thunk_(.*)/
@@ -1656,7 +1656,7 @@ class Decompiler
 					ce.rexpr = p if ce.rexpr == v1
 				}
 			}
-		
+
 		}
 	end
 
@@ -2453,7 +2453,7 @@ class Decompiler
 				v.initializer = v.initializer.first if v.initializer.kind_of? ::Array
 				walk_ce(tl) { |ce|
 					if ce.op == :'->' and C::CExpression[ce.lexpr] == C::CExpression[v]
-						ce.op = :'.' 
+						ce.op = :'.'
 					elsif ce.lexpr == target
 						ce.lexpr = v
 					end

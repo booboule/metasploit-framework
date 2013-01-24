@@ -62,7 +62,7 @@ module Net
 		    options[:msfmodule].add_socket(@socket) if options[:msfmodule]
 
           ip_addr = IPAddr.new(Resolv.getaddress(host))
-          
+
           packet = [VERSION, CONNECT, port.to_i, ip_addr.to_i, options[:user]].pack("CCnNZ*")
           socket.send packet, 0
 

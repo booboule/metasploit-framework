@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Asuncion
         include TimezoneDefinition
-        
+
         timezone 'America/Asuncion' do |tz|
           tz.offset :o0, -13840, 0, :LMT
           tz.offset :o1, -13840, 0, :AMT
           tz.offset :o2, -14400, 0, :PYT
           tz.offset :o3, -10800, 0, :PYT
           tz.offset :o4, -14400, 3600, :PYST
-          
+
           tz.transition 1890, 1, :o1, 2604278153, 1080
           tz.transition 1931, 10, :o2, 2620754633, 1080
           tz.transition 1972, 10, :o3, 86760000

@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Chisinau
         include TimezoneDefinition
-        
+
         timezone 'Europe/Chisinau' do |tz|
           tz.offset :o0, 6920, 0, :LMT
           tz.offset :o1, 6900, 0, :CMT
@@ -14,7 +14,7 @@ module TZInfo
           tz.offset :o6, 3600, 0, :CET
           tz.offset :o7, 10800, 0, :MSK
           tz.offset :o8, 10800, 3600, :MSD
-          
+
           tz.transition 1879, 12, :o1, 5200665307, 2160
           tz.transition 1918, 2, :o2, 697432153, 288
           tz.transition 1931, 7, :o3, 970618571, 400

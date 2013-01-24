@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Aqtau
         include TimezoneDefinition
-        
+
         timezone 'Asia/Aqtau' do |tz|
           tz.offset :o0, 12064, 0, :LMT
           tz.offset :o1, 14400, 0, :FORT
@@ -15,7 +15,7 @@ module TZInfo
           tz.offset :o7, 18000, 3600, :AQTST
           tz.offset :o8, 14400, 3600, :AQTST
           tz.offset :o9, 14400, 0, :AQTT
-          
+
           tz.transition 1924, 5, :o1, 6544549873, 2700
           tz.transition 1930, 6, :o2, 7278445, 3
           tz.transition 1962, 12, :o3, 58512727, 24

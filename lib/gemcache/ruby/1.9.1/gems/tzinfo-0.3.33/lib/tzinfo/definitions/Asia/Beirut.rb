@@ -3,12 +3,12 @@ module TZInfo
     module Asia
       module Beirut
         include TimezoneDefinition
-        
+
         timezone 'Asia/Beirut' do |tz|
           tz.offset :o0, 8520, 0, :LMT
           tz.offset :o1, 7200, 0, :EET
           tz.offset :o2, 7200, 3600, :EEST
-          
+
           tz.transition 1879, 12, :o1, 1733555089, 720
           tz.transition 1920, 3, :o2, 29068937, 12
           tz.transition 1920, 10, :o1, 19380979, 8

@@ -274,7 +274,7 @@ module Msf::Post::File
 	end
 
 	#
-	# Read a local file +local+ and write it as +remote+ on the remote file 
+	# Read a local file +local+ and write it as +remote+ on the remote file
 	# system
 	#
 	def upload_file(remote, local)
@@ -304,7 +304,7 @@ module Msf::Post::File
 	#
 	def rename_file(new_file, old_file)
 		#TODO:  this is not ideal as the file contents are sent to meterp server and back to the client
-		write_file(new_file, read_file(old_file)) 
+		write_file(new_file, read_file(old_file))
 		rm_f(old_file)
 	end
 	alias :move_file :rename_file

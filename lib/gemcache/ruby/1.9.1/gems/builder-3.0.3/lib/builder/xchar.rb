@@ -27,7 +27,7 @@ module Builder
 
   ####################################################################
   # XML Character converter, from Sam Ruby:
-  # (see http://intertwingly.net/stories/2005/09/28/xchar.rb). 
+  # (see http://intertwingly.net/stories/2005/09/28/xchar.rb).
   #
   module XChar # :nodoc:
 
@@ -74,7 +74,7 @@ module Builder
     # See http://www.w3.org/TR/REC-xml/#charsets for details.
     VALID = [
       0x9, 0xA, 0xD,
-      (0x20..0xD7FF), 
+      (0x20..0xD7FF),
       (0xE000..0xFFFD),
       (0x10000..0x10FFFF)
     ]
@@ -100,11 +100,11 @@ if String.method_defined?(:encode)
         inject([[],[]]) {|(domain,range),(key,value)|
           [domain << key,range << value]
         }.map {|seq| seq.pack('U*').force_encoding('utf-8')}
-  
+
       XML_PREDEFINED = Regexp.new('[' +
         Builder::XChar::PREDEFINED.keys.pack('U*').force_encoding('utf-8') +
       ']')
-  
+
       INVALID_XML_CHAR = Regexp.new('[^'+
         Builder::XChar::VALID.map { |item|
           case item
@@ -115,7 +115,7 @@ if String.method_defined?(:encode)
           end
         }.join +
       ']')
-  
+
       ENCODING_BINARY = Encoding.find('BINARY')
       ENCODING_UTF8   = Encoding.find('UTF-8')
       ENCODING_ISO1   = Encoding.find('ISO-8859-1')
@@ -164,21 +164,21 @@ else
   #
   class Fixnum
     XChar = Builder::XChar if ! defined?(XChar)
-  
+
     # XML escaped version of chr. When <tt>escape</tt> is set to false
     # the CP1252 fix is still applied but utf-8 characters are not
     # converted to character entities.
     def xchr(escape=true)
       n = XChar::CP1252[self] || self
       case n when *XChar::VALID
-        XChar::PREDEFINED[n] or 
+        XChar::PREDEFINED[n] or
           (n<128 ? n.chr : (escape ? "&##{n};" : [n].pack('U*')))
       else
         Builder::XChar::REPLACEMENT_CHAR
       end
     end
   end
-  
+
 
   ######################################################################
   # Enhance the String class with a XML escaped character version of

@@ -17,7 +17,7 @@ module XSD # :nodoc:
     #   gem 'soap4r'
     #   require 'defaultDriver'
     #   require 'xsd/xmlparser/nokogiri'
-    #   
+    #
     #   obj = AvlPortType.new
     #   obj.getLatestByRoute(obj.getAgencies.first, 8).each do |bus|
     #     p "#{bus.routeID}, #{bus.longitude}, #{bus.latitude}"

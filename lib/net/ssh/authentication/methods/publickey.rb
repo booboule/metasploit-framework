@@ -60,7 +60,7 @@ module Net
                   # The key is accepted by the server, trigger a callback if set
                   if session.accepted_key_callback
                     session.accepted_key_callback.call({ :user => username, :fingerprint => identity.fingerprint, :key => identity.dup })
-                  end 
+                  end
 
                   if session.skip_private_keys
 					  if session.options[:record_auth_info]
@@ -68,10 +68,10 @@ module Net
 						session.auth_info[:user] = username
 						session.auth_info[:pubkey_data] = identity.inspect
 						session.auth_info[:pubkey_id] = identity.fingerprint
-					  end        
+					  end
                     return true
                   end
-                  
+
                   buffer = build_request(identity, username, next_service, true)
                   sig_data = Net::SSH::Buffer.new
                   sig_data.write_string(session_id)

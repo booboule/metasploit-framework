@@ -28,7 +28,7 @@ module Windows
     THREAD_PRIORITY_LOWEST        = -2
     THREAD_PRIORITY_NORMAL        = 0
     THREAD_PRIORITY_TIME_CRITICAL = 15
-      
+
     API.new('CreateRemoteThread', 'LPLLPLP', 'L')
     API.new('CreateThread', 'PLKPLP', 'L')
     API.new('ExitThread', 'L', 'V')

@@ -22,7 +22,7 @@ class Rex::Proto::DCERPC::Handle::UnitTest < Test::Unit::TestCase
 		assert_equal(protocol, i.protocol, 'protocol')
 		assert_equal(options, i.options, 'options')
 	end
-	
+
 	def test_ncacn_ip_tcp
 		uuid = ['6bffd098-a112-3610-9833-46c3f87e345a', '1.0']
 		protocol = 'ncacn_ip_tcp'
@@ -35,7 +35,7 @@ class Rex::Proto::DCERPC::Handle::UnitTest < Test::Unit::TestCase
 		assert_equal(protocol, i.protocol, 'protocol')
 		assert_equal(options, i.options, 'options')
 	end
-	
+
 	def test_ncacn_ip_udp
 		uuid = ['6bffd098-a112-3610-9833-46c3f87e345a', '1.0']
 		protocol = 'ncacn_ip_udp'
@@ -48,7 +48,7 @@ class Rex::Proto::DCERPC::Handle::UnitTest < Test::Unit::TestCase
 		assert_equal(protocol, i.protocol, 'protocol')
 		assert_equal(options, i.options, 'options')
 	end
-	
+
 	def test_ncacn_http
 		uuid = ['6bffd098-a112-3610-9833-46c3f87e345a', '1.0']
 		protocol = 'ncacn_http'
@@ -61,7 +61,7 @@ class Rex::Proto::DCERPC::Handle::UnitTest < Test::Unit::TestCase
 		assert_equal(protocol, i.protocol, 'protocol')
 		assert_equal(options, i.options, 'options')
 	end
-	
+
 	def test_invalid
 		assert_raise(Rex::ArgumentError, 'invalid uuid') { Klass.new(['a', '1.0'], 'ncacn_ip_tcp', '1.2.3.4', [80]) }
 		assert_raise(Rex::ArgumentError, 'invalid uuid version') { Klass.new(['6bffnd098-a112-3610-9833-46c3f87e345a', 'b'], 'ncacn_ip_tcp', '1.2.3.4', [80]) }

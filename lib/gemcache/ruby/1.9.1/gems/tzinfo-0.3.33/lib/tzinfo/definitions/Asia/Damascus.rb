@@ -3,12 +3,12 @@ module TZInfo
     module Asia
       module Damascus
         include TimezoneDefinition
-        
+
         timezone 'Asia/Damascus' do |tz|
           tz.offset :o0, 8712, 0, :LMT
           tz.offset :o1, 7200, 0, :EET
           tz.offset :o2, 7200, 3600, :EEST
-          
+
           tz.transition 1919, 12, :o1, 2906789279, 1200
           tz.transition 1920, 4, :o2, 4844865, 2
           tz.transition 1920, 10, :o1, 58142411, 24

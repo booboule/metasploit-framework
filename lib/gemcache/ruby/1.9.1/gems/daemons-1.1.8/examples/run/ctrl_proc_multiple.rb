@@ -11,7 +11,7 @@ require 'daemons'
 
 options = {
   :log_output => true,
-  :multiple => true, 
+  :multiple => true,
 }
 
 

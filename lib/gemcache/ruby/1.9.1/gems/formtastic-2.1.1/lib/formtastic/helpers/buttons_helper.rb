@@ -169,7 +169,7 @@ module Formtastic
       # @deprecated f.buttons is deprecated in favor of f.actions and will be removed after 2.1
       def buttons(*args, &block)
         ::ActiveSupport::Deprecation.warn("f.buttons is deprecated in favour of f.actions and will be removed from Formtastic after 2.1. Please see ActionsHelper and InputAction or ButtonAction for more information")
-        
+
         html_options = args.extract_options!
         html_options[:class] ||= "buttons"
 
@@ -246,7 +246,7 @@ module Formtastic
       # @deprecated f.commit_button is deprecated in favor of f.actions and will be removed after 2.1
       def commit_button(*args)
         ::ActiveSupport::Deprecation.warn("f.commit_button is deprecated in favour of f.action(:submit) and will be removed from Formtastic after 2.1. Please see ActionsHelper and InputAction or ButtonAction for more information")
-        
+
         options = args.extract_options!
         text = options.delete(:label) || args.shift
 

@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Monaco
         include TimezoneDefinition
-        
+
         timezone 'Europe/Monaco' do |tz|
           tz.offset :o0, 1772, 0, :LMT
           tz.offset :o1, 561, 0, :PMT
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 0, 7200, :WEMT
           tz.offset :o5, 3600, 0, :CET
           tz.offset :o6, 3600, 3600, :CEST
-          
+
           tz.transition 1891, 3, :o1, 52095019957, 21600
           tz.transition 1911, 3, :o2, 69670267013, 28800
           tz.transition 1916, 6, :o3, 58104707, 24

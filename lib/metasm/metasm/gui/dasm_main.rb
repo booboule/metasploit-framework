@@ -212,7 +212,7 @@ class DisasmWidget < ContainerChoiceWidget
 		yield
 		focus_addr curaddr if addr
 	end
-	
+
 	# calls listwindow with the same argument, but also creates a new bg_color_callback
 	# that will color lines whose address is to be found in list[0] in green
 	# the callback is put only for the duration of the listwindow, and is not reentrant.
@@ -549,7 +549,7 @@ class DisasmWidget < ContainerChoiceWidget
 		when ?/; inputbox('search word') { |w|
 				next unless curview.respond_to? :hl_word
 				next if w == ''
-				curview.hl_word = w 
+				curview.hl_word = w
 				curview.redraw
 			}
 		when ?b; prompt_backtrace
@@ -644,7 +644,7 @@ class DasmWindow < Window
 			self.widget = NoDasmWidget.new(self)
 		end
 	end
-	
+
 	def widget=(w)
 		super(w || NoDasmWidget.new(self))
 	end

@@ -74,7 +74,7 @@ parser.on("--disable-finger-users (optional)") do
 	opts[:disable_finger_users] = true
 end
 
-parser.on("--disable-snmp-scan (optional)") do 
+parser.on("--disable-snmp-scan (optional)") do
 	opts[:disable_snmp_scan] = true
 end
 
@@ -133,7 +133,7 @@ blacklist_ports			= opts[:blacklist_ports]
 custom_ports			= opts[:custom_ports]
 portscan_timeout		= opts[:portscan_timeout]	|| 300
 source_port			= opts[:source_port]
-custom_nmap_options		= opts[:custom_nmap_options] || 
+custom_nmap_options		= opts[:custom_nmap_options] ||
 disable_udp_probes		= opts[:disable_udp_probes] || false
 disable_finger_users		= opts[:disable_finger_users] || false
 disable_snmp_scan		= opts[:disable_snmp_scan] || false
@@ -167,7 +167,7 @@ task 		= @rpc.call("pro.start_discover", {
 				'DS_SMBUser'		=> smb_user,
 				'DS_SMBPass'		=> smb_pass,
 				'DS_SMBDomain'		=> smb_domain,
-				'DS_SINGLE_SCAN'	=> single_scan, 
+				'DS_SINGLE_SCAN'	=> single_scan,
 				'DS_FAST_DETECT'	=> fast_detect
 })
 

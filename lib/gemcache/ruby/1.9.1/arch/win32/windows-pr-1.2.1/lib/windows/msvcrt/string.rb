@@ -24,7 +24,7 @@ module Windows
 
       StrcpyPL = API.new('strcpy', 'PL', 'L', MSVCRT_DLL)
       StrcpyPP = API.new('strcpy', 'PP', 'L', MSVCRT_DLL)
-        
+
       Mbscmp   = API.new('_mbscmp', 'PP', 'I', 'msvcrt')
       Mbscpy   = API.new('_mbscpy', 'PL', 'L', 'msvcrt')
       Mbslen   = API.new('_mbslen', 'P', 'L', 'msvcrt')
@@ -32,7 +32,7 @@ module Windows
 
       MbscpyPL = API.new('_mbscpy', 'PL', 'L', 'msvcrt')
       MbscpyPP = API.new('_mbscpy', 'PP', 'L', 'msvcrt')
-      
+
       Wcscmp   = API.new('wcscmp', 'PP', 'I', MSVCRT_DLL)
       Wcscpy   = API.new('wcscpy', 'PL', 'L', MSVCRT_DLL)
       Wcslen   = API.new('wcslen', 'P', 'L', MSVCRT_DLL)
@@ -41,13 +41,13 @@ module Windows
 
       WcscpyPL = API.new('wcscpy', 'PL', 'L', MSVCRT_DLL)
       WcscpyPP = API.new('wcscpy', 'PP', 'L', MSVCRT_DLL)
-       
+
       begin
         Strtok_s = API.new('strtok_s', 'PPI', 'P', MSVCRT_DLL)
       rescue Win32::API::LoadLibraryError
         # Do nothing. Not supported on your system.
       end
-         
+
       def strchr(string, char)
         return nil if string == 0 || char == 0
         Strchr.call(string, char)
@@ -59,7 +59,7 @@ module Windows
         end
          Strcmp.call(str1, str2)
       end
-       
+
       def strcpy(dest, src)
         if src.is_a?(Numeric)
           return nil if src == 0
@@ -68,17 +68,17 @@ module Windows
           StrcpyPP.call(dest, src)
         end
       end
-       
+
       def strlen(string)
         return nil if string == 0
         Strlen.call(string)
       end
-       
+
       def strcspn(string, charset)
         return nil if string == 0
         Strcspn.call(string, charset)
       end
-       
+
       def strncpy(dest, source, count)
         return nil if source == 0
         Strncpy.call(dest, source, count)
@@ -88,12 +88,12 @@ module Windows
         return nil if string == 0 || charset == 0
         Strpbrk.call(string, charset)
       end
-       
+
       def strrchr(string, int)
         return nil if string == 0
         Strrchr.call(string, int)
       end
-       
+
       def strrev(str)
         return nil if str == 0
         Strrev.call(str)
@@ -108,7 +108,7 @@ module Windows
         return nil if string == 0 || search == 0
         Strstr.call(string, search)
       end
-       
+
       def strtok(token, delimeter)
         return nil if token == 0 || delimeter == 0
         Strtok.call(token, delimeter)
@@ -119,15 +119,15 @@ module Windows
           return nil if [token, delimter, context].include?(0)
           Strtok_s.call(token, delimeter, context)
         end
-      end         
-       
+      end
+
       def mbscmp(str1, str2)
         if str1 == 0 || str2 == 0
           return nil
         end
         Mbscmp.call(str1, str2)
       end
-       
+
       def mbscpy(dest, src)
         if src.is_a?(Numeric)
           return nil if src == 0
@@ -136,17 +136,17 @@ module Windows
           MbscpyPP.call(dest, src)
         end
       end
-       
+
       def mbslen(string)
         return nil if string == 0
         Mbslen.call(string)
       end
-       
+
       def mbsrev(str)
         return nil if str == 0
         Mbsrev.call(str)
       end
-       
+
       def wcscmp(str1, str2)
         if str1 == 0 || str2 == 0
           return nil
@@ -162,21 +162,21 @@ module Windows
           WcscpyPP.call(dest, src)
         end
       end
-       
+
       def wcslen(string)
         return nil if string == 0
         Wcslen.call(string)
       end
-       
+
       def wcsncpy(dest, source, count)
         return nil if source == 0
         Wcsncpy.call(dest, source, count)
-      end          
-       
+      end
+
       def wcsrev(str)
         return nil if str == 0
         Wcsrev.call(str)
-      end  
+      end
     end
   end
 end

@@ -81,7 +81,7 @@ class Rex::Proto::Http::Request::UnitTest < Test::Unit::TestCase
 		h = junk_request
 		h.junk_param_start = 1
 		assert_equal('/%3fgf=XjLyc/../foo/bar.html', h.uri, 'junk start of params')
-		
+
 		h = junk_request
 		h.junk_end_of_uri = 1
 		assert_equal('/%20HTTP/1.0%0d%0a/../../foo/bar.html', h.uri, 'junk end of URI')
@@ -95,20 +95,20 @@ class Rex::Proto::Http::Request::UnitTest < Test::Unit::TestCase
 
 		h.uri_parts['QueryString']['B'] = 'a'
 		assert_equal('/foo/bar.html?B=a', h.uri, 'uri with param')
-		
+
 		h.uri_parts['QueryString']['B'] = ['a','b']
 		assert_equal('/foo/bar.html?B=a&B=b', h.uri, 'uri with a param with multiple values')
-		
+
 		h.uri_parts['QueryString']['B'] = '='
 		assert_equal('/foo/bar.html?B=%3d', h.uri, 'uri with a param that requires escaping')
-	
+
 		assert_equal(
     		"GET /foo/bar.html?B=%3d HTTP/1.0\r\n" +
     		"Foo: Bar\r\n" +
     		"Content-Length: 0\r\n" +
 			"\r\n", h.to_s, 'GET to_s'
 		)
-		
+
 		h.method = 'POST'
 		assert_equal(
     		"POST /foo/bar.html HTTP/1.0\r\n" +
@@ -134,7 +134,7 @@ class Rex::Proto::Http::Request::UnitTest < Test::Unit::TestCase
 	def test_junk_params
 		srand(0)
 		h = junk_request
-		
+
 		h.junk_params = 1
 		h.uri_parts['QueryString']['a'] = 'b'
 		h.uri_parts['QueryString']['c'] = 'd'

@@ -35,7 +35,7 @@ class Rex::Socket::TcpServer::UnitTest < Test::Unit::TestCase
 			assert(scli.methods.include?('<<'), "no << operator")
 			assert(scli.methods.include?('>>'), "no >> operator")
 			assert(scli.methods.include?('has_read_data?'), "no has_read_data?")
-			
+
 		ensure
 			ccli.close if (ccli)
 			serv.close

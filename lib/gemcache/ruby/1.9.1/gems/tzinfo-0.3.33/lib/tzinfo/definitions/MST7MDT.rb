@@ -2,13 +2,13 @@ module TZInfo
   module Definitions
     module MST7MDT
       include TimezoneDefinition
-      
+
       timezone 'MST7MDT' do |tz|
         tz.offset :o0, -25200, 0, :MST
         tz.offset :o1, -25200, 3600, :MDT
         tz.offset :o2, -25200, 3600, :MWT
         tz.offset :o3, -25200, 3600, :MPT
-        
+
         tz.transition 1918, 3, :o1, 19373471, 8
         tz.transition 1918, 10, :o0, 14531363, 6
         tz.transition 1919, 3, :o1, 19376383, 8

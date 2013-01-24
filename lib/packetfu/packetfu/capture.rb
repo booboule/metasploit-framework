@@ -4,7 +4,7 @@ module PacketFu
 	# The Capture class is used to construct PcapRub objects in order to collect
 	# packets from an interface.
 	#
-	# This class requires PcapRub. In addition, you will need root (or root-like) privileges 
+	# This class requires PcapRub. In addition, you will need root (or root-like) privileges
 	# in order to capture from the interface.
 	#
 	# Note, on some wireless cards, setting :promisc => true will disable capturing.
@@ -83,7 +83,7 @@ module PacketFu
 		# clear() clears the @stream and @array variables, essentially starting the
 		# capture session over. Valid arguments are:
 		#
-		#   :array 
+		#   :array
 		#     If true, the @array is cleared.
 		#   :stream
 		#     If true, the @stream is cleared.
@@ -112,7 +112,7 @@ module PacketFu
 		#   :filter
 		#     Provide a bpf filter to apply to packets moving from @stream to @array.
 		def wire_to_array(args={})
-			filter = args[:filter] 
+			filter = args[:filter]
 			bpf(:filter=>filter) if filter
 
 			while this_pkt = @stream.next

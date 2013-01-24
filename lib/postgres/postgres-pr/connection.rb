@@ -58,7 +58,7 @@ class Connection
     @transaction_status = nil
     @params = {}
     establish_connection(uri)
-  
+
     @conn << StartupMessage.new(PROTO_VERSION, 'user' => user, 'database' => database).dump
 
     loop do
@@ -77,7 +77,7 @@ class Connection
         raise ArgumentError, "no password specified" if password.nil?
         require 'digest/md5'
 
-        m = Digest::MD5.hexdigest(password + user) 
+        m = Digest::MD5.hexdigest(password + user)
         m = Digest::MD5.hexdigest(m + msg.salt)
         m = 'md5' + m
         @conn << PasswordMessage.new(m).dump
@@ -110,7 +110,7 @@ class Connection
     @conn = nil
   end
 
-  class Result 
+  class Result
     attr_accessor :rows, :fields, :cmd_tag
     def initialize(rows=[], fields=[])
       @rows, @fields = rows, fields
@@ -155,12 +155,12 @@ class Connection
 
   DEFAULT_PORT = 5432
   DEFAULT_HOST = 'localhost'
-  DEFAULT_PATH = '/tmp' 
-  DEFAULT_URI = 
+  DEFAULT_PATH = '/tmp'
+  DEFAULT_URI =
     if RUBY_PLATFORM.include?('win')
-      'tcp://' + DEFAULT_HOST + ':' + DEFAULT_PORT.to_s 
+      'tcp://' + DEFAULT_HOST + ':' + DEFAULT_PORT.to_s
     else
-      'unix:' + File.join(DEFAULT_PATH, '.s.PGSQL.' + DEFAULT_PORT.to_s)  
+      'unix:' + File.join(DEFAULT_PATH, '.s.PGSQL.' + DEFAULT_PORT.to_s)
     end
 
   private

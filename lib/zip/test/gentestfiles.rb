@@ -11,24 +11,24 @@ class TestFiles
 
   EMPTY_TEST_DIR      = "data/generated/emptytestdir"
 
-  ASCII_TEST_FILES  = [ RANDOM_ASCII_FILE1, RANDOM_ASCII_FILE2, RANDOM_ASCII_FILE3 ] 
+  ASCII_TEST_FILES  = [ RANDOM_ASCII_FILE1, RANDOM_ASCII_FILE2, RANDOM_ASCII_FILE3 ]
   BINARY_TEST_FILES = [ RANDOM_BINARY_FILE1, RANDOM_BINARY_FILE2 ]
   TEST_DIRECTORIES  = [ EMPTY_TEST_DIR ]
   TEST_FILES        = [ ASCII_TEST_FILES, BINARY_TEST_FILES, EMPTY_TEST_DIR ].flatten!
 
   def TestFiles.create_test_files(recreate)
-    if (recreate || 
+    if (recreate ||
 	! (TEST_FILES.inject(true) { |accum, element| accum && File.exists?(element) }))
-      
+
       Dir.mkdir "data/generated" rescue Errno::EEXIST
 
-      ASCII_TEST_FILES.each_with_index { 
-	|filename, index| 
+      ASCII_TEST_FILES.each_with_index {
+	|filename, index|
 	create_random_ascii(filename, 1E4 * (index+1))
       }
-      
-      BINARY_TEST_FILES.each_with_index { 
-	|filename, index| 
+
+      BINARY_TEST_FILES.each_with_index {
+	|filename, index|
 	create_random_binary(filename, 1E4 * (index+1))
       }
 
@@ -55,7 +55,7 @@ class TestFiles
     }
   end
 
-  def TestFiles.ensure_dir(name) 
+  def TestFiles.ensure_dir(name)
     if File.exists?(name)
       return if File.stat(name).directory?
       File.delete(name)
@@ -83,7 +83,7 @@ class TestZipFile
 
   def TestZipFile.create_test_zips(recreate)
     files = Dir.entries("data/generated")
-    if (recreate || 
+    if (recreate ||
 	    ! (files.index(File.basename(TEST_ZIP1.zip_name)) &&
 	       files.index(File.basename(TEST_ZIP2.zip_name)) &&
 	       files.index(File.basename(TEST_ZIP3.zip_name)) &&
@@ -93,14 +93,14 @@ class TestZipFile
 	       files.index("short.txt")      &&
 	       files.index("longAscii.txt")  &&
 	       files.index("longBinary.bin") ))
-      raise "failed to create test zip '#{TEST_ZIP1.zip_name}'" unless 
+      raise "failed to create test zip '#{TEST_ZIP1.zip_name}'" unless
 	system("zip #{TEST_ZIP1.zip_name} data/file2.txt")
-      raise "failed to remove entry from '#{TEST_ZIP1.zip_name}'" unless 
+      raise "failed to remove entry from '#{TEST_ZIP1.zip_name}'" unless
 	system("zip #{TEST_ZIP1.zip_name} -d data/file2.txt")
-      
+
       File.open("data/generated/empty.txt", "w") {}
       File.open("data/generated/empty_chmod640.txt", "w") { |f| f.chmod(0640) }
-      
+
       File.open("data/generated/short.txt", "w") { |file| file << "ABCDEF" }
       ziptestTxt=""
       File.open("data/file2.txt") { |file| ziptestTxt=file.read }
@@ -110,51 +110,51 @@ class TestZipFile
 	  file << ziptestTxt
 	end
       }
-      
+
       testBinaryPattern=""
       File.open("data/generated/empty.zip") { |file| testBinaryPattern=file.read }
       testBinaryPattern *= 4
-      
+
       File.open("data/generated/longBinary.bin", "wb") {
 	|file|
 	while (file.tell < 3E5)
 	  file << testBinaryPattern << rand << "\0"
 	end
       }
-      raise "failed to create test zip '#{TEST_ZIP2.zip_name}'" unless 
+      raise "failed to create test zip '#{TEST_ZIP2.zip_name}'" unless
 	system("zip #{TEST_ZIP2.zip_name} #{TEST_ZIP2.entry_names.join(' ')}")
 
       # without bash system interprets everything after echo as parameters to
       # echo including | zip -z ...
-      raise "failed to add comment to test zip '#{TEST_ZIP2.zip_name}'" unless 
+      raise "failed to add comment to test zip '#{TEST_ZIP2.zip_name}'" unless
 	system("bash -c \"echo #{TEST_ZIP2.comment} | zip -z #{TEST_ZIP2.zip_name}\"")
 
-      raise "failed to create test zip '#{TEST_ZIP3.zip_name}'" unless 
+      raise "failed to create test zip '#{TEST_ZIP3.zip_name}'" unless
 	system("zip #{TEST_ZIP3.zip_name} #{TEST_ZIP3.entry_names.join(' ')}")
 
-      raise "failed to create test zip '#{TEST_ZIP4.zip_name}'" unless 
+      raise "failed to create test zip '#{TEST_ZIP4.zip_name}'" unless
 	system("zip #{TEST_ZIP4.zip_name} #{TEST_ZIP4.entry_names.join(' ')}")
     end
-  rescue 
-    raise $!.to_s + 
+  rescue
+    raise $!.to_s +
       "\n\nziptest.rb requires the Info-ZIP program 'zip' in the path\n" +
       "to create test data. If you don't have it you can download\n"   +
       "the necessary test files at http://sf.net/projects/rubyzip."
   end
 
   TEST_ZIP1 = TestZipFile.new("data/generated/empty.zip", [])
-  TEST_ZIP2 = TestZipFile.new("data/generated/5entry.zip", %w{ data/generated/longAscii.txt data/generated/empty.txt data/generated/empty_chmod640.txt data/generated/short.txt data/generated/longBinary.bin}, 
+  TEST_ZIP2 = TestZipFile.new("data/generated/5entry.zip", %w{ data/generated/longAscii.txt data/generated/empty.txt data/generated/empty_chmod640.txt data/generated/short.txt data/generated/longBinary.bin},
 			      "my zip comment")
   TEST_ZIP3 = TestZipFile.new("data/generated/test1.zip", %w{ data/file1.txt })
-  TEST_ZIP4 = TestZipFile.new("data/generated/zipWithDir.zip", [ "data/file1.txt", 
+  TEST_ZIP4 = TestZipFile.new("data/generated/zipWithDir.zip", [ "data/file1.txt",
 				TestFiles::EMPTY_TEST_DIR])
 end
 
 
 END {
-  TestFiles::create_test_files(ARGV.index("recreate") != nil || 
+  TestFiles::create_test_files(ARGV.index("recreate") != nil ||
 			     ARGV.index("recreateonly") != nil)
-  TestZipFile::create_test_zips(ARGV.index("recreate") != nil || 
+  TestZipFile::create_test_zips(ARGV.index("recreate") != nil ||
 			      ARGV.index("recreateonly") != nil)
   exit if ARGV.index("recreateonly") != nil
 }

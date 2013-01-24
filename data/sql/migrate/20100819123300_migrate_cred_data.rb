@@ -139,7 +139,7 @@ class MigrateCredData < ActiveRecord::Migration
 			next unless note.ntype[/^auth\.(.*)/]
 			note.delete
 		end
-		rescue 
+		rescue
 			say "There was a problem migrating auth credentials. Skipping."
 			return true # Never fail!
 		end

@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Indianapolis
         include TimezoneDefinition
-        
+
         linked_timezone 'America/Indianapolis', 'America/Indiana/Indianapolis'
       end
     end

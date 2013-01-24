@@ -24,11 +24,11 @@ module Formtastic
     #   </form>
     #
     # @see Formtastic::Helpers::InputsHelper#input InputsHelper#input for full documentation of all possible options.
-    class SearchInput 
+    class SearchInput
       include Base
       include Base::Stringish
       include Base::Placeholder
-      
+
       def to_html
         input_wrapping do
           label_html <<

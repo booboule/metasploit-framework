@@ -3,7 +3,7 @@ module TZInfo
     module Asia
       module Gaza
         include TimezoneDefinition
-        
+
         timezone 'Asia/Gaza' do |tz|
           tz.offset :o0, 8272, 0, :LMT
           tz.offset :o1, 7200, 0, :EET
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, 7200, 3600, :EEST
           tz.offset :o4, 7200, 0, :IST
           tz.offset :o5, 7200, 3600, :IDT
-          
+
           tz.transition 1900, 9, :o1, 13042584383, 5400
           tz.transition 1940, 5, :o2, 29157377, 12
           tz.transition 1942, 10, :o1, 19445315, 8

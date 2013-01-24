@@ -30,7 +30,7 @@ describe Rex::Post::Meterpreter::Tlv do
 
   it "should respond to type?" do
     subject.should respond_to :type?
-  end  
+  end
 
   it "should respond to value?" do
     subject.should respond_to :value?
@@ -270,7 +270,7 @@ describe Rex::Post::Meterpreter::GroupTlv do
 
     context "#from_r" do
       it "should build the TLV group when given the propper raw bytes" do
-        subject.reset 
+        subject.reset
         subject.from_r( @raw_group)
         subject.tlvs[0].inspect.should == "#<Rex::Post::Meterpreter::Tlv type=STRING          meta=STRING     value=\"test\">"
         subject.tlvs[1].inspect.should == "#<Rex::Post::Meterpreter::Tlv type=STRING          meta=STRING     value=\"test2\">"
@@ -364,7 +364,7 @@ describe Rex::Post::Meterpreter::Packet do
   context "Request Packet" do
     subject{
       Rex::Post::Meterpreter::Packet.new(
-        Rex::Post::Meterpreter::PACKET_TYPE_REQUEST, 
+        Rex::Post::Meterpreter::PACKET_TYPE_REQUEST,
         "test_method"
       )
     }
@@ -447,7 +447,7 @@ describe Rex::Post::Meterpreter::Packet do
   context "a response packet" do
     subject{
       Rex::Post::Meterpreter::Packet.new(
-        Rex::Post::Meterpreter::PACKET_TYPE_RESPONSE, 
+        Rex::Post::Meterpreter::PACKET_TYPE_RESPONSE,
         "test_method"
       )
     }

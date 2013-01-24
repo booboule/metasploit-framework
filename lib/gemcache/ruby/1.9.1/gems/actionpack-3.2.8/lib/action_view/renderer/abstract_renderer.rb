@@ -12,7 +12,7 @@ module ActionView
     end
 
     protected
-    
+
     def extract_details(options)
       details = {}
       @lookup_context.registered_details.each do |key|
@@ -21,7 +21,7 @@ module ActionView
       end
       details
     end
-    
+
     def extract_format(value, details)
       if value.is_a?(String) && value.sub!(formats_regexp, "")
         ActiveSupport::Deprecation.warn "Passing the format in the template name is deprecated. " \

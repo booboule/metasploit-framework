@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Yellowknife
         include TimezoneDefinition
-        
+
         timezone 'America/Yellowknife' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, -25200, 0, :MST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -25200, 3600, :MPT
           tz.offset :o4, -25200, 7200, :MDDT
           tz.offset :o5, -25200, 3600, :MDT
-          
+
           tz.transition 1935, 1, :o1, 4855607, 2
           tz.transition 1942, 2, :o2, 19443199, 8
           tz.transition 1945, 8, :o3, 58360379, 24

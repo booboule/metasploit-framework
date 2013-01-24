@@ -68,7 +68,7 @@ def dcerpc_bind(handle, csocket, csimple, cuser, cpass)
 		opts['smb_pass'] = cpass
 		opts['frag_size'] = 512
 		opts['smb_client'] = csimple
-		
+
 		Rex::Proto::DCERPC::Client.new(handle, csocket, opts)
 	end
 
@@ -132,7 +132,7 @@ if (not simple.client.auth_user)
 	exit(1)
 end
 
-		
+
 
 fname = Rex::Text.rand_text_alpha(8) + ".exe"
 sname = Rex::Text.rand_text_alpha(8)

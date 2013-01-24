@@ -3,14 +3,14 @@ module TZInfo
     module America
       module Inuvik
         include TimezoneDefinition
-        
+
         timezone 'America/Inuvik' do |tz|
           tz.offset :o0, 0, 0, :zzz
           tz.offset :o1, -28800, 0, :PST
           tz.offset :o2, -28800, 7200, :PDDT
           tz.offset :o3, -25200, 0, :MST
           tz.offset :o4, -25200, 3600, :MDT
-          
+
           tz.transition 1953, 1, :o1, 4868757, 2
           tz.transition 1965, 4, :o2, 14633255, 6
           tz.transition 1965, 10, :o1, 14634389, 6

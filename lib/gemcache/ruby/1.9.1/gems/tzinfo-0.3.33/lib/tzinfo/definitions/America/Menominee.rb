@@ -3,7 +3,7 @@ module TZInfo
     module America
       module Menominee
         include TimezoneDefinition
-        
+
         timezone 'America/Menominee' do |tz|
           tz.offset :o0, -21027, 0, :LMT
           tz.offset :o1, -21600, 0, :CST
@@ -11,7 +11,7 @@ module TZInfo
           tz.offset :o3, -21600, 3600, :CWT
           tz.offset :o4, -21600, 3600, :CPT
           tz.offset :o5, -18000, 0, :EST
-          
+
           tz.transition 1885, 9, :o1, 69402333409, 28800
           tz.transition 1918, 3, :o2, 14530103, 6
           tz.transition 1918, 10, :o1, 58125451, 24

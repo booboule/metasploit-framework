@@ -3,7 +3,7 @@ module TZInfo
     module Europe
       module Luxembourg
         include TimezoneDefinition
-        
+
         timezone 'Europe/Luxembourg' do |tz|
           tz.offset :o0, 1476, 0, :LMT
           tz.offset :o1, 3600, 0, :CET
@@ -12,7 +12,7 @@ module TZInfo
           tz.offset :o4, 0, 3600, :WEST
           tz.offset :o5, 3600, 3600, :WEST
           tz.offset :o6, 3600, 0, :WET
-          
+
           tz.transition 1904, 5, :o1, 5799917959, 2400
           tz.transition 1916, 5, :o2, 29051981, 12
           tz.transition 1916, 9, :o1, 58107299, 24

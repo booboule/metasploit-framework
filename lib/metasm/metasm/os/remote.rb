@@ -478,7 +478,7 @@ class GdbRemoteDebugger < Debugger
 		@state = :dead
 		@info = 'detached'
 	end
-	
+
 	# set to true to use the gdb msg to handle bpx, false to set 0xcc ourself
 	attr_accessor :gdb_bpx
 	def enable_bp(addr)

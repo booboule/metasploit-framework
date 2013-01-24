@@ -22,7 +22,7 @@ module EventMachine
     end
 
     # Pop items off the queue, running the block on the reactor thread. The pop
-    # will not happen immediately, but at some point in the future, either in 
+    # will not happen immediately, but at some point in the future, either in
     # the next tick, if the queue has data, or when the queue is populated.
     def pop(*a, &b)
       cb = EM::Callback(*a, &b)
@@ -37,7 +37,7 @@ module EventMachine
     end
 
     # Push items onto the queue in the reactor thread. The items will not appear
-    # in the queue immediately, but will be scheduled for addition during the 
+    # in the queue immediately, but will be scheduled for addition during the
     # next reactor tick.
     def push(*items)
       EM.schedule do
@@ -46,13 +46,13 @@ module EventMachine
       end
     end
 
-    # N.B. This is a peek, it's not thread safe, and may only tend toward 
+    # N.B. This is a peek, it's not thread safe, and may only tend toward
     # accuracy.
     def empty?
       @items.empty?
     end
 
-    # N.B. This is a peek, it's not thread safe, and may only tend toward 
+    # N.B. This is a peek, it's not thread safe, and may only tend toward
     # accuracy.
     def size
       @items.size

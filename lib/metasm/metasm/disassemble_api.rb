@@ -1030,7 +1030,7 @@ class Disassembler
 						len = (len != '' ? len.to_i : nil)
 						o = (o.to_s != '' ? Expression.parse(pp.feed!(o)).reduce : nil)	# :default/:unknown ?
 						add_xref(a, Xref.new(t, o, len))
-					rescue 
+					rescue
 						puts "load: bad xref #{l.inspect} #$!" if $VERBOSE
 					end
 				}
@@ -1225,7 +1225,7 @@ class Disassembler
 		if bd2.kind_of? DecodedInstruction
 			bd2 = bd2.backtrace_binding ||= cpu.get_backtrace_binding(bd2)
 		end
-		
+
 		reduce = lambda { |e| Expression[Expression[e].reduce] }
 
 		bd = {}

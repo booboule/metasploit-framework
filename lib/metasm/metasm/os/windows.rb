@@ -416,7 +416,7 @@ typedef struct _CONTEXT_AMD64 {
 
 	XMMREG Vector[26];
 	DWORD64 VectorControl;
-	
+
 	DWORD64 DebugControl;
 	DWORD64 LastBranchToRip;
 	DWORD64 LastBranchFromRip;
@@ -1033,7 +1033,7 @@ OpenThreadToken (
 	__out HANDLE *TokenHandle);
 EOS
 	SE_DEBUG_NAME = 'SeDebugPrivilege'
-	
+
 	new_api_c <<EOS, 'ntdll'
 #line #{__LINE__}
 
@@ -1166,7 +1166,7 @@ NtQueryVirtualMemory (
 );
 
 EOS
- 
+
 	# convert a native function return value
 	# if the native does not have the zero_not_fail attribute, convert 0
 	#  to nil, and print a message on stdout

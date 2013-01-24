@@ -9,7 +9,7 @@ require 'metasm/ppc/main'
 module Metasm
 class PowerPC
 	def addop(name, bin, *argprops)
-		o = Opcode.new name, bin 
+		o = Opcode.new name, bin
 		o.args.concat(argprops & @fields_mask.keys)
 		(argprops & @valid_props).each { |p| o.props[p] = true }
 		@opcode_list << o
@@ -123,7 +123,7 @@ class PowerPC
 		addop_branchcond 'b', 0x40000000, :bd
 		addop_branchcond 'b', 0x4C000020, :lr
 		addop_branchcond 'b', 0x4C000420, :ctr
-	
+
 		addop 'sc',     0x44000002, :lev
 		addop 'crand',  0x4C000202, :bt, :ba, :bb
 		addop 'crxor',  0x4C000182, :bt, :ba, :bb
